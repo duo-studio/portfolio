@@ -30,17 +30,20 @@ eleventyComputed:
         <title>{{ title or metadata.title }}</title>
         <meta name="description" content="{{ description or metadata.description }}">
         <meta name="url" content="https://duo-studio.co"/>
+        <meta name="author" content="Duo Studio">
         <meta property="og:type" content="business.business"/>
         <meta property="og:title" content="Duo Studio"/>
+        <meta property="og:site_name" content="Duo Studio"/>
         <meta property="og:url" content="https://duo-studio.co"/>
         <meta property="og:description" content="{{ description or metadata.description }}"/>
-        <meta property="og:image" content="https://duo-studio.co/assets/DuoStudio_Meta--v2.jpg"/>
+        <meta property="og:image" content="{{ metaImage or metadata.image }}"/>
         <meta name="twitter:card" content="summary_large_image"/>
+        <meta name="twitter:creator" content="Duo Studio">
         <meta property="twitter:domain" content="duo-studio.co"/>
         <meta property="twitter:url" content="https://duo-studio.co"/>
         <meta name="twitter:title" content="Duo Studio"/>
         <meta name="twitter:description" content="{{ description or metadata.description }}"/>
-        <meta name="twitter:image" content="https://duo-studio.co/assets/DuoStudio_Meta--v2.jpg"/>
+        <meta name="twitter:image" content="{{ metaImage or metadata.image }}"/>
         <meta name="robots" content="index, follow"/>
         <link rel="canonical" href="https://duo-studio.co{{ page.url }}"/>
         <link rel="icon" type="image/x-icon" href="/assets/favicon.ico"/>
@@ -63,12 +66,9 @@ eleventyComputed:
         <script src="/scripts/libs/SplitText.min.js" defer></script>
         <script src="/scripts/global.min.js" defer></script>
         <script type="application/ld+json">
-            { "@context": "https://schema.org", "@type": "Organization", "name": "Duo Studio", "description": "Duo Studio is a
-            creative collective that weaves together branding, strategy, and design to create thought-provoking digital experiences
-            for businesses ready to make an impact.", "url": "https://duo-studio.co/", "logo":
-            "https://duo-studio.co/assets/Duo-Studio__logo.jpg", "telephone": "(301) 444-5447", "sameAs": [
-            "https://www.instagram.com/duostudio_co/", "https://www.linkedin.com/company/duostudio/",
-            "https://www.facebook.com/duostudioco/" ] }
+            { "@context": "https://schema.org/", "@type": "WebSite", "name": "Duo Studio", "url": "https://duo-studio.co{{ page.url }}",
+            "potentialAction": { "@type": "SearchAction", "target": "{search_term_string}", "query-input": "required
+            name=search_term_string" } }
         </script>
     </head>
     <body data-barba="wrapper">

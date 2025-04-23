@@ -21,8 +21,11 @@ module.exports = (eleventyConfig) => {
 			let metadata = await eleventyImage(file, {
 				widths: widths || ["auto"],
 				formats,
-				urlPath: "/assets/journal",
-				outputDir: path.join(eleventyConfig.dir.output, "assets/journal"), // Advanced usage note: `eleventyConfig.dir` works here because we’re using addPlugin.
+				urlPath: "/assets/" + this.page.url,
+				outputDir: path.join(
+					eleventyConfig.dir.output,
+					"assets/" + this.page.url
+				), // Advanced usage note: `eleventyConfig.dir` works here because we’re using addPlugin.
 			});
 
 			// TODO loading=eager and fetchpriority=high

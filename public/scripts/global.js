@@ -2283,7 +2283,7 @@ function loadJournalScripts() {
 		if (window.innerWidth > 550) {
 			ScrollTrigger.create({
 				trigger: ".entry__content--sidebar-toc",
-				start: "top top",
+				start: "top 100px",
 				pinnedContainer: ".entry__content",
 				pinType: "transform",
 				onRefreshInit: (self) => self.scroll(0),
@@ -2303,6 +2303,13 @@ function loadJournalScripts() {
 			});
 		});
 	}
+
+	const videos = document.querySelectorAll("video");
+	videos.forEach((video) => {
+		video.addEventListener("click", function () {
+			video.paused ? video.play() : video.pause();
+		});
+	});
 }
 document.addEventListener("DOMContentLoaded", function (event) {
 	var nav = document.querySelector("nav:not(.anchors)"),

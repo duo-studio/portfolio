@@ -340,18 +340,11 @@ time {
 		}
 
 		input[type="hidden"] {
-			visibility: none !important;
+			visibility: hidden !important;
 			opacity: 0 !important;
 			height: 0 !important;
 			width: 0 !important;
 			overflow: hidden !important;
-		}
-		.btn__circle {
-			margin: 5% 9% 0 auto;
-			@media screen and (max-width: $mobile-breakpoint) {
-				margin: 10% 9% 0 auto;
-				padding: 1.5em;
-			}
 		}
 	}
 }
@@ -1558,7 +1551,7 @@ nav {
 						border-right: 1px solid $color-black;
 						padding-bottom: 5vw;
 						@media screen and (max-width: $mobile-breakpoint) {
-							padding: calc(calc(#{$mobile-spacer * 2} + #{$nav-spacer}))
+							padding: calc(calc(#{$mobile-spacer * 1.5} + #{$nav-spacer}))
 								$mobile-gutter $mobile-gutter;
 							z-index: 1;
 						}
@@ -1627,6 +1620,7 @@ nav {
 							flex-direction: column;
 							align-items: flex-start;
 							height: 100%;
+							position: relative;
 							.wrapper {
 								position: relative;
 								display: flex;
@@ -1651,60 +1645,64 @@ nav {
 								}
 							}
 
-							label {
-								width: 100%;
-								&.for-textarea {
-									display: block;
-									textarea {
-										height: 100%;
-										min-height: 250px;
-										@extend h3;
-										&::placeholder {
-											opacity: 0;
-											transition: opacity 0.2s ease-in-out;
-										}
+							textarea {
+								display: block;
+								margin-bottom: auto;
+								height: 100%;
+								min-height: 250px;
+								@extend h3;
+								&::placeholder {
+									opacity: 0;
+									transition: opacity 0.2s ease-in-out;
+								}
 
-										&.loaded {
-											&::placeholder {
-												opacity: 0.25;
-											}
-										}
-										@media screen and (max-width: $mobile-breakpoint) {
-											padding: 0 $mobile-gutter;
-											min-height: 150px;
-										}
+								&.loaded {
+									&::placeholder {
+										opacity: 0.25;
 									}
+								}
+								@media screen and (max-width: $mobile-breakpoint) {
+									padding: 0 $mobile-gutter;
+									min-height: 150px;
 								}
 							}
 
-							.row {
-								width: 100%;
-								align-items: center;
-								margin-top: auto;
-								padding-top: 2rem;
-
-								.col__inner {
-									margin: auto;
-									width: 55%;
-									@media screen and (max-width: $mobile-breakpoint) {
-										width: 100%;
+							input {
+								border-bottom: 1px solid $color-black;
+								padding: 5px 0;
+								display: block;
+								width: 55%;
+								margin: 1rem 0 0;
+								@media screen and (max-width: $mobile-breakpoint) {
+									width: 100%;
+								}
+								input {
+									font-size: 16px;
+									&::placeholder {
+										opacity: 0.25;
 									}
-									label {
-										border-bottom: 1px solid $color-black;
-										padding: 5px 0;
-										display: block;
-										width: 100%;
-										margin: 1rem 0 0;
-										input {
-											font-size: 16px;
-											&::placeholder {
-												opacity: 0.25;
-											}
-										}
+								}
 
-										@media screen and (max-width: $mobile-breakpoint) {
-											padding: 1em $mobile-gutter;
-										}
+								@media screen and (max-width: $mobile-breakpoint) {
+									padding: 0.5rem $mobile-gutter;
+								}
+
+								&#company {
+									margin-bottom: 1rem;
+								}
+							}
+
+							.btn__circle {
+								position: absolute;
+								bottom: 0;
+								right: 0;
+
+								@media screen and (max-width: $mobile-breakpoint) {
+									position: relative;
+									margin: $mobile-gutter $mobile-gutter $mobile-spacer auto;
+
+									.no-overflow {
+										height: 1.36em;
 									}
 								}
 							}

@@ -20,14 +20,19 @@ layout: layouts/base.njk
                 <h1 class="entry__headline title-2 headline__load">{{ headline }}</h1>
                 <ul class="entry__metadata">
                     <div class="st__line"></div>
-                    {% if category %}
-                        <div class="btn__small entry__metadata--btn">
-                            {{ category }}
-                        </div>
+                    {% if author %}
+                        <li class="subtitle entry__metadata--author">
+                            Entry from: {{ author }}
+                        </li>
                     {% endif %}
-                    <li>
+                    <li class="entry__metadata--date">
                         <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time>
                     </li>
+                    {% if category %}
+                        <li class="btn__small entry__metadata--btn --tag">
+                            {{ category }}
+                        </li>
+                    {% endif %}
                 </ul>
                 <div class="entry__content">
                     {{ content | safe }}

@@ -7,7 +7,27 @@
   to = "https://www.verizon.com/business/resources/customer-success-stories/duo-studio-small-traveling-business/"
   force = true
 
-  [[redirects]]
+[[redirects]]
   from = "/duo-studio-verizon/"
   to = "https://www.verizon.com/business/resources/customer-success-stories/duo-studio-small-traveling-business/"
+  force = true
+
+[[redirects]]
+  from = "/marketing-agency-dc"
+  to = "/"
+  force = true
+
+  [[redirects]]
+  from = "/marketing-agency-dc/"
+  to = "/"
+  force = true
+
+[[redirects]]
+  from = "/creative-agency-dc"
+  to = "/"
+  force = true
+
+[[redirects]]
+  from = "/creative-agency-dc/"
+  to = "/"
   force = true

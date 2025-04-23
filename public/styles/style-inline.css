@@ -50,7 +50,7 @@ h2,
         margin-right: 0;
         padding-bottom: 0.5em; } }
 
-h3, #form form .input-wrapper:last-of-type label, #form form .input-wrapper span, #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form label.for-textarea textarea,
+h3, #form form .input-wrapper:last-of-type label, #form form .input-wrapper span, #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form textarea,
 .title-3 {
   font-size: clamp(20px, 1.6667vw, 32px);
   font-weight: 500;
@@ -256,20 +256,14 @@ time {
       @media screen and (max-width: 1024px) {
         #form form .input-wrapper textarea {
           min-width: 100%; } }
-    #form form .input-wrapper.active h3, #form form .input-wrapper.active .input-wrapper:last-of-type label, #form form .input-wrapper:last-of-type .input-wrapper.active label, #form form .input-wrapper.active span, #form #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form .input-wrapper.active label.for-textarea textarea, #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) #form form .input-wrapper.active label.for-textarea textarea, #form #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form label.for-textarea .input-wrapper.active textarea, #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) #form form label.for-textarea .input-wrapper.active textarea {
+    #form form .input-wrapper.active h3, #form form .input-wrapper.active .input-wrapper:last-of-type label, #form form .input-wrapper:last-of-type .input-wrapper.active label, #form form .input-wrapper.active span, #form #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form .input-wrapper.active textarea, #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) #form form .input-wrapper.active textarea {
       opacity: 1; }
   #form form input[type="hidden"] {
-    visibility: none !important;
+    visibility: hidden !important;
     opacity: 0 !important;
     height: 0 !important;
     width: 0 !important;
     overflow: hidden !important; }
-  #form form .btn__circle {
-    margin: 5% 9% 0 auto; }
-    @media screen and (max-width: 1024px) {
-      #form form .btn__circle {
-        margin: 10% 9% 0 auto;
-        padding: 1.5em; } }
 
 .cursor {
   position: fixed;
@@ -547,7 +541,7 @@ section {
     .pin__sticky .minor {
       padding: 1.5rem 1.5rem 0; } }
 
-    .pin__sticky .minor h3, .pin__sticky .minor #form form .input-wrapper:last-of-type label, #form form .input-wrapper:last-of-type .pin__sticky .minor label, .pin__sticky .minor #form form .input-wrapper span, #form form .input-wrapper .pin__sticky .minor span, .pin__sticky .minor #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form label.for-textarea textarea, #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form label.for-textarea .pin__sticky .minor textarea {
+    .pin__sticky .minor h3, .pin__sticky .minor #form form .input-wrapper:last-of-type label, #form form .input-wrapper:last-of-type .pin__sticky .minor label, .pin__sticky .minor #form form .input-wrapper span, #form form .input-wrapper .pin__sticky .minor span, .pin__sticky .minor #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form textarea, #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form .pin__sticky .minor textarea {
       margin-bottom: 0.5rem; }
   .pin__sticky .major {
     width: 50%;
@@ -1085,10 +1079,10 @@ nav {
           #form form .input-wrapper:last-of-type #smooth-wrapper[data-barba-namespace="home"] #intro .content .row .col:nth-child(2) .inner label,
           #smooth-wrapper[data-barba-namespace="home"] #intro .content .row .col:nth-child(2) .inner #form form .input-wrapper span,
           #form form .input-wrapper #smooth-wrapper[data-barba-namespace="home"] #intro .content .row .col:nth-child(2) .inner span,
-          #smooth-wrapper[data-barba-namespace="contact"][data-barba-namespace="home"] #intro .content #main .section__wrapper > .row .col:nth-child(2) .inner form label.for-textarea textarea,
-          #smooth-wrapper[data-barba-namespace="contact"][data-barba-namespace="home"] #main #intro .content .section__wrapper > .row .col:nth-child(2) .inner form label.for-textarea textarea,
-          #smooth-wrapper[data-barba-namespace="contact"][data-barba-namespace="home"] #intro .content #main .section__wrapper > .row .col:nth-child(2) form label.for-textarea .inner textarea,
-          #smooth-wrapper[data-barba-namespace="contact"][data-barba-namespace="home"] #main #intro .content .section__wrapper > .row .col:nth-child(2) form label.for-textarea .inner textarea {
+          #smooth-wrapper[data-barba-namespace="contact"][data-barba-namespace="home"] #intro .content #main .section__wrapper > .row .col:nth-child(2) .inner form textarea,
+          #smooth-wrapper[data-barba-namespace="contact"][data-barba-namespace="home"] #main #intro .content .section__wrapper > .row .col:nth-child(2) .inner form textarea,
+          #smooth-wrapper[data-barba-namespace="contact"][data-barba-namespace="home"] #intro .content #main .section__wrapper > .row .col:nth-child(2) form .inner textarea,
+          #smooth-wrapper[data-barba-namespace="contact"][data-barba-namespace="home"] #main #intro .content .section__wrapper > .row .col:nth-child(2) form .inner textarea {
             margin-bottom: 0.2rem; }
           #smooth-wrapper[data-barba-namespace="home"] #intro .content .row .col:nth-child(2) .inner .btn__small {
             position: absolute;
@@ -1241,7 +1235,7 @@ nav {
       padding-bottom: 5vw; }
       @media screen and (max-width: 1024px) {
         #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(1) {
-          padding: calc(calc(8rem + calc(max(52px, 3.125vw)))) 1.5rem 1.5rem;
+          padding: calc(calc(6rem + calc(max(52px, 3.125vw)))) 1.5rem 1.5rem;
           z-index: 1; } }
       #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(1) h1 {
         line-height: 1; }
@@ -1289,7 +1283,8 @@ nav {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        height: 100%; }
+        height: 100%;
+        position: relative; }
         #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form .wrapper {
           position: relative;
           display: flex;
@@ -1311,46 +1306,48 @@ nav {
               #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form .wrapper .highlight {
                 height: 7.4vw;
                 top: 2px; } }
-        #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form label {
-          width: 100%; }
-          #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form label.for-textarea {
-            display: block; }
-            #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form label.for-textarea textarea {
-              height: 100%;
-              min-height: 250px; }
-              #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form label.for-textarea textarea::placeholder {
-                opacity: 0;
-                transition: opacity 0.2s ease-in-out; }
-              #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form label.for-textarea textarea.loaded::placeholder {
-                opacity: 0.25; }
-              @media screen and (max-width: 1024px) {
-                #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form label.for-textarea textarea {
-                  padding: 0 1.5rem;
-                  min-height: 150px; } }
-        #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form .row {
-          width: 100%;
-          align-items: center;
-          margin-top: auto;
-          padding-top: 2rem; }
-          #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form .row .col__inner {
-            margin: auto;
-            width: 55%; }
-            @media screen and (max-width: 1024px) {
-              #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form .row .col__inner {
-                width: 100%; } }
-            #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form .row .col__inner label {
-              border-bottom: 1px solid #0f0d0d;
-              padding: 5px 0;
-              display: block;
-              width: 100%;
-              margin: 1rem 0 0; }
-              #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form .row .col__inner label input {
-                font-size: 16px; }
-                #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form .row .col__inner label input::placeholder {
-                  opacity: 0.25; }
-              @media screen and (max-width: 1024px) {
-                #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form .row .col__inner label {
-                  padding: 1em 1.5rem; } }
+        #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form textarea {
+          display: block;
+          margin-bottom: auto;
+          height: 100%;
+          min-height: 250px; }
+          #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form textarea::placeholder {
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out; }
+          #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form textarea.loaded::placeholder {
+            opacity: 0.25; }
+          @media screen and (max-width: 1024px) {
+            #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form textarea {
+              padding: 0 1.5rem;
+              min-height: 150px; } }
+        #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form input {
+          border-bottom: 1px solid #0f0d0d;
+          padding: 5px 0;
+          display: block;
+          width: 55%;
+          margin: 1rem 0 0; }
+          @media screen and (max-width: 1024px) {
+            #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form input {
+              width: 100%; } }
+          #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form input input {
+            font-size: 16px; }
+            #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form input input::placeholder {
+              opacity: 0.25; }
+          @media screen and (max-width: 1024px) {
+            #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form input {
+              padding: 0.5rem 1.5rem; } }
+          #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form input#company {
+            margin-bottom: 1rem; }
+        #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form .btn__circle {
+          position: absolute;
+          bottom: 0;
+          right: 0; }
+          @media screen and (max-width: 1024px) {
+            #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form .btn__circle {
+              position: relative;
+              margin: 1.5rem 1.5rem 4rem auto; }
+              #smooth-wrapper[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(2) form .btn__circle .no-overflow {
+                height: 1.36em; } }
 #smooth-wrapper[data-barba-namespace="contact"] .footer-spacer {
   display: none; }
 

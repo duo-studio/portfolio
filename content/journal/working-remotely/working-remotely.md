@@ -3,8 +3,10 @@ headline: "Remote Work: Embracing Global Opportunities"
 description: Exploring the implications of working remotely in another country, the future of remote work and how it shapes global business dynamics.
 date: 2023-07-17
 category: Insights
+author: Dat Nguyen
 thumbImage: journal/working-remotely/remote-work@600.webp
 featImage: ./remote-work.webp
+metaImage: "https://duo-studio.co/assets/journal/3jLdGzSwqr-600.webp"
 imageCaption: "Image: Unsplash"
 permalink: /working-remotely/
 ---
@@ -19,7 +21,9 @@ Explore the implications of working remotely in another country, the future of r
 
 The concept of "working remotely in another country" is rapidly evolving as technology advances and attitudes towards traditional offices shift. Let’s dive into the complexities of this transition and share how we’re able to run our studio, whether it’s from a [van](https://www.verizon.com/business/resources/customer-success-stories/duo-studio-small-traveling-business/){target="_blank"} or in another country.
 
-We will also take a look at the future of remote work exploring emerging hybrid office-home models and their impact on productivity. As a creative digital agency, we’re lucky enough to work from anywhere but which industries also benefit from working remotely?
+We will also take a look at the future of remote work exploring emerging hybrid office-home models and their impact on productivity. As a digital design studio, we’re lucky enough to work from anywhere but which industries also benefit from working remotely?
+
+{% image "./working-remotely-freedom.webp", "working-remotely-freedom" %}
 
 ## Working remotely = too much freedom?
 
@@ -41,6 +45,8 @@ A solid routine will do wonders for your day: you’ll increase your efficiency,
 ### Your health comes first
 
 A mantra that we like to share with our team. Don’t be afraid to take necessary breaks to avoid burnout - we’ve all been there. What good is exploring another country if you’re stressed from work?
+
+{% image "./work-anywhere-thrive-anywhere.webp", "work-anywhere-thrive-anywhere" %}
 
 ## Work anywhere, thrive everywhere
 
@@ -80,6 +86,8 @@ According to [Buffer](https://buffer.com/state-of-remote-work/2022){target="_bla
 
 Even considering these challenges, we’re expecting a continuous, gradual shift toward remote working. And [Upwork](https://www.upwork.com/press/releases/upwork-study-finds-22-of-american-workforce-will-be-remote-by-2025){target="_blank"} finds that 22% of the American workforce will be remote by 2025.
 
+{% image "./working-remotely-hybrid.webp", "working-remotely-hybrid" %}
+
 ## Best of both worlds? The hybrid approach
 
 A hybrid home-office is a flexible approach that combines working in the office and working from home. Currently, about 74% of employers offer hybrid work environments, according to a recent [survey](https://www.ifebp.org/store/employee-benefits-survey/Pages/default.aspx){target="_blank"}. Let’s take a look at some variations:
@@ -89,8 +97,8 @@ A hybrid home-office is a flexible approach that combines working in the office 
 
 Since hybrid work is still fairly new, there are so many other variations out there. Ultimately, teams should work closely with each other to determine what is best for overall performance. Don’t be afraid to explore these models with your own team to find the best way forward.
 
-## **The Future of Remote Work: Final Thoughts**
+## The Future of Remote Work: Final Thoughts
 
-The digital age has transformed the way we work, leading companies worldwide to embrace remote working arrangements. While it offers great freedom, it also presents unique challenges. If you’re lucky enough to be able to work internationally, remember to respect the local labor laws and cultural norms. Thanks to tech we can explore, stay connected and make a living from anywhere.
+The digital age has transformed the way we work, leading companies worldwide to embrace remote working arrangements. While it offers great freedom, it also presents unique challenges. If you’re lucky enough to be able to work internationally, remember to respect the local labor laws and cultural norms. Thanks to tech, we can explore, stay connected and make a living from anywhere.
 
 </div>

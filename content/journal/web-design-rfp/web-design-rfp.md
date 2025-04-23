@@ -1,41 +1,38 @@
 ---
-headline: "Web design RFP"
-description: Explore how custom web development solutions can enhance your business, improve SEO, offer unique functionalities and ensure scalability and security.
-date: 2023-07-20
+eleventyComputed:
+  title: A Guide to Writing a Web Design RFP (& Free Template)
+headline: "A Guide to Writing a Web Design RFP (& Free Template)"
+description: Learn how to create a successful website design RFP that ensures clear project goals, maintains brand consistency and helps with vendor selection.
+date: 2023-08-21
 category: Resources
-thumbImage: journal/web-design-rfp/web-design-rfp@600.webp
-featImage: ./web-design-rfp.webp
+author: Dat Nguyen
+thumbImage: journal/web-design-rfp/web-design-rfp__banner@600.webp
+featImage: ./web-design-rfp__banner.webp
+metaImage: "https://duo-studio.co/assets/journal/eAagFt24Xx-600.webp"
 imageCaption: "Image: Unsplash"
 permalink: /web-design-rfp/
-draft: true
 ---
 
 <div class="entry__content--sidebar">
-
-<h2 class="title-3 entry__content--sidebar-excerpt">
-    Explore how custom web development solutions can enhance your business, improve SEO, offer unique functionalities and ensure scalability and security.
-</h2>
 
 <div class="entry__content--sidebar-toc">
 
 ### Table of Contents:
 
-- [Planning and more planning: The Strategic Approach to Web Development](#planning)
-    - Tailored to perfection: the benefits of going custom
-    - Strong web presence matters
-- Custom Web Development and SEO
-    - A plugin for this and a plugin for that: a custom developer's nightmare.
-    - [Impact on traffic and conversion rates](#impact-on-traffic)
-- Front to Back Coding
-    - The front-end: design and the user
-    - The back-end: behind the scenes
-- Content Management Systems (CMS)
-    - WordPress and custom themes
-    - Headless CMS
-- Scalability & Security
-    - Grow with your business
-    - Staying safe: web security
-- Final Thoughts
+1. [Cover Page](#cover-page)
+2. [Your Company](#background)
+3. [Project Overview](#overview)
+4. [Project Scope](#scope)
+5. [Website Examples](#website-examples)
+6. [Existing Site](#existing-site)
+7. [Budget](#budget)
+8. [Timeline](#timeline)
+9. [Vendor Requirements](#requirements)
+10. [Selection Process](#process)
+11. [Submission Directions](#directions)
+12. [Bonus](#bonus)
+13. [Final Thoughts](#final)
+14. [Template](#template)
 
 </div>
 </div>
@@ -43,119 +40,298 @@ draft: true
 
 <div class="entry__content--main">
 
-Custom web development has revolutionized the digital landscape, empowering businesses to create unique online identities. Imagine a website that is made specifically for your target audience with your brand's personalized touch and will differentiate you in your market.
+You're about to take the first step in looking for vendors to create (or evolve) your business' website. Where do you start? Where do you look? What information should you have ready before searching? In this article, we will go over what you need when working with any digital design agency and how to write the perfect website design RFP. 
 
-A good website requires experienced developers and designers. We will discuss the strategic approach of custom design and its importance in establishing a robust web presence for your business.
+This guide will familiarize you with the process of engaging with a design agency, regardless of whether your company typically writes RFPs or not. A well-structured RFP can significantly impact the web design and development process and can make a difference between a successful project and an unsuccessful one.
 
-We'll also explore what effect this has on search engines. SEO is the big buzzword and if your website doesn't have this optimized, you can lose out on potential leads. We'll distinguish between front-end and back-end development techniques and how they play into a typical webpage. A good web development team will account for these factors when building your website.
+First, we will dive into the various features that make up a web design RFP. This includes setting clear project goals, technical requirements, like templating systems and site architecture, as well as aligning your online presence with current marketing objectives. Be sure to emphasize these essential elements in the RFP.
 
-And we'll take a look at the different content management systems (CMS) and what pros and cons ready-made templates have when compared to a custom coded website. The discussion will extend to the scalability of these pre-made templates and if it can benefit your potential customers.
+Then, we’ll take an objective look at your current site and your ideal end-goal. When writing your website design RFP, it's crucial to determine whether you require a complete overhaul or slight design tweaks. This initial information will provide a clear understanding of your future growth projections and enable you to establish precise budget ranges.
 
-From the design elements to SEO to the different programming languages, there's a lot to unpack when discussing the details of custom web solutions. Whether you're a big enterprise or a small business, a well-done customized website will benefit you. Let's jump right in.
+Finally, we'll cover the evaluation criteria for agency selection and how to spot potential red flags. Keep in mind that the RFP process requires time and effort from both you and your vendors, so make sure you’re communicating your requirements effectively. 
 
+Get ready to write!
 
+{% image "./rfp__start.webp", "writing-rfp" %}
 
-<h2 id="planning">Planning and more planning: The Strategic Approach to Web Development</h2>
+<h2 id="rfp">The Website Design RFP (Request for Proposal)</h2>
 
-Rather than just spinning up a simple template from one of the popular website builders, custom design is important when building your website. You're unique and shouldn't look like everyone else.
+An RFP is what it sounds like; it’s a document that announces an upcoming project, provides relevant details and requests potential vendors to bid on it. So in this case, if your business is writing a web design RFP, your document would have:
 
-- **On-Page SEO**: Refers to the structure and content of your webpage. Good on-page SEO consists of having the appropriate headings, text, image alt tags and internal linking system. Think of each page of your site as little strings of data that are connected via links. A customized website will give developers full control over the design and structure of the page.
-- **Technical optimization**: We briefly touched upon the speed benefits that custom solutions have for a website but how does that translate to SEO? Search engines tend to award the faster loading site when comparing you to your competitors. Other benefits include, clean code-base, proper URL structure and mobile responsiveness. These are all vital things that a simple template are unable to do.
-- **Schema markup and structured data**: This is the information that helps search engines understand the context and meaning of your webpage. With custom websites, adding these to your webpages will simple for any web development company. Typical structured data will look like this:
-    
-    ```jsx
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org/",
-        "@type": "Recipe",
-        "name": "Party Coffee Cake",
-        "author": {
-            "@type": "Person",
-            "name": "Mary Stone"
-        },
-        "datePublished": "2018-03-10",
-        "description": "This coffee cake is awesome and perfect for parties.",
-        "prepTime": "PT20M"
-    }
-    </script>
-    ```
-    
+1. Cover page
+2. Company background
+3. Project overview
+4. Project scope
+5. Website examples
+6. Existing website details
+7. Budget
+8. Timeline
+9. Vendor specifications
+10. Selection process
+11. Submission directions
 
-The key takeaway is that pre-built themes limit specific functionality and hinder your SEO efforts. While there are plugins like Yoast for WordPress, which allows you to embed structured and meta data to your webpage, this won't affect the page speed or layout - there's another plugin for that. However, should you add a bunch of random plugins to your site? The answer is no - your developers and potential customers will thank you.
+Your RFP should begin with an introduction of your company and an explanation of the project requirements. Providing helpful references, like your competitor's site or your existing website, will assist vendors visualize the goal. Next, clearly outline directions on submitting the RFP and the selection criteria. Provide details for each requirement in your RFP, enabling vendors to submit a perfect proposal for the job. If you do this well, your vendors will think "wow, this company knows what they want.” 
 
-<h3 id="impact-on-traffic">Impact on traffic and conversion rates</h2>
+Be sure to download our website design RFP template below to guide you through the process!
 
-In addition to increasing online visibility, effective SEO practices within customized websites directly impact traffic and conversion rates. When your site ranks high on SERPs (Search Engine Results Pages), it naturally attracts more visitors who are likely interested in what you offer.
+<h2 id="cover-page">1. Cover Page</h2>
 
-This increase in targeted traffic often translates into higher conversions since these users are already searching for your product or service. Just make sure your website is optimized for conversions because you don't want them to leave empty-handed.
+Don't underestimate the significance of the front page in your website design RFP! It's the first impression your potential vendors will have of your company, so establish the groundwork immediately. Include the RFP’s title, submission date and some brief information on where and who they will submit their responses to. The cover page also acts as a filter for vendors who might have accessed this file passed the due date.
 
-Custom web development is essential for improving SEO and increasing online visibility. It allows businesses to optimize their website's structure, content, loading speed, and user experience to attract more targeted traffic and boost conversion rates. Make sure you rank before your competitors.
+**Google Search Tip:** If you do this, Google will pull the text on your cover page and show the information in the meta description:
 
-## Front to Back Coding
+{% image "./rfp__google-search.webp", "rfp-google-search-result" %}
 
-When you think of a website what do you see? Usually it's the text, images or buttons on a webpage. This is referred to as the front-end - think of it as front facing/client facing part. But what about when you interact with it? For example, when you "like" something or submit a form, where does the information get processed? Yep, in the back-end! These two sides need to work seamlessly for a site to be successful. With website builders, there's no ensuring that these sides will exchange data efficiently. Here are some commonly used programming languages:
+<aside>
+📝 Checklist
 
-- JavaScript
-- Python
-- Ruby
-- PHP
-- Swift
-- Go
-- TypeScript
-- HTML/CSS (not technically programming languages, but fundamental for web development)
-- Shell scripting languages (e.g., Bash, PowerShell)
-- SQL (Structured Query Language) for database management.
+- <label><input type="checkbox"> Logo<span></span></label>
+- <label><input type="checkbox"> Company name<span></span></label>
+- <label><input type="checkbox"> RFP title<span></span></label>
+- <label><input type="checkbox"> Proposal due date<span></span></label>
+- <label><input type="checkbox"> Contact information<span></span></label>
+- <label><input type="checkbox"> Instructions on how to send submissions<span></span></label>
+</aside>
 
-### The front-end: design and the user
+<h2 id="background">2. Your Company: History & Background</h2>
 
-Front-end development references the process of creating the user-facing components of a website. It involves custom web design, implementation, and optimization of the visual and interactive elements. From intentional layouts to user-friendly menus, front-end developers use HTML5, CSS3, and JavaScript to make websites look amazing with user experience in mind. Want to learn more? Check out [W3Schools' guide on HTML5](https://www.w3schools.com/html/default.asp){target="_blank"}.
+After the cover slide, you’ll want to share information about your company, like when it was founded, where it’s located, your values and what makes you great. This is your moment to add your personal touch to the proposal and describe what's important to you! Being personable will increase the likelihood of receiving a response from a vendor.
 
-### The back-end: behind the scenes
+<aside>
+📝 Checklist
 
-Back-end developers build the server-side components of a website or web app - the things we don't see. They work with languages like PHP or Python and databases like MongoDB or MySQL. This also includes the implementation of the logic, database interactions, and server operations that power the functionality and data management of a website or application. Another example is API (application programming interface) development, which allows websites to interact with external services; think of this as CRM integration. If you want a comprehensive guide, head over to [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Introduction){target="_blank"}.
+- <label><input type="checkbox"> Historical information<span></span></label>
+- <label><input type="checkbox"> Size<span></span></label>
+- <label><input type="checkbox"> Products / services<span></span></label>
+- <label><input type="checkbox"> Mission<span></span></label>
+- <label><input type="checkbox"> Values<span></span></label>
+- <label><input type="checkbox"> Vision<span></span></label>
+</aside>
 
-## Content Management Systems (CMS)
+<h2 id="overview">3. Project Overview: Setting Clear Project Goals</h2>
 
-With all this talk about developers and code, how will non-technical people be able to manage their own websites? Believe it or not, a customized approach with the desired specifications will make editing your site easier. Now with modern frameworks and tried-and-true platforms like WordPress, it's possible to craft the perfect content management system for anyone.
+Clearly communicate your vision with the project, focusing on what your current site lacks and what you’re trying to achieve with your new site. Help design agencies understand the desired outcome as they're reading through the rest of your RFP. There's a lot that you can say when it comes to your business and its current challenges. Don't worry if you're noticing this section becoming bulky - it might be tough unraveling your business' pain points but it helps tremendously when you're writing your website design RFP. By communicating your pain points to your vendors, it'll set you up for success in the collaboration since you’re already aligned.
 
-### WordPress and custom themes
+### Brief
 
-With about [43% of websites being built on WordPress](https://colorlib.com/wp/wordpress-statistics){target="_blank"}, we can assume that many people are familiar with its user-friendly dashboard. Web developers that are building custom themes are able to leverage the familiar dashboard while only using what's necessary. This is a good solution for business owners but be mindful of the amount of plugins - think "less is more."
+Provide a quick snapshot of the project to help agencies grasp the context and scale so they understand your goals and capabilities. Keep it brief and focus on the big picture at first - you’ll go into more details later.
 
-### Headless CMS
+### Challenges
 
-Headless CMS is a content management approach that separates the content creation and management capabilities from the presentation layer of a website or application. So in your traditional CMS, the content management is integrated with the front-end of the website - think WordPress' Gutenberg blocks. However the content managemnet system is decoupled ("headless") from the front-end, allowing more freedom in the content delivery.
+Now you want to get into the specifics about the challenges you’re facing with the website. Identify problem areas that are preventing your business from performing at the best level. Whether it’s load speed, functionality, or design, it’s important to be as concise with this section as possible. It helps agencies understand your expectations and provide targeted proposals to fit your needs.
 
-Now with all of these modern frameworks around, web developers are incorporating headless CMS more than ever. Some examples are [Sanity.io](http://sanity.io/){target="_blank"}, [Strapi](https://strapi.io/){target="_blank"}, [Contentful](https://www.contentful.com/){target="_blank"} and [Hygraph](https://hygraph.com/){target="_blank"}. Good things happen when you personalize your website and its content management system: you unlock an efficient and easy-to-use workflow.
+### Goals
 
-## Scalability & Security
+Finally, you want to let your vendors know what would make this project a success. Include an all-encompassing statement that highlights what the new website should be able to do. Remember to also provide a list of general capabilities that will solve your challenges. If you find that this section is getting too overwhelming, it might be a good idea to separate items into “must haves” and “nice to haves”.
 
-Now that we've covered the benefits of custom web development solutions when it comes to SEO and content management, let's also discuss maintaining and scaling the website. By having full control of what code is deployed to your website, you create your own architecture and limit what can be accessed.
+Again, refer to the template for examples.
 
-### Grow with your business
+<aside>
+📝 Checklist
 
-As your business grows, so should your website. For custom web development teams, they build websites while keeping in mind how components will be added in the future. Here are things to consider when sizing-up:
+- <label><input type="checkbox"> Overview<span></span></label>
+- <label><input type="checkbox"> Business challenges<span></span></label>
+- <label><input type="checkbox"> Goal statement<span></span></label>
+- <label><input type="checkbox"> List of capabilities<span></span></label>
+- <label><input type="checkbox"> (Optional) “Must-have” list<span></span></label>
+- <label><input type="checkbox"> (Optional) “Nice-to-have” list<span></span></label>
+</aside>
 
-1. **Architecture** - Custom developers pay attention to creating a scalable architecture that can accommodate growing traffic and increasing user demands. They'll also optimize the infrastructure to handle heavier loads efficiently.
-2. **Flexible code-base** - As you need new features, blog content or sections, a custom built website is written in organized code making easier to add functionalities without disrupting the entire website.
-3. **Integration** - Developers can leverage cloud services, content delivery networks (CDNs), and distributed computing architectures to handle additional requests that a business may need. Think about adding CRMs or connecting your website with an API.
+<h2 id="scope">4. Project Scope: Technical Specifications</h2>
 
-Overall, custom web development empowers businesses to think about scalability from the beginning.
+After you've exhausted your business' problems, now it's time to solve them (or at least try to). We use the word "try" because good digital agencies will reject certain demands if they believe it won't get you your intended results. Agencies hold the expertise to separate the things you want from the things you need, including unnecessary design requests or overcomplicated development features. Keep in mind the primary focus for web design projects is to create an engaging and user-friendly online presence with improved branding. It’s beneficial to break the scope into different categories.
 
-### Staying safe: web security
+### Design
 
-Your website is out there in the world and anyone can access it - make sure you have security parameters in place. When investing in a custom website, you're also taking steps to mitigate any risks with cybercrime. According to a [Cybersecurity Ventures report](https://cybersecurityventures.com/hackerpocalypse-cybercrime-report-2016){target="_blank"}, cybercrime is on the rise, costing trillions worldwide. Don't be a victim and save yourself from potential reputational damage and long-term costs. Your web development team will:
+Share the visual elements of your brand and preferred content with potential web design companies, including materials from your current brand guidelines or marketing resources. This helps vendors grasp your brand’s identity and ensures a consistent and recognizable look on your new website, thus streamlining the design process.
 
-1. **Implement secure coding practices** - Custom developers will follow secure coding practices from the ground up. They implement security guidelines, such as input validation and proper authentication. They'll also set up protection against common vulnerabilities like SQL injection and cross-site scripting - ensuring that your data remains safe.
-2. **Take appropriate security measures** - A term you may hear is "Secure Sockets Layer (SSL)," an encryption based internet security protocol. Web developers implement secure communication protocols (HTTPS) and access control parameters to protect sensitive data.
-3. **Follow compliance standards** - Custom web development teams follow requirements assigned by the GDPR (General Data Protection Regulation), PCI DDS (Payment Card Industry Data Security Standard), and HIPAA (Health Insurance Portability and Accountability Act).
+### Sitemap & Architecture
 
-Ready-for-you templates will not have these security measures in place. When working with a development company, be sure they're addressing these points.
+Once you've provided the visual direction, the next step is to define the existing web pages and to decide if you want to add pages. Feel free to simplify this list by highlighting the top-level pages unless there are important requirements in the sub-pages. Naturally, you’ll end up with a list that’s essentially your sitemap. No need to get fancy need to get fancy with diagrams, a simple list of your current and desired additional pages will work. 
 
-## Final Thoughts
+A well-crafted RFP includes specific requirements for your site architecture and templating system.
 
-Custom web development offers so many benefits for your business. We uncovered how taking a strategic approach to website building and incorporating your brand's personal touch can differentiate you in your market. We also did a mini-dive on the benefits it has on SEO - remember to rank before your competitors. Finally, we looked at the future state of your business and how customizing the CMS and optimizing the code will help your website's scalability.
+### Technology
 
-You want a website that has been planned and built just for you. Look away from the "faster" pre-built template method and stand out with a tailored solution for your business.
+In this section, we'll go over web development based features that you may add in your website design RFP. Try not to make it too technical, the development team will find the solutions. Instead, focus on highlighting specific requirements you need to solve your business goals.
+
+### Content Management System (CMS)
+
+If you have an internal team responsible for managing the content of your site, mention this in your website design RFP. Inform your vendors about your existing CMS and expectations for the new website. 
+
+### Third-Party Integrations
+
+Do you have a CRM for your digital marketing? Do you want to have a map embed on your new site? Or does your business require specific user authentication for logins? List out all the third-party integrations connected to your site and consider additional features you want. Be clear about these specific requirements and triple check this so you don’t leave out important integrations. 
+
+### Search Engine Optimization (SEO)
+
+You've probably heard of SEO before and it’s an important feature to think about when considering a new website. SEO is the practice of enhancing a website to increase its visibility on search engines and there are many factors involved, like on-page, off-page, local and keyword optimization. Be clear about the functionality requirements - feel free to learn more about it [here](https://moz.com/learn/seo/what-is-seo){target="_blank"}. As you're writing your RFP, include any existing metrics and what goals you'd like to achieve for the search engine result pages (SERPs). Let your vendors know that you want to rank above your competitors or just higher than where you are now.
+
+### Security and Maintenance
+
+It would be a shame to go through an entire website project just to end up with a crashed or hacked site. While digital agencies typically follow security protocols, you can reinforce this by setting clear expectations. Specify if you'll need SSL certificates, firewalls, and/or scheduled updates. This leads to the topic of maintenance. 
+
+Do you have an internal team that can of manage website files or backups? If you do, provide a list of requirements for the access they'll need. If you don’t, be transparent on whether you expect the selected vendor to handle site maintenance. Keep in mind that this impacts the budget.
+
+<aside>
+📝 Checklist. Include a list of specifications for:
+
+- <label><input type="checkbox"> Design<span></span></label>
+- <label><input type="checkbox"> Sitemap / Architecture<span></span></label>
+- <label><input type="checkbox"> Technology<span></span></label>
+- <label><input type="checkbox"> Search Engine Optimization<span></span></label>
+- <label><input type="checkbox"> Security and Maintenance<span></span></label> 
+</aside>
+
+<h2 id="website-examples">5. Website Examples</h2>
+
+It’s helpful for vendors to see examples of websites you like and the reason behind it. It’ll help them understand the aesthetic, user flow and other technical specifications. These examples can be your competitors but doesn't need to be limited to them. Feel free to include any examples for any reason, whether it's due to their design, motion elements, interface, or personalization. You can add as many as you like!
+
+<aside>
+📝 Checklist
+
+- <label><input type="checkbox"> Website URL<span></span></label>
+- <label><input type="checkbox"> 1-2 sentences on why you like it<span></span></label>
+</aside>
+
+<h2 id="existing-site">6. Existing Site</h2>
+
+You’ve just shared some aspirational sites, it’s only natural to share your own, even if you’re not a fan of it. You want to highlight areas such as the visual identity and architecture to help vendors see the inner workings of your site. 
+
+<aside>
+📝 Checklist
+
+- <label><input type="checkbox"> List of current pages<span></span></label>
+- <label><input type="checkbox"> Hosting provider<span></span></label>
+- <label><input type="checkbox"> Monthly traffic<span></span></label>
+- <label><input type="checkbox"> (Optional) Content management system (CMS)<span></span></label>
+- <label><input type="checkbox"> (Optional) Third-party integrations<span></span></label>
+
+</aside>
+
+<h2 id="budget">7. Budget</h2>
+
+This is the most important part of your website design RFP. Establishing a clear budget range will save time for both you and potential vendors by ensuring you two are a good match. In this section, share how you intend to allocate your budget and whether there’s wiggle room for negotiation. Reputable design agencies will maximize the value they deliver within your specific budget, so be as transparent as possible!
+
+<aside>
+📝 Checklist
+
+- <label><input type="checkbox"> Total budget amount<span></span></label>
+- <label><input type="checkbox"> Budget statement<span></span></label>
+- <label><input type="checkbox"> (Optional) Funds allocation<span></span></label>
+</aside>
+
+<h2 id="timeline">8. Timeline</h2>
+
+A reasonable timeline is critical for the RFP process, and it's important to outline the milestones. Milestones help potential agencies understand the phases in the RFP process so they can allocate their time accordingly. It also helps the agency know when they can expect to hear back from you. 
+
+<aside>
+📝 Checklist
+
+- <label><input type="checkbox"> RFP release date<span></span></label>
+- <label><input type="checkbox"> RFP due date<span></span></label>
+- <label><input type="checkbox"> Q/A period<span></span></label>
+- <label><input type="checkbox"> Negotiation period<span></span></label>
+- <label><input type="checkbox"> Consideration period<span></span></label>
+- <label><input type="checkbox"> Award announcement date<span></span></label>
+- <label><input type="checkbox"> Project start date<span></span></label>
+- <label><input type="checkbox">(Optional) Target project end date<span></span></label>
+</aside>
+
+<h2 id="requirements">9. Vendor Specifications & Requirements</h2>
+
+Okay, we’re almost to the finish line! Now it’s time to get specific about what you’re expecting to see in the proposal. Include an outline for your vendors to follow when crafting their proposal, such as their company background, cost proposal, and related projects.
+
+Additionally, you can include any deal breakers when it comes to agencies. Listing out your requirements will help weed out agencies that aren’t a good fit. Is it required that your agency is based in the US? Do they need to meet in-person for key meetings? Or should the agency have 5 years of e-commerce experience? Include all of that information in your RFP.
+
+<aside>
+📝 Checklist
+
+- <label><input type="checkbox"> Proposal outline<span></span></label>
+- <label><input type="checkbox"> Vendor requirements list<span></span></label>  
+</aside>
+
+<h2 id="process">9. Selection Process</h2>
+
+Whether you're doing a scoring, ranking or evaluation system, you'll need to clarify how the winner is selected. By doing this, you’re ensuring that your company is making a fair decision and places all vendors on equal footing.
+
+<aside>
+📝 Checklist
+
+- <label><input type="checkbox"> Statement on how vendors will be selected<span></span></label>
+- <label><input type="checkbox"> (Optional) Proposal due date<span></span></label>
+- <label><input type="checkbox"> (Optional) Response date<span></span></label>
+</aside>
+
+<h2 id="directions">9. Submission Directions</h2>
+
+Your vendors have their proposals ready, but where should they send them? This section will let them know where and how. Include the portal link (if you're using a software), contact information (name, title, email), preferred file format and brief directions on how to submit.
+
+To receive qualified proposal responses, include important details and clear directions.
+
+<aside>
+📝 Checklist
+
+- <label><input type="checkbox"> Response due date and time<span></span></label>
+- <label><input type="checkbox"> Email of recipient<span></span></label>
+- <label><input type="checkbox"> Response file format (PDF, email, doc)<span></span></label>
+- <label><input type="checkbox"> (Optional) If using software, include portal link<span></span></label>
+- <label><input type="checkbox"> (Optional) Additional instructions<span></span></label>
+</aside>
+
+<h2 id="bonus">Bonus: Finding Your Perfect Agency</h2>
+
+Now that you have your professionally written RFP, you'll need vendors to send them to. You might have a list of companies that you're excited to work with but, if you don't, find, stalk and reach out to them.
+
+- **Google** - Google is a great resource to look for vendors, especially if  you prefer to work with a local agency. Give it a try! Hop on Google, do a quick search, check out their reviews and proximity to you. If they are nearby, in-person meetings are valuable.
+- **Directory sites** - There are a bunch of directories from Clutch, Awwwards and Crunchbase where you can find agencies and their portfolio of work.
+- **Social media** - Social media is another great tool to research potential vendors. This can also be used as an extension of the previous examples. For example, you can find agencies on Google or Awwwards and continue learning about them from their social profiles.
+- **Word of mouth** - Have a friend that recently worked a digital design agency? Or are you a part of a group or online forums? Reach out to them to learn about that company and what it was like working with a digital agency.
+
+Your design project is important and you want to engage with the right company to handle your project. With numerous methods available for reaching out to agencies, pick a few that feels best for you!
+
+{% image "./rfp__final.webp", "writing-rfp" %}
+
+<h2 id="final">Final Thoughts & Good Luck!</h2>
+
+It's exciting to embark on new projects! We've gone over all of the important points to include in your RFP, from introducing your company to selecting your perfect vendors. Like we mentioned before, even if your company doesn't go the RFP route, this article is a good guideline to understanding what a typical website design project looks like and how to engage with a digital design agency. Remember these final points as you're finalizing your RFP.
+
+**Understanding the importance of a web design RFP is crucial when looking to hire web design agencies.**
+
+**A detailed RFP ensures clear project goals and technical requirements are communicated effectively to potential vendors.**
+
+**Incorporating branding guidelines in the web design process helps maintain brand consistency and aligns online presence with your company's current marketing objectives.**
+
+**Evaluating existing website performance through an effective RFP allows you to determine whether a redesign project or new website is needed.**
+
+**Transparency in budget range and timeline ensures both parties are on the same page from the start.**
+
+**Considering social proof as part of the evaluation criteria during vendor selection helps guarantee a suitable partner for the project.**
+
+{% image "./rfp-cover.webp", "rfp-mockup" %}
+
+<h2 id="template">The Template</h2>
+
+Here it is! This free template will help you write the perfect web design RFP. Be sure to use this article as a reference if you get stuck. Just fill out the form and the copy will be sent directly to your email. Inside you will find an easy-to-use Google Doc that has real-world examples and will help your writing flow.
+
+<form method="POST" name="rfp-template" data-netlify="true" netlify-honeypot="bot-field">
+    <div class="col">
+        <input type="text" placeholder="Name" name="name" id="name" required="required"/>
+        <input type="email" placeholder="Email" name="email" id="email" required="required"/>
+        <input type="text" placeholder="Company" name="company" id="company" required="required"/>
+        <input name="bot-field" type="hidden"/>
+    </div>
+    <button class="btn__circle">
+        <div class="no-overflow">
+            <div class="inner">
+                <p>Get the Template</p>
+                <p>Template Sent!</p>
+            </div>
+        </div>
+    </button>
+</form>
+
+**PS**
+After you’ve written your RFP and would like feedback, feel free to <a href="/contact/" target="_blank" rel="noopener noreferrer">send it</a> to our team. We’ll be more than happy to help!
 
 </div>
