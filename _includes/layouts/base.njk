@@ -66,9 +66,130 @@ eleventyComputed:
         <script src="/scripts/libs/SplitText.min.js" defer></script>
         <script src="/scripts/global.min.js" defer></script>
         <script type="application/ld+json">
-            { "@context": "https://schema.org/", "@type": "WebSite", "name": "Duo Studio", "url": "https://duo-studio.co{{ page.url }}",
-            "potentialAction": { "@type": "SearchAction", "target": "{search_term_string}", "query-input": "required
-            name=search_term_string" } }
+        {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "Organization",
+                    "@id": "https://duo-studio.co/#organization",
+                    "name": "Duo Studio",
+                    "url": "https://duo-studio.co",
+                    "logo": {
+                        "@type": "ImageObject",
+                        "url": "https://duo-studio.co/assets/logo.svg",
+                        "width": 52,
+                        "height": 35
+                    },
+                    "image": "https://duo-studio.co/assets/DuoStudio_Meta--v2.jpg",
+                    "description": "Duo Studio is a digital design agency based in Baltimore, MD. We create brand and web systems for established businesses ready to look as credible as they actually are.",
+                    "email": "hello@duo-studio.co",
+                    "telephone": "+1-301-444-5447",
+                    "foundingDate": "2020",
+                    "founder": [
+                        {
+                            "@type": "Person",
+                            "name": "Sonia Polyzos",
+                            "jobTitle": "Creative Director & Co-Founder"
+                        },
+                        {
+                            "@type": "Person",
+                            "name": "Dat Nguyen",
+                            "jobTitle": "Developer & Co-Founder"
+                        }
+                    ],
+                    "areaServed": [
+                        {
+                            "@type": "City",
+                            "name": "Baltimore",
+                            "containedInPlace": {
+                                "@type": "State",
+                                "name": "Maryland"
+                            }
+                        },
+                        {
+                            "@type": "City",
+                            "name": "Washington",
+                            "containedInPlace": {
+                                "@type": "State",
+                                "name": "District of Columbia"
+                            }
+                        },
+                        {
+                            "@type": "State",
+                            "name": "Virginia"
+                        }
+                    ],
+                    "sameAs": [
+                        "https://www.instagram.com/duostudio_co/",
+                        "https://www.linkedin.com/company/duostudio/",
+                        "https://www.facebook.com/duostudioco/",
+                        "https://www.awwwards.com/sites/duo-studio-2"
+                    ],
+                    "knowsAbout": [
+                        "Brand Identity Design",
+                        "Brand Strategy",
+                        "Web Design",
+                        "Web Development",
+                        "UI/UX Design",
+                        "Graphic Design",
+                        "Logo Design",
+                        "Motion Graphics"
+                    ]
+                },
+                {
+                    "@type": "LocalBusiness",
+                    "@id": "https://duo-studio.co/#localbusiness",
+                    "name": "Duo Studio",
+                    "image": "https://duo-studio.co/assets/DuoStudio_Meta--v2.jpg",
+                    "url": "https://duo-studio.co",
+                    "telephone": "+1-301-444-5447",
+                    "email": "hello@duo-studio.co",
+                    "priceRange": "$$$",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressLocality": "Baltimore",
+                        "addressRegion": "MD",
+                        "addressCountry": "US"
+                    },
+                    "geo": {
+                        "@type": "GeoCoordinates",
+                        "latitude": 39.2904,
+                        "longitude": -76.6122
+                    },
+                    "openingHoursSpecification": {
+                        "@type": "OpeningHoursSpecification",
+                        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                        "opens": "09:00",
+                        "closes": "18:00"
+                    }
+                },
+                {
+                    "@type": "WebSite",
+                    "@id": "https://duo-studio.co/#website",
+                    "url": "https://duo-studio.co",
+                    "name": "Duo Studio",
+                    "description": "{{ description or metadata.description }}",
+                    "publisher": {
+                        "@id": "https://duo-studio.co/#organization"
+                    },
+                    "inLanguage": "en-US"
+                },
+                {
+                    "@type": "WebPage",
+                    "@id": "https://duo-studio.co{{ page.url }}#webpage",
+                    "url": "https://duo-studio.co{{ page.url }}",
+                    "name": "{{ title or metadata.title }}",
+                    "description": "{{ description or metadata.description }}",
+                    "isPartOf": {
+                        "@id": "https://duo-studio.co/#website"
+                    },
+                    "about": {
+                        "@id": "https://duo-studio.co/#organization"
+                    },
+                    "inLanguage": "en-US"
+                }
+            ]
+        }
         </script>
     </head>
     <body data-barba="wrapper">

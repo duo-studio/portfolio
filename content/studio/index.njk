@@ -2,8 +2,68 @@
 layout: layouts/base.njk
 eleventyComputed:
     title: Studio | {{ metadata.title }}
-description: We work with brands looking to stand out by crafting them unique digital experiences.
+description: Meet the team behind Duo Studio, a Baltimore design agency founded in 2020. We create brand and web systems for established businesses ready to look as credible as they actually are.
 ---
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About Duo Studio",
+    "description": "Meet the team behind Duo Studio, a Baltimore design agency founded in 2020. We create brand identities, websites, and digital experiences for growth-stage businesses.",
+    "mainEntity": {
+        "@type": "Organization",
+        "name": "Duo Studio",
+        "foundingDate": "2020",
+        "foundingLocation": {
+            "@type": "Place",
+            "name": "Baltimore, Maryland"
+        },
+        "employee": [
+            {
+                "@type": "Person",
+                "name": "Sonia Polyzos",
+                "jobTitle": "Creative Director & Co-Founder",
+                "worksFor": {
+                    "@type": "Organization",
+                    "name": "Duo Studio"
+                },
+                "knowsAbout": ["Brand Design", "Creative Direction", "Art Direction", "Brand Strategy"]
+            },
+            {
+                "@type": "Person",
+                "name": "Dat Nguyen",
+                "jobTitle": "Developer & Co-Founder",
+                "worksFor": {
+                    "@type": "Organization",
+                    "name": "Duo Studio"
+                },
+                "knowsAbout": ["Web Development", "Front-End Development", "JavaScript", "UI/UX"]
+            },
+            {
+                "@type": "Person",
+                "name": "Isak Shah",
+                "jobTitle": "Illustrator",
+                "worksFor": {
+                    "@type": "Organization",
+                    "name": "Duo Studio"
+                },
+                "knowsAbout": ["Illustration", "Icon Design", "Visual Design"]
+            },
+            {
+                "@type": "Person",
+                "name": "Florence Wang",
+                "jobTitle": "Brand Designer",
+                "worksFor": {
+                    "@type": "Organization",
+                    "name": "Duo Studio"
+                },
+                "knowsAbout": ["Brand Design", "Visual Identity", "Graphic Design"]
+            }
+        ]
+    }
+}
+</script>
 
 <div class="barba-container loading" data-barba="container" data-barba-namespace="studio" id="smooth-wrapper">
     <main id="smooth-content">

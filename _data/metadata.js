@@ -6,7 +6,7 @@ module.exports = {
 			: "https://duo-studio.co",
 	language: "en",
 	description:
-		"We are a creative collective that weaves together branding, strategy, and design to create thought-provoking digital experiences for businesses ready to make an impact.",
+		"A Baltimore design studio creating brand and web systems for established businesses ready to look as credible as they actually are. Strategy-first branding and custom-built websites.",
 
 	image: "https://duo-studio.co/assets/DuoStudio_Meta--v2.jpg",
 };

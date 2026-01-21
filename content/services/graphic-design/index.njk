@@ -2,8 +2,46 @@
 layout: layouts/base.njk
 eleventyComputed:
   title: Content Creation & Graphic Design | {{ metadata.title }}
-description: We provide branding, website and design services. See how we can help your business.
+description: Graphic design and content creation for established businesses ready to look as credible as they actually are. Marketing collateral, motion graphics, illustrations, and print materials. Baltimore, DC, and nationwide.
 ---
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Graphic Design and Content Creation",
+    "name": "Content Creation & Graphic Design",
+    "description": "Duo Studio creates graphic design and content for established businesses ready to look as credible as they actually are. Services include marketing collateral, motion graphics, illustration, packaging design, print design, and campaign design.",
+    "provider": {
+        "@type": "Organization",
+        "name": "Duo Studio",
+        "url": "https://duo-studio.co"
+    },
+    "areaServed": ["Baltimore", "Washington DC", "Maryland", "Virginia", "United States"],
+    "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Content & Design Services",
+        "itemListElement": [
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Visual Design",
+                    "description": "Brand collateral design, photography direction, packaging, print design, motion graphics and animation, illustration and icons"
+                }
+            },
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Communication Design",
+                    "description": "Content strategy, marketing design, campaign design, copywriting, publication and editorial, infographics"
+                }
+            }
+        ]
+    }
+}
+</script>
 
 <div
     class="barba-container loading single__service"
@@ -33,6 +71,10 @@ description: We provide branding, website and design services. See how we can he
             </section>
             <section id="intro" class="services-features">
                 <div class="section__wrapper">
+                    {# AEO Summary - Extractable facts for AI systems #}
+                    <div class="summary" style="display: none !important;">
+                        <p>Duo Studio is a Baltimore-based design agency creating graphic design and content for established businesses ready to look as credible as they actually are. We partner with professional services firms, creative studios, e-commerce brands, and mission-driven organizations. Services include marketing collateral, motion graphics, illustrations, packaging, and campaign materials. Based in Baltimore and DC, serving clients nationwide.</p>
+                    </div>
                     <div class="row">
                         <div class="col">
                             <h2 class="st__headline">Harnessing the power of design in communication</h2>
