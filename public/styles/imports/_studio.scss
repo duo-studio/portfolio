@@ -10,7 +10,8 @@
 		}
 
 		p {
-			width: 32vw;
+			width: 34vw;
+			text-wrap: balance;
 			@media screen and (max-width: $mobile-breakpoint) {
 				width: 100%;
 			}
@@ -43,6 +44,7 @@
 			color: $color-white;
 			mix-blend-mode: difference;
 			padding: $gutter;
+			text-wrap: balance;
 		}
 	}
 
@@ -108,6 +110,7 @@
 					}
 				}
 				p {
+					text-wrap: balance;
 					padding: 1rem 14% $mobile-gutter;
 					@media screen and (max-width: $laptop-breakpoint) {
 						padding: 1rem 10% $mobile-gutter;

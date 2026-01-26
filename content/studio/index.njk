@@ -2,8 +2,68 @@
 layout: layouts/base.njk
 eleventyComputed:
     title: Studio | {{ metadata.title }}
-description: We work with brands looking to stand out by crafting them unique digital experiences.
+description: Meet the team behind Duo Studio, a Baltimore design studio founded in 2020. Duo Studio creates brand and web systems for businesses that have outgrown their current brand.
 ---
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About Duo Studio",
+    "description": "Meet the team behind Duo Studio, a Baltimore design studio founded in 2020. Duo Studio creates brand and web systems for businesses that have outgrown their current brand.",
+    "mainEntity": {
+        "@type": "Organization",
+        "name": "Duo Studio",
+        "foundingDate": "2020",
+        "foundingLocation": {
+            "@type": "Place",
+            "name": "Baltimore, Maryland"
+        },
+        "employee": [
+            {
+                "@type": "Person",
+                "name": "Sonia Polyzos",
+                "jobTitle": "Creative Director & Co-Founder",
+                "worksFor": {
+                    "@type": "Organization",
+                    "name": "Duo Studio"
+                },
+                "knowsAbout": ["Brand Design", "Creative Direction", "Art Direction", "Brand Strategy"]
+            },
+            {
+                "@type": "Person",
+                "name": "Dat Nguyen",
+                "jobTitle": "Developer & Co-Founder",
+                "worksFor": {
+                    "@type": "Organization",
+                    "name": "Duo Studio"
+                },
+                "knowsAbout": ["Web Development", "Front-End Development", "JavaScript", "UI/UX"]
+            },
+            {
+                "@type": "Person",
+                "name": "Isak Shah",
+                "jobTitle": "Illustrator",
+                "worksFor": {
+                    "@type": "Organization",
+                    "name": "Duo Studio"
+                },
+                "knowsAbout": ["Illustration", "Icon Design", "Visual Design"]
+            },
+            {
+                "@type": "Person",
+                "name": "Florence Wang",
+                "jobTitle": "Brand Designer",
+                "worksFor": {
+                    "@type": "Organization",
+                    "name": "Duo Studio"
+                },
+                "knowsAbout": ["Brand Design", "Visual Identity", "Graphic Design"]
+            }
+        ]
+    }
+}
+</script>
 
 <div class="barba-container loading" data-barba="container" data-barba-namespace="studio" id="smooth-wrapper">
     <main id="smooth-content">
@@ -11,12 +71,11 @@ description: We work with brands looking to stand out by crafting them unique di
             <div class="section__wrapper">
                 <h1 class="headline__load">Digitally-driven,<br>
                         human made</h1>
-                    <p>A DC design studio est. in 2020</p>
+                    <p>A Baltimore design studio est. in 2020</p>
                     <p>
-                        The name Duo symbolizes the fusion of design and technology. This approach powers all our projects - from identity
-                        systems, to web design, and web development. By combining all parts of creation, we discover innovative digital
-                        solutions that change businesses. Ultimately, our commitment to client success drives us to create work that we’re
-                        extremely proud of.
+                        The name Duo symbolizes the fusion of design and technology. We partner with businesses that have 
+                        outgrown their brand or website—and help them finally reach their next chapter. From identity 
+                        systems to custom websites, every project is tailored to where your business is going.
                     </p>
                 </div>
             </section>
@@ -26,10 +85,10 @@ description: We work with brands looking to stand out by crafting them unique di
                         srcset=" /assets/studio/studio-image__major@1024.webp 1024w, /assets/studio/studio-image__major.webp 1920w "
                         sizes="100vw"
                         src="/assets/studio/studio-image__major.webp"
-                        alt="intro-image"
+                        alt="Duo Studio team collaborating in Baltimore office"
                         width="1920"
                         height="1310"/>
-                    <div class="title st__headline">Our values create meaningful connections</div>
+                    <div class="title st__headline">Our values drive lasting partnerships</div>
                 </div>
             </section>
             <section id="values" class="services-features bg__trigger">
@@ -88,7 +147,7 @@ description: We work with brands looking to stand out by crafting them unique di
                                     srcset=" /assets/studio/studio__intro-image--1@325.webp 325w, /assets/studio/studio__intro-image--1.webp 570w "
                                     sizes="(min-width: 1024px) 30vw, 45vw"
                                     src="/assets/studio/studio__intro-image--1.webp"
-                                    alt="intro-image"
+                                    alt="Duo Studio creative workspace"
                                     width="570"
                                     height="705"
                                     class="st__image--spread"/>
@@ -97,9 +156,9 @@ description: We work with brands looking to stand out by crafting them unique di
                                 <h2>Built by creatives,<br>
                                         for creatives</h2>
                                     <p class="subtitle">
-                                        At our core, we’re a group of friends with a diverse blend of creative skills and talents. We create good work because
-                                        we love what we do and who we work with. With a shared vision to produce inspiring, challenging, and motivating results,
-                                        there’s no limit to what we can achieve together.
+                                        At our core, we’re a close-knit team with a genuine passion for the work we do and the clients we partner with. 
+                                        We work best with businesses that have outgrown their current brand—and we take pride in helping them
+                                        reach their next chapter.
                                     </p>
                                     <a href="mailto:jobs@duo-studio.co" class="btn__small --tag cursor__hover --highlight">Join Our Team</a>
                                 </div>
@@ -108,7 +167,7 @@ description: We work with brands looking to stand out by crafting them unique di
                                         srcset=" /assets/studio/studio__intro-image--2@325.webp 325w, /assets/studio/studio__intro-image--2.webp 570w "
                                         sizes="(min-width: 1024px) 30vw, 45vw"
                                         src="/assets/studio/studio__intro-image--2.webp"
-                                        alt="intro-image"
+                                        alt="Duo Studio design process and collaboration"
                                         width="570"
                                         height="705"
                                         class="st__image--spread"/>
@@ -138,7 +197,7 @@ description: We work with brands looking to stand out by crafting them unique di
                                                 srcset="/assets/studio/Sonia_Polyzos--1.webp 450w"
                                                 sizes="(min-width: 1024px) 24vw, 58vw"
                                                 src="/assets/studio/Sonia_Polyzos--1.webp"
-                                                alt="team-image"
+                                                alt="Sonia Polyzos - Creative Director at Duo Studio"
                                                 width="450"
                                                 height="579"
                                                 loading="lazy"/>
@@ -146,7 +205,7 @@ description: We work with brands looking to stand out by crafting them unique di
                                                 srcset="/assets/studio/Sonia_Polyzos--2.webp 450w"
                                                 sizes="(min-width: 1024px) 24vw, 58vw"
                                                 src="/assets/studio/Sonia_Polyzos--2.webp"
-                                                alt="team-image"
+                                                alt="Sonia Polyzos - Creative Director at Duo Studio"
                                                 width="450"
                                                 height="579"
                                                 loading="lazy"/>
@@ -186,7 +245,7 @@ description: We work with brands looking to stand out by crafting them unique di
                                                 srcset="/assets/studio/Isak_Shah--1.webp 450w"
                                                 sizes="(min-width: 1024px) 24vw, 58vw"
                                                 src="/assets/studio/Isak_Shah--1.webp"
-                                                alt="team-image"
+                                                alt="Isak Shah - Illustrator at Duo Studio"
                                                 width="450"
                                                 height="579"
                                                 loading="lazy"/>
@@ -194,7 +253,7 @@ description: We work with brands looking to stand out by crafting them unique di
                                                 srcset="/assets/studio/Isak_Shah--2.webp 450w"
                                                 sizes="(min-width: 1024px) 24vw, 58vw"
                                                 src="/assets/studio/Isak_Shah--2.webp"
-                                                alt="team-image"
+                                                alt="Isak Shah - Illustrator at Duo Studio"
                                                 width="450"
                                                 height="579"
                                                 loading="lazy"/>
@@ -210,7 +269,7 @@ description: We work with brands looking to stand out by crafting them unique di
                                                 srcset="/assets/studio/Florence_Wang--1.webp 450w"
                                                 sizes="(min-width: 1024px) 24vw, 58vw"
                                                 src="/assets/studio/Florence_Wang--1.webp"
-                                                alt="team-image"
+                                                alt="Florence Wang - Brand Designer at Duo Studio"
                                                 width="450"
                                                 height="579"
                                                 loading="lazy"/>
@@ -218,7 +277,7 @@ description: We work with brands looking to stand out by crafting them unique di
                                                 srcset="/assets/studio/Florence_Wang--2.webp 450w"
                                                 sizes="(min-width: 1024px) 24vw, 58vw"
                                                 src="/assets/studio/Florence_Wang--2.webp"
-                                                alt="team-image"
+                                                alt="Florence Wang - Brand Designer at Duo Studio"
                                                 width="450"
                                                 height="579"
                                                 loading="lazy"/>
@@ -234,7 +293,7 @@ description: We work with brands looking to stand out by crafting them unique di
                                                 srcset="/assets/studio/Dat_Nguyen--1.webp 450w"
                                                 sizes="(min-width: 1024px) 24vw, 58vw"
                                                 src="/assets/studio/Dat_Nguyen--1.webp"
-                                                alt="team-image"
+                                                alt="Dat Nguyen - Developer and Co-Founder at Duo Studio"
                                                 width="450"
                                                 height="579"
                                                 loading="lazy"/>
@@ -242,7 +301,7 @@ description: We work with brands looking to stand out by crafting them unique di
                                                 srcset="/assets/studio/Dat_Nguyen--2.webp 450w"
                                                 sizes="(min-width: 1024px) 24vw, 58vw"
                                                 src="/assets/studio/Dat_Nguyen--2.webp"
-                                                alt="team-image"
+                                                alt="Dat Nguyen - Developer and Co-Founder at Duo Studio"
                                                 width="450"
                                                 height="579"
                                                 loading="lazy"/>

@@ -2,8 +2,46 @@
 layout: layouts/base.njk
 eleventyComputed:
   title: Branding & Identity System | {{ metadata.title }}
-description: We provide branding, website and design services. See how we can help your business.
+description: Brand identity and strategy for businesses that have outgrown their current brand. Logo design, brand guidelines, messaging, and visual identity systems. Baltimore, DC, and nationwide.
 ---
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Brand Identity Design",
+    "name": "Branding & Identity System",
+    "description": "Duo Studio creates brand identity systems for businesses that have outgrown their current brand. Services include brand strategy, logo design, visual identity systems, brand guidelines, and messaging frameworks.",
+    "provider": {
+        "@type": "Organization",
+        "name": "Duo Studio",
+        "url": "https://duo-studio.co"
+    },
+    "areaServed": ["Baltimore", "Washington DC", "Maryland", "Virginia", "United States"],
+    "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Branding Services",
+        "itemListElement": [
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Brand Strategy",
+                    "description": "Brand consulting, user personas, competitive analysis, brand messaging, positioning and differentiation, journey mapping"
+                }
+            },
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Brand Identity",
+                    "description": "Art direction, logo design, design system, brand naming, brand guidelines, collateral design"
+                }
+            }
+        ]
+    }
+}
+</script>
 
 <div
     class="barba-container loading single__service"
@@ -33,6 +71,10 @@ description: We provide branding, website and design services. See how we can he
             </section>
             <section id="intro" class="services-features">
                 <div class="section__wrapper">
+                    {# AEO Summary - Extractable facts for AI systems #}
+                    <div class="summary" style="display: none !important;">
+                        <p>Duo Studio is a Baltimore-based design studio creating brand identity systems for businesses that have outgrown their current brand. We partner with professional services firms, creative studios, e-commerce brands, and mission-driven organizations. Services include brand strategy, logo design, visual identity systems, messaging frameworks, and brand guidelines. Typical branding projects take 8-12 weeks. Based in Baltimore and DC, serving clients nationwide.</p>
+                    </div>
                     <div class="row">
                         <div class="col">
                             <h2 class="st__headline">Your business visualized through brand storytelling</h2>

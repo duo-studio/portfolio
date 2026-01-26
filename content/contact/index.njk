@@ -2,8 +2,71 @@
 layout: layouts/base.njk
 eleventyComputed:
     title: Contact | {{ metadata.title }}
-description: Ready to transform your brand? Tell us about your challenges and see how our services can help.
+description: Contact Duo Studio for brand identity, web design, and graphic design services. Based in Baltimore and DC, serving clients nationwide. Call (301) 444-5447 or email hello@duo-studio.co.
 ---
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Duo Studio",
+    "description": "Contact Duo Studio for brand identity, web design, and graphic design services. Based in Baltimore and DC, serving clients nationwide.",
+    "mainEntity": {
+        "@type": "LocalBusiness",
+        "name": "Duo Studio",
+        "description": "Digital design studio specializing in brand identity, web design, and graphic design for businesses that have outgrown their current brand.",
+        "image": "https://duo-studio.co/assets/DuoStudio_Meta--v2.jpg",
+        "url": "https://duo-studio.co",
+        "telephone": "+1-301-444-5447",
+        "email": "hello@duo-studio.co",
+        "priceRange": "$$$",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Baltimore",
+            "addressRegion": "MD",
+            "addressCountry": "US"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 39.2904,
+            "longitude": -76.6122
+        },
+        "areaServed": [
+            {
+                "@type": "City",
+                "name": "Baltimore"
+            },
+            {
+                "@type": "City",
+                "name": "Washington"
+            },
+            {
+                "@type": "State",
+                "name": "Maryland"
+            },
+            {
+                "@type": "State",
+                "name": "Virginia"
+            },
+            {
+                "@type": "Country",
+                "name": "United States"
+            }
+        ],
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "09:00",
+            "closes": "18:00"
+        },
+        "sameAs": [
+            "https://www.instagram.com/duostudio_co/",
+            "https://www.linkedin.com/company/duostudio/",
+            "https://www.facebook.com/duostudioco/"
+        ]
+    }
+}
+</script>
 
 <div class="barba-container loading" data-barba="container" data-barba-namespace="contact" id="smooth-wrapper">
     <main id="smooth-content">
