@@ -6,7 +6,7 @@ module.exports = {
 			: "https://duo-studio.co",
 	language: "en",
 	description:
-		"A Baltimore design studio creating brand and web systems for established businesses ready to look as credible as they actually are. Strategy-first branding and custom-built websites.",
+		"Duo Studio is a Baltimore design studio that creates brand and web systems for businesses that have outgrown their current brand. Custom branding and websites—tailored to where your business is going.",
 
 	image: "https://duo-studio.co/assets/DuoStudio_Meta--v2.jpg",
 };
