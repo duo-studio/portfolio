@@ -41,7 +41,7 @@ h2,
 .title-2 {
 	font-family: $font-ppmori-bold;
 	font-size: $font-size-h2;
-	line-height: 1.03;
+	line-height: 1.1;
 	letter-spacing: -0.03em;
 	text-transform: uppercase;
 	span {
@@ -110,7 +110,9 @@ ol {
 	border-radius: 50%;
 	font-family: $font-suisse;
 	text-align: center;
-	transition: background 0.2s, color 0.2s;
+	transition:
+		background 0.2s,
+		color 0.2s;
 	border: none;
 	outline: none;
 	cursor: pointer;
@@ -168,6 +170,9 @@ ol {
 }
 
 .btn__small {
+	border: none;
+	outline: none;
+	cursor: pointer;
 	min-width: 115px;
 	text-align: center;
 	display: flex;
@@ -179,7 +184,9 @@ ol {
 	color: $color-black;
 	border-radius: 100px;
 	padding: 0.25em 1em;
-	transition: background 0.2s ease-in-out, color 0.2s ease-in-out,
+	transition:
+		background 0.2s ease-in-out,
+		color 0.2s ease-in-out,
 		border-color 0.2s ease-in-out;
 	@media screen and (max-width: $mobile-breakpoint) {
 		font-size: 12px;
@@ -362,8 +369,11 @@ time {
 	align-items: center;
 	width: 17px;
 	height: 17px;
-	transition: width 0.2s ease-in-out, height 0.2s ease-in-out,
-		opacity 0.2s ease-in-out, border-radius 0.2s ease-in-out,
+	transition:
+		width 0.2s ease-in-out,
+		height 0.2s ease-in-out,
+		opacity 0.2s ease-in-out,
+		border-radius 0.2s ease-in-out,
 		padding 0.2s ease-in-out;
 	background: $color-pink;
 	border-radius: 600px;
@@ -534,7 +544,8 @@ video {
 		height: 100vw;
 		max-height: 100vh;
 	}
-	img {
+	img,
+	video {
 		object-fit: cover;
 		height: 100%;
 		width: 100%;
@@ -581,7 +592,9 @@ video {
 }
 
 section {
-	transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
+	transition:
+		background 0.2s ease-in-out,
+		color 0.2s ease-in-out;
 	background: $color-white;
 	color: $color-black;
 	body.bg__dark & {
@@ -619,8 +632,11 @@ section {
 	.section__wrapper {
 		display: flex;
 		position: relative;
-		img {
+		img,
+		video {
 			height: 100%;
+			width: 100%;
+			object-fit: cover;
 		}
 	}
 	h1,
@@ -657,7 +673,14 @@ section {
 			}
 		}
 		h3 {
-			margin-bottom: 0.5rem;
+			margin-bottom: 1rem;
+			text-wrap: balance;
+		}
+
+		p {
+			&:not(:last-child) {
+				margin-bottom: 0.5rem;
+			}
 		}
 	}
 	.major {
@@ -674,6 +697,7 @@ section {
 			padding: 0 $mobile-gutter 1rem;
 		}
 		img,
+		video,
 		.video-wrapper {
 			@media screen and (max-width: $mobile-breakpoint) {
 				width: auto !important;
@@ -682,7 +706,7 @@ section {
 				object-fit: contain;
 			}
 			&:not(:last-child) {
-				margin-bottom: 4em;
+				margin-bottom: 2em;
 				width: 100%;
 
 				@media screen and (max-width: $mobile-breakpoint) {
@@ -700,6 +724,20 @@ section {
 					height: 100%;
 				}
 			}
+		}
+	}
+
+	// Reversed layout: major on left, minor on right
+	&.--reverse {
+		flex-direction: row-reverse;
+
+		@media screen and (max-width: $mobile-breakpoint) {
+			flex-direction: column;
+		}
+
+		.major {
+			margin-left: 0;
+			margin-right: auto;
 		}
 	}
 }
@@ -803,7 +841,9 @@ nav {
 	z-index: 10;
 	color: $color-white;
 
-	transition: color 0.2s ease-out, height 0s ease-in-out,
+	transition:
+		color 0.2s ease-out,
+		height 0s ease-in-out,
 		background 0s ease-in-out;
 	mix-blend-mode: difference;
 	@media screen and (max-width: $mobile-breakpoint) {
@@ -815,7 +855,9 @@ nav {
 			height: 100%;
 			background: $color-pink;
 			mix-blend-mode: unset;
-			transition: color 0.2s ease-out, height 0s ease-in-out,
+			transition:
+				color 0.2s ease-out,
+				height 0s ease-in-out,
 				background 0s ease-in-out;
 		}
 	}
@@ -841,7 +883,9 @@ nav {
 				height: 1px;
 				width: 0;
 				background: $color-white;
-				transition: background 0.2s ease-in-out, width 0.2s ease-in-out;
+				transition:
+					background 0.2s ease-in-out,
+					width 0.2s ease-in-out;
 				@media screen and (max-width: $mobile-breakpoint) {
 					background: $color-black;
 					bottom: 0.15em;
@@ -885,14 +929,17 @@ nav {
 					font-family: $font-ppmori;
 					opacity: 0;
 					transform: translateY(10%);
-					transition: opacity 0s, transform 0s;
+					transition:
+						opacity 0s,
+						transform 0s;
 
 					body.init__nav & {
 						opacity: 1;
 						transform: translateY(0%);
 						@for $i from 0 through 8 {
 							&:nth-child(#{$i}) {
-								transition: opacity 0.4s #{(0.05s * $i) + 0.1} ease-in-out,
+								transition:
+									opacity 0.4s #{(0.05s * $i) + 0.1} ease-in-out,
 									transform 0.4s #{(0.05s * $i) + 0.1} ease-in-out;
 							}
 						}
@@ -921,11 +968,14 @@ nav {
 					font-family: $font-ppmori;
 					opacity: 0;
 					transform: translateY(10%);
-					transition: opacity 0s 0s, transform 0s 0s;
+					transition:
+						opacity 0s 0s,
+						transform 0s 0s;
 					body.init__nav & {
 						opacity: 1;
 						transform: translateY(0);
-						transition: opacity 0.4s 0.4s ease-in-out,
+						transition:
+							opacity 0.4s 0.4s ease-in-out,
 							transform 0.4s 0.4s ease-in-out;
 					}
 				}
@@ -959,7 +1009,9 @@ nav {
 						background: $color-white;
 						transform: translateX(-50%);
 						opacity: 0;
-						transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out,
+						transition:
+							transform 0.2s ease-in-out,
+							opacity 0.2s ease-in-out,
 							background 0.2s ease-out;
 
 						@media screen and (max-width: $mobile-breakpoint) {
@@ -992,12 +1044,15 @@ nav {
 				margin-top: 24px;
 				opacity: 0;
 				transform: translateY(10%);
-				transition: opacity 0s 0s, transform 0s 0s;
+				transition:
+					opacity 0s 0s,
+					transform 0s 0s;
 				padding: 0 1rem;
 				body.init__nav & {
 					opacity: 1;
 					transform: translateY(0);
-					transition: opacity 0.4s 0.45s ease-in-out,
+					transition:
+						opacity 0.4s 0.45s ease-in-out,
 						transform 0.4s 0.45s ease-in-out;
 				}
 				.col {
@@ -1505,7 +1560,9 @@ nav {
 				.img-wrapper {
 					position: relative;
 					overflow: hidden;
-					transition: transform 0.2s ease-out, filter 0.2s ease-out;
+					transition:
+						transform 0.2s ease-out,
+						filter 0.2s ease-out;
 					width: 100%;
 					img,
 					video {
@@ -1810,7 +1867,9 @@ nav {
 				.st__plax {
 					height: 32vw;
 					max-height: 614.4px;
-					transition: transform 0.2s ease-out, filter 0.2s ease-out;
+					transition:
+						transform 0.2s ease-out,
+						filter 0.2s ease-out;
 					@media screen and (max-width: $mobile-breakpoint) {
 						height: 80vw;
 						max-height: 25rem;

@@ -48,7 +48,7 @@ window.addEventListener("load", (event) => {
 
 	if (window.innerWidth > 1024) {
 		navItems = document.querySelectorAll(
-			"nav:not(.anchors) .nav-item,nav:not(.anchors) .egg"
+			"nav:not(.anchors) .nav-item,nav:not(.anchors) .egg",
 		);
 		containerItems = document.querySelectorAll(".nav-container__inner");
 
@@ -523,7 +523,7 @@ function loadGlobalScripts() {
 		for (let i = 0; i < tx.length; i++) {
 			tx[i].setAttribute(
 				"style",
-				"height:" + tx[i].scrollHeight + "px;overflow-y:hidden;"
+				"height:" + tx[i].scrollHeight + "px;overflow-y:hidden;",
 			);
 			tx[i].addEventListener("input", OnInput, false);
 		}
@@ -537,7 +537,6 @@ function loadGlobalScripts() {
 		// FORM SUBMISSION (https://docs.netlify.com/forms/setup/)
 		const handleSubmit = (event) => {
 			event.preventDefault();
-
 			const myForm = event.target;
 			const formData = new FormData(myForm);
 			const name = myForm.getAttribute("name");
@@ -562,6 +561,106 @@ function loadGlobalScripts() {
 	}
 }
 
+// ================================================
+// SWIPER GALLERY COMPONENT
+// Reusable swiper with cursor-based navigation
+// Called after Swiper library is loaded
+// ================================================
+function initSwiperGalleries() {
+	if (!document.querySelector(".swiper__gallery")) return;
+
+	document.querySelectorAll(".swiper__gallery").forEach((gallery) => {
+		// Skip if already initialized
+		if (gallery.swiper) return;
+
+		// Calculate gutter based on viewport (matches $gutter: calc(min(6vw, 115px)))
+		const gutter = Math.min(window.innerWidth * 0.06, 115);
+		const mobileGutter = 24; // 1.5rem
+		const spaceBetween = window.innerWidth > 1024 ? gutter : mobileGutter;
+
+		const swiperInstance = new Swiper(gallery, {
+			slidesPerView: "auto",
+			centeredSlides: true,
+			loop: true,
+			speed: 700,
+			grabCursor: true,
+		});
+
+		// Desktop: Cursor-based navigation zones
+		const prevZone = gallery.querySelector(".swiper__nav-zone.--prev");
+		const nextZone = gallery.querySelector(".swiper__nav-zone.--next");
+		const cursorSpan = document.querySelector(".cursor span");
+
+		if (prevZone && nextZone && window.innerWidth > 1024) {
+			// Previous zone
+			prevZone.addEventListener("mouseenter", function () {
+				if (cursorSpan) cursorSpan.textContent = "prev";
+				document.body.classList.add("cursor__hover");
+			});
+			prevZone.addEventListener("mouseleave", function () {
+				document.body.classList.remove("cursor__hover");
+			});
+			prevZone.addEventListener("click", function () {
+				swiperInstance.slidePrev();
+			});
+
+			// Next zone
+			nextZone.addEventListener("mouseenter", function () {
+				if (cursorSpan) cursorSpan.textContent = "next";
+				document.body.classList.add("cursor__hover");
+			});
+			nextZone.addEventListener("mouseleave", function () {
+				document.body.classList.remove("cursor__hover");
+			});
+			nextZone.addEventListener("click", function () {
+				swiperInstance.slideNext();
+			});
+		}
+
+		// Mobile: Button navigation
+		const prevBtn = gallery.querySelector(".swiper__nav-buttons .--prev");
+		const nextBtn = gallery.querySelector(".swiper__nav-buttons .--next");
+
+		if (prevBtn) {
+			prevBtn.addEventListener("click", function () {
+				swiperInstance.slidePrev();
+			});
+		}
+		if (nextBtn) {
+			nextBtn.addEventListener("click", function () {
+				swiperInstance.slideNext();
+			});
+		}
+	});
+}
+
+// ================================================
+// LOTTIE ANIMATION COMPONENT
+// Initializes all data-lottie-src containers
+// Called after lottie-web library is loaded
+// ================================================
+function initLottieAnimations() {
+	if (typeof lottie === "undefined") return;
+
+	document.querySelectorAll("[data-lottie-src]").forEach(function (container) {
+		// Skip if already initialized
+		if (container.dataset.lottieInitialized) return;
+		container.dataset.lottieInitialized = "true";
+
+		var src = container.dataset.lottieSrc;
+		var autoplay = container.dataset.lottieAutoplay !== "false";
+		var loop = container.dataset.lottieLoop !== "false";
+
+		lottie.loadAnimation({
+			container: container,
+			renderer: "svg",
+			loop: loop,
+			autoplay: autoplay,
+			path: src,
+		});
+	});
+}
+
 function loadIndexScripts() {
 	document.querySelector(".barba-container").classList.remove("loading");
 
@@ -582,7 +681,7 @@ function loadIndexScripts() {
 			ease: "power2.easeOut",
 			stagger: 0.1,
 		},
-		"<"
+		"<",
 	);
 	loaderTl.from(
 		"#banner p, #banner .btn__small",
@@ -591,7 +690,7 @@ function loadIndexScripts() {
 			opacity: 0,
 			ease: "power2.Out",
 		},
-		"<50%"
+		"<50%",
 	);
 
 	if (document.querySelector("#banner")) {
@@ -788,7 +887,7 @@ function loadIndexScripts() {
 				ease: "power2.easeOut",
 				stagger: 0.02,
 			},
-			"<"
+			"<",
 		);
 		tl.from(
 			loadMore,
@@ -798,7 +897,7 @@ function loadIndexScripts() {
 				opacity: 0,
 				ease: "power2.easeOut",
 			},
-			"<30%"
+			"<30%",
 		);
 	}
 
@@ -892,7 +991,7 @@ function loadStudioScripts() {
 				scrub: true,
 				start: "top top",
 			},
-		}
+		},
 	);
 	var loaderTl = gsap.timeline();
 
@@ -914,7 +1013,7 @@ function loadStudioScripts() {
 			ease: "power2.easeOut",
 			stagger: 0.2,
 		},
-		"<.2"
+		"<.2",
 	);
 
 	loaderTl.from(
@@ -926,7 +1025,7 @@ function loadStudioScripts() {
 			opacity: 0,
 			ease: "power3.In",
 		},
-		"<.2"
+		"<.2",
 	);
 
 	// IMAGE SPLIT
@@ -949,7 +1048,7 @@ function loadStudioScripts() {
 						scrub: 1.5,
 						end: "60% 50%",
 					},
-				}
+				},
 			);
 		});
 	}
@@ -975,7 +1074,7 @@ function loadStudioScripts() {
 					trigger: "#team .container",
 					start: "top 50%",
 				},
-			}
+			},
 		);
 
 		var switchTl = gsap.timeline({
@@ -997,7 +1096,7 @@ function loadStudioScripts() {
 				filter: "blur(0px)",
 				scale: 1,
 			},
-			"<"
+			"<",
 		);
 
 		switchBtn.addEventListener("click", function () {
@@ -1046,7 +1145,7 @@ function loadContactScripts() {
 			width: textWidth,
 			ease: SteppedEase.config(23),
 		},
-		"<60%"
+		"<60%",
 	);
 	tl.fromTo(
 		".highlight",
@@ -1059,7 +1158,7 @@ function loadContactScripts() {
 			repeat: -1,
 			ease: SteppedEase.config(23),
 		},
-		"<"
+		"<",
 	);
 	tl.add(function () {
 		textarea.focus();
@@ -1096,7 +1195,7 @@ function loadWorkScripts() {
 		"header .container .row > *",
 		1,
 		{ y: 20, opacity: 0, ease: "power2.easeOut" },
-		"<25%"
+		"<25%",
 	);
 }
 
@@ -1125,7 +1224,7 @@ function loadServicesScripts() {
 			"header .content",
 			1,
 			{ y: 20, opacity: 0, ease: "power2.easeOut" },
-			"<25%"
+			"<25%",
 		);
 	}
 
@@ -1152,7 +1251,7 @@ function loadServicesScripts() {
 				{
 					yPercent: -30,
 					ease: "power3.Out",
-				}
+				},
 			);
 			tl.fromTo(
 				colTwo,
@@ -1164,7 +1263,7 @@ function loadServicesScripts() {
 					yPercent: -60,
 					ease: "power3.Out",
 				},
-				"<"
+				"<",
 			);
 		}
 	}
@@ -1213,7 +1312,7 @@ function loadServicesScripts() {
 					filter: "blur(15px)",
 					opacity: 0,
 					ease: "power2.inOut",
-				}
+				},
 			);
 			fwdTl.fromTo(
 				section.querySelectorAll(".col:nth-child(2)"),
@@ -1226,7 +1325,7 @@ function loadServicesScripts() {
 					opacity: 1,
 					ease: "power2.inOut",
 				},
-				"<"
+				"<",
 			);
 			fwdTl.fromTo(
 				"#why .mask",
@@ -1237,7 +1336,7 @@ function loadServicesScripts() {
 					xPercent: -100,
 					ease: "power2.inOut",
 				},
-				"<"
+				"<",
 			);
 			fwdTl.fromTo(
 				"#why .mask",
@@ -1248,7 +1347,7 @@ function loadServicesScripts() {
 					xPercent: -100,
 					ease: "power2.inOut",
 				},
-				"<"
+				"<",
 			);
 
 			var revTl = gsap.timeline({ paused: true });
@@ -1263,7 +1362,7 @@ function loadServicesScripts() {
 					filter: "blur(15px)",
 					opacity: 0,
 					ease: "power2.inOut",
-				}
+				},
 			);
 			revTl.fromTo(
 				section.querySelectorAll(".col:nth-child(1)"),
@@ -1276,7 +1375,7 @@ function loadServicesScripts() {
 					opacity: 1,
 					ease: "power2.inOut",
 				},
-				"<"
+				"<",
 			);
 			revTl.fromTo(
 				"#why .mask",
@@ -1287,7 +1386,7 @@ function loadServicesScripts() {
 					xPercent: 0,
 					ease: "power2.inOut",
 				},
-				"<"
+				"<",
 			);
 
 			if (this.classList.contains("active")) {
@@ -1356,7 +1455,7 @@ function loadProjectScripts(triggerState, prev) {
 				ease: "power2.easeOut",
 				stagger: 0.1,
 			},
-			"<"
+			"<",
 		);
 	} else {
 		if (
@@ -1380,7 +1479,7 @@ function loadProjectScripts(triggerState, prev) {
 					ease: "power2.easeOut",
 					stagger: 0.1,
 				},
-				"<"
+				"<",
 			);
 		}
 	}
@@ -1406,9 +1505,6 @@ function loadProjectScripts(triggerState, prev) {
 				trigger: trigger,
 				start: "top 125px",
 				end: "bottom 50%",
-				pinnedContainer: trigger,
-				pinType: "transform",
-				onRefreshInit: (self) => self.scroll(0),
 				onUpdate: (self) => (bar.style.width = self.progress * 100 + "%"),
 				pin: true,
 			});
@@ -1516,7 +1612,7 @@ function loadEggScripts() {
 			opacity: 0,
 			ease: "power2.easeOut",
 		},
-		"<.2"
+		"<.2",
 	);
 
 	var container = document.getElementById("easter-egg"),
@@ -1549,7 +1645,7 @@ function loadEggScripts() {
 				opacity: 1,
 				ease: "power2.inOut",
 			},
-			"<"
+			"<",
 		);
 
 		headlineTl.set(headline, {
@@ -1585,7 +1681,7 @@ function loadEggScripts() {
 					y: 0,
 					ease: "power2.inOut",
 				},
-				"<"
+				"<",
 			);
 
 			displayTl.set(innerEl, {
@@ -1639,7 +1735,7 @@ function loadPrivacyScripts() {
 			ease: "power2.easeOut",
 			stagger: 0.1,
 		},
-		"<.3"
+		"<.3",
 	);
 }
 function loadLandingScripts() {
@@ -1685,7 +1781,7 @@ function loadLandingScripts() {
 				y: 0,
 				ease: "expo.inOut",
 				duration: 1,
-			}
+			},
 		);
 		loaderTl.fromTo(
 			".bottom",
@@ -1697,7 +1793,7 @@ function loadLandingScripts() {
 				ease: "expo.inOut",
 				duration: 1,
 			},
-			"<"
+			"<",
 		);
 		loaderTl.to(".screen", 1.2, { opacity: 0.25, ease: "expo.inOut" }, "<.2");
 		loaderTl.to("#banner img", 1.2, { scale: 1, ease: "expo.Out" }, "<");
@@ -1711,7 +1807,7 @@ function loadLandingScripts() {
 				ease: "power2.easeOut",
 				stagger: 0.1,
 			},
-			"<70%"
+			"<70%",
 		);
 		loaderTl.from(
 			"#banner .btn__circle",
@@ -1719,7 +1815,7 @@ function loadLandingScripts() {
 				opacity: 0,
 				ease: "power2.easeOut",
 			},
-			"<.2"
+			"<.2",
 		);
 		gsap.to(xxlSplitOuter.elements[0], {
 			xPercent: -20,
@@ -1755,7 +1851,7 @@ function loadLandingScripts() {
 				stagger: 0.2,
 				ease: "power2.easeOut",
 			},
-			"<.2"
+			"<.2",
 		);
 	}
 
@@ -1802,7 +1898,7 @@ function loadLandingScripts() {
 							axOne +
 							"deg) rotateX(" +
 							ayOne +
-							"deg)"
+							"deg)",
 					);
 				});
 			});
@@ -1816,7 +1912,7 @@ function loadLandingScripts() {
 				var hover = canvas.querySelector(".mousecanvas__hover"),
 					hoverText = hover.querySelectorAll(".mousecanvas__hover--text"),
 					canvasImgContainer = canvas.querySelector(
-						".mousecanvas__img-container"
+						".mousecanvas__img-container",
 					),
 					canvasImgs = canvasImgContainer.querySelectorAll("img");
 
@@ -1879,7 +1975,7 @@ function loadLandingScripts() {
 				{
 					yPercent: -30,
 					ease: "power3.Out",
-				}
+				},
 			);
 			tl.fromTo(
 				colTwo,
@@ -1891,7 +1987,7 @@ function loadLandingScripts() {
 					yPercent: -60,
 					ease: "power3.Out",
 				},
-				"<"
+				"<",
 			);
 		}
 	}
@@ -1925,7 +2021,7 @@ function loadLandingScripts() {
 				{
 					zIndex: z,
 				},
-				"<"
+				"<",
 			);
 			bgTl.to(
 				nextBg,
@@ -1935,7 +2031,7 @@ function loadLandingScripts() {
 					scale: 1,
 					ease: "power3.inOut",
 				},
-				"<"
+				"<",
 			);
 			bgTl.set(bg, {
 				filter: "blur(0px)",
@@ -1972,7 +2068,7 @@ function loadLandingScripts() {
 					opacity: 1,
 					ease: "power2.inOut",
 				},
-				"<"
+				"<",
 			);
 
 			headlineTl.set(headline, {
@@ -2006,7 +2102,7 @@ function loadLandingScripts() {
 						y: 0,
 						ease: "power2.inOut",
 					},
-					"<"
+					"<",
 				);
 
 				displayTl.set(innerEl, {
@@ -2093,7 +2189,7 @@ function loadLandingScripts() {
 						opacity: 1,
 						ease: "power2.inOut",
 					},
-					"<"
+					"<",
 				);
 			}
 			testimonialTl.to(
@@ -2104,7 +2200,7 @@ function loadLandingScripts() {
 					opacity: 0,
 					ease: "power2.Out",
 				},
-				"<"
+				"<",
 			);
 			testimonialTl.to(
 				pagination[i],
@@ -2113,7 +2209,7 @@ function loadLandingScripts() {
 					opacity: opacity,
 					ease: "power2.In",
 				},
-				"<"
+				"<",
 			);
 			testimonialTl.to(nextText, 0.6, {
 				y: 0,
@@ -2126,7 +2222,7 @@ function loadLandingScripts() {
 					opacity: 1,
 					y: 0,
 				},
-				"<"
+				"<",
 			);
 			testimonialTl.set(text, {
 				y: "1em",
@@ -2174,7 +2270,7 @@ function loadLandingScripts() {
 				width: textWidth,
 				ease: SteppedEase.config(23),
 			},
-			0
+			0,
 		);
 		textTl.fromTo(
 			".highlight",
@@ -2187,7 +2283,7 @@ function loadLandingScripts() {
 				repeat: -1,
 				ease: SteppedEase.config(23),
 			},
-			0
+			0,
 		);
 		textTl.add(function () {
 			textarea.focus();
@@ -2226,7 +2322,7 @@ function loadJournalScripts() {
 			ease: "power2.easeOut",
 			stagger: 0.1,
 		},
-		"<.3"
+		"<.3",
 	);
 
 	//FILTER
@@ -2264,7 +2360,7 @@ function loadJournalScripts() {
 					});
 
 					var count = document.querySelectorAll(
-						".entry__item:not(.hidden)"
+						".entry__item:not(.hidden)",
 					).length;
 					document.querySelector(".count").textContent = count;
 					count > 1
@@ -2335,7 +2431,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 		tl.to(
 			".barba-container, .nav-container",
 			{ filter: "blur(20px)", ease: "power3.Out" },
-			"<"
+			"<",
 		);
 		tl.add(function () {
 			let allTriggers = ScrollTrigger.getAll();
@@ -2390,7 +2486,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 			"intro-leave",
 			"cursor__hover",
 			"init__nav",
-			"--expanded"
+			"--expanded",
 		);
 
 		var scrollContainer = data.next.container,
@@ -2407,11 +2503,27 @@ document.addEventListener("DOMContentLoaded", function (event) {
 			});
 		}
 
-		if (namespace == "easter-egg") {
+		if (
+			namespace == "easter-egg" ||
+			data.next.container.querySelector(".swiper__gallery")
+		) {
 			var imported = document.createElement("script");
 			imported.src =
 				"https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js";
+			imported.onload = function () {
+				initSwiperGalleries();
+			};
 			data.next.container.appendChild(imported);
+		}
+
+		if (data.next.container.querySelector("[data-lottie-src]")) {
+			var lottieScript = document.createElement("script");
+			lottieScript.src =
+				"https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.13.0/lottie.min.js";
+			lottieScript.onload = function () {
+				initLottieAnimations();
+			};
+			data.next.container.appendChild(lottieScript);
 		}
 
 		navItems.forEach((item) => {
@@ -2440,7 +2552,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 				setTimeout(() => {
 					scroller.paused(false);
 				}, 100);
-			}
+			},
 		);
 	});
 
@@ -2593,7 +2705,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 						scrollContainer.querySelector("section:nth-child(1)"),
 						function () {
 							loadProjectScripts(triggerState, prev);
-						}
+						},
 					);
 				},
 			},

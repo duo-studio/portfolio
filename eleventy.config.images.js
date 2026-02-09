@@ -11,31 +11,57 @@ module.exports = (eleventyConfig) => {
 
 	// Eleventy Image shortcode
 	// https://www.11ty.dev/docs/plugins/image/
+	//
+	// Usage:
+	//   {% image "./image.png", "alt text" %}
+	//   {% image "./image.png", "alt text", [640, 1024, 1920] %}
+	//   {% image "./image.png", "alt text", [640, 1024, 1920], "100vw" %}
+	//   {% image "./image.png", "alt text", [640, 1024, 1920], "100vw", "my-class" %}
+	//   {% image "./image.png", "alt text", [640, 1024, 1920], "100vw", "my-class", "eager" %}
+	//
 	eleventyConfig.addAsyncShortcode(
 		"image",
-		async function imageShortcode(src, alt, widths, sizes) {
+		async function imageShortcode(src, alt, widths, sizes, className, loading) {
 			// Full list of formats here: https://www.11ty.dev/docs/plugins/image/#output-formats
-			// Warning: Avif can be resource-intensive so take care!
-			let formats = ["webp", "auto"];
+			let formats = ["avif", "webp", "auto"];
 			let file = relativeToInputPath(this.page.inputPath, src);
+
+			// Default widths for responsive images
+			const defaultWidths = [640, 1024, 1920];
+
 			let metadata = await eleventyImage(file, {
-				widths: widths || ["auto"],
+				widths: widths || defaultWidths,
 				formats,
 				urlPath: "/assets/" + this.page.url,
 				outputDir: path.join(
 					eleventyConfig.dir.output,
-					"assets/" + this.page.url
-				), // Advanced usage note: `eleventyConfig.dir` works here because we’re using addPlugin.
+					"assets/" + this.page.url,
+				),
+				// Optimize output filenames
+				filenameFormat: function (id, src, width, format) {
+					const name = path.basename(src, path.extname(src));
+					return `${name}-${width}.${format}`;
+				},
 			});
 
-			// TODO loading=eager and fetchpriority=high
 			let imageAttributes = {
 				alt,
-				sizes,
-				loading: "lazy",
+				sizes: sizes || "100vw",
+				loading: loading === "eager" ? "eager" : "lazy",
 				decoding: "async",
 			};
+
+			// Add class if provided
+			if (className) {
+				imageAttributes.class = className;
+			}
+
+			// Add fetchpriority for eager images (above the fold)
+			if (loading === "eager") {
+				imageAttributes.fetchpriority = "high";
+			}
+
 			return eleventyImage.generateHTML(metadata, imageAttributes);
-		}
+		},
 	);
 };
