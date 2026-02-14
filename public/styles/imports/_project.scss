@@ -86,9 +86,11 @@
 			flex-direction: row;
 			align-items: flex-start;
 			position: relative;
-			img {
+			img,
+			video {
 				transform: translate(0) !important;
 				height: 100%;
+				object-fit: cover;
 			}
 		}
 	}
@@ -104,6 +106,7 @@
 		}
 		h2 {
 			padding: $spacer $gutter;
+			text-wrap: balance;
 			@media screen and (max-width: $mobile-breakpoint) {
 				padding: $mobile-spacer $mobile-gutter #{$mobile-spacer / 2} !important;
 			}
@@ -190,6 +193,12 @@
 								margin-top: 0;
 								margin-bottom: 2rem;
 							}
+
+							h3 {
+								&:not(:last-child) {
+									margin-bottom: 1em;
+								}
+							}
 						}
 					}
 				}
@@ -239,6 +248,189 @@
 			position: absolute;
 			top: 0;
 			left: 0;
+		}
+	}
+
+	&.vistatheaterhollywood {
+		section {
+			body:not(.intro-leave) & {
+				background: #d5a456;
+				color: $color-black;
+			}
+			body.bg__dark & {
+				background: #d5a456;
+				color: $color-black;
+			}
+		}
+		#sec__001 {
+			padding: 0 $gutter;
+			@media screen and (max-width: $mobile-breakpoint) {
+				padding: $mobile-spacer 0;
+			}
+			.container {
+				padding: $spacer 0;
+				background: $color-white;
+
+				@media screen and (max-width: $mobile-breakpoint) {
+					padding: calc(#{$mobile-gutter} * 3) $mobile-gutter;
+				}
+				.video-wrapper {
+					padding-top: 42%;
+					margin: 0 auto;
+					width: 80%;
+					@media screen and (max-width: $mobile-breakpoint) {
+						width: 100%;
+					}
+				}
+			}
+		}
+
+		#sec__002 {
+			padding: $spacer 0;
+			text-wrap: balance;
+			h2 {
+				padding: 0 $gutter $headline-spacing;
+			}
+
+			.section__wrapper {
+				.row {
+					.major {
+						width: 100%;
+						padding-left: $gutter;
+
+						@media screen and (max-width: $mobile-breakpoint) {
+							padding-left: $mobile-gutter;
+							img {
+								width: 100% !important;
+								height: auto;
+							}
+						}
+					}
+				}
+				> img {
+					display: block;
+					margin-inline: auto;
+					padding: $gutter $gutter 0;
+				}
+			}
+		}
+
+		#sec__003 {
+			padding: $spacer 0;
+			@media screen and (max-width: $mobile-breakpoint) {
+				padding: $mobile-spacer 0;
+			}
+			.section__wrapper {
+				display: grid;
+				grid-template-columns: 1fr 30%;
+				gap: $gutter;
+				> img {
+					&:nth-child(1) {
+						padding-left: 2rem;
+					}
+
+					&:nth-child(2) {
+						align-self: end;
+						transform: translateY(40%);
+					}
+
+					&:nth-child(3) {
+						padding-left: 2rem;
+					}
+				}
+			}
+		}
+
+		#sec__004 {
+			padding: $spacer 0;
+			@media screen and (max-width: $mobile-breakpoint) {
+				padding: $mobile-spacer 0;
+			}
+			h2 {
+				text-wrap: balance;
+				padding: 0 $gutter $headline-spacing;
+				@media screen and (max-width: $mobile-breakpoint) {
+					padding: 0 $mobile-gutter $headline-spacing;
+				}
+			}
+			.section__wrapper {
+				.row {
+					padding-bottom: $spacer;
+					.major {
+						width: 100%;
+						padding-right: $gutter;
+					}
+				}
+				.container {
+					display: grid;
+					grid-template-columns: 30% 1fr;
+					padding-inline: $gutter;
+					gap: $gutter;
+					@media screen and (max-width: $mobile-breakpoint) {
+						grid-template-columns: 1fr;
+						padding: $mobile-gutter $mobile-gutter 0;
+						gap: $mobile-gutter;
+					}
+					> img {
+						&:nth-child(2) {
+							margin-top: 25%;
+							@media screen and (max-width: $mobile-breakpoint) {
+								margin-top: 0;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		#sec__006 {
+			padding: $spacer 0;
+			@media screen and (max-width: $mobile-breakpoint) {
+				padding: $mobile-spacer 0;
+			}
+			h2 {
+				text-wrap: balance;
+				padding: 0 $gutter $headline-spacing;
+				@media screen and (max-width: $mobile-breakpoint) {
+					padding: 0 $mobile-gutter $headline-spacing;
+				}
+			}
+
+			.section__wrapper {
+				.row {
+					padding-bottom: $spacer;
+					.major {
+						width: 100%;
+						padding-left: $gutter;
+						@media screen and (max-width: $mobile-breakpoint) {
+							padding-left: $mobile-gutter;
+							img {
+								width: 100% !important;
+								height: auto;
+							}
+						}
+					}
+				}
+
+				> img {
+					display: block;
+					margin-inline: auto;
+					padding: 0 $gutter;
+				}
+
+				.container {
+					padding-top: $gutter;
+					display: grid;
+					grid-template-columns: 58% 1fr;
+
+					img {
+						&:nth-child(2) {
+							margin-top: 35%;
+							padding-inline: $gutter;
+						}
+					}
+				}
+			}
 		}
 	}
 
