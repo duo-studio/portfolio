@@ -63,10 +63,10 @@ function compressVideo(inputPath, outputPath, options) {
 
 		// Apply scaling
 		if (width && height) {
-			// Fixed dimensions with padding to maintain aspect ratio
+			// Fixed dimensions with crop to fill (no black bars)
 			command = command.videoFilters([
-				`scale=${width}:${height}:force_original_aspect_ratio=decrease`,
-				`pad=${width}:${height}:(ow-iw)/2:(oh-ih)/2`,
+				`scale=${width}:${height}:force_original_aspect_ratio=increase`,
+				`crop=${width}:${height}`,
 			]);
 		} else if (maxWidth) {
 			// Scale down if wider than maxWidth, maintain aspect ratio
