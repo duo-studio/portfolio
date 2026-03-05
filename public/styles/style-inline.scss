@@ -1481,77 +1481,53 @@ nav {
 				@media screen and (max-width: $mobile-breakpoint) {
 					max-width: 20rem;
 				}
-				&:nth-child(5n + 1) {
-					width: 28%;
-					margin: 0 1% 0 auto;
-					@media screen and (max-width: $mobile-breakpoint) {
-						width: 80%;
-						margin: 0 $mobile-gutter 0 auto;
-					}
-					.img-wrapper {
-						padding-top: 81%;
+			&:nth-child(4n + 1) {
+				width: 28%;
+				margin: 0 1% 0 auto;
+				@media screen and (max-width: $mobile-breakpoint) {
+					width: 80%;
+					margin: 0 $mobile-gutter 0 auto;
+				}
+				.img-wrapper {
+					padding-top: 81%;
+				}
+			}
+			&:nth-child(4n + 2) {
+				width: 40%;
+				margin: -5% auto 0 12%;
+				@media screen and (max-width: $mobile-breakpoint) {
+					margin: #{$mobile-spacer * 2} auto 0 0;
+					width: 80%;
+					.card-info {
+						margin-left: $mobile-gutter;
 					}
 				}
-				&:nth-child(5n + 2) {
-					width: 40%;
-					margin: -10% auto 0 12%;
-					@media screen and (max-width: $mobile-breakpoint) {
-						margin: #{$mobile-spacer * 2} auto 0 0;
-						width: 80%;
-						.card-info {
-							margin-left: $mobile-gutter;
-						}
-					}
-					.img-wrapper {
-						padding-top: 68%;
-					}
+				.img-wrapper {
+					padding-top: 68%;
 				}
-				&:nth-child(5n + 3) {
-					width: 25%;
-					margin: 0 6% 0 auto;
-					@media screen and (max-width: $mobile-breakpoint) {
-						width: 80%;
-						margin: $mobile-spacer 0 0 auto;
-					}
-					.img-wrapper {
-						padding-top: 108%;
-					}
+			}
+			&:nth-child(4n + 3) {
+				width: 25%;
+				margin: 3% 6% 0 auto;
+				@media screen and (max-width: $mobile-breakpoint) {
+					width: 80%;
+					margin: $mobile-spacer 0 0 auto;
 				}
-				&:nth-child(5n + 4) {
-					width: 35%;
-					margin: -20% auto 0 $gutter;
-					@media screen and (max-width: $mobile-breakpoint) {
-						width: 80%;
-						margin: 0 auto 0 0;
-					}
-					.img-wrapper {
-						padding-top: 70%;
-					}
+				.img-wrapper {
+					padding-top: 108%;
 				}
-
-				&:nth-child(5n + 5) {
-					width: 35%;
-					margin: 0 0 0 auto;
-					@media screen and (max-width: $mobile-breakpoint) {
-						width: 80%;
-						margin: $mobile-spacer 0 $mobile-spacer auto;
-					}
-					.img-wrapper {
-						padding-top: 70%;
-					}
+			}
+			&:nth-child(4n + 4) {
+				width: 35%;
+				margin: -10% auto 0 $gutter;
+				@media screen and (max-width: $mobile-breakpoint) {
+					width: 80%;
+					margin: 0 auto 0 0;
 				}
-
-				&:nth-child(5n + 6) {
-					width: 30%;
-					margin: -15% auto 0 $spacer;
-					@media screen and (max-width: $mobile-breakpoint) {
-						width: 80%;
-						margin: 0 auto 0 $mobile-gutter;
-					}
-					.img-wrapper {
-						padding-top: 70%;
-					}
+				.img-wrapper {
+					padding-top: 70%;
 				}
+			}
 
 				.no-overflow {
 					margin-bottom: 0.5rem;

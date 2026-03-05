@@ -40,27 +40,27 @@
 					width: calc(min(40vw, 21.6rem));
 					height: calc(min(49vw, 27rem));
 				}
-				&:nth-child(1) {
-					margin: 0 0 0 auto;
+			&:nth-child(4n + 1) {
+				margin: 0 0 0 auto;
+			}
+			&:nth-child(4n + 2) {
+				margin: -5% auto 0 $gutter;
+				@media screen and (max-width: $mobile-breakpoint) {
+					margin: 0 auto 0 $mobile-gutter;
 				}
-				&:nth-child(2) {
-					margin: -5% auto 0 $gutter;
-					@media screen and (max-width: $mobile-breakpoint) {
-						margin: 0 auto 0 $mobile-gutter;
-					}
+			}
+			&:nth-child(4n + 3) {
+				margin: 0 calc(#{$gutter} * 2) 0 auto;
+				@media screen and (max-width: $mobile-breakpoint) {
+					margin: $mobile-spacer $mobile-gutter 0 auto;
 				}
-				&:nth-child(3) {
-					margin: 0 calc(#{$gutter} * 2) 0 auto;
-					@media screen and (max-width: $mobile-breakpoint) {
-						margin: $mobile-spacer $mobile-gutter 0 auto;
-					}
+			}
+			&:nth-child(4n + 4) {
+				margin: -15% auto calc(#{$spacer} * 2) calc(#{$gutter} * 2);
+				@media screen and (max-width: $mobile-breakpoint) {
+					margin: -5% auto calc(#{$mobile-spacer} * 2) $mobile-gutter;
 				}
-				&:nth-child(4) {
-					margin: -15% auto calc(#{$spacer} * 2) calc(#{$gutter} * 2);
-					@media screen and (max-width: $mobile-breakpoint) {
-						margin: -5% auto calc(#{$mobile-spacer} * 2) $mobile-gutter;
-					}
-				}
+			}
 
 				.inner {
 					width: 100%;
@@ -76,6 +76,7 @@
 						position: relative;
 						overflow: hidden;
 						width: 100%;
+						height: 100%;
 						transition:
 							transform 0.2s ease-out,
 							filter 0.2s ease-out;
@@ -84,8 +85,6 @@
 						video {
 							object-fit: cover;
 							width: 100%;
-						}
-						video {
 							height: 100%;
 						}
 					}

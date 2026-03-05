@@ -269,7 +269,7 @@
 			}
 			.container {
 				padding: $spacer 0;
-				background: $color-white;
+				background: #d5a456;
 
 				@media screen and (max-width: $mobile-breakpoint) {
 					padding: calc(#{$mobile-gutter} * 3) $mobile-gutter;
@@ -717,7 +717,7 @@
 			.container {
 				padding: $spacer 0;
 				margin-bottom: 0;
-				background: $color-white;
+				background: #e9674e;
 
 				@media screen and (max-width: $mobile-breakpoint) {
 					padding: calc(#{$mobile-gutter} * 3) $mobile-gutter;
@@ -1029,7 +1029,7 @@
 			.container {
 				padding: $spacer 0;
 				margin-bottom: 0;
-				background: $color-white;
+				background: #58d6c4;
 
 				@media screen and (max-width: $mobile-breakpoint) {
 					padding: calc(#{$mobile-gutter} * 3) $mobile-gutter;
@@ -1192,6 +1192,9 @@
 							position: relative;
 							display: block;
 							width: 100%;
+							video {
+								margin-bottom: 0;
+							}
 
 							@media screen and (max-width: $mobile-breakpoint) {
 								min-width: 330px;

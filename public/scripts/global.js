@@ -584,6 +584,9 @@ function initSwiperGalleries() {
 			loop: true,
 			speed: 700,
 			grabCursor: true,
+			allowTouchMove: true,
+			touchRatio: 1,
+			touchAngle: 45,
 		});
 
 		// Desktop: Cursor-based navigation zones
@@ -1503,8 +1506,8 @@ function loadProjectScripts(triggerState, prev) {
 			var bar = pin.querySelector(".bar");
 			ScrollTrigger.create({
 				trigger: trigger,
-				start: "top 125px",
-				end: "bottom 50%",
+				start: "top 80px",
+				end: "bottom 55%",
 				onUpdate: (self) => (bar.style.width = self.progress * 100 + "%"),
 				pin: true,
 			});
