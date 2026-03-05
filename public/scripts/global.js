@@ -583,7 +583,6 @@ function initSwiperGalleries() {
 			centeredSlides: true,
 			loop: true,
 			speed: 700,
-			grabCursor: true,
 			allowTouchMove: true,
 			touchRatio: 1,
 			touchAngle: 45,
