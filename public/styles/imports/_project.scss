@@ -28,28 +28,6 @@
 		}
 	}
 
-	// Cursor navigation zones (desktop only)
-	.swiper__nav-zone {
-		position: absolute;
-		top: 0;
-		height: 100%;
-		width: 50%;
-		z-index: 10;
-		cursor: pointer;
-
-		@media screen and (max-width: $mobile-breakpoint) {
-			display: none;
-		}
-
-		&.--prev {
-			left: 0;
-		}
-
-		&.--next {
-			right: 0;
-		}
-	}
-
 	// Mobile navigation buttons
 	.swiper__nav-buttons {
 		display: none;

@@ -589,34 +589,18 @@ function initSwiperGalleries() {
 			touchAngle: 45,
 		});
 
-		// Desktop: Cursor-based navigation zones
-		const prevZone = gallery.querySelector(".swiper__nav-zone.--prev");
-		const nextZone = gallery.querySelector(".swiper__nav-zone.--next");
+		// Desktop: Show "drag" cursor on hover (include section padding)
 		const cursorSpan = document.querySelector(".cursor span");
+		const hoverZone = gallery.closest("section") || gallery;
 
-		if (prevZone && nextZone && window.innerWidth > 1024) {
-			// Previous zone
-			prevZone.addEventListener("mouseenter", function () {
-				if (cursorSpan) cursorSpan.textContent = "prev";
+		if (window.innerWidth > 1024) {
+			hoverZone.addEventListener("mouseenter", function () {
+				if (cursorSpan) cursorSpan.textContent = "drag";
 				document.body.classList.add("cursor__hover");
 			});
-			prevZone.addEventListener("mouseleave", function () {
-				document.body.classList.remove("cursor__hover");
-			});
-			prevZone.addEventListener("click", function () {
-				swiperInstance.slidePrev();
-			});
 
-			// Next zone
-			nextZone.addEventListener("mouseenter", function () {
-				if (cursorSpan) cursorSpan.textContent = "next";
-				document.body.classList.add("cursor__hover");
-			});
-			nextZone.addEventListener("mouseleave", function () {
+			hoverZone.addEventListener("mouseleave", function () {
 				document.body.classList.remove("cursor__hover");
-			});
-			nextZone.addEventListener("click", function () {
-				swiperInstance.slideNext();
 			});
 		}
 
@@ -1486,7 +1470,6 @@ function loadProjectScripts(triggerState, prev) {
 			);
 		}
 	}
-
 	ScrollTrigger.create({
 		trigger: "#sec__001",
 		start: "top 50%",
@@ -1499,7 +1482,6 @@ function loadProjectScripts(triggerState, prev) {
 			document.body.classList.remove("intro-leave");
 		},
 	});
-
 	if (window.innerWidth > 1024) {
 		gsap.utils.toArray(".pin__sticky").forEach((pin, i) => {
 			var trigger = pin.querySelector(".minor");
