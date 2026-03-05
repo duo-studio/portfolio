@@ -8,6 +8,10 @@
 	overflow: hidden;
 	padding-block: $spacer;
 
+	@media screen and (max-width: $mobile-breakpoint) {
+		padding-block: $mobile-spacer;
+	}
+
 	.swiper-wrapper {
 		.swiper-slide {
 			width: 80% !important;

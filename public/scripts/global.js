@@ -589,17 +589,16 @@ function initSwiperGalleries() {
 			touchAngle: 45,
 		});
 
-		// Desktop: Show "drag" cursor on hover (include section padding)
+		// Desktop: Show "drag" cursor on hover
 		const cursorSpan = document.querySelector(".cursor span");
-		const hoverZone = gallery.closest("section") || gallery;
 
 		if (window.innerWidth > 1024) {
-			hoverZone.addEventListener("mouseenter", function () {
+			gallery.addEventListener("mouseenter", function () {
 				if (cursorSpan) cursorSpan.textContent = "drag";
 				document.body.classList.add("cursor__hover");
 			});
 
-			hoverZone.addEventListener("mouseleave", function () {
+			gallery.addEventListener("mouseleave", function () {
 				document.body.classList.remove("cursor__hover");
 			});
 		}
