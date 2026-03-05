@@ -588,20 +588,6 @@ function initSwiperGalleries() {
 			touchAngle: 45,
 		});
 
-		// Desktop: Show "drag" cursor on hover
-		const cursorSpan = document.querySelector(".cursor span");
-
-		if (window.innerWidth > 1024) {
-			gallery.addEventListener("mouseenter", function () {
-				if (cursorSpan) cursorSpan.textContent = "drag";
-				document.body.classList.add("cursor__hover");
-			});
-
-			gallery.addEventListener("mouseleave", function () {
-				document.body.classList.remove("cursor__hover");
-			});
-		}
-
 		// Mobile: Button navigation
 		const prevBtn = gallery.querySelector(".swiper__nav-buttons .--prev");
 		const nextBtn = gallery.querySelector(".swiper__nav-buttons .--next");
