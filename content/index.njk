@@ -7,7 +7,7 @@ description: Duo Studio is a Baltimore design studio that creates brand and web 
 
 <div class="barba-container loading" data-barba="container" data-barba-namespace="home" id="smooth-wrapper">
     <main id="smooth-content">
-        <section id="banner">
+       <section id="banner">
             <div class="section__wrapper">
                 <div class="content">
                     <h1 class="top st__headline--spread --banner">
@@ -47,7 +47,7 @@ description: Duo Studio is a Baltimore design studio that creates brand and web 
                 </div>
             </div>
         </section>
-        <section id="intro">
+        {#  <section id="intro">
             <div class="section__wrapper">
                 <h2 class="st__text">
                     <span>Capabilities</span>At Duo Studio, we have a passion for crafting personalized solutions, including:
@@ -127,7 +127,7 @@ description: Duo Studio is a Baltimore design studio that creates brand and web 
         <section id="work">
             <div class="st__line"></div>
             <div class="section__wrapper">
-                <div class="st__headline title">Featured work</div>
+                <h2 class="st__headline title">Featured work</h2>
                 <div class="card-container">
                     <a class="card cursor__hover st__image-container" data-attribute-text="view" href="/work/genimexgroup/">
                         <div class="inner st__image" data-attribute-pos="right">
@@ -220,47 +220,64 @@ description: Duo Studio is a Baltimore design studio that creates brand and web 
                     </a>
                 </div>
             </div>
-        </section>
+        </section> #}
         <section id="clients" class="bg__trigger--custom">
             <div class="st__line"></div>
-            <div class="row value">
-                <div class="section__wrapper --process">
-                    <header>
-                        <div class="title st__headline">
-                            Beyond logos & <br>creative websites
+            <div class="value">
+                <div class="section__wrapper">
+                    <div class="grid">
+                        <header class="grid__header">
+                            <h2 class="title st__headline">How we work</h2>
+                        </header>
+                        <div class="grid__item --images">
+                            <img 
+                                src="https://placehold.co/610x800/edbfff/0f0d0d/png?text=1" 
+                                alt="Placeholder 1" 
+                            />
+                            <img 
+                                src="https://placehold.co/610x800/0f0d0d/edbfff/png?text=2" 
+                                alt="Placeholder 2" 
+                            />
+                            <img 
+                                src="https://placehold.co/610x800/f3f3f3/edbfff/png?text=3" 
+                                alt="Placeholder 3" 
+                            />
+                            <img 
+                                src="https://placehold.co/610x800/ffbe7b/0f0d0d/png?text=4"
+                                alt="Placeholder 4" 
+                            />
                         </div>
-                        <a href="/contact/" class="btn__circle">
-                            <p>Start a Project</p>
-                        </a>
-                    </header>
-                    <div class="row horizontal">
-                        <div class="col">
-                            <div class="btn__small --tag">001</div>
-                            <h2>We connect your<br> brand with people</h2>
-                            <p>A powerful brand has the power to move the hearts and minds of many. Through the combination of brand identity, brand
-                                positioning, and storytelling, our aim is to create impactful experiences that become an integral part of people’s
-                                lives.</p>
-                        </div>
-                        <div class="col">
-                            <div class="btn__small --tag">002</div>
-                            <h2>We strategize first<br> when building a brand</h2>
-                            <p>At the center of every successful project is data-driven research and a brand strategy framework. Through
-                                collaborative workshops, we take a deep-dive into your business, audience, and market to define a roadmap that inspires
-                                action.</p>
-                        </div>
-                        <div class="col">
-                            <div class="btn__small --tag">003</div>
-                            <h2>We build interactive, user-<br>first digital experiences</h2>
-                            <p>We don’t just build websites; we build growth-driven digital experiences that meet people where they are. Every
-                                element, from the web design to the web development is fine-tuned to give your customers an immersive journey from their
-                                first click.
+                        <div class="grid__item --a">
+                            <h2>
+                                We connect your<br>brand with people
+                            </h2>
+                            <p>
+                                A powerful brand has the power to move the hearts and minds of many. Through the combination of brand identity, brand positioning, and storytelling, our aim is to create impactful experiences that become an integral part of people’s lives.
                             </p>
                         </div>
-                        <div class="col">
-                            <div class="btn__small --tag">004</div>
-                            <h2>We create intentional<br> content that converts</h2>
-                            <p>Content is king, and we're masters in building custom content to drive impactful results. We pair
-                                compelling narratives with graphic design to amplify your brand's message across various channels.</p>
+                        <div class="grid__item --b">
+                            <h2>
+                                We strategize first<br>when building a brand
+                            </h2>
+                            <p>
+                                At the center of every successful project is data-driven research and a brand strategy framework. Through collaborative workshops, we take a deep-dive into your business, audience, and market to define a roadmap that inspires action.
+                            </p>
+                        </div>
+                        <div class="grid__item --c">
+                            <h2>
+                                We build interactive, user-<br>first digital experiences
+                            </h2>
+                            <p>
+                                We don’t just build websites; we build growth-driven digital experiences that meet people where they are. Every element, from the web design to the web development is fine-tuned to give your customers an immersive journey from their first click.
+                            </p>
+                        </div>
+                        <div class="grid__item --d">
+                            <h2>
+                                We create intentional<br>content that converts
+                            </h2>
+                            <p>
+                                Content is king, and we're masters in building custom content to drive impactful results. We pair compelling narratives with graphic design to amplify your brand's message across various channels.
+                            </p>
                         </div>
                         <div class="progress">
                             <div class="bar"></div>
