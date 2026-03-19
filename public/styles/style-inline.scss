@@ -1209,7 +1209,10 @@ nav {
 				margin: 0 auto;
 
 				@media screen and (max-width: $mobile-breakpoint) {
-					max-width: 337px;
+					text-wrap: balance;
+					br {
+						display: none;
+					}
 				}
 			}
 			.btn__small {

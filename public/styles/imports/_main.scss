@@ -342,7 +342,7 @@
 			position: relative;
 			padding: $spacer $gutter;
 			@media screen and (max-width: $mobile-breakpoint) {
-				padding: $mobile-spacer $mobile-gutter;
+				padding: $mobile-spacer $mobile-gutter 0;
 			}
 
 			.mentions-grid {

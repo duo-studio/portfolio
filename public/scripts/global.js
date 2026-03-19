@@ -1,5 +1,7 @@
 let lenis;
 let lenisTickerCallback;
+var activeSplitInstances = [];
+var splitResizeHandler = null;
 
 document.addEventListener("DOMContentLoaded", function (event) {
 	gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -133,6 +135,137 @@ function initStickyProgressBars() {
 	});
 }
 
+function initSplitHeadlines() {
+	cleanupSplitHeadlines();
+
+	if (document.querySelector(".st__headline")) {
+		gsap.utils.toArray(".st__headline").forEach(function (headline) {
+			var splitInner = new SplitText(headline, {
+				type: "lines",
+				linesClass: "line__inner",
+			});
+			var splitOuter = new SplitText(headline, {
+				type: "lines",
+				linesClass: "line__outer",
+			});
+
+			if (headline.dataset.splitRevealed) {
+				gsap.set(headline, { pointerEvents: "initial" });
+				activeSplitInstances.push({ inner: splitInner, outer: splitOuter });
+				return;
+			}
+
+			var triggerEl, start;
+			if (headline.classList.contains("headline__footer")) {
+				triggerEl = headline.closest(".footer-spacer") || headline;
+				start = "top 30%";
+			} else {
+				triggerEl = headline;
+				start = "top 85%";
+			}
+
+			var tl = gsap.timeline({
+				onComplete: function () {
+					gsap.set(headline, { pointerEvents: "initial" });
+					headline.dataset.splitRevealed = "true";
+				},
+				scrollTrigger: {
+					trigger: triggerEl,
+					start: start,
+				},
+			});
+			tl.from(splitInner.lines, 0.8, {
+				yPercent: 50,
+				rotation: 5,
+				opacity: 0,
+				ease: "power2.easeOut",
+				stagger: 0.1,
+			});
+
+			activeSplitInstances.push({
+				inner: splitInner,
+				outer: splitOuter,
+				timeline: tl,
+			});
+		});
+	}
+
+	if (document.querySelector(".st__headline--spread")) {
+		document
+			.querySelectorAll(".st__headline--spread")
+			.forEach(function (headline) {
+				var start = headline.classList.contains("--banner")
+					? "top top"
+					: "top bottom";
+				var trigger = headline.closest("section");
+
+				var splitInner = new SplitText(headline, {
+					type: "lines",
+					linesClass: "line__inner",
+				});
+				var splitOuter = new SplitText(headline, {
+					type: "lines",
+					linesClass: "line__outer",
+				});
+
+				var tweens = [];
+				if (splitOuter.lines[0]) {
+					tweens.push(
+						gsap.to(splitOuter.lines[0], {
+							xPercent: -15,
+							scrollTrigger: {
+								trigger: trigger,
+								start: start,
+								scrub: 1.2,
+							},
+						}),
+					);
+				}
+				if (splitOuter.lines[1]) {
+					tweens.push(
+						gsap.to(splitOuter.lines[1], {
+							xPercent: 15,
+							scrollTrigger: {
+								trigger: trigger,
+								start: start,
+								scrub: 1.2,
+							},
+						}),
+					);
+				}
+
+				activeSplitInstances.push({
+					inner: splitInner,
+					outer: splitOuter,
+					tweens: tweens,
+				});
+			});
+	}
+
+	ScrollTrigger.refresh();
+}
+
+function cleanupSplitHeadlines() {
+	activeSplitInstances.forEach(function (instance) {
+		if (instance.timeline) {
+			if (instance.timeline.scrollTrigger)
+				instance.timeline.scrollTrigger.kill();
+			instance.timeline.kill();
+		}
+		if (instance.tweens) {
+			instance.tweens.forEach(function (tw) {
+				if (tw.scrollTrigger) tw.scrollTrigger.kill();
+				tw.kill();
+			});
+		}
+		try {
+			instance.outer.revert();
+			instance.inner.revert();
+		} catch (e) {}
+	});
+	activeSplitInstances = [];
+}
+
 function loadGlobalScripts() {
 	if (document.querySelector(".cursor__hide")) {
 		gsap.utils.toArray(".cursor__hide").forEach((el) => {
@@ -166,57 +299,22 @@ function loadGlobalScripts() {
 
 	//  GLOBAL TEXT LOAD
 
-	// TEXT TRANSITIONS
-	if (document.querySelector(".st__headline")) {
-		gsap.utils.toArray(".st__headline").forEach((headline) => {
-			var splitInner = new SplitText(headline, {
-				type: "lines",
-				linesClass: "line__inner",
-			});
+	// TEXT TRANSITIONS — deferred until fonts are ready to prevent incorrect line breaks
+	document.fonts.ready.then(function () {
+		initSplitHeadlines();
+	});
 
-			var splitOuter = new SplitText(headline, {
-				type: "lines",
-				linesClass: "line__outer",
-			});
-
-			if (headline.classList.contains("headline__footer")) {
-				var footerTrigger = headline.closest(".footer-spacer");
-				var tl = gsap.timeline({
-					onComplete: function () {
-						gsap.set(headline, { pointerEvents: "initial" });
-					},
-					scrollTrigger: {
-						trigger: footerTrigger || headline,
-						start: "top 30%",
-					},
-				});
-				tl.from(splitInner.lines, 0.8, {
-					yPercent: 50,
-					rotation: 5,
-					opacity: 0,
-					ease: "power2.easeOut",
-					stagger: 0.1,
-				});
-			} else {
-				var tl = gsap.timeline({
-					onComplete: function () {
-						gsap.set(headline, { pointerEvents: "initial" });
-					},
-					scrollTrigger: {
-						trigger: headline,
-						start: "top 85%",
-					},
-				});
-				tl.from(splitInner.lines, 0.8, {
-					yPercent: 50,
-					rotation: 5,
-					opacity: 0,
-					ease: "power2.easeOut",
-					stagger: 0.1,
-				});
-			}
-		});
+	if (splitResizeHandler) {
+		window.removeEventListener("resize", splitResizeHandler);
 	}
+	var splitResizeTimer;
+	splitResizeHandler = function () {
+		clearTimeout(splitResizeTimer);
+		splitResizeTimer = setTimeout(function () {
+			initSplitHeadlines();
+		}, 250);
+	};
+	window.addEventListener("resize", splitResizeHandler);
 
 	if (document.querySelector(".st__text")) {
 		gsap.utils.toArray(".st__text").forEach((headline) => {
@@ -227,45 +325,6 @@ function loadGlobalScripts() {
 				scrollTrigger: {
 					trigger: headline,
 					start: "top 90%",
-				},
-			});
-		});
-	}
-	if (document.querySelector(".st__headline--spread")) {
-		var headlines = document.querySelectorAll(".st__headline--spread");
-
-		headlines.forEach((headline) => {
-			if (headline.classList.contains("--banner")) {
-				var start = "top top";
-			} else {
-				var start = "top bottom";
-			}
-
-			var trigger = headline.closest("section");
-			var splitInner = new SplitText(headline, {
-				type: "lines",
-				linesClass: "line__inner",
-			});
-
-			var splitOuter = new SplitText(headline, {
-				type: "lines",
-				linesClass: "line__outer",
-			});
-
-			gsap.to(splitOuter.lines[0], {
-				xPercent: -15,
-				scrollTrigger: {
-					trigger: trigger,
-					start: start,
-					scrub: 1.2,
-				},
-			});
-			gsap.to(splitOuter.lines[1], {
-				xPercent: 15,
-				scrollTrigger: {
-					trigger: trigger,
-					start: start,
-					scrub: 1.2,
 				},
 			});
 		});

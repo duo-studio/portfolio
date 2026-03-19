@@ -997,7 +997,9 @@ nav {
       margin: 0 auto; }
       @media screen and (max-width: 1024px) {
         .barba-container[data-barba-namespace="home"] #banner .content p {
-          max-width: 337px; } }
+          text-wrap: balance; }
+          .barba-container[data-barba-namespace="home"] #banner .content p br {
+            display: none; } }
     .barba-container[data-barba-namespace="home"] #banner .content .btn__small {
       margin: 1.5rem auto 0;
       width: fit-content;
