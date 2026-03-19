@@ -1,4 +1,4 @@
-#smooth-wrapper[data-barba-namespace="home"] {
+.barba-container[data-barba-namespace="home"] {
 	section {
 		body:not(.intro-leave) & {
 			background: $color-black;
@@ -134,9 +134,8 @@
 			position: relative;
 			margin-top: -1px;
 			@media screen and (max-width: $mobile-breakpoint) {
-				padding: #{$mobile-spacer * 2} 0;
-				overflow: hidden;
-				flex-direction: row;
+				padding: $mobile-spacer 0;
+				overflow: clip;
 
 				.section__wrapper.--process {
 					padding-bottom: 0;
@@ -145,13 +144,19 @@
 
 			.grid {
 				display: grid;
-				grid-template-columns: 1fr 1.5fr 1fr;
+				grid-template-columns: repeat(3, 1fr);
 				grid-template-areas:
 					"header header header"
-					"a images b"
-					"c images d";
+					"a images ."
+					". images b"
+					"c images ."
+					". images d";
+				@media screen and (max-width: $mobile-breakpoint) {
+					display: flex;
+					flex-direction: column;
+				}
 				&__header {
-					height: 100svh;
+					height: 85svh;
 					text-align: center;
 					display: flex;
 					align-items: center;
@@ -159,6 +164,14 @@
 					grid-area: header;
 					position: sticky;
 					top: 0;
+					.st__headline > .line__outer {
+						margin-inline: auto;
+					}
+					@media screen and (max-width: $mobile-breakpoint) {
+						position: static;
+						height: auto;
+						padding: $mobile-spacer 0 $headline-spacing;
+					}
 				}
 				&__images {
 					grid-area: images;
@@ -166,31 +179,95 @@
 
 				&__item {
 					&.--images {
+						align-self: start;
 						grid-area: images;
 						display: grid;
 						grid-template-areas: "a";
-						height: 200px;
-						overflow: hidden;
 						position: sticky;
 						top: 0;
+						height: 100svh;
+						padding-inline: $mobile-gutter;
+						@media screen and (max-width: $mobile-breakpoint) {
+							display: contents;
+						}
 						img {
 							grid-area: a;
 							width: 100%;
-							height: 100%;
 							object-fit: cover;
+							aspect-ratio: 3/4;
+							align-self: center;
+							opacity: 0;
+							filter: blur(15px);
+							transition:
+								opacity 0.6s cubic-bezier(0.65, 0, 0.35, 1),
+								filter 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+							@media screen and (max-width: $mobile-breakpoint) {
+								aspect-ratio: 1/1;
+							}
+							&.active {
+								opacity: 1;
+								filter: blur(0px);
+							}
+							@media screen and (max-width: $mobile-breakpoint) {
+								opacity: 1;
+								filter: none;
+								transition: none;
+								padding-inline: $mobile-gutter;
+								border-radius: 0.25rem;
+								&:nth-child(1) {
+									order: 1;
+								}
+								&:nth-child(2) {
+									order: 3;
+								}
+								&:nth-child(3) {
+									order: 5;
+								}
+								&:nth-child(4) {
+									order: 7;
+								}
+							}
+						}
+					}
+					&.--content {
+						padding-inline: $gutter;
+						padding-block: 42.5svh;
+						h3 {
+							margin-bottom: 0.5em;
+						}
+						p {
+							text-wrap: balance;
+						}
+						@media screen and (max-width: $mobile-breakpoint) {
+							padding-inline: $mobile-gutter;
+							padding-top: $mobile-gutter;
+							padding-bottom: $mobile-spacer;
 						}
 					}
 					&.--a {
 						grid-area: a;
+						@media screen and (max-width: $mobile-breakpoint) {
+							order: 2;
+						}
 					}
 					&.--b {
 						grid-area: b;
+						@media screen and (max-width: $mobile-breakpoint) {
+							order: 4;
+						}
 					}
 					&.--c {
 						grid-area: c;
+						@media screen and (max-width: $mobile-breakpoint) {
+							order: 6;
+						}
 					}
 					&.--d {
 						grid-area: d;
+						@media screen and (max-width: $mobile-breakpoint) {
+							order: 8;
+							padding-bottom: 0;
+						}
 					}
 				}
 			}
@@ -226,101 +303,100 @@
 			}
 		}
 
-		header {
-			padding: $spacer $gutter 2%;
-			position: relative;
+		.clients-section {
+			padding-bottom: calc(#{$spacer} + 2rem);
 			@media screen and (max-width: $mobile-breakpoint) {
-				flex-direction: row;
-				padding: $mobile-spacer $mobile-gutter $mobile-gutter;
+				padding-bottom: calc(#{$mobile-spacer} + 2rem);
 			}
-
-			&.no-pointer {
-				* {
-					pointer-events: none !important;
+			header {
+				padding: $spacer $gutter 2%;
+				position: relative;
+				@media screen and (max-width: $mobile-breakpoint) {
+					flex-direction: row;
+					padding: $mobile-spacer $mobile-gutter $mobile-gutter;
 				}
-			}
 
-			.section__wrapper {
-				width: 100%;
-			}
+				.section__wrapper {
+					width: 100%;
+				}
 
-			.content {
-				display: flex;
-				align-items: center;
-				width: 100%;
-
-				.no-overflow {
-					position: relative;
+				.content {
+					display: flex;
+					align-items: center;
+					width: 100%;
 
 					h2 {
 						color: $color-white;
-						transition: transform 0.8s cubic-bezier(0.75, 0, 0.25, 1);
 						line-height: 1.2;
-						&:nth-child(2) {
-							color: $color-pink;
-
-							position: absolute;
-							top: 0;
-							left: 0;
-						}
 					}
 
-					&:nth-child(1) {
-						h2 {
-							&:nth-child(1) {
-								transform: translateY(-110%) rotate(-5deg);
-							}
-							&:nth-child(2) {
-								transform: translateY(0%) rotate(0deg);
-							}
-						}
-					}
-					&:nth-child(2) {
-						margin-left: 1em;
-						@media screen and (max-width: $mobile-breakpoint) {
-							margin-left: 0.5em;
-						}
-						h2 {
-							&:nth-child(1) {
-								transform: translateY(0%) rotate(0deg);
-							}
-							&:nth-child(2) {
-								transform: translateY(110%) rotate(5deg);
-							}
-						}
+					.btn__circle {
+						margin: 0 0 0 auto;
+						flex-shrink: 0;
 					}
 				}
+			}
+		}
 
-				.toggle {
-					margin: 0 0 0 auto;
-					cursor: pointer;
+		.mentions-section {
+			position: relative;
+			padding: $spacer $gutter;
+			@media screen and (max-width: $mobile-breakpoint) {
+				padding: $mobile-spacer $mobile-gutter;
+			}
 
-					.display {
-						overflow: hidden;
-						display: inline-flex;
-						flex-direction: column;
-						position: relative;
-						line-height: 1;
-						text-align: left;
-						margin-left: 0.2em;
-						&__inner {
-							white-space: nowrap;
-							margin: 0;
-							transition: transform 0.8s cubic-bezier(0.75, 0, 0.25, 1);
-							min-width: 58px;
-							padding-left: 0.2em;
-							@media screen and (max-width: $mobile-breakpoint) {
-								min-width: 50px;
-							}
-							&:not(:first-of-type) {
-								padding-left: 0;
+			.mentions-grid {
+				display: grid;
+				grid-template-columns: 2fr 1fr;
+				gap: $gutter;
+				align-items: end;
+				@media screen and (max-width: $mobile-breakpoint) {
+					grid-template-columns: 1fr;
+					gap: $mobile-spacer;
+					align-items: start;
+				}
+			}
 
-								position: absolute;
-								top: 0;
-								left: 0;
-								transform: translate(0%, 100%);
-							}
-						}
+			.mentions-left {
+				img {
+					width: 100%;
+					max-width: 280px;
+					height: auto;
+					aspect-ratio: 1;
+					object-fit: cover;
+				}
+
+				.title-2 {
+					margin-top: $gutter;
+					color: $color-white;
+					@media screen and (max-width: $mobile-breakpoint) {
+						margin-top: $mobile-gutter;
+					}
+				}
+			}
+
+			.mentions-right {
+				display: flex;
+				flex-direction: column;
+				gap: 2em;
+
+				.mention-item {
+					display: block;
+					text-decoration: none;
+					color: $color-white;
+					transition: opacity 0.3s;
+
+					&:hover {
+						opacity: 0.7;
+					}
+
+					.title-3 {
+						margin-bottom: 0.25em;
+					}
+
+					p {
+						opacity: 0.6;
+						font-size: $font-size-p;
 					}
 				}
 			}
@@ -337,9 +413,6 @@
 			}
 			&__inner {
 				position: relative;
-				&.-clients {
-					display: none;
-				}
 				.inner {
 					padding: 2% 0;
 					border-bottom: 1px solid $color-white;
@@ -373,13 +446,31 @@
 							flex-direction: row;
 							flex-wrap: wrap;
 						}
-						h3 {
-							line-height: 1;
+
+						.client-name-logo {
+							display: grid;
+							grid-template-areas: "a";
+							align-items: center;
+							h3 {
+								grid-area: a;
+								line-height: 1;
+								transition: opacity 0.2s ease-in-out;
+							}
+							.client-logo {
+								grid-area: a;
+								opacity: 0;
+								height: 1.2em;
+								width: auto;
+								max-width: 120px;
+								object-fit: contain;
+								transition: opacity 0.2s ease-in-out;
+							}
 							@media screen and (max-width: $mobile-breakpoint) {
 								width: 100%;
 								margin-bottom: 0.5em;
 							}
 						}
+
 						p {
 							line-height: 1;
 							&:first-of-type {
@@ -395,56 +486,23 @@
 
 					&:hover {
 						color: $color-white;
+						.client-name-logo {
+							h3 {
+								opacity: 0;
+							}
+							.client-logo {
+								opacity: 1;
+							}
+						}
 					}
 				}
 				.load-more {
 					position: absolute;
 					cursor: pointer;
-					margin-left: auto;
-					margin-top: 2em;
 					top: 100%;
-					right: 0;
-				}
-			}
-		}
-
-		body.init__clients & {
-			header {
-				.content {
-					.no-overflow {
-						&:nth-child(1) {
-							h2 {
-								&:nth-child(1) {
-									transform: translateY(0%) rotate(0deg);
-								}
-								&:nth-child(2) {
-									transform: translateY(110%) rotate(5deg);
-								}
-							}
-						}
-						&:nth-child(2) {
-							h2 {
-								&:nth-child(1) {
-									transform: translateY(-110%) rotate(-5deg);
-								}
-								&:nth-child(2) {
-									transform: translateY(0%) rotate(0deg);
-								}
-							}
-						}
-					}
-					.toggle {
-						.display {
-							&__inner {
-								&:first-of-type {
-									transform: translate(0%, -100%);
-								}
-								&:not(:first-of-type) {
-									transform: translate(0%, 0%);
-								}
-							}
-						}
-					}
+					left: 50%;
+					transform: translateX(-50%);
+					margin-top: 2em;
 				}
 			}
 		}

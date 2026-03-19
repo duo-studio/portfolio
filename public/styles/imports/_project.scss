@@ -49,7 +49,7 @@
 	}
 }
 
-#smooth-wrapper[data-barba-namespace="project"] {
+.barba-container[data-barba-namespace="project"] {
 	.footer-spacer {
 		background: $color-white;
 
@@ -189,7 +189,7 @@
 	}
 	section {
 		&:last-of-type {
-			overflow: hidden;
+			overflow: clip;
 		}
 	}
 	#sec__001 {
@@ -1774,7 +1774,7 @@
 						@media screen and (max-width: $mobile-breakpoint) {
 							width: 80vw;
 							max-width: 30rem;
-							margin: calc(#{$mobile-gutter} * 2)-$mobile-gutter 0 auto;
+							margin: calc(#{$mobile-gutter} * 2) 0 0 auto;
 						}
 					}
 				}

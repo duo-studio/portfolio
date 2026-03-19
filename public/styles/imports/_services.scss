@@ -1,34 +1,103 @@
-#smooth-wrapper[data-barba-namespace="services"] {
+$process-spacer: calc(#{$spacer} / 2);
+.barba-container[data-barba-namespace="services"] {
 	#process {
 		margin-top: -1px;
-		header {
-			padding: 0 9% 0 0;
+
+		.process-section {
+			padding: $process-spacer 0 $spacer;
+			@media screen and (max-width: $mobile-breakpoint) {
+				padding: $mobile-gutter 0 $mobile-spacer;
+			}
+		}
+
+		.process-header {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
-			width: 100%;
-
+			padding: calc(#{$process-spacer} * 1.5) $gutter
+				calc(#{$process-spacer} * 0.5);
+			position: sticky;
+			top: 0;
+			z-index: 2;
+			background: $color-white;
+			transition:
+				background 0.2s ease-in-out,
+				color 0.2s ease-in-out;
+			body.bg__dark & {
+				background: $color-black;
+			}
 			@media screen and (max-width: $mobile-breakpoint) {
 				flex-direction: column;
 				text-align: center;
-				align-items: center;
-				padding: 0 $mobile-gutter;
+				gap: 2rem;
+				padding: $mobile-gutter $mobile-gutter $mobile-spacer;
+				position: relative;
 			}
-			.title {
-				@media screen and (max-width: $mobile-breakpoint) {
-					padding: 0 0 2rem;
-				}
+		}
 
-				> .line__outer {
-					@media screen and (max-width: $mobile-breakpoint) {
-						display: block !important;
-					}
-					&:nth-child(2) {
-						> * {
-							padding-right: 0.1em;
-						}
-					}
+		.process-item {
+			display: grid;
+			grid-template-columns: auto 1fr auto;
+			gap: $gutter;
+			padding: $process-spacer $gutter;
+			border-top: 1px solid $color-white;
+			position: sticky;
+			top: var(--process-header-h, 0px);
+			background: $color-white;
+			transition:
+				background 0.2s ease-in-out,
+				color 0.2s ease-in-out;
+			body.bg__dark & {
+				background: $color-black;
+			}
+
+			@for $i from 1 through 5 {
+				&:nth-child(#{$i}) {
+					z-index: #{$i};
 				}
+			}
+
+			@media screen and (max-width: $mobile-breakpoint) {
+				grid-template-columns: 1fr;
+				gap: $mobile-gutter;
+				padding: $mobile-spacer $mobile-gutter;
+				position: relative;
+			}
+		}
+
+		.process-index {
+			font-family: $font-suisse;
+			font-size: $font-size-p;
+			padding-top: 0.3em;
+			white-space: nowrap;
+			color: rgba($color-white, 0.4);
+			span {
+				color: $color-white;
+			}
+		}
+
+		.process-content {
+			max-width: 480px;
+			h2 {
+				color: $color-white;
+				margin-bottom: 0.5em;
+			}
+			p {
+				opacity: 0.7;
+				line-height: 1.6;
+			}
+		}
+
+		.process-image {
+			width: calc(min(25vw, 480px));
+			flex-shrink: 0;
+			@media screen and (max-width: $mobile-breakpoint) {
+				width: 100%;
+			}
+			img {
+				width: 100%;
+				height: auto;
+				object-fit: cover;
 			}
 		}
 	}
@@ -101,9 +170,9 @@
 			padding: $mobile-spacer $mobile-gutter;
 		}
 		.content {
-			width: 41vw;
 			max-width: 787px;
 			margin: 0 auto;
+			text-wrap: balance;
 			@media screen and (max-width: $mobile-breakpoint) {
 				width: 100%;
 			}

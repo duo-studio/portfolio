@@ -1,4 +1,4 @@
-#smooth-wrapper[data-barba-namespace="journal"] {
+.barba-container[data-barba-namespace="journal"] {
 	#banner {
 		h1 {
 			padding: calc(calc(max(52px, 3.125vw)) + #{$spacer}) $gutter 2rem;
@@ -269,7 +269,10 @@
 					}
 				}
 				&-toc {
+					position: sticky;
+					top: 100px;
 					@media screen and (max-width: $mobile-breakpoint-s) {
+						position: static;
 						display: none;
 					}
 					h3 {

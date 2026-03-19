@@ -1,4 +1,4 @@
-#smooth-wrapper[data-barba-namespace="landing"] {
+.barba-container[data-barba-namespace="landing"] {
 	h1,
 	h4 {
 		text-transform: initial;
@@ -187,7 +187,7 @@
 			}
 		}
 	}
-	#smooth-content {
+	.barba-container > main {
 		&.crtv {
 			#banner {
 				height: 100vh;
@@ -269,7 +269,7 @@
 									justify-content: center;
 									padding: $spacer 0;
 									@media screen and (max-width: $mobile-breakpoint) {
-										padding: #{$mobile-gutter}* 2 0;
+										padding: calc(#{$mobile-gutter} * 2) 0;
 									}
 									img {
 										width: 21vw;
@@ -1261,7 +1261,7 @@
 							margin: $gutter auto 0 calc(#{$gutter} * 2);
 							@media screen and (max-width: $mobile-breakpoint) {
 								max-width: 100%;
-								margin: #{$mobile-gutter} * 2 0 0;
+								margin: calc(#{$mobile-gutter} * 2) 0 0;
 								padding: 0 $mobile-gutter;
 							}
 							h3 {
@@ -1385,7 +1385,7 @@
 				color: $color-black;
 				padding: $gutter;
 				@media screen and (max-width: $mobile-breakpoint) {
-					padding: #{$mobile-gutter} * 2;
+					padding: calc(#{$mobile-gutter} * 2);
 					text-align: center;
 				}
 
