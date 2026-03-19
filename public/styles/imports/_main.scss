@@ -381,13 +381,16 @@
 				gap: 2em;
 
 				.mention-item {
-					display: block;
-					text-decoration: none;
-					color: $color-white;
 					transition: opacity 0.3s;
 
 					&:hover {
 						opacity: 0.7;
+					}
+
+					a {
+						display: block;
+						text-decoration: none;
+						color: $color-white;
 					}
 
 					.title-3 {
