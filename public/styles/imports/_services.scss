@@ -58,9 +58,10 @@ $process-spacer: calc(#{$spacer} / 2);
 			}
 
 			@media screen and (max-width: $mobile-breakpoint) {
+				top: unset;
 				grid-template-columns: 1fr;
 				gap: $mobile-gutter;
-				padding: $mobile-spacer $mobile-gutter;
+				padding: $mobile-gutter;
 				position: relative;
 			}
 		}
@@ -207,6 +208,16 @@ $process-spacer: calc(#{$spacer} / 2);
 					width: 100%;
 					padding-right: $mobile-gutter;
 					padding-bottom: $mobile-gutter;
+				}
+
+				h2 {
+					position: sticky;
+					top: 6rem;
+
+					@media screen and (max-width: $mobile-breakpoint) {
+						position: relative;
+						top: 0;
+					}
 				}
 			}
 			&:nth-child(2) {
