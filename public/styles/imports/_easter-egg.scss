@@ -1,160 +1,98 @@
 .barba-container[data-barba-namespace="easter-egg"] {
-	#easter-egg {
-		width: 100vw;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		@media screen and (max-width: $mobile-breakpoint) {
-			flex-direction: column;
-			padding-top: #{$mobile-spacer * 2};
-		}
-		cursor: pointer;
-		.container {
-			height: 100vh;
+	#archive {
+		position: relative;
+		width: 100%;
+		overflow: hidden;
+		color: $color-white;
+
+		.archive-grid-wrap {
+			position: relative;
 			width: 100%;
-			display: flex;
-			flex-direction: column;
+			height: 100vh;
+			overflow: hidden;
+			cursor: grab;
+			touch-action: none;
+			&:active {
+				cursor: grabbing;
+			}
+		}
+
+		.archive-content {
+			position: absolute;
+			z-index: 10;
+			pointer-events: none;
 			mix-blend-mode: difference;
+			color: $color-white;
+			bottom: $gutter;
+			left: $gutter;
+			max-width: 30vw;
 			@media screen and (max-width: $mobile-breakpoint) {
-				mix-blend-mode: unset;
-				height: auto;
-				margin-top: $mobile-spacer;
+				bottom: $mobile-gutter;
+				left: $mobile-gutter;
+				max-width: 80vw;
 			}
-			.no-overflow {
-				position: relative;
-				margin: auto;
-				height: #{$font-size-h1};
-				display: flex;
-				justify-content: center;
-				@media screen and (max-width: $mobile-breakpoint) {
-					height: auto;
-					margin-bottom: $mobile-gutter;
-				}
-				h1 {
-					text-align: center;
-					white-space: nowrap;
-					width: 100vw;
-					color: $color-white;
-					@media screen and (max-width: $mobile-breakpoint) {
-						color: $color-black;
-						font-size: calc(min(4rem, 13vw));
-					}
-					&:not(:first-of-type) {
-						transform: translateY(110%) rotate(5deg);
-						opacity: 0;
-						position: absolute;
-						top: 0;
-						left: 0;
-					}
-				}
-			}
-			@media screen and (max-width: $mobile-breakpoint) {
-				.btn__small {
-					width: 120px;
-					margin: 0 auto;
-				}
+		}
+
+		.archive-grid {
+			position: absolute;
+			inset: -10%;
+			pointer-events: none;
+		}
+
+		.archive-drag-surface {
+			position: absolute;
+			inset: 0;
+			z-index: 1;
+		}
+
+		.archive-cell {
+			position: absolute;
+			overflow: hidden;
+			will-change: transform;
+			pointer-events: auto;
+
+			img,
+			video {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
 			}
 
-			> .row {
-				padding: 0 $gutter 2em;
-				justify-content: space-between;
-				align-items: flex-end;
-				color: $color-white;
-				@media screen and (max-width: $mobile-breakpoint) {
-					flex-direction: row;
-					flex-wrap: wrap;
-					padding: 0 $mobile-gutter $mobile-gutter;
-					color: $color-black;
-					margin-top: $mobile-spacer;
+			&__info {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				padding: 0.75em;
+				background: linear-gradient(transparent, rgba($color-black, 0.8));
+				opacity: 0;
+				transform: translateY(4px);
+				transition:
+					opacity 0.3s ease,
+					transform 0.3s ease;
+				pointer-events: none;
+				h3 {
+					font-size: calc(max(13px, 0.75vw));
+					margin-bottom: 0.2em;
 				}
-				> .col {
-					&:nth-child(1),
-					&:nth-child(3) {
-						width: 40vw;
-						@media screen and (max-width: $mobile-breakpoint) {
-							width: 100%;
-						}
-						span,
-						.subtitle {
-							display: block;
-							margin-bottom: 0.2em;
-						}
-					}
-
-					&:nth-child(1) {
-						.col__inner {
-							&:nth-child(1) {
-								width: 9em;
-							}
-							&:not(:first-of-type) {
-								margin-left: 2em;
-								width: 100%;
-								@media screen and (max-width: $mobile-breakpoint) {
-									margin: 1em 0 0;
-									.display__inner {
-										height: 27px;
-									}
-								}
-							}
-
-							span {
-								width: 100%;
-								&.display {
-									&__inner {
-										@extend p;
-										font-size: calc(max(14px, 0.834vw));
-										@media screen and (max-width: $mobile-breakpoint) {
-											font-size: 14px;
-										}
-										text-transform: none;
-										line-height: 1;
-									}
-								}
-							}
-						}
-					}
-
-					&:nth-child(2) {
-						@media screen and (max-width: $mobile-breakpoint) {
-							align-items: center;
-							order: 1;
-							width: 100%;
-							margin-top: 1em;
-						}
-					}
-					&:nth-child(3) {
-						align-items: flex-end;
-						@media screen and (max-width: $mobile-breakpoint) {
-							align-items: flex-start;
-							margin-top: 1em;
-						}
-					}
-
-					span {
-						&.display {
-							margin: 0;
-							overflow: hidden;
-							display: inline-flex;
-							flex-direction: column;
-							position: relative;
-							min-width: 30px;
-							&__inner {
-								white-space: nowrap;
-								margin: 0;
-								line-height: 1;
-								@media screen and (max-width: $mobile-breakpoint) {
-									white-space: unset;
-								}
-								&:not(:first-of-type) {
-									position: absolute;
-									top: 0;
-									left: 0;
-									transform: translate(0%, 100%);
-								}
-							}
-						}
-					}
+				p {
+					font-size: calc(max(11px, 0.6vw));
+					opacity: 0.6;
 				}
+			}
+
+			&.--project:hover {
+				z-index: 5;
+				.archive-cell__info {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			&.--placeholder {
+				background: var(--bg, #{$color-pink});
+				opacity: 0.12;
 			}
 		}
 	}
@@ -182,8 +120,7 @@
 		}
 	}
 
-	&.slider,
-	&.slider__egg {
+	&.slider {
 		.swiper-wrapper {
 			.swiper-slide {
 				transition-timing-function: cubic-bezier(0.75, 0, 0.25, 1);
@@ -193,39 +130,6 @@
 						) {
 						z-index: 20 !important;
 					}
-				}
-			}
-		}
-	}
-
-	&.slider__egg {
-		position: absolute;
-		width: 38vw;
-		top: 0;
-		left: 0;
-		pointer-events: none;
-		z-index: -1;
-		@media screen and (max-width: $mobile-breakpoint) {
-			position: static;
-			width: calc(100% - #{$mobile-gutter} * 2);
-			order: -1;
-			max-width: 30rem;
-			transform: unset !important;
-		}
-		.swiper-wrapper {
-			align-items: stretch;
-			justify-content: flex-start;
-			width: 100%;
-			.swiper-slide {
-				height: auto;
-				&.swiper-slide-prev {
-					filter: blur(20px);
-				}
-				img,
-				video {
-					width: 100%;
-					height: 100%;
-					object-fit: cover;
 				}
 			}
 		}

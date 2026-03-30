@@ -56,13 +56,14 @@ window.addEventListener("load", (event) => {
 		containerItems = document.querySelectorAll(".nav-container__inner");
 
 		var marqueeTimelines = [];
+		var marqueeSpeed = 300;
 		navItems.forEach((item, i) => {
 			var el = containerItems[i].querySelector(".nav-marquee"),
 				container = el.querySelector(".nav-marquee__container"),
 				marquee = el.querySelector(".nav-marquee__inner"),
 				w = marquee.clientWidth,
 				x = Math.round(window.innerWidth / w + 1),
-				dur = 2;
+				dur = w / marqueeSpeed;
 
 			for (var y = 0; y < x; y++) {
 				var clone = marquee.cloneNode(true);
@@ -96,18 +97,40 @@ window.addEventListener("load", (event) => {
 			});
 		});
 
-		// Let's Talk button reuses the Contact marquee (index 3)
 		var eggBtn = document.querySelector("nav:not(.anchors) .egg");
-		if (eggBtn && marqueeTimelines[3]) {
+		var contactContainer = document.querySelector(
+			".nav-container__inner.contact",
+		);
+		if (eggBtn && contactContainer) {
+			var contactEl = contactContainer.querySelector(".nav-marquee"),
+				contactC = contactEl.querySelector(".nav-marquee__container"),
+				contactM = contactEl.querySelector(".nav-marquee__inner"),
+				contactW = contactM.clientWidth,
+				contactX = Math.round(window.innerWidth / contactW + 1);
+			for (var cy = 0; cy < contactX; cy++) {
+				contactC.appendChild(contactM.cloneNode(true));
+			}
+			var contactTl = gsap.timeline({ paused: true });
+			contactTl.to(contactC, {
+				duration: contactW / marqueeSpeed,
+				ease: "none",
+				x: "-=" + contactW,
+				modifiers: {
+					x: gsap.utils.unitize(function (x) {
+						return parseFloat(x);
+					}),
+				},
+				repeat: -1,
+			});
 			eggBtn.addEventListener("mouseenter", function () {
-				marqueeTimelines[3].containerItem.classList.add("active");
+				contactContainer.classList.add("active");
 				document.body.classList.add("init__nav");
-				marqueeTimelines[3].tl.play();
+				contactTl.play();
 			});
 			eggBtn.addEventListener("mouseleave", function () {
-				marqueeTimelines[3].containerItem.classList.remove("active");
+				contactContainer.classList.remove("active");
 				document.body.classList.remove("init__nav");
-				marqueeTimelines[3].tl.pause();
+				contactTl.pause();
 			});
 		}
 	} else {
@@ -897,7 +920,7 @@ function loadIndexScripts() {
 		}
 
 		var valueImages = document.querySelectorAll(
-			"#clients .grid__item.--images img",
+			"#clients .grid__item.--images .images-clip img",
 		);
 		var contentItems = document.querySelectorAll(
 			"#clients .grid__item.--content",
@@ -1322,7 +1345,7 @@ function loadServicesScripts() {
 			var setHeaderHeight = function () {
 				document.documentElement.style.setProperty(
 					"--process-header-h",
-					processHeader.offsetHeight + "px"
+					processHeader.offsetHeight + "px",
 				);
 			};
 			setHeaderHeight();
@@ -1564,182 +1587,139 @@ function loadProjectScripts(triggerState, prev) {
 }
 
 function loadEggScripts() {
-	setTimeout(() => {
-		if (document.querySelector(".slider__egg")) {
-			const eggSlider = new Swiper(".slider__egg", {
-				slidesPerView: 1,
-				centeredSlides: true,
-				loop: true,
-				speed: 1000,
-				allowTouchMove: true,
-				preloadImages: false,
-				allowTouchMove: false,
-				effect: "creative",
-				observer: true,
-				observeParents: true,
-				creativeEffect: {
-					next: {
-						translate: [0, "100%", 0],
-						scale: 1.5,
-						rotate: [0, 0, -15],
-						origin: "right top",
-					},
-				},
-				lazy: {
-					loadPrevNext: true,
-					loadPrevNextAmount: 3,
-				},
-			});
+	document.querySelector(".barba-container").classList.remove("loading");
 
-			document
-				.querySelector(".egg-event")
-				.addEventListener("click", function () {
-					eggSlider.slideNext();
-				});
+	var gridEl = document.querySelector(".archive-grid");
+	var dragSurface = document.querySelector(".archive-drag-surface");
+	var cells = gsap.utils.toArray(".archive-cell");
+
+	if (!gridEl || !cells.length) return;
+
+	var COLS = parseInt(gridEl.dataset.cols) || 7;
+	var ROWS = parseInt(gridEl.dataset.rows) || 6;
+	var cardW, cardH, gap, totalW, totalH;
+	var offsetX = 0,
+		offsetY = 0;
+
+	function computeLayout() {
+		var vw = window.innerWidth;
+		cardW =
+			vw < 640 ? vw * 0.8 : vw < 1024 ? vw * 0.45 : Math.min(vw * 0.35, 672);
+		cardH = cardW * 0.6;
+		gap = Math.min(vw * 0.014, 27);
+		totalW = COLS * (cardW + gap);
+		totalH = ROWS * (cardH + gap);
+		cells.forEach(function (cell) {
+			cell.style.width = cardW + "px";
+			cell.style.height = cardH + "px";
+		});
+		updateCards();
+	}
+
+	function updateCards() {
+		for (var i = 0; i < cells.length; i++) {
+			var col = i % COLS;
+			var row = Math.floor(i / COLS);
+			var baseX = col * (cardW + gap);
+			var baseY = row * (cardH + gap);
+			var x = ((((baseX + offsetX) % totalW) + totalW) % totalW) - cardW;
+			var y = ((((baseY + offsetY) % totalH) + totalH) % totalH) - cardH;
+			gsap.set(cells[i], { x: x, y: y });
 		}
-	}, 500);
+	}
 
-	if (window.innerWidth > 1024) {
-		gsap.set(".cursor__egg", { xPercent: -50, yPercent: -50 });
-		var cursor = document.querySelector(".cursor__egg");
-		var pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-		var mouse = { x: pos.x, y: pos.y };
-		var speed = 0.1;
+	computeLayout();
 
-		var fpms = 60 / 1000;
+	gsap.fromTo(
+		cells,
+		{ opacity: 0, scale: 0.8 },
+		{
+			opacity: 1,
+			scale: 1,
+			duration: 0.9,
+			ease: "power2.out",
+			stagger: { amount: 0.8, from: "random" },
+		},
+	);
 
-		var xSet = gsap.quickSetter(cursor, "x", "px");
-		var ySet = gsap.quickSetter(cursor, "y", "px");
+	var isDragging = false;
+	var startMouseX, startMouseY, startOffX, startOffY;
+	var prevMouseX, prevMouseY, prevTime;
+	var velX = 0,
+		velY = 0;
+	var momentum = { x: 0, y: 0 };
+	var driftRestartCall = null;
 
-		document.body.addEventListener("mousemove", (e) => {
-			mouse.x = e.x;
-			mouse.y = e.y;
+	function driftUpdate() {
+		var speed = window.innerWidth * 0.00035;
+		offsetX += speed;
+		offsetY += speed * 0.5;
+		updateCards();
+	}
+
+	function startDrift() {
+		gsap.ticker.add(driftUpdate);
+	}
+
+	function stopDrift() {
+		gsap.ticker.remove(driftUpdate);
+		if (driftRestartCall) driftRestartCall.kill();
+	}
+
+	var entranceDelay = gsap.delayedCall(1.5, startDrift);
+
+	if (dragSurface) {
+		dragSurface.addEventListener("pointerdown", function (e) {
+			isDragging = true;
+			gsap.killTweensOf(momentum);
+			stopDrift();
+			startMouseX = prevMouseX = e.clientX;
+			startMouseY = prevMouseY = e.clientY;
+			startOffX = offsetX;
+			startOffY = offsetY;
+			prevTime = Date.now();
+			velX = velY = 0;
+			dragSurface.setPointerCapture(e.pointerId);
 		});
 
-		gsap.ticker.add((time, deltaTime) => {
-			var delta = deltaTime * fpms;
-			var dt = 1.0 - Math.pow(1.0 - speed, delta);
+		window.addEventListener("pointermove", function (e) {
+			if (!isDragging) return;
+			var now = Date.now();
+			var dt = Math.max(now - prevTime, 1);
+			velX = 0.6 * (((e.clientX - prevMouseX) / dt) * 1000) + 0.4 * velX;
+			velY = 0.6 * (((e.clientY - prevMouseY) / dt) * 1000) + 0.4 * velY;
+			prevMouseX = e.clientX;
+			prevMouseY = e.clientY;
+			prevTime = now;
+			offsetX = startOffX + (e.clientX - startMouseX) * 0.7;
+			offsetY = startOffY + (e.clientY - startMouseY) * 0.7;
+			updateCards();
+		});
 
-			pos.x += (mouse.x - pos.x) * dt;
-			pos.y += (mouse.y - pos.y) * dt;
-			xSet(pos.x);
-			ySet(pos.y);
+		window.addEventListener("pointerup", function (e) {
+			if (!isDragging) return;
+			isDragging = false;
+			dragSurface.releasePointerCapture(e.pointerId);
+			momentum.x = offsetX;
+			momentum.y = offsetY;
+			gsap.to(momentum, {
+				x: offsetX + velX * 0.2,
+				y: offsetY + velY * 0.2,
+				duration: 1.2,
+				ease: "power3.out",
+				onUpdate: function () {
+					offsetX = momentum.x;
+					offsetY = momentum.y;
+					updateCards();
+				},
+				onComplete: function () {
+					driftRestartCall = gsap.delayedCall(1, startDrift);
+				},
+			});
 		});
 	}
 
-	var headline = document.querySelector(".headline__load");
-	var splitInner = new SplitText(headline, {
-		type: "lines",
-		linesClass: "line__inner",
-	});
-	var splitOuter = new SplitText(headline, {
-		type: "lines",
-		linesClass: "line__outer",
-	});
-	var loaderTl = gsap.timeline();
-
-	document.querySelector(".barba-container").classList.remove("loading");
-
-	loaderTl.from(splitInner.lines, 0.8, {
-		yPercent: 50,
-		rotation: 5,
-		opacity: 0,
-		ease: "power2.easeOut",
-		stagger: 0.1,
-	});
-	loaderTl.from(
-		".slider__egg",
-		1,
-		{
-			opacity: 0,
-			ease: "power2.easeOut",
-		},
-		"<.2",
-	);
-
-	var container = document.getElementById("easter-egg"),
-		headlines = container.querySelectorAll("h1"),
-		h = headlines[0].clientHeight * 1.1;
-
-	var headlineTl = gsap.timeline({
-		repeat: -1,
-		paused: true,
-	});
-
-	headlines.forEach((headline, i) => {
-		var nextHeadline = headline.nextElementSibling;
-		if (!nextHeadline) {
-			var nextHeadline = headlines[0];
-		}
-
-		headlineTl.to(headline, 1, {
-			y: -h,
-			rotation: -5,
-			opacity: 0,
-			ease: "power2.inOut",
-		});
-		headlineTl.to(
-			nextHeadline,
-			1,
-			{
-				y: 0,
-				rotation: 0,
-				opacity: 1,
-				ease: "power2.inOut",
-			},
-			"<",
-		);
-
-		headlineTl.set(headline, {
-			y: h,
-			rotation: 5,
-			opacity: 0,
-		});
-		headlineTl.addPause();
-	});
-
-	var display = document.querySelectorAll(".display");
-
-	display.forEach((el, i) => {
-		var inner = el.querySelectorAll(".display__inner");
-		var innerHeight = inner[0].clientHeight;
-		var displayTl = gsap.timeline({
-			repeat: -1,
-			paused: true,
-		});
-		inner.forEach((innerEl) => {
-			var nextEl = innerEl.nextElementSibling;
-			if (!nextEl) {
-				var nextEl = inner[0];
-			}
-			displayTl.to(innerEl, 1, {
-				y: -innerHeight,
-				ease: "power2.inOut",
-			});
-			displayTl.to(
-				nextEl,
-				1,
-				{
-					y: 0,
-					ease: "power2.inOut",
-				},
-				"<",
-			);
-
-			displayTl.set(innerEl, {
-				y: innerHeight,
-			});
-			displayTl.addPause();
-		});
-
-		container.addEventListener("click", function () {
-			displayTl.play();
-		});
-	});
-
-	container.addEventListener("click", function () {
-		headlineTl.play();
-	});
+	window.addEventListener("resize", computeLayout);
 }
 
 function load404Scripts() {
@@ -2542,10 +2522,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 			});
 		}
 
-		if (
-			namespace == "easter-egg" ||
-			data.next.container.querySelector(".swiper__gallery")
-		) {
+		if (data.next.container.querySelector(".swiper__gallery")) {
 			var imported = document.createElement("script");
 			imported.src =
 				"https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js";

@@ -436,7 +436,8 @@ time {
 		position: fixed;
 		top: 0;
 		left: 0;
-		width: 30vw;
+		width: 35vw;
+		max-width: 672px;
 		z-index: 4;
 		pointer-events: none;
 
@@ -1163,6 +1164,10 @@ nav {
 		> .title {
 			flex-shrink: 0;
 			margin: 0 1vw;
+			&::after {
+				content: "\00B7";
+				margin-left: 2vw;
+			}
 		}
 	}
 }
@@ -1578,19 +1583,20 @@ nav {
 	#main {
 		.section__wrapper {
 			> .row {
+				display: grid;
+				grid-template-columns: 2fr 1fr;
 				min-height: 100vh;
 				@media screen and (max-width: $mobile-breakpoint) {
+					display: flex;
 					flex-direction: column;
 				}
 				.col {
-					width: 50%;
 					padding: calc(calc(#{$mobile-spacer * 1.5} + #{$nav-spacer})) 4vw 4vw;
 
 					@media screen and (max-width: $mobile-breakpoint) {
 						width: 100%;
 					}
 					&:nth-child(1) {
-						border-right: 1px solid $color-black;
 						padding-bottom: 5vw;
 						@media screen and (max-width: $mobile-breakpoint) {
 							padding: calc(calc(#{$mobile-spacer * 1.5} + #{$nav-spacer}))
@@ -1617,6 +1623,7 @@ nav {
 							margin-top: auto;
 							padding-top: 2rem;
 							width: 100%;
+							opacity: 0.4;
 							.col__inner {
 								&:not(:last-child) {
 									margin-right: 1.5vw;

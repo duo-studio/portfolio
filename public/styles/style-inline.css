@@ -330,7 +330,8 @@ time {
     position: fixed;
     top: 0;
     left: 0;
-    width: 30vw;
+    width: 35vw;
+    max-width: 672px;
     z-index: 4;
     pointer-events: none; }
     @media screen and (max-width: 1024px) {
@@ -960,6 +961,9 @@ nav {
     .nav-marquee__inner > .title {
       flex-shrink: 0;
       margin: 0 1vw; }
+      .nav-marquee__inner > .title::after {
+        content: "\00B7";
+        margin-left: 2vw; }
 
 .barba-container[data-barba-namespace="home"] #banner {
   height: auto;
@@ -1267,18 +1271,19 @@ nav {
         filter: blur(3px); }
 
 .barba-container[data-barba-namespace="contact"] #main .section__wrapper > .row {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
   min-height: 100vh; }
   @media screen and (max-width: 1024px) {
     .barba-container[data-barba-namespace="contact"] #main .section__wrapper > .row {
+      display: flex;
       flex-direction: column; } }
   .barba-container[data-barba-namespace="contact"] #main .section__wrapper > .row .col {
-    width: 50%;
     padding: calc(calc(6rem + calc(max(52px, 3.125vw)))) 4vw 4vw; }
     @media screen and (max-width: 1024px) {
       .barba-container[data-barba-namespace="contact"] #main .section__wrapper > .row .col {
         width: 100%; } }
     .barba-container[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(1) {
-      border-right: 1px solid #0f0d0d;
       padding-bottom: 5vw; }
       @media screen and (max-width: 1024px) {
         .barba-container[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(1) {
@@ -1298,7 +1303,8 @@ nav {
         display: flex;
         margin-top: auto;
         padding-top: 2rem;
-        width: 100%; }
+        width: 100%;
+        opacity: 0.4; }
         .barba-container[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(1) .row__inner .col__inner:not(:last-child) {
           margin-right: 1.5vw; }
         .barba-container[data-barba-namespace="contact"] #main .section__wrapper > .row .col:nth-child(1) .row__inner .col__inner .subtitle {
