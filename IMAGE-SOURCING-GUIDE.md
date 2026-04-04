@@ -54,7 +54,7 @@ services__content-thumbnail.webp
 
 The archive page is a draggable, infinitely wrapping canvas — a 7×6 grid (42 cells) that tiles seamlessly. Right now only **9 of 42 cells** have real content. We need to fill this out so it feels like "wow, Duo has worked with *everyone*."
 
-**Goal:** Source images for **21 new clients** (minimum) to bring us to 30 project cells with 12 placeholders for visual breathing room. If you have bandwidth, source all 25 — that's even better.
+**Goal:** Source images for **20 new clients** (minimum) to bring us to 29 project cells with 13 placeholders for visual breathing room. If you have bandwidth, source all 25 — that's even better.
 
 > **Important:** None of the new additions should be case study clients (Genimex, Africa Dream Safaris, Amparo, Cruefilms, Finturity, Lumina, Made Good, MGNY, Vista Theater Hollywood). Those live on the Work page.
 >
@@ -89,47 +89,47 @@ Only use video when the work truly benefits from motion (scroll animations, UI i
 
 ### Client Priority List
 
-Sourced from the homepage roster, excluding case study clients and clients already on the archive.
+Sourced from the homepage roster, excluding case study clients and clients already on the archive. Tiers based on a site-by-site audit of business health, revenue signals, and credibility (April 2026).
 
-#### Tier 1 — Source First (names that carry real weight)
+#### Tier 1 — Source First (making real money or backed by serious institutions)
 
-| # | Client | Industry | Filename | Why |
-|---|--------|----------|----------|-----|
-| 1 | **DataTribe** | Cybersecurity & VC | `datatribe.webp` | High-profile DC-area VC firm — instant credibility |
-| 2 | **SNF Parkway & Maryland Film Fest** | Film & Arts | `snf-parkway.webp` | Stavros Niarchos Foundation-backed cultural institution |
-| 3 | **DC Scores** | Youth Development | `dc-scores.webp` | Well-known DC nonprofit, shows range beyond commercial work |
-| 4 | **Inner Cosmos** | Neurotech | `inner-cosmos.webp` | Cutting-edge neuroscience startup — "wow" factor |
-| 5 | **Dr. Anthony Gustin** | Health & Wellness | `dr-anthony-gustin.webp` | Large personal brand with 500k+ audience |
-| 6 | **Advance Illinois** | Education Policy | `advance-illinois.webp` | Institutional org, policy/advocacy gravitas |
-| 7 | **Frenos** | OT Cybersecurity | `frenos.webp` | Enterprise cybersecurity, serious B2B credibility |
-| 8 | **Uncommon Capital Group** | Real Estate Investment | `uncommon-capital.webp` | Finance/RE investment = premium positioning |
+| # | Client | Industry | Filename | Evidence |
+|---|--------|----------|----------|----------|
+| 1 | **DataTribe** | Cybersecurity & VC | `datatribe.webp` | VC firm with exits to Microsoft and Synopsys. 8th annual DataTribe Challenge. Mike Janke (SEAL Team 6) co-founder. |
+| 2 | **Fianu** | DevOps Governance | `fianu.webp` | Enterprise SaaS — Dexcom (major medical device co) is a case study client. Cut release cycles 80%. |
+| 3 | **Uncommon Capital Group** | Real Estate Investment | `uncommon-capital.webp` | Private RE investment community. $76M+ deal closed and oversubscribed. Family offices, RIAs, HNW clients. |
+| 4 | **Clover Capital** | Private Investment | `clover-capital.webp` | Private investment partnership founded 1998. Trust/estate, asset allocation, tax. Generational wealth management. |
+| 5 | **PME Indy** | Federal Staffing & Services | `pme-indy.webp` | Federal contractor — CBP, Army. SBA Small Business Person of the Year. Saved government $200M on a contract. |
+| 6 | **DC Scores** | Youth Development | `dc-scores.webp` | 30-year nonprofit, 3500+ kids/year, 68+ schools. One Night One Goal raised $500k+. WaPo, Fox Sports, SBJ coverage. |
+| 7 | **Rotary Digital** | Digital Media | `rotary-digital.webp` | 1.3M newsletter subscribers across 4 publications. 50%+ open rates. 65% of readers HHI $150k+. Real ad revenue. |
+| 8 | **Frenos** | OT Cybersecurity | `frenos.webp` | Enterprise OT pen-testing platform. Serves airports, utilities, healthcare, manufacturing, maritime. Partners with major vendors. |
+| 9 | **Dr. Anthony Gustin** | Health & Wellness | `dr-anthony-gustin.webp` | Multi-brand health entrepreneur (Equip Foods, Lineage Provisions). Active podcast, newsletter, investor. |
+| 10 | **SNF Parkway & Maryland Film Fest** | Film & Arts | `snf-parkway.webp` | Stavros Niarchos Foundation-backed cultural institution. Full event calendar. Expanding programming. |
+| 11 | **Startups & Hand Grenades** | Venture & Cybersecurity | `startups-hg.webp` | Mike Janke — DataTribe co-founder, former SEAL Team 6. Goldman Sachs Top 100 Entrepreneurs. FP Top 100 Global Thinkers. WSJ, Newsweek, FT. |
 
-#### Tier 2 — Source Next (solid work, adds industry range)
+#### Tier 2 — Source Next (legitimate businesses, real clients)
 
-| # | Client | Industry | Filename | Why |
-|---|--------|----------|----------|-----|
-| 9 | **Fianu** | Technology & Governance | `fianu.webp` | Gov-tech niche, interesting industry signal |
-| 10 | **SoCal BioMed** | Laboratory Equipment | `socal-biomed.webp` | Science/medical, good vertical diversity |
-| 11 | **Clover Capital** | Private Investment | `clover-capital.webp` | Finance, premium feel |
-| 12 | **Endurance Box** | Fitness & E-Commerce | `endurance-box.webp` | E-commerce = substantial project, long-term client |
-| 13 | **Here & Away** | Travel & Lifestyle | `here-and-away.webp` | Travel/lifestyle, visually strong category |
-| 14 | **Luxe Life** | Luxury Hospitality | `luxe-life.webp` | Luxury vertical, premium tone |
-| 15 | **By Ereka** | Lifestyle & Culinary | `by-ereka.webp` | Lifestyle/culinary, visual diversity |
-| 16 | **Autism Society of Maryland** | Advocacy | `autism-society-md.webp` | Shows heart, nonprofit credibility |
-| 17 | **Startups & Hand Grenades** | Consulting | `startups-hg.webp` | Memorable name, consulting vertical |
+| # | Client | Industry | Filename | Evidence |
+|---|--------|----------|----------|----------|
+| 12 | **Inner Cosmos** | Neurotech | `inner-cosmos.webp` | FDA IDE-approved BCI trial for depression (first in 20 years). WashU collaboration. Forbes feature. Pre-revenue but world-class pedigree. |
+| 13 | **RankPay** | Digital Marketing | `rankpay.webp` | 15+ years in business. SEO, PPC, content marketing. Real client testimonials, agency partner program. |
+| 14 | **SoCal BioMed** | Laboratory Equipment | `socal-biomed.webp` | Lab equipment e-commerce with own Waverly brand. Real products shipping ($129–$1,245). |
+| 15 | **Samata Health** | Mental Health EAP | `samata-health.webp` | SaaS EAP platform. Instabase and Hatch as clients. 7-10x engagement vs traditional EAPs. Usage-based model. |
+| 16 | **The Edge Creative** | Video Production | `the-edge-creative.webp` | DC-based video agency. 5x Reed Awards, 5x Pollie Awards. Forbright Bank, Abbott Elementary as clients. |
+| 17 | **Miracle Maids** | Commercial Cleaning | `miracle-maids.webp` | DMV cleaning company. Institutional clients since 2014 (Franciscan Monastery, St. Jude school, medical labs). |
+| 18 | **Advance Illinois** | Education Policy | `advance-illinois.webp` | Education equity nonprofit. Policy research and advocacy across 850+ IL school districts. |
+| 19 | **Autism Society of Maryland** | Advocacy | `autism-society-md.webp` | Active advocacy org. Community programs, events, press releases through 2026. Real community impact. |
+| 20 | **Landrec** | Playground Design | `landrec.webp` | Custom playground fabrication & e-commerce. Real projects, design studio, Shopify store. |
 
-#### Tier 3 — Source If Possible (complete the set)
+#### Tier 3 — Source If Possible (small, pre-launch, or unclear revenue)
 
-| # | Client | Industry | Filename |
-|---|--------|----------|----------|
-| 18 | Samata Health | Mental Health SaaS | `samata-health.webp` |
-| 19 | Nozy | Baby Tech & Wellness | `nozy.webp` |
-| 20 | Landrec | Playgrounds & E-Commerce | `landrec.webp` |
-| 21 | Miracle Maids | Cleaning Services | `miracle-maids.webp` |
-| 22 | PME Indy | Staffing & Services | `pme-indy.webp` |
-| 23 | RankPay | Digital Marketing | `rankpay.webp` |
-| 24 | Rotary Digital | Digital Media | `rotary-digital.webp` |
-| 25 | The Edge Creative | Video Production | `the-edge-creative.webp` |
+| # | Client | Industry | Filename | Note |
+|---|--------|----------|----------|------|
+| 21 | Luxe Life | Luxury STR Management | `luxe-life.webp` | Stats section shows "$0M" (placeholder or broken counters). Business model is real but scale unclear. |
+| 22 | Endurance Box | Fitness Subscription | `endurance-box.webp` | Monthly subscription box ($49–$529/yr). Still has Lorem Ipsum in testimonials section. |
+| 23 | Here & Away | Travel Blog | `here-and-away.webp` | Travel content/newsletter. No clear revenue model beyond affiliate/ads. |
+| 24 | By Ereka | Apron E-Commerce | `by-ereka.webp` | ~5 apron SKUs at $75–$95. Very small product line. |
+| 25 | Nozy | Baby Tech | `nozy.webp` | Still on "Join the Waitlist." Pre-launch, not shipping any product. |
 
 ### Already On the Archive (no action needed)
 
@@ -175,33 +175,33 @@ Once uploaded, ping Dat. The naming is 1:1 with the codebase so it's a straight 
 - [ ] Websites thumbnail (500 × 640, portrait)
 - [ ] Content thumbnail (500 × 640, portrait)
 
-**Archive — Tier 1 (8 images):**
+**Archive — Tier 1 (11 images):**
 - [ ] DataTribe
-- [ ] SNF Parkway
-- [ ] DC Scores
-- [ ] Inner Cosmos
-- [ ] Dr. Anthony Gustin
-- [ ] Advance Illinois
-- [ ] Frenos
-- [ ] Uncommon Capital Group
-
-**Archive — Tier 2 (9 images):**
 - [ ] Fianu
-- [ ] SoCal BioMed
+- [ ] Uncommon Capital Group
 - [ ] Clover Capital
-- [ ] Endurance Box
-- [ ] Here & Away
-- [ ] Luxe Life
-- [ ] By Ereka
-- [ ] Autism Society of Maryland
+- [ ] PME Indy
+- [ ] DC Scores
+- [ ] Rotary Digital
+- [ ] Frenos
+- [ ] Dr. Anthony Gustin
+- [ ] SNF Parkway
 - [ ] Startups & Hand Grenades
 
-**Archive — Tier 3 (8 images, stretch goal):**
-- [ ] Samata Health
-- [ ] Nozy
-- [ ] Landrec
-- [ ] Miracle Maids
-- [ ] PME Indy
+**Archive — Tier 2 (9 images):**
+- [ ] Inner Cosmos
 - [ ] RankPay
-- [ ] Rotary Digital
+- [ ] SoCal BioMed
+- [ ] Samata Health
 - [ ] The Edge Creative
+- [ ] Miracle Maids
+- [ ] Advance Illinois
+- [ ] Autism Society of Maryland
+- [ ] Landrec
+
+**Archive — Tier 3 (5 images, stretch goal):**
+- [ ] Luxe Life
+- [ ] Endurance Box
+- [ ] Here & Away
+- [ ] By Ereka
+- [ ] Nozy
