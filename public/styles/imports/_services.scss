@@ -39,9 +39,9 @@ $process-spacer: calc(#{$spacer} / 2);
 
 		.process-item {
 			display: grid;
-			grid-template-columns: auto 1fr auto;
+			grid-template-columns: 55fr 45fr;
 			gap: $gutter;
-			padding: $process-spacer $gutter;
+			padding: calc(#{$process-spacer} * 2) $gutter;
 			border-top: 1px solid $color-white;
 			position: sticky;
 			top: var(--process-header-h, 0px);
@@ -69,14 +69,13 @@ $process-spacer: calc(#{$spacer} / 2);
 		}
 
 		.process-index {
-			font-family: $font-suisse;
-			font-size: $font-size-p;
-			padding-top: 0.3em;
+			font-family: $font-ppmori;
+			font-size: $font-size-h1;
+			font-weight: 400;
+			line-height: 1;
+			letter-spacing: -0.05em;
 			white-space: nowrap;
 			color: rgba($color-white, 0.4);
-			span {
-				color: $color-white;
-			}
 		}
 
 		.process-content {
@@ -88,19 +87,6 @@ $process-spacer: calc(#{$spacer} / 2);
 			p {
 				opacity: 0.7;
 				line-height: 1.6;
-			}
-		}
-
-		.process-image {
-			width: calc(min(25vw, 480px));
-			flex-shrink: 0;
-			@media screen and (max-width: $mobile-breakpoint) {
-				width: 100%;
-			}
-			img {
-				width: 100%;
-				height: auto;
-				object-fit: cover;
 			}
 		}
 	}
