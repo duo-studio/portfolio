@@ -91,39 +91,39 @@ Only use video when the work truly benefits from motion (scroll animations, UI i
 
 Sourced from the homepage roster, excluding case study clients and clients already on the archive.
 
-#### Tier 1 — Source First (strongest trust signals)
+#### Tier 1 — Source First (names that carry real weight)
 
 | # | Client | Industry | Filename | Why |
 |---|--------|----------|----------|-----|
-| 1 | **DataTribe** | Cybersecurity & VC | `datatribe.webp` | High-profile DC-area VC firm |
+| 1 | **DataTribe** | Cybersecurity & VC | `datatribe.webp` | High-profile DC-area VC firm — instant credibility |
 | 2 | **SNF Parkway & Maryland Film Fest** | Film & Arts | `snf-parkway.webp` | Stavros Niarchos Foundation-backed cultural institution |
-| 3 | **DC Scores** | Youth Development | `dc-scores.webp` | Well-known DC nonprofit, shows range |
-| 4 | **Inner Cosmos** | Neurotech | `inner-cosmos.webp` | Cutting-edge neuroscience startup |
-| 5 | **Dr. Anthony Gustin** | Health & Wellness | `dr-anthony-gustin.webp` | Large personal brand with real audience |
-| 6 | **Samata Health** | Mental Health SaaS | `samata-health.webp` | Health tech = serious product design |
-| 7 | **Advance Illinois** | Education Policy | `advance-illinois.webp` | Institutional org, policy/advocacy gravitas |
-| 8 | **Frenos** | OT Cybersecurity | `frenos.webp` | Enterprise cybersecurity, B2B credibility |
-| 9 | **Fianu** | Technology & Governance | `fianu.webp` | Gov-tech niche |
-| 10 | **Uncommon Capital Group** | Real Estate Investment | `uncommon-capital.webp` | Finance = premium positioning |
-| 11 | **SoCal BioMed** | Laboratory Equipment | `socal-biomed.webp` | Science/medical industry |
+| 3 | **DC Scores** | Youth Development | `dc-scores.webp` | Well-known DC nonprofit, shows range beyond commercial work |
+| 4 | **Inner Cosmos** | Neurotech | `inner-cosmos.webp` | Cutting-edge neuroscience startup — "wow" factor |
+| 5 | **Dr. Anthony Gustin** | Health & Wellness | `dr-anthony-gustin.webp` | Large personal brand with 500k+ audience |
+| 6 | **Advance Illinois** | Education Policy | `advance-illinois.webp` | Institutional org, policy/advocacy gravitas |
+| 7 | **Frenos** | OT Cybersecurity | `frenos.webp` | Enterprise cybersecurity, serious B2B credibility |
+| 8 | **Uncommon Capital Group** | Real Estate Investment | `uncommon-capital.webp` | Finance/RE investment = premium positioning |
 
-#### Tier 2 — Source Next (visual diversity)
+#### Tier 2 — Source Next (solid work, adds industry range)
 
-| # | Client | Industry | Filename |
-|---|--------|----------|----------|
-| 12 | **Clover Capital** | Private Investment | `clover-capital.webp` |
-| 13 | **Endurance Box** | Fitness & E-Commerce | `endurance-box.webp` |
-| 14 | **Here & Away** | Travel & Lifestyle | `here-and-away.webp` |
-| 15 | **Luxe Life** | Luxury Hospitality | `luxe-life.webp` |
-| 16 | **By Ereka** | Lifestyle & Culinary | `by-ereka.webp` |
-| 17 | **Nozy** | Baby Tech & Wellness | `nozy.webp` |
-| 18 | **Startups & Hand Grenades** | Consulting | `startups-hg.webp` |
-| 19 | **Autism Society of Maryland** | Advocacy | `autism-society-md.webp` |
+| # | Client | Industry | Filename | Why |
+|---|--------|----------|----------|-----|
+| 9 | **Fianu** | Technology & Governance | `fianu.webp` | Gov-tech niche, interesting industry signal |
+| 10 | **SoCal BioMed** | Laboratory Equipment | `socal-biomed.webp` | Science/medical, good vertical diversity |
+| 11 | **Clover Capital** | Private Investment | `clover-capital.webp` | Finance, premium feel |
+| 12 | **Endurance Box** | Fitness & E-Commerce | `endurance-box.webp` | E-commerce = substantial project, long-term client |
+| 13 | **Here & Away** | Travel & Lifestyle | `here-and-away.webp` | Travel/lifestyle, visually strong category |
+| 14 | **Luxe Life** | Luxury Hospitality | `luxe-life.webp` | Luxury vertical, premium tone |
+| 15 | **By Ereka** | Lifestyle & Culinary | `by-ereka.webp` | Lifestyle/culinary, visual diversity |
+| 16 | **Autism Society of Maryland** | Advocacy | `autism-society-md.webp` | Shows heart, nonprofit credibility |
+| 17 | **Startups & Hand Grenades** | Consulting | `startups-hg.webp` | Memorable name, consulting vertical |
 
 #### Tier 3 — Source If Possible (complete the set)
 
 | # | Client | Industry | Filename |
 |---|--------|----------|----------|
+| 18 | Samata Health | Mental Health SaaS | `samata-health.webp` |
+| 19 | Nozy | Baby Tech & Wellness | `nozy.webp` |
 | 20 | Landrec | Playgrounds & E-Commerce | `landrec.webp` |
 | 21 | Miracle Maids | Cleaning Services | `miracle-maids.webp` |
 | 22 | PME Indy | Staffing & Services | `pme-indy.webp` |
@@ -175,30 +175,30 @@ Once uploaded, ping Dat. The naming is 1:1 with the codebase so it's a straight 
 - [ ] Websites thumbnail (500 × 640, portrait)
 - [ ] Content thumbnail (500 × 640, portrait)
 
-**Archive — Tier 1 (11 images):**
+**Archive — Tier 1 (8 images):**
 - [ ] DataTribe
 - [ ] SNF Parkway
 - [ ] DC Scores
 - [ ] Inner Cosmos
 - [ ] Dr. Anthony Gustin
-- [ ] Samata Health
 - [ ] Advance Illinois
 - [ ] Frenos
-- [ ] Fianu
 - [ ] Uncommon Capital Group
-- [ ] SoCal BioMed
 
-**Archive — Tier 2 (8 images):**
+**Archive — Tier 2 (9 images):**
+- [ ] Fianu
+- [ ] SoCal BioMed
 - [ ] Clover Capital
 - [ ] Endurance Box
 - [ ] Here & Away
 - [ ] Luxe Life
 - [ ] By Ereka
-- [ ] Nozy
-- [ ] Startups & Hand Grenades
 - [ ] Autism Society of Maryland
+- [ ] Startups & Hand Grenades
 
-**Archive — Tier 3 (6 images, stretch goal):**
+**Archive — Tier 3 (8 images, stretch goal):**
+- [ ] Samata Health
+- [ ] Nozy
 - [ ] Landrec
 - [ ] Miracle Maids
 - [ ] PME Indy
