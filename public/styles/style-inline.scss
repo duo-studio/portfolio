@@ -1584,14 +1584,16 @@ nav {
 		.section__wrapper {
 			> .row {
 				display: grid;
-				grid-template-columns: 2fr 1fr;
+				grid-template-columns: 1.5fr 1fr;
+				gap: $gutter;
+				padding-inline: $gutter;
 				min-height: 100vh;
 				@media screen and (max-width: $mobile-breakpoint) {
 					display: flex;
 					flex-direction: column;
 				}
 				.col {
-					padding: calc(calc(#{$mobile-spacer * 1.5} + #{$nav-spacer})) 4vw 4vw;
+					padding: calc(calc(#{$mobile-spacer * 1.5} + #{$nav-spacer})) 0 4vw;
 
 					@media screen and (max-width: $mobile-breakpoint) {
 						width: 100%;

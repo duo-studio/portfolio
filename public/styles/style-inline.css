@@ -1272,14 +1272,16 @@ nav {
 
 .barba-container[data-barba-namespace="contact"] #main .section__wrapper > .row {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1.5fr 1fr;
+  gap: calc(min(6vw, 115px));
+  padding-inline: calc(min(6vw, 115px));
   min-height: 100vh; }
   @media screen and (max-width: 1024px) {
     .barba-container[data-barba-namespace="contact"] #main .section__wrapper > .row {
       display: flex;
       flex-direction: column; } }
   .barba-container[data-barba-namespace="contact"] #main .section__wrapper > .row .col {
-    padding: calc(calc(6rem + calc(max(52px, 3.125vw)))) 4vw 4vw; }
+    padding: calc(calc(6rem + calc(max(52px, 3.125vw)))) 0 4vw; }
     @media screen and (max-width: 1024px) {
       .barba-container[data-barba-namespace="contact"] #main .section__wrapper > .row .col {
         width: 100%; } }

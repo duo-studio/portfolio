@@ -1011,30 +1011,34 @@ function loadIndexScripts() {
 	if (loadBtn) {
 		loadBtn.addEventListener("click", function () {
 			var btn = this;
-			gsap.to(btn, { opacity: 0, pointerEvents: "none", display: "none" });
 			var container = document.querySelector(".clients-section .-clients");
 			var allClients = Array.from(container.querySelectorAll(".inner"));
-
-			allClients.forEach(function (el) {
-				el.classList.remove("next");
+			var visibleClients = allClients.filter(function (el) {
+				return !el.classList.contains("next");
 			});
 
-			var sorted = allClients.sort(function (a, b) {
-				return (
-					parseInt(a.getAttribute("data-client-idx")) -
-					parseInt(b.getAttribute("data-client-idx"))
-				);
-			});
+			gsap.to(btn, { opacity: 0, pointerEvents: "none", display: "none" });
 
-			gsap.to(allClients, {
+			gsap.to(visibleClients, {
 				opacity: 0,
 				duration: 0.3,
 				onComplete: function () {
+					allClients.forEach(function (el) {
+						el.classList.remove("next");
+					});
+					gsap.set(allClients, { display: "flex", opacity: 0, y: 20 });
+
+					var sorted = allClients.sort(function (a, b) {
+						return (
+							parseInt(a.getAttribute("data-client-idx")) -
+							parseInt(b.getAttribute("data-client-idx"))
+						);
+					});
 					sorted.forEach(function (el) {
 						container.appendChild(el);
 					});
-					gsap.set(allClients, { display: "block", opacity: 0, y: 20 });
-					var tl = gsap.timeline({
+
+					gsap.timeline({
 						onStart: function () {
 							lenis.stop();
 						},
@@ -1042,11 +1046,10 @@ function loadIndexScripts() {
 							lenis.start();
 							ScrollTrigger.refresh();
 						},
-					});
-					tl.to(sorted, {
+					}).to(sorted, {
 						opacity: 1,
 						y: 0,
-						duration: 0.6,
+						duration: 0.5,
 						ease: "power2.out",
 						stagger: 0.03,
 					});
