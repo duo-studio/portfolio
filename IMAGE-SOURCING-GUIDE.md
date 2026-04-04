@@ -138,14 +138,14 @@ Sourced from the homepage roster, excluding case study clients and clients alrea
 | GiftBird | Image | `giftbird.webp` |
 | Housing Line | Image | `housingline.webp` |
 | TI Verbatim | Video | `tiverbatim.mp4` |
-| Genimex* | Image | `genimex.webp` |
+| ~~Genimex~~ | Image | `genimex.webp` — **REMOVE: already a case study client** |
 | Infinity Technology (ITLLC) | Video | `infinity.mp4` |
 | GATA (GATAPACK) | Image | `gata.webp` |
 | The Fitness Club | Video | `fitclub.mp4` |
 | ApolloXStill | Video | `apollo.mp4` |
 | BMWL | Image | `bmwl.webp` |
 
-*\*Genimex is also a case study client — may need to swap out. TBD.*
+**Action item: Remove Genimex from the archive — it's a case study client and shouldn't appear in both places. Replace its cell with a new T1 or T2 client.**
 
 ### File Names (Google Drive)
 
