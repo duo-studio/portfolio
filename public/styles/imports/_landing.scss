@@ -11,12 +11,12 @@
 	nav.anchors {
 		ul {
 			li {
-				&.egg {
+				&.nav-cta {
 					width: 115px;
 					pointer-events: none;
 				}
 
-				&:not(:first-of-type):not(.egg) {
+				&:not(:first-of-type):not(.nav-cta) {
 					padding: 0 0.5em;
 					cursor: pointer;
 				}

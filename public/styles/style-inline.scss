@@ -985,7 +985,7 @@ nav {
 				}
 			}
 
-			&.egg {
+			&.nav-cta {
 				grid-column: 3;
 				justify-self: end;
 				@media screen and (max-width: $mobile-breakpoint) {
@@ -1027,7 +1027,7 @@ nav {
 			}
 
 			&.active {
-				&:not(.egg) {
+				&:not(.nav-cta) {
 					&:before {
 						width: calc(100% - 0.4em);
 					}

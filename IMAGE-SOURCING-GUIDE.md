@@ -151,7 +151,7 @@ Sourced from the homepage roster, excluding case study clients and clients alrea
 
 Use the exact filenames from the tables above. They match the codebase naming convention and can be dropped straight in.
 
-**Destination folder on site:** `public/assets/easter-egg/`
+**Destination folder on site:** `public/assets/archive/`
 
 ---
 

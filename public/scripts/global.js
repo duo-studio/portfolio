@@ -97,11 +97,11 @@ window.addEventListener("load", (event) => {
 			});
 		});
 
-		var eggBtn = document.querySelector("nav:not(.anchors) .egg");
+		var ctaBtn = document.querySelector("nav:not(.anchors) .nav-cta");
 		var contactContainer = document.querySelector(
 			".nav-container__inner.contact",
 		);
-		if (eggBtn && contactContainer) {
+		if (ctaBtn && contactContainer) {
 			var contactEl = contactContainer.querySelector(".nav-marquee"),
 				contactC = contactEl.querySelector(".nav-marquee__container"),
 				contactM = contactEl.querySelector(".nav-marquee__inner"),
@@ -122,12 +122,12 @@ window.addEventListener("load", (event) => {
 				},
 				repeat: -1,
 			});
-			eggBtn.addEventListener("mouseenter", function () {
+			ctaBtn.addEventListener("mouseenter", function () {
 				contactContainer.classList.add("active");
 				document.body.classList.add("init__nav");
 				contactTl.play();
 			});
-			eggBtn.addEventListener("mouseleave", function () {
+			ctaBtn.addEventListener("mouseleave", function () {
 				contactContainer.classList.remove("active");
 				document.body.classList.remove("init__nav");
 				contactTl.pause();
@@ -1589,7 +1589,7 @@ function loadProjectScripts(triggerState, prev) {
 	});
 }
 
-function loadEggScripts() {
+function loadArchiveScripts() {
 	document.querySelector(".barba-container").classList.remove("loading");
 
 	var gridEl = document.querySelector(".archive-grid");
@@ -2017,7 +2017,7 @@ function loadLandingScripts() {
 		}
 	}
 
-	if (document.querySelector("#featured").classList.contains("egg-event")) {
+	if (document.querySelector("#featured").classList.contains("featured-carousel")) {
 		var container = document.querySelector("#featured"),
 			headlines = container.querySelectorAll(".slider__title h4"),
 			bgs = container.querySelectorAll(".slider__bg img"),
@@ -2420,7 +2420,7 @@ function loadJournalScripts() {
 }
 document.addEventListener("DOMContentLoaded", function (event) {
 	var nav = document.querySelector("nav:not(.anchors)"),
-		navItems = nav.querySelectorAll(".nav-items__inner .nav-item, .egg");
+		navItems = nav.querySelectorAll(".nav-items__inner .nav-item, .nav-cta");
 	//GENERAL TRANSITIONS
 	function pageTransitionLeave() {
 		lenis.stop();
@@ -2744,12 +2744,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
 			},
 
 			{
-				namespace: "easter-egg",
+				namespace: "archive",
 				afterEnter({ next }) {
 					var scrollContainer = next.container;
 
 					imagesLoaded(scrollContainer, function () {
-						loadEggScripts();
+						loadArchiveScripts();
 					});
 				},
 			},
