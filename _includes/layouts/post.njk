@@ -68,7 +68,8 @@ layout: layouts/base.njk
                                 {% if item.data.category == "Guide" and item.url != page.url and guideCount < 3 %}
                                     <a class="col cursor__hover --highlight" href="{{ item.data.permalink }}" style="width: calc(33.333% - 1rem);">
                                         {% if item.data.featImage %}
-                                            {% set guideThumb = "../" + item.data.permalink + item.data.featImage %}
+                                            {% set guideSlug = item.url | replace("/guides/", "") | replace("/", "") %}
+                                            {% set guideThumb = "../" + guideSlug + "/featured.webp" %}
                                             <div class="no-overflow">
                                                 <div class="entry__related--thumbnail">
                                                     {% image guideThumb, item.data.headline %}
