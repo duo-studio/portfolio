@@ -102,23 +102,34 @@ Differentiation isn't just a marketing exercise. It's the foundation your entire
 
 This usually isn't a strategy problem — most businesses have done the work of figuring out what makes them different. It's a translation problem. The positioning exists in someone's head, or in a document no one looks at, but it hasn't been translated into a visual identity, a voice, a narrative that runs consistently through everything you put out. A rebrand is how that internal clarity becomes legible to everyone outside the room.
 
-<h2 id="faq">Frequently Asked Questions</h2>
+<h2 id="faq">FAQ</h2>
 
-<h3>How much does a rebrand typically cost?</h3>
+<div class="faq">
+<details class="faq__item">
+<summary>How much does a rebrand typically cost?</summary>
 
 It depends on scope, but a comprehensive rebrand — strategy, identity system, and website — for an established business typically starts around $30,000 and scales up from there based on complexity. Smaller refreshes (updating visual elements without repositioning) can cost less, but it's worth being honest about whether a refresh will actually solve the problem or just delay it. For a full breakdown by scope and studio size, see our [complete guide to rebrand costs](/guides/rebrand-cost/).
 
-<h3>What's the difference between a brand refresh and a full rebrand?</h3>
+</details>
+<details class="faq__item">
+<summary>What's the difference between a brand refresh and a full rebrand?</summary>
 
 A refresh updates the aesthetics — modernizing your logo, cleaning up your color palette, standardizing typography. It's additive and evolutionary. A full rebrand goes deeper: it revisits your positioning, messaging, and visual identity from the ground up. The question to ask is whether your brand has a cosmetic problem or a strategic one. If the positioning is still right but the look is dated, a refresh may be enough. If the positioning itself has shifted, a full rebrand is the more honest answer. Not sure whether a logo update or something deeper is what your business needs? [Here's a clear breakdown of branding vs. logo design](/guides/branding-vs-logo-design/).
 
-<h3>How long does a rebrand take?</h3>
+</details>
+<details class="faq__item">
+<summary>How long does a rebrand take?</summary>
 
 A thorough rebrand — including discovery, strategy, identity development, and rollout — typically takes three to six months for a business of meaningful size. Rushing it tends to produce the same problem you started with: a brand that doesn't quite fit. The strategy phase alone deserves more time than most people budget for it, because the visual work is only as good as the clarity that goes into it.
 
-<h3>Will rebranding confuse my existing clients?</h3>
+</details>
+<details class="faq__item">
+<summary>Will rebranding confuse my existing clients?</summary>
 
 Done well, no — and this is a common concern worth addressing directly. Clients don't follow your logo, they follow the relationship, the results, and the people. A rebrand announcement, done thoughtfully, tends to generate positive attention rather than confusion. The businesses that experience friction are usually the ones that rebrand without communicating the "why" to their existing audience. Tell the story. Clients who know you will come along.
+
+</details>
+</div>
 
 <h2 id="final-thoughts">Final Thoughts</h2>
 

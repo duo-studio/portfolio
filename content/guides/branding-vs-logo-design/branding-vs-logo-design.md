@@ -159,21 +159,32 @@ At Duo Studio, the branding engagements we take on always start with strategy. T
 
 <h2 id="faq">FAQ</h2>
 
-**How much does branding cost compared to just a logo?**
+<div class="faq">
+<details class="faq__item">
+<summary>How much does branding cost compared to just a logo?</summary>
 
 A standalone logo from a freelancer might run anywhere from a few hundred to a few thousand dollars depending on experience level. Full brand identity work — strategy, verbal identity, visual system, and guidelines — typically starts in the $10,000–$30,000+ range at a professional studio, and goes up from there for larger or more complex engagements. The difference in price reflects the difference in scope. You're not just getting a file; you're getting a complete system built to last.
 
-**Can I start with a logo and add branding later?**
+</details>
+<details class="faq__item">
+<summary>Can I start with a logo and add branding later?</summary>
 
 Technically yes, but it's not the most efficient path. When you build out a brand identity after the logo already exists, you often have to work around constraints the logo created — color decisions get forced, typography has to match what's already there, and the strategy ends up retrofitted rather than foundational. If you know branding is in your future, starting there saves rework.
 
-**What's the difference between brand identity and branding?**
+</details>
+<details class="faq__item">
+<summary>What's the difference between brand identity and branding?</summary>
 
 These terms are often used interchangeably, but there's a subtle distinction. Brand identity refers specifically to the visual and verbal system — the logo, colors, type, voice. Branding is the broader practice of shaping how a business is perceived, which includes the strategy, positioning, and experience behind the identity. Think of brand identity as the output and branding as the process.
 
-**Do I really need brand guidelines if I'm a small business?**
+</details>
+<details class="faq__item">
+<summary>Do I really need brand guidelines if I'm a small business?</summary>
 
 Yes — maybe more than a larger one. Big companies have whole marketing teams to maintain consistency. Small businesses often rely on contractors, agencies, or rotating team members who don't have institutional knowledge about how things should look. Guidelines remove the guesswork and protect your investment in the brand system you've built. Even a lean, well-organized brand document pays for itself the first time it prevents someone from putting your logo on a neon green background.
+
+</details>
+</div>
 
 <h2 id="final-thoughts">Final Thoughts</h2>
 

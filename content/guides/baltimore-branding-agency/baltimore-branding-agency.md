@@ -108,23 +108,34 @@ But geography doesn't define the work. Our process runs remote-first by design, 
 
 We've been recognized by [Awwwards](https://www.awwwards.com/){target="_blank"} for web design excellence and listed on [DesignRush](https://www.designrush.com/){target="_blank"} as a top branding and web design agency. We mention this not to lead with accolades — awards don't pay your clients' bills — but because external validation matters when you're evaluating a studio for a serious investment. The work has been recognized by people who look at a lot of work.
 
-<h2 id="faq">Frequently Asked Questions</h2>
+<h2 id="faq">FAQ</h2>
 
-<h3 id="faq-cost">How much does it cost to work with Duo Studio?</h3>
+<div class="faq">
+<details class="faq__item">
+<summary>How much does it cost to work with Duo Studio?</summary>
 
 Our engagements typically start at $30,000 for a combined brand strategy, identity design, and custom website project. Scope varies — some projects are larger, some are more focused. We're transparent about pricing early in the process, so there are no surprises. If you're looking for the cheapest option, we're probably not the right fit. If you're looking for the option most likely to actually move the needle for your business, let's talk.
 
-<h3 id="faq-location">Do you work with clients outside of Baltimore?</h3>
+</details>
+<details class="faq__item">
+<summary>Do you work with clients outside of Baltimore?</summary>
 
 Yes, and we do it regularly. Our process is remote-first by design — we've worked with clients across the U.S. from our Baltimore studio. Discovery workshops, design reviews, and feedback cycles all happen over video and async collaboration tools. Being local is a nice-to-have, not a requirement.
 
-<h3 id="faq-industries">What industries do you specialize in?</h3>
+</details>
+<details class="faq__item">
+<summary>What industries do you specialize in?</summary>
 
 We don't limit ourselves to a single vertical. Our portfolio spans manufacturing, fintech, nonprofit, travel, real estate, healthcare, and more. What ties our clients together isn't the industry — it's where they are in their business journey. Established, growing, and ready to invest in their brand seriously.
 
-<h3 id="faq-timeline">How long does a typical project take?</h3>
+</details>
+<details class="faq__item">
+<summary>How long does a typical project take?</summary>
 
 A full brand and website engagement typically runs 12 to 20 weeks from kickoff to launch, depending on scope. Brand-only projects can move faster. Larger websites with complex functionality take more time. We'll give you a realistic timeline during our initial conversations — and we stick to it. Scope creep and missed deadlines are a choice, not an inevitability.
+
+</details>
+</div>
 
 <h2 id="lets-talk">Let's Talk</h2>
 
@@ -148,4 +159,33 @@ If you're ready to talk through what a project might look like, reach out. We'll
       "name": "How much does it cost to work with Duo Studio?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Our engagements typically start at $30,000 for a combined brand strategy, identity design, and custom website project. Scope varies — some projects are larger, some are more focused. We're transparent about pricing early in the process, so there are no surprises. If you're looking for the cheapest option, we're probably not the right fit. If you're looking for the option most likely to actually move the needle for your business, let's talk.
+        "text": "Our engagements typically start at $30,000 for a combined brand strategy, identity design, and custom website project. Scope varies — some projects are larger, some are more focused. We're transparent about pricing early in the process, so there are no surprises."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you work with clients outside of Baltimore?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, and we do it regularly. Our process is remote-first by design — we've worked with clients across the U.S. from our Baltimore studio. Discovery workshops, design reviews, and feedback cycles all happen over video and async collaboration tools. Being local is a nice-to-have, not a requirement."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What industries do you specialize in?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We don't limit ourselves to a single vertical. Our portfolio spans manufacturing, fintech, nonprofit, travel, real estate, healthcare, and more. What ties our clients together isn't the industry — it's where they are in their business journey. Established, growing, and ready to invest in their brand seriously."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does a typical project take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A full brand and website engagement typically runs 12 to 20 weeks from kickoff to launch, depending on scope. Brand-only projects can move faster. Larger websites with complex functionality take more time. We'll give you a realistic timeline during our initial conversations — and we stick to it."
+      }
+    }
+  ]
+}
+</script>

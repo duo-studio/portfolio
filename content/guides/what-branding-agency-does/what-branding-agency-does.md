@@ -27,7 +27,7 @@ ignore: false
 - [Phase 4: Brand Guidelines](#brand-guidelines)
 - [Phase 5: Website Design & Development](#website)
 - [Phase 6: Launch & Handoff](#launch-handoff)
-- [Frequently Asked Questions](#faq)
+- [FAQ](#faq)
 - [Final Thoughts](#final-thoughts)
 
 </div>
@@ -119,23 +119,34 @@ A good agency also does some version of knowledge transfer before closing out: w
 
 **Your role here:** Plan for maintenance. A strong brand degrades if it's not applied consistently. Assign someone internally to own brand standards. Build a habit of referring back to the guidelines when new creative needs come up. And when the brand eventually needs to evolve — because all brands do — you'll have a documented foundation to build from rather than starting over.
 
-<h2 id="faq">Frequently Asked Questions</h2>
+<h2 id="faq">FAQ</h2>
 
-<h3 id="faq-timeline">How long does working with a branding agency take?</h3>
+<div class="faq">
+<details class="faq__item">
+<summary>How long does working with a branding agency take?</summary>
 
 A full branding engagement — from strategy through brand guidelines and website — typically runs three to six months. Shorter timelines are possible for limited scopes (brand identity only, no web development), but rushing the discovery and strategy phase tends to produce weaker work downstream. If you have a hard launch date, share it early so the agency can scope accordingly.
 
-<h3 id="faq-cost">What does a branding agency cost?</h3>
+</details>
+<details class="faq__item">
+<summary>What does a branding agency cost?</summary>
 
 The range is wide. Freelancers might charge a few thousand dollars for a logo package. Mid-sized agencies with a full strategic process typically start in the $30–60k range for a complete brand identity and website. Larger agencies with national clients can run into six figures. What you're paying for at the higher end isn't just better design — it's the research, the strategy, the systems thinking, and the experience to know which choices will hold up over time. For a detailed breakdown of costs by project component and studio tier, see our [guide to rebrand costs in 2026](/guides/rebrand-cost/).
 
-<h3 id="faq-prepare">What should I prepare before the first meeting?</h3>
+</details>
+<details class="faq__item">
+<summary>What should I prepare before the first meeting?</summary>
 
 Come with context, not answers. You don't need a brief or a brand strategy — that's the agency's job to build with you. What helps: a clear description of your business and what makes it different, some sense of who your best customers are, examples of brands you admire (and why), and any existing brand materials, even if they're things you're ready to move away from. Honesty about what's not working is more useful than a polished presentation of what is.
 
-<h3 id="faq-diy">Can I build a brand without an agency?</h3>
+</details>
+<details class="faq__item">
+<summary>Can I build a brand without an agency?</summary>
 
 Yes — and plenty of businesses do, especially in the early stages. DIY branding tools and freelance marketplaces have lowered the cost of entry significantly. But there's a meaningful difference between a brand that looks decent and a brand built on a clear strategic foundation. If you're at the stage where you're losing deals because of how you look, struggling to communicate your value consistently, or about to make a significant push into a new market, the investment in a professional process tends to pay for itself.
+
+</details>
+</div>
 
 <h2 id="final-thoughts">Final Thoughts</h2>
 

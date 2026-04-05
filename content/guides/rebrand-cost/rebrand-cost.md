@@ -30,7 +30,7 @@ ignore: false
     - [Web Development](#web-development)
     - [Brand Guidelines](#brand-guidelines)
 - [Why Is Branding So Expensive?](#why-so-expensive)
-- [Frequently Asked Questions](#faq)
+- [FAQ](#faq)
 - [Final Thoughts](#final-thoughts)
 
 </div>
@@ -143,23 +143,34 @@ This is the question most founders are really asking. The honest answer involves
 
 
 
-<h2 id="faq">Frequently Asked Questions</h2>
+<h2 id="faq">FAQ</h2>
 
-<h3>How much does a rebrand cost for a small business?</h3>
+<div class="faq">
+<details class="faq__item">
+<summary>How much does a rebrand cost for a small business?</summary>
 
 For a small business, a meaningful rebrand — strategy, visual identity, and basic brand guidelines — typically runs $10,000–$35,000 with a boutique studio. If budget is constrained, prioritize strategy and identity over deliverable volume. A focused, well-reasoned brand system is more valuable than a large package of assets built on a weak foundation. Freelancers can deliver quality visual work in the $5,000–$15,000 range, though the strategic layer will be thinner.
 
-<h3>What's the difference between a rebrand and a brand refresh?</h3>
+</details>
+<details class="faq__item">
+<summary>What's the difference between a rebrand and a brand refresh?</summary>
 
 A brand refresh involves updating or modernizing existing brand elements — refining the logo, updating the color palette, cleaning up typography — without changing the underlying identity or positioning. It preserves equity in your current brand while improving its execution. A rebrand is more fundamental: it can involve repositioning the company, changing the name, and building an entirely new visual and verbal system from scratch. Refreshes are typically less expensive ($8,000–$20,000) because the strategic foundation already exists. Rebrands require more time and investment because you're building from the ground up.
 
-<h3>How long does a rebrand take?</h3>
+</details>
+<details class="faq__item">
+<summary>How long does a rebrand take?</summary>
 
 A full rebrand — strategy through brand guidelines — typically takes three to five months at a boutique studio. Add website design and development and you're looking at five to eight months for a complete engagement. The timeline reflects the iterative nature of the work: research, concepting, refinement, and alignment all take time, and rushing any phase tends to create problems later. If you need it faster, that usually means paying for a larger team to work in parallel, or accepting that something gets cut. Faster isn't free.
 
-<h3>Can I rebrand in phases to spread out the cost?</h3>
+</details>
+<details class="faq__item">
+<summary>Can I rebrand in phases to spread out the cost?</summary>
 
 Yes, and for many businesses this is a smart approach. A phased rebrand might start with strategy and brand identity in phase one, add verbal identity and guidelines in phase two, and tackle the website in phase three — each phase building on the last. The benefit is that you can validate the strategic and visual direction before committing to the full investment. The trade-off is that brand and web done at different times by different teams can create integration challenges, so it's worth having at least a shared strategic foundation before the phases diverge too far.
+
+</details>
+</div>
 
 <h2 id="final-thoughts">Final Thoughts</h2>
 

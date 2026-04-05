@@ -163,21 +163,32 @@ When an agency promises you a complete brand identity in two weeks, ask what's b
 
 <h2 id="faq">FAQ</h2>
 
-<h3>How much does a branding agency typically charge?</h3>
+<div class="faq">
+<details class="faq__item">
+<summary>How much does a branding agency typically charge?</summary>
 
 It varies widely based on scope, studio size, and what's included. A logo-only project from a freelancer might run $2,000–$8,000. A full branding engagement — strategy, visual identity, guidelines, and potentially a website — from a mid-tier boutique studio typically starts around $25,000 and can run $80,000 or more for complex organizations. Larger agencies and consultancies charge significantly more. The right question isn't "what's the cheapest option?" but "what level of investment is appropriate for what this brand needs to accomplish?"
 
-<h3>What's the difference between a branding agency and a marketing agency?</h3>
+</details>
+<details class="faq__item">
+<summary>What's the difference between a branding agency and a marketing agency?</summary>
 
 Branding agencies define who you are — your positioning, your identity, your voice, and the system that communicates all of that consistently. Marketing agencies use that foundation to drive awareness and conversions through campaigns, content, paid media, and strategy. Some agencies do both, but they're distinct disciplines. Trying to do marketing well without a clear brand is like running ads without knowing what you're selling or who you're selling to.
 
-<h3>Should I hire a large agency or a smaller boutique studio?</h3>
+</details>
+<details class="faq__item">
+<summary>Should I hire a large agency or a smaller boutique studio?</summary>
 
 Large agencies offer resources, breadth, and sometimes name recognition. Boutique studios offer closer access to experienced talent, more agility, and often more genuine investment in each engagement. The tradeoff is usually resources vs. attention. For most growing businesses, a boutique studio in the $30k–$100k range delivers better value and a more collaborative experience than a large agency at the same price point — where you'd be a small fish.
 
-<h3>How involved do I need to be as a client?</h3>
+</details>
+<details class="faq__item">
+<summary>How involved do I need to be as a client?</summary>
 
 More than most people expect. The best branding work comes from deep collaboration — where your team participates in discovery, engages honestly with strategic findings, and provides timely, specific feedback. An agency can facilitate the process, but they can't replace your knowledge of your business, your customers, and your goals. Plan to invest meaningful time at the beginning (discovery and strategy) and be available for feedback throughout.
+
+</details>
+</div>
 
 <h2 id="final-thoughts">Final Thoughts</h2>
 

@@ -27,7 +27,7 @@ ignore: false
 - [Fundraising UX That Actually Works](#fundraising-ux)
 - [Content Management for Small Teams](#content-management)
 - [The Budget Reality](#budget-reality)
-- [Frequently Asked Questions](#faq)
+- [FAQ](#faq)
 - [Final Thoughts](#final-thoughts)
 
 </div>
@@ -155,23 +155,34 @@ Professional nonprofit web design isn't just a studio producing something that l
 
 When evaluating proposals for a nonprofit website redesign, look for an agency that asks about your audiences and your goals before they talk about design. The visual work should follow from a clear understanding of what the site needs to do — not the other way around.
 
-<h2 id="faq">Frequently Asked Questions</h2>
+<h2 id="faq">FAQ</h2>
 
-<h3 id="faq-1">How much does nonprofit web design typically cost?</h3>
+<div class="faq">
+<details class="faq__item">
+<summary>How much does nonprofit web design typically cost?</summary>
 
 Scope and complexity vary widely, but a serious nonprofit website redesign with custom design, development, and CMS setup typically falls in the $15,000–$50,000 range. Smaller organizations with simpler needs can sometimes complete a quality redesign for less; larger organizations with complex content structures, multiple audience types, and custom fundraising integrations often invest more. Many foundations and grants explicitly fund digital infrastructure, so budget constraints shouldn't be the first thing you address — scoping the right solution for your needs should be.
 
-<h3 id="faq-2">What should I prioritize if we can't redesign everything at once?</h3>
+</details>
+<details class="faq__item">
+<summary>What should I prioritize if we can't redesign everything at once?</summary>
 
 If a full redesign isn't feasible right now, focus first on your donation flow and your homepage. The donation experience directly affects revenue. The homepage is where most new visitors form their first impression of your organization. Getting those two things right has more impact than a full site overhaul that compromises on execution. From there, an impact/results page and a clear "how to get involved" pathway for volunteers are high-value additions.
 
-<h3 id="faq-3">Do nonprofits really need to worry about WCAG accessibility compliance?</h3>
+</details>
+<details class="faq__item">
+<summary>Do nonprofits really need to worry about WCAG accessibility compliance?</summary>
 
 Yes — and not just for legal reasons. Nonprofits that receive federal funding have specific accessibility obligations under Section 508. But beyond compliance, accessibility is mission-aligned: if your organization serves people with disabilities, or works in communities with diverse technology access and literacy levels, an inaccessible website is a direct barrier to the people you're trying to reach. Targeting WCAG 2.1 AA compliance is the right standard, and it's achievable without significantly increasing project cost when it's designed in from the start.
 
-<h3 id="faq-4">How do we find a nonprofit branding agency that actually understands mission-driven work?</h3>
+</details>
+<details class="faq__item">
+<summary>How do we find a nonprofit branding agency that actually understands mission-driven work?</summary>
 
 Look for agencies that have done nonprofit or mission-driven work before — and ask to see it. Review how they communicated impact, how they balanced multiple audience needs, and whether their work looks distinct from generic nonprofit templates. Ask about their process: do they start with strategy and audience research, or do they jump straight to design? A good nonprofit branding agency treats your mission as the foundation everything else is built on — not an afterthought that gets added to a standard business website. For a broader guide to vetting any branding studio — including the questions that reveal whether an agency knows what it's doing — see our [guide to choosing a branding agency](/guides/choose-branding-agency/).
+
+</details>
+</div>
 
 <h2 id="final-thoughts">Final Thoughts</h2>
 
