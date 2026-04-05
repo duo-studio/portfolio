@@ -1592,6 +1592,13 @@ function loadProjectScripts(triggerState, prev) {
 function loadArchiveScripts() {
 	document.querySelector(".barba-container").classList.remove("loading");
 
+	document.querySelectorAll(".archive-cell video").forEach(function (video) {
+		video.addEventListener("ended", function () {
+			this.currentTime = 0;
+			this.play();
+		});
+	});
+
 	var gridEl = document.querySelector(".archive-grid");
 	var dragSurface = document.querySelector(".archive-drag-surface");
 	var cells = gsap.utils.toArray(".archive-cell");

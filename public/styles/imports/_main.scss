@@ -442,8 +442,10 @@
 
 					@media screen and (max-width: $mobile-breakpoint) {
 						flex-direction: row;
-						padding: $mobile-gutter 0;
+						padding: 0.5rem 0;
 						color: $color-white;
+						border-color: $color-white;
+						height: 100px;
 					}
 
 					&.next {
@@ -481,8 +483,17 @@
 								transition: opacity 0.2s ease-in-out;
 							}
 							@media screen and (max-width: $mobile-breakpoint) {
+								display: flex;
+								gap: 1rem;
+								align-items: center;
 								width: 100%;
 								margin-bottom: 0.5em;
+								.client-logo {
+									opacity: 1;
+									max-height: 2em;
+									max-width: 100px;
+									order: -1;
+								}
 							}
 						}
 

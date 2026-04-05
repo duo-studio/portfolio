@@ -8,7 +8,7 @@
 		.archive-grid-wrap {
 			position: relative;
 			width: 100%;
-			height: 100vh;
+			height: 100dvh;
 			overflow: hidden;
 			cursor: grab;
 			touch-action: none;
@@ -23,12 +23,10 @@
 			pointer-events: none;
 			mix-blend-mode: difference;
 			color: $color-white;
-			bottom: $gutter;
-			left: $gutter;
+			bottom: 2rem;
+			left: 2rem;
 			max-width: 30vw;
 			@media screen and (max-width: $mobile-breakpoint) {
-				bottom: $mobile-gutter;
-				left: $mobile-gutter;
 				max-width: 80vw;
 			}
 		}

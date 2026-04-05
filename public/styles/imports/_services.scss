@@ -22,11 +22,13 @@ $process-spacer: calc(#{$spacer} / 2);
 			background-color: $color-white;
 			transition:
 				background-color 0.2s ease-in-out,
-				color 0.2s ease-in-out;
-			border-bottom: 1px solid $color-white;
+				color 0.2s ease-in-out,
+				border-color 0.2s ease-in-out;
+			border-bottom: 1px solid $color-black;
 			margin-bottom: -1px;
 			body.bg__dark & {
 				background-color: $color-black;
+				border-bottom-color: $color-white;
 			}
 			@media screen and (max-width: $mobile-breakpoint) {
 				flex-direction: column;
@@ -42,15 +44,17 @@ $process-spacer: calc(#{$spacer} / 2);
 			grid-template-columns: 55fr 45fr;
 			gap: $gutter;
 			padding: calc(#{$process-spacer} * 2) $gutter;
-			border-top: 1px solid $color-white;
+			border-top: 1px solid $color-black;
 			position: sticky;
 			top: var(--process-header-h, 0px);
 			background-color: $color-white;
 			transition:
 				background-color 0.2s ease-in-out,
-				color 0.2s ease-in-out;
+				color 0.2s ease-in-out,
+				border-color 0.2s ease-in-out;
 			body.bg__dark & {
 				background-color: $color-black;
+				border-top-color: $color-white;
 			}
 
 			@for $i from 1 through 5 {
@@ -75,14 +79,22 @@ $process-spacer: calc(#{$spacer} / 2);
 			line-height: 1;
 			letter-spacing: -0.05em;
 			white-space: nowrap;
-			color: rgba($color-white, 0.4);
+			color: rgba($color-black, 0.4);
+			transition: color 0.2s ease-in-out;
+			body.bg__dark & {
+				color: rgba($color-white, 0.4);
+			}
 		}
 
 		.process-content {
 			max-width: 480px;
 			h2 {
-				color: $color-white;
+				color: $color-black;
+				transition: color 0.2s ease-in-out;
 				margin-bottom: 0.5em;
+				body.bg__dark & {
+					color: $color-white;
+				}
 			}
 			p {
 				opacity: 0.7;
