@@ -4,8 +4,8 @@ description: "Your site gets traffic but no leads? Here's a practical diagnostic
 author: Sonia Polyzos
 date: 2026-03-05
 category: Guide
-thumbImage: guides/website-not-converting/featured.webp
-featImage: ./featured.webp
+thumbImage: false
+featImage: false
 metaImage: false
 imageCaption: false
 permalink: /guides/website-not-converting/
