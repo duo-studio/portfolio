@@ -53,6 +53,26 @@ layout: layouts/base.njk
                         </div>
                     </div>
                 </div>
+                {%- if category == "Guide" %}
+                    <div class="entry__related">
+                        <h2 class="st__headline">Recommended Guides</h2>
+                        <div class="row" style="flex-direction: column; gap: 0;">
+                            {% set guideCount = 0 %}
+                            {% for item in collections.all | reverse %}
+                                {% if item.data.category == "Guide" and item.url != page.url and guideCount < 3 %}
+                                    <a class="cursor__hover --highlight" href="{{ item.data.permalink }}" style="display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 0; border-bottom: 1px solid rgba(15,13,13,0.1);">
+                                        <div>
+                                            <h3 style="margin: 0;">{{ item.data.headline }}</h3>
+                                            <p class="subtitle" style="margin-top: 0.3rem; opacity: 0.5;">{{ item.data.description | truncate(80) }}</p>
+                                        </div>
+                                        <span class="btn__small --tag" style="flex-shrink: 0; margin-left: 2rem;">Read</span>
+                                    </a>
+                                    {% set guideCount = guideCount + 1 %}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
                 {%- if collections.posts and tags and "posts" in tags %}
                     {%- set postslist = collections.posts -%}
                     <div class="entry__related">
