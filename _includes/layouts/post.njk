@@ -37,7 +37,7 @@ layout: layouts/base.njk
                 <div class="entry__content">
                     {{ content | safe }}
                     <div class="entry__content--share">
-                        <p class="subtitle">Share On:</p>
+                        <p class="subtitle">Share:</p>
                         <div class="entry__content--share-links">
                             <a
                                 href="https://www.facebook.com/sharer/sharer.php?u={{ metadata.url+page.url }}"
@@ -49,7 +49,13 @@ layout: layouts/base.njk
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="btn__small --tag cursor__hover --highlight">LinkedIn</a>
-
+                            <a
+                                href="mailto:?subject={{ headline | urlencode }}&body=Check out this article from Duo Studio: {{ metadata.url+page.url }}"
+                                class="btn__small --tag cursor__hover --highlight">Email</a>
+                            <a
+                                href="#"
+                                class="btn__small --tag cursor__hover --highlight"
+                                onclick="navigator.clipboard.writeText('{{ metadata.url+page.url }}').then(function(){var el=event.target;el.textContent='Copied!';setTimeout(function(){el.textContent='Copy Link'},2000)});return false;">Copy Link</a>
                         </div>
                     </div>
                 </div>
