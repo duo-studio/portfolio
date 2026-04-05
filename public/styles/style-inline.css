@@ -1532,14 +1532,14 @@ body:not(.intro-leave) .barba-container[data-barba-namespace="services"].single_
 p {
   font-size: 18px; }
 
-/* Scale list items to match body — !important needed to override compiled style.css specificity */
-.barba-container[data-barba-namespace="journal"] .entry__content ul li,
-.barba-container[data-barba-namespace="journal"] .entry__content ol li {
-  font-size: 18px !important; }
+/* Scale list items to match body — doubled attribute selector for specificity (no !important) */
+.barba-container[data-barba-namespace="journal"][data-barba-namespace="journal"] .entry__content ul li,
+.barba-container[data-barba-namespace="journal"][data-barba-namespace="journal"] .entry__content ol li {
+  font-size: 18px; }
 
-.barba-container[data-barba-namespace="journal"] .entry__content ul,
-.barba-container[data-barba-namespace="journal"] .entry__content ol {
-  font-size: 18px !important; }
+.barba-container[data-barba-namespace="journal"][data-barba-namespace="journal"] .entry__content ul,
+.barba-container[data-barba-namespace="journal"][data-barba-namespace="journal"] .entry__content ol {
+  font-size: 18px; }
 
 /* Fix sticky sidebar TOC — sidebar must not stretch to flex container height */
 .barba-container[data-barba-namespace="journal"] .entry__content--sidebar {
