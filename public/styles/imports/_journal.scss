@@ -565,7 +565,7 @@
 			.entry__related--thumbnail {
 				aspect-ratio: 16 / 9;
 				display: flex;
-				> * {
+				* {
 					object-fit: cover;
 					height: 100%;
 					width: 100%;
