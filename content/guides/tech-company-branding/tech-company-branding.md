@@ -4,8 +4,8 @@ description: Tech company branding requires more than good design. Learn how B2B
 author: Dat Nguyen
 date: 2026-02-20
 category: Guide
-thumbImage: false
-featImage: false
+thumbImage: guides/tech-company-branding/featured.webp
+featImage: ./featured.webp
 metaImage: false
 imageCaption: false
 permalink: /guides/tech-company-branding/

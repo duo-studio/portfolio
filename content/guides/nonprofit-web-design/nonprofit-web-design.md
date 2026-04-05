@@ -4,8 +4,8 @@ description: A complete nonprofit web design guide covering donor trust, impact 
 author: Sonia Polyzos
 date: 2026-03-10
 category: Guide
-thumbImage: false
-featImage: false
+thumbImage: guides/nonprofit-web-design/featured.webp
+featImage: ./featured.webp
 metaImage: false
 imageCaption: false
 permalink: /guides/nonprofit-web-design/

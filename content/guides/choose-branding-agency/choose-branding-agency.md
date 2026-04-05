@@ -4,8 +4,8 @@ description: Learn what to look for in a branding agency, what questions to ask,
 author: Dat Nguyen
 date: 2026-02-05
 category: Guide
-thumbImage: false
-featImage: false
+thumbImage: guides/choose-branding-agency/featured.webp
+featImage: ./featured.webp
 metaImage: false
 imageCaption: false
 permalink: /guides/choose-branding-agency/

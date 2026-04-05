@@ -4,8 +4,8 @@ description: A transparent breakdown of rebrand costs in 2026 — from freelance
 author: Dat Nguyen
 date: 2025-11-18
 category: Guide
-thumbImage: false
-featImage: false
+thumbImage: guides/rebrand-cost/featured.webp
+featImage: ./featured.webp
 metaImage: false
 imageCaption: false
 permalink: /guides/rebrand-cost/
