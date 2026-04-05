@@ -4,8 +4,8 @@ description: "AI search is changing how people find businesses. Here's what actu
 author: Dat Nguyen
 date: 2026-02-28
 category: Guide
-thumbImage: false
-featImage: false
+thumbImage: guides/ai-search-optimization/featured.webp
+featImage: ./featured.webp
 metaImage: false
 imageCaption: false
 permalink: /guides/ai-search-optimization/

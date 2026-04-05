@@ -4,8 +4,8 @@ description: "A transparent breakdown of website redesign costs — from templat
 author: Dat Nguyen
 date: 2025-12-10
 category: Guide
-thumbImage: false
-featImage: false
+thumbImage: guides/website-redesign-cost/featured.webp
+featImage: ./featured.webp
 metaImage: false
 imageCaption: false
 permalink: /guides/website-redesign-cost/
