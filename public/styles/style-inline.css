@@ -1530,12 +1530,12 @@ body:not(.intro-leave) .barba-container[data-barba-namespace="services"].single_
 
 /* --- Global type scale refinement (Apr 2026) --- */
 p {
-  font-size: clamp(16px, 1.05vw, 18px); }
+  font-size: 18px; }
 
 /* Scale list items proportionally */
 .barba-container[data-barba-namespace="journal"] .entry__content ul li,
 .barba-container[data-barba-namespace="journal"] .entry__content ol li {
-  font-size: clamp(15px, 0.95vw, 17px); }
+  font-size: 17px; }
 
 /* Entry content bottom spacing */
 .barba-container[data-barba-namespace="journal"] .entry__content {
