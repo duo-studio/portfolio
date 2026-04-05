@@ -38,10 +38,11 @@ module.exports = (eleventyConfig) => {
 					"assets/" + this.page.url,
 				),
 				// Optimize output filenames
-				filenameFormat: function (id, src, width, format) {
-					const name = path.basename(src, path.extname(src));
-					return `${name}-${width}.${format}`;
-				},
+			filenameFormat: function (id, src, width, format) {
+				const name = path.basename(src, path.extname(src));
+				const dir = path.basename(path.dirname(src));
+				return `${dir}-${name}-${width}.${format}`;
+			},
 			});
 
 			let imageAttributes = {
