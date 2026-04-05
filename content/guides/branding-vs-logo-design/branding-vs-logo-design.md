@@ -183,6 +183,47 @@ A logo is where the visual identity starts. It's not where branding ends. If you
 
 Understanding this distinction early puts you ahead of most businesses that learn it the hard way, after the fact, when they're paying to untangle what was skipped.
 
-If you're trying to figure out what your business actually needs, start by asking what you're building toward — not what you think you can afford to do right now. The answer usually points you in the right direction.
+If you're trying to figure out what your business actually needs, start by asking what you're building toward — not what you think you can afford to do right now. The answer usually points you in the right direction. And if you're weighing the investment, [here's a transparent breakdown of what a rebrand actually costs](/guides/rebrand-cost/).
 
 </div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does branding cost compared to just a logo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A standalone logo from a freelancer might run anywhere from a few hundred to a few thousand dollars depending on experience level. Full brand identity work — strategy, verbal identity, visual system, and guidelines — typically starts in the $10,000-$30,000+ range at a professional studio, and goes up from there for larger or more complex engagements. The difference in price reflects the difference in scope."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I start with a logo and add branding later?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Technically yes, but it's not the most efficient path. When you build out a brand identity after the logo already exists, you often have to work around constraints the logo created — color decisions get forced, typography has to match what's already there, and the strategy ends up retrofitted rather than foundational. If you know branding is in your future, starting there saves rework."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between brand identity and branding?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Brand identity refers specifically to the visual and verbal system — the logo, colors, type, voice. Branding is the broader practice of shaping how a business is perceived, which includes the strategy, positioning, and experience behind the identity. Think of brand identity as the output and branding as the process."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I really need brand guidelines if I'm a small business?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — maybe more than a larger one. Big companies have whole marketing teams to maintain consistency. Small businesses often rely on contractors, agencies, or rotating team members who don't have institutional knowledge about how things should look. Guidelines remove the guesswork and protect your investment in the brand system you've built."
+      }
+    }
+  ]
+}
+</script>

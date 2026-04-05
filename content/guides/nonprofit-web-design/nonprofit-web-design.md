@@ -171,7 +171,7 @@ Yes — and not just for legal reasons. Nonprofits that receive federal funding 
 
 <h3 id="faq-4">How do we find a nonprofit branding agency that actually understands mission-driven work?</h3>
 
-Look for agencies that have done nonprofit or mission-driven work before — and ask to see it. Review how they communicated impact, how they balanced multiple audience needs, and whether their work looks distinct from generic nonprofit templates. Ask about their process: do they start with strategy and audience research, or do they jump straight to design? A good nonprofit branding agency treats your mission as the foundation everything else is built on — not an afterthought that gets added to a standard business website.
+Look for agencies that have done nonprofit or mission-driven work before — and ask to see it. Review how they communicated impact, how they balanced multiple audience needs, and whether their work looks distinct from generic nonprofit templates. Ask about their process: do they start with strategy and audience research, or do they jump straight to design? A good nonprofit branding agency treats your mission as the foundation everything else is built on — not an afterthought that gets added to a standard business website. For a broader guide to vetting any branding studio — including the questions that reveal whether an agency knows what it's doing — see our [guide to choosing a branding agency](/guides/choose-branding-agency/).
 
 <h2 id="final-thoughts">Final Thoughts</h2>
 
@@ -182,3 +182,44 @@ The site you have right now is already telling a story about your organization �
 If you're weighing a redesign, start by getting clear on what you need your site to actually do — and find partners who ask those same questions before they ever open a design tool.
 
 </div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does nonprofit web design typically cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Scope and complexity vary widely, but a serious nonprofit website redesign with custom design, development, and CMS setup typically falls in the $15,000–$50,000 range. Smaller organizations with simpler needs can sometimes complete a quality redesign for less; larger organizations with complex content structures, multiple audience types, and custom fundraising integrations often invest more. Many foundations and grants explicitly fund digital infrastructure, so budget constraints shouldn't be the first thing you address — scoping the right solution for your needs should be."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should I prioritize if we can't redesign everything at once?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If a full redesign isn't feasible right now, focus first on your donation flow and your homepage. The donation experience directly affects revenue. The homepage is where most new visitors form their first impression of your organization. Getting those two things right has more impact than a full site overhaul that compromises on execution. From there, an impact/results page and a clear 'how to get involved' pathway for volunteers are high-value additions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do nonprofits really need to worry about WCAG accessibility compliance?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — and not just for legal reasons. Nonprofits that receive federal funding have specific accessibility obligations under Section 508. But beyond compliance, accessibility is mission-aligned: if your organization serves people with disabilities, or works in communities with diverse technology access and literacy levels, an inaccessible website is a direct barrier to the people you're trying to reach. Targeting WCAG 2.1 AA compliance is the right standard, and it's achievable without significantly increasing project cost when it's designed in from the start."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do we find a nonprofit branding agency that actually understands mission-driven work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Look for agencies that have done nonprofit or mission-driven work before — and ask to see it. Review how they communicated impact, how they balanced multiple audience needs, and whether their work looks distinct from generic nonprofit templates. Ask about their process: do they start with strategy and audience research, or do they jump straight to design? A good nonprofit branding agency treats your mission as the foundation everything else is built on — not an afterthought that gets added to a standard business website."
+      }
+    }
+  ]
+}
+</script>

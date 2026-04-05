@@ -64,7 +64,7 @@ We're not the right studio for a startup looking to spend a few hundred dollars 
 
 Maybe you launched five years ago with a brand that was good enough to get started, but you've grown — in revenue, in team, in ambition — and your visual identity no longer reflects who you actually are. Maybe your website was built on a template that's now holding back your sales conversations. Maybe you're entering a new market and you know your current brand won't cut it there.
 
-That's our client. The company that's already proven the business model and is ready to invest in how they present it to the world. Typical engagements at Duo start at $30,000 for a combined strategy, brand, and website project — because that's what it takes to do this kind of work properly.
+That's our client. The company that's already proven the business model and is ready to invest in how they present it to the world. Not sure if that's where you are? [Here are 7 signs it might be time to rebrand](/guides/signs-you-need-rebrand/). Typical engagements at Duo start at $30,000 for a combined strategy, brand, and website project — because that's what it takes to do this kind of work properly. For a transparent breakdown of what drives those numbers, see our [guide to rebrand costs in 2026](/guides/rebrand-cost/).
 
 <h2 id="our-approach">Our Approach</h2>
 
@@ -128,6 +128,8 @@ A full brand and website engagement typically runs 12 to 20 weeks from kickoff t
 
 <h2 id="lets-talk">Let's Talk</h2>
 
+If you want to understand our process before reaching out, here's a phase-by-phase [walkthrough of what a branding agency actually does](/guides/what-branding-agency-does/).
+
 If you've read this far, you probably have a sense of whether Duo Studio is what you're looking for. We take the work seriously, invest in understanding your business before touching a design tool, and build everything custom.
 
 We work with a limited number of clients at a time — enough that the work stays good, not so many that it gets managed from a distance.
@@ -135,3 +137,15 @@ We work with a limited number of clients at a time — enough that the work stay
 If you're ready to talk through what a project might look like, reach out. We'll ask good questions, give you a straight answer on fit and budget, and take it from there.
 
 </div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does it cost to work with Duo Studio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our engagements typically start at $30,000 for a combined brand strategy, identity design, and custom website project. Scope varies — some projects are larger, some are more focused. We're transparent about pricing early in the process, so there are no surprises. If you're looking for the cheapest option, we're probably not the right fit. If you're looking for the option most likely to actually move the needle for your business, let's talk.

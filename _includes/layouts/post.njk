@@ -58,7 +58,7 @@ layout: layouts/base.njk
                         </div>
                     </div>
                 </div>
-                {%- if collections.posts %}
+                {%- if collections.posts and tags and "posts" in tags %}
                     {%- set postslist = collections.posts -%}
                     <div class="entry__related">
                         <h2 class="st__headline">Recent Entries</h2>

@@ -127,7 +127,7 @@ A full branding engagement — from strategy through brand guidelines and websit
 
 <h3 id="faq-cost">What does a branding agency cost?</h3>
 
-The range is wide. Freelancers might charge a few thousand dollars for a logo package. Mid-sized agencies with a full strategic process typically start in the $30–60k range for a complete brand identity and website. Larger agencies with national clients can run into six figures. What you're paying for at the higher end isn't just better design — it's the research, the strategy, the systems thinking, and the experience to know which choices will hold up over time.
+The range is wide. Freelancers might charge a few thousand dollars for a logo package. Mid-sized agencies with a full strategic process typically start in the $30–60k range for a complete brand identity and website. Larger agencies with national clients can run into six figures. What you're paying for at the higher end isn't just better design — it's the research, the strategy, the systems thinking, and the experience to know which choices will hold up over time. For a detailed breakdown of costs by project component and studio tier, see our [guide to rebrand costs in 2026](/guides/rebrand-cost/).
 
 <h3 id="faq-prepare">What should I prepare before the first meeting?</h3>
 
@@ -143,6 +143,49 @@ Understanding what a branding agency actually does changes how you think about t
 
 The process is more collaborative than most first-time clients expect. You're not handing off a brief and waiting for deliverables. You're a participant — the person with the most important information in the room, and the one whose instincts matter most when it comes to whether the work is true to who you are. The agency brings structure, outside perspective, and craft. You bring the raw material.
 
+Not sure how to evaluate your options before committing? Here's [how to choose a branding agency](/guides/choose-branding-agency/) — including the questions worth asking on a discovery call and the red flags to watch for.
+
 If you're ready to start that conversation, we're here for it. Not a pitch — just a dialogue about where your business is, what you're trying to build, and whether the timing is right. We offer that first conversation for exactly this reason. The worst outcome is that you learn something useful about your brand even if you're not ready to move yet.
 
 </div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How long does working with a branding agency take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A full branding engagement — from strategy through brand guidelines and website — typically runs three to six months. Shorter timelines are possible for limited scopes (brand identity only, no web development), but rushing the discovery and strategy phase tends to produce weaker work downstream. If you have a hard launch date, share it early so the agency can scope accordingly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does a branding agency cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The range is wide. Freelancers might charge a few thousand dollars for a logo package. Mid-sized agencies with a full strategic process typically start in the $30–60k range for a complete brand identity and website. Larger agencies with national clients can run into six figures. What you're paying for at the higher end isn't just better design — it's the research, the strategy, the systems thinking, and the experience to know which choices will hold up over time."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should I prepare before the first meeting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Come with context, not answers. You don't need a brief or a brand strategy — that's the agency's job to build with you. What helps: a clear description of your business and what makes it different, some sense of who your best customers are, examples of brands you admire (and why), and any existing brand materials, even if they're things you're ready to move away from. Honesty about what's not working is more useful than a polished presentation of what is."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I build a brand without an agency?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — and plenty of businesses do, especially in the early stages. DIY branding tools and freelance marketplaces have lowered the cost of entry significantly. But there's a meaningful difference between a brand that looks decent and a brand built on a clear strategic foundation. If you're at the stage where you're losing deals because of how you look, struggling to communicate your value consistently, or about to make a significant push into a new market, the investment in a professional process tends to pay for itself."
+      }
+    }
+  ]
+}
+</script>

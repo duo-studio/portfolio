@@ -40,11 +40,11 @@ ignore: false
 
 Rebranding is one of the most significant investments a business can make — and one of the most opaque. You can request quotes from three agencies and receive numbers that span from $8,000 to $250,000 for what sounds like the same scope. That range isn't arbitrary, but the industry doesn't do a great job explaining it.
 
-Before we get into the numbers: a full rebrand and a logo refresh are not the same project. What you pay for at each level depends almost entirely on what's actually included — and most proposals don't make that clear.
+Before we get into the numbers: a full rebrand and a logo refresh are not the same project. What you pay for at each level depends almost entirely on what's actually included — and most proposals don't make that clear. Not sure if a rebrand is even the right move? [Here are 7 signs your brand has outgrown itself](/guides/signs-you-need-rebrand/).
 
 <h2 id="what-goes-into-a-rebrand">What Goes Into a Rebrand?</h2>
 
-Before talking numbers, it helps to define what a rebrand actually includes. "Rebrand" gets used loosely — sometimes it means a logo refresh, sometimes it means rebuilding your entire market position from scratch. Those are very different projects, and the cost of rebranding reflects that gap.
+Before talking numbers, it helps to define what a rebrand actually includes. "Rebrand" gets used loosely — sometimes it means a logo refresh, sometimes it means rebuilding your entire market position from scratch. Those are very different projects, and the cost of rebranding reflects that gap. Wondering whether you need a full rebrand or just a new logo? [Here's how to tell the difference](/guides/branding-vs-logo-design/).
 
 A surface-level rebrand might involve updating a logo and refreshing your color palette. A full rebrand typically includes:
 
@@ -167,6 +167,47 @@ The cost of rebranding is ultimately a function of scope, quality, and the exper
 
 If you're a founder or marketing leader who's actively evaluating a rebrand, the most useful thing you can do before requesting proposals is get clear on scope. Do you need strategy, or do you have a clear position and just need execution? Do you need a new website, or does your existing site just need to reflect the new visual system? The answers will help you calibrate both the budget and the type of partner you're looking for.
 
-The range of branding agency pricing exists for real reasons — not because agencies are pulling numbers from thin air, but because the depth of work, the experience of the team, and the quality of the output vary meaningfully at each tier. Cheap branding isn't free — it often costs more in the long run when you find yourself revisiting the work in two years because it never quite landed. The right investment is the one that's proportional to the problem you're actually trying to solve.
+The range of branding agency pricing exists for real reasons — not because agencies are pulling numbers from thin air, but because the depth of work, the experience of the team, and the quality of the output vary meaningfully at each tier. Cheap branding isn't free — it often costs more in the long run when you find yourself revisiting the work in two years because it never quite landed. The right investment is the one that's proportional to the problem you're actually trying to solve. Curious what the process actually looks like from kickoff to launch? [Here's a full walkthrough of what a branding agency does](/guides/what-branding-agency-does/).
 
 </div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does a rebrand cost for a small business?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For a small business, a meaningful rebrand — strategy, visual identity, and basic brand guidelines — typically runs $10,000–$35,000 with a boutique studio. If budget is constrained, prioritize strategy and identity over deliverable volume. A focused, well-reasoned brand system is more valuable than a large package of assets built on a weak foundation. Freelancers can deliver quality visual work in the $5,000–$15,000 range, though the strategic layer will be thinner."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between a rebrand and a brand refresh?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A brand refresh involves updating or modernizing existing brand elements — refining the logo, updating the color palette, cleaning up typography — without changing the underlying identity or positioning. It preserves equity in your current brand while improving its execution. A rebrand is more fundamental: it can involve repositioning the company, changing the name, and building an entirely new visual and verbal system from scratch. Refreshes are typically less expensive ($8,000–$20,000) because the strategic foundation already exists. Rebrands require more time and investment because you're building from the ground up."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does a rebrand take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A full rebrand — strategy through brand guidelines — typically takes three to five months at a boutique studio. Add website design and development and you're looking at five to eight months for a complete engagement. The timeline reflects the iterative nature of the work: research, concepting, refinement, and alignment all take time, and rushing any phase tends to create problems later. If you need it faster, that usually means paying for a larger team to work in parallel, or accepting that something gets cut. Faster isn't free."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I rebrand in phases to spread out the cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, and for many businesses this is a smart approach. A phased rebrand might start with strategy and brand identity in phase one, add verbal identity and guidelines in phase two, and tackle the website in phase three — each phase building on the last. The benefit is that you can validate the strategic and visual direction before committing to the full investment. The trade-off is that brand and web done at different times by different teams can create integration challenges, so it's worth having at least a shared strategic foundation before the phases diverge too far."
+      }
+    }
+  ]
+}
+</script>
