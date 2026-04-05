@@ -32,16 +32,16 @@ eleventyComputed:
         <meta name="url" content="https://duo-studio.co"/>
         <meta name="author" content="Duo Studio">
         <meta property="og:type" content="business.business"/>
-        <meta property="og:title" content="Duo Studio"/>
+        <meta property="og:title" content="{{ title or metadata.title }}"/>
         <meta property="og:site_name" content="Duo Studio"/>
-        <meta property="og:url" content="https://duo-studio.co"/>
+        <meta property="og:url" content="https://duo-studio.co{{ page.url }}"/>
         <meta property="og:description" content="{{ description or metadata.description }}"/>
         <meta property="og:image" content="{{ metaImage or metadata.image }}"/>
         <meta name="twitter:card" content="summary_large_image"/>
         <meta name="twitter:creator" content="Duo Studio">
         <meta property="twitter:domain" content="duo-studio.co"/>
-        <meta property="twitter:url" content="https://duo-studio.co"/>
-        <meta name="twitter:title" content="Duo Studio"/>
+        <meta property="twitter:url" content="https://duo-studio.co{{ page.url }}"/>
+        <meta name="twitter:title" content="{{ title or metadata.title }}"/>
         <meta name="twitter:description" content="{{ description or metadata.description }}"/>
         <meta name="twitter:image" content="{{ metaImage or metadata.image }}"/>
         <meta name="robots" content="index, follow"/>
