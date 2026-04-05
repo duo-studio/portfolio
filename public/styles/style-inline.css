@@ -1528,11 +1528,9 @@ body:not(.intro-leave) .barba-container[data-barba-namespace="services"].single_
     display: flex;
     align-items: flex-end; }
 
-/* Global body copy size */
 p {
   font-size: 18px; }
 
-/* Scale list items to match body — doubled attribute selector for specificity (no !important) */
 .barba-container[data-barba-namespace="journal"][data-barba-namespace="journal"] .entry__content ul li,
 .barba-container[data-barba-namespace="journal"][data-barba-namespace="journal"] .entry__content ol li {
   font-size: 18px; }
@@ -1541,18 +1539,15 @@ p {
 .barba-container[data-barba-namespace="journal"][data-barba-namespace="journal"] .entry__content ol {
   font-size: 18px; }
 
-/* Fix sticky sidebar TOC — sidebar must not stretch to flex container height */
 .barba-container[data-barba-namespace="journal"] .entry__content--sidebar {
   align-self: flex-start;
   position: sticky;
   top: calc(max(52px, 3.125vw) + 2rem); }
 
-/* Featured image 3:1 ultra-wide banner — targets img inside <picture> from eleventy-img */
 .barba-container[data-barba-namespace="journal"][data-barba-namespace="journal"] .entry__thumbnail img {
   aspect-ratio: 3 / 1;
   object-fit: cover; }
 
-/* Entry content bottom spacing */
 .barba-container[data-barba-namespace="journal"] .entry__content {
   padding-bottom: calc(min(6vw, 115px)); }
   @media screen and (max-width: 550px) {

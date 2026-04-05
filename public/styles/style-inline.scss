@@ -1948,3 +1948,35 @@ nav {
 		}
 	}
 }
+
+p {
+	font-size: 18px;
+}
+
+.barba-container[data-barba-namespace="journal"][data-barba-namespace="journal"] .entry__content ul li,
+.barba-container[data-barba-namespace="journal"][data-barba-namespace="journal"] .entry__content ol li {
+	font-size: 18px;
+}
+
+.barba-container[data-barba-namespace="journal"][data-barba-namespace="journal"] .entry__content ul,
+.barba-container[data-barba-namespace="journal"][data-barba-namespace="journal"] .entry__content ol {
+	font-size: 18px;
+}
+
+.barba-container[data-barba-namespace="journal"] .entry__content--sidebar {
+	align-self: flex-start;
+	position: sticky;
+	top: calc(max(52px, 3.125vw) + 2rem);
+}
+
+.barba-container[data-barba-namespace="journal"][data-barba-namespace="journal"] .entry__thumbnail img {
+	aspect-ratio: 3 / 1;
+	object-fit: cover;
+}
+
+.barba-container[data-barba-namespace="journal"] .entry__content {
+	padding-bottom: $gutter;
+	@media screen and (max-width: $mobile-breakpoint-s) {
+		padding-bottom: $mobile-spacer;
+	}
+}
