@@ -312,6 +312,9 @@
 				h2,
 				h3 {
 					margin: 1em 0 0.4em;
+					&:first-child {
+						margin-top: 0;
+					}
 				}
 
 				pre,
