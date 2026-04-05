@@ -1,8 +1,8 @@
 ---
 headline: "Web Design for Nonprofits: A Complete Guide"
 description: A complete nonprofit web design guide covering donor trust, impact storytelling, accessibility, fundraising UX, and budget realities for a redesign.
-author: Duo Studio
-date: 2026-04-05
+author: Sonia Polyzos
+date: 2026-03-10
 category: Guide
 thumbImage: false
 featImage: false

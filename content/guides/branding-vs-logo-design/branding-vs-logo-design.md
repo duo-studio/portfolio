@@ -1,8 +1,8 @@
 ---
 headline: "Branding vs. Logo Design: What's the Difference?"
 description: Think you just need a logo? Learn the real difference between branding and logo design, and why brand identity is the foundation every business needs first.
-author: Duo Studio
-date: 2026-04-05
+author: Sonia Polyzos
+date: 2026-01-09
 category: Guide
 thumbImage: false
 featImage: false

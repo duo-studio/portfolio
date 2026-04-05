@@ -1,8 +1,8 @@
 ---
 headline: "How Much Does a Rebrand Cost in 2026?"
 description: A transparent breakdown of rebrand costs in 2026 — from freelancer to boutique studio to large agency. Understand what drives branding agency pricing and where the money goes.
-author: Duo Studio
-date: 2026-04-05
+author: Dat Nguyen
+date: 2025-11-18
 category: Guide
 thumbImage: false
 featImage: false

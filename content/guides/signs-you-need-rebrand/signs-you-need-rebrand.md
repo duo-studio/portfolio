@@ -1,8 +1,8 @@
 ---
 headline: "When Should You Rebrand? 7 Signs You've Outgrown Your Brand"
 description: Not sure if it's time to rebrand? These 7 signs reveal when your brand has stopped working for you — and what it's costing you to ignore it.
-author: Duo Studio
-date: 2026-04-05
+author: Sonia Polyzos
+date: 2025-12-04
 category: Guide
 thumbImage: false
 featImage: false

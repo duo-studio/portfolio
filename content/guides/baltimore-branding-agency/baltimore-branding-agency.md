@@ -2,7 +2,7 @@
 headline: "Baltimore Branding & Web Design Studio"
 description: Duo Studio is a Baltimore branding agency and web design studio helping established businesses build bold brands and custom websites. Strategy-first, nationwide.
 author: Duo Studio
-date: 2026-04-05
+date: 2026-03-25
 category: Guide
 thumbImage: false
 featImage: false

@@ -1,8 +1,8 @@
 ---
 headline: "How to Choose a Branding Agency: A Practical Buying Guide"
 description: Learn what to look for in a branding agency, what questions to ask, how to evaluate portfolios, and the red flags that should send you running.
-author: Duo Studio
-date: 2026-04-05
+author: Dat Nguyen
+date: 2026-02-05
 category: Guide
 thumbImage: false
 featImage: false

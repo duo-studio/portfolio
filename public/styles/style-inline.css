@@ -1528,4 +1528,20 @@ body:not(.intro-leave) .barba-container[data-barba-namespace="services"].single_
     display: flex;
     align-items: flex-end; }
 
+/* --- Global type scale refinement (Apr 2026) --- */
+p {
+  font-size: clamp(16px, 1.05vw, 18px); }
+
+/* Scale list items proportionally */
+.barba-container[data-barba-namespace="journal"] .entry__content ul li,
+.barba-container[data-barba-namespace="journal"] .entry__content ol li {
+  font-size: clamp(15px, 0.95vw, 17px); }
+
+/* Entry content bottom spacing */
+.barba-container[data-barba-namespace="journal"] .entry__content {
+  padding-bottom: calc(min(6vw, 115px)); }
+  @media screen and (max-width: 550px) {
+    .barba-container[data-barba-namespace="journal"] .entry__content {
+      padding-bottom: 4rem; } }
+
 /*# sourceMappingURL=style-inline.css.map */

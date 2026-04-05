@@ -1,8 +1,8 @@
 ---
 headline: "What Does a Branding Agency Actually Do?"
 description: Wondering what a branding agency does and what to expect from the process? We walk through every phase — from discovery to launch — so you know exactly what you're paying for.
-author: Duo Studio
-date: 2026-04-05
+author: Dat Nguyen
+date: 2026-01-22
 category: Guide
 thumbImage: false
 featImage: false

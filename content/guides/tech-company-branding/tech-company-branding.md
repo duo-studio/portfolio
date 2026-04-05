@@ -1,8 +1,8 @@
 ---
 headline: "Branding and Web Design for Technology Companies"
 description: Tech company branding requires more than good design. Learn how B2B tech and SaaS companies can differentiate, build trust, and turn their website into a sales engine.
-author: Duo Studio
-date: 2026-04-05
+author: Dat Nguyen
+date: 2026-02-20
 category: Guide
 thumbImage: false
 featImage: false
