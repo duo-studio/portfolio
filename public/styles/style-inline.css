@@ -1547,8 +1547,8 @@ p {
   position: sticky;
   top: calc(max(52px, 3.125vw) + 2rem); }
 
-/* Featured image 21:9 aspect ratio for guide pages */
-.barba-container[data-barba-namespace="journal"] .entry__thumbnail > img {
+/* Featured image 21:9 aspect ratio — targets img inside <picture> from eleventy-img */
+.barba-container[data-barba-namespace="journal"][data-barba-namespace="journal"] .entry__thumbnail img {
   aspect-ratio: 21 / 9;
   object-fit: cover; }
 
