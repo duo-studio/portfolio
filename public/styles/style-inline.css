@@ -1532,10 +1532,14 @@ body:not(.intro-leave) .barba-container[data-barba-namespace="services"].single_
 p {
   font-size: 18px; }
 
-/* Scale list items proportionally */
+/* Scale list items to match body */
 .barba-container[data-barba-namespace="journal"] .entry__content ul li,
 .barba-container[data-barba-namespace="journal"] .entry__content ol li {
-  font-size: 17px; }
+  font-size: 18px; }
+
+.barba-container[data-barba-namespace="journal"] .entry__content ul,
+.barba-container[data-barba-namespace="journal"] .entry__content ol {
+  font-size: 18px; }
 
 /* Entry content bottom spacing */
 .barba-container[data-barba-namespace="journal"] .entry__content {
