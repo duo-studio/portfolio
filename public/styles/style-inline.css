@@ -1065,12 +1065,10 @@ nav {
     .barba-container[data-barba-namespace="home"] #intro {
       padding: 4rem 0; } }
   .barba-container[data-barba-namespace="home"] #intro .section__wrapper > h2 {
-    padding: 0 0 0 calc(min(6vw, 115px));
-    width: calc(71% - calc(min(6vw, 115px))); }
+    padding: 0 calc(min(6vw, 115px)); }
     @media screen and (max-width: 1024px) {
       .barba-container[data-barba-namespace="home"] #intro .section__wrapper > h2 {
-        padding: 0 1.5rem;
-        width: 100%; } }
+        padding: 0 1.5rem; } }
   .barba-container[data-barba-namespace="home"] #intro .content {
     padding-top: calc(calc(min(6vw, 115px)) * 2);
     margin-top: 1em;
@@ -1534,12 +1532,22 @@ body:not(.intro-leave) .barba-container[data-barba-namespace="services"].single_
 p {
   font-size: 18px; }
 
-.barba-container[data-barba-namespace="journal"][data-barba-namespace="journal"] .entry__content ul li,
-.barba-container[data-barba-namespace="journal"][data-barba-namespace="journal"] .entry__content ol li {
+.barba-container[data-barba-namespace="journal"][data-barba-namespace="journal"]
+.entry__content
+ul
+li,
+.barba-container[data-barba-namespace="journal"][data-barba-namespace="journal"]
+.entry__content
+ol
+li {
   font-size: 18px; }
 
-.barba-container[data-barba-namespace="journal"][data-barba-namespace="journal"] .entry__content ul,
-.barba-container[data-barba-namespace="journal"][data-barba-namespace="journal"] .entry__content ol {
+.barba-container[data-barba-namespace="journal"][data-barba-namespace="journal"]
+.entry__content
+ul,
+.barba-container[data-barba-namespace="journal"][data-barba-namespace="journal"]
+.entry__content
+ol {
   font-size: 18px; }
 
 .barba-container[data-barba-namespace="journal"] .entry__content--sidebar {
@@ -1547,7 +1555,9 @@ p {
   position: sticky;
   top: calc(max(52px, 3.125vw) + 2rem); }
 
-.barba-container[data-barba-namespace="journal"][data-barba-namespace="journal"] .entry__thumbnail img {
+.barba-container[data-barba-namespace="journal"][data-barba-namespace="journal"]
+.entry__thumbnail
+img {
   aspect-ratio: 3 / 1;
   object-fit: cover; }
 

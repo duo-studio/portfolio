@@ -1301,12 +1301,10 @@ nav {
 		}
 		.section__wrapper {
 			> h2 {
-				padding: 0 0 0 $gutter;
-				width: calc(71% - #{$gutter});
+				padding: 0 $gutter;
 
 				@media screen and (max-width: $mobile-breakpoint) {
 					padding: 0 $mobile-gutter;
-					width: 100%;
 				}
 			}
 		}
@@ -1958,13 +1956,23 @@ p {
 	font-size: 18px;
 }
 
-.barba-container[data-barba-namespace="journal"][data-barba-namespace="journal"] .entry__content ul li,
-.barba-container[data-barba-namespace="journal"][data-barba-namespace="journal"] .entry__content ol li {
+.barba-container[data-barba-namespace="journal"][data-barba-namespace="journal"]
+	.entry__content
+	ul
+	li,
+.barba-container[data-barba-namespace="journal"][data-barba-namespace="journal"]
+	.entry__content
+	ol
+	li {
 	font-size: 18px;
 }
 
-.barba-container[data-barba-namespace="journal"][data-barba-namespace="journal"] .entry__content ul,
-.barba-container[data-barba-namespace="journal"][data-barba-namespace="journal"] .entry__content ol {
+.barba-container[data-barba-namespace="journal"][data-barba-namespace="journal"]
+	.entry__content
+	ul,
+.barba-container[data-barba-namespace="journal"][data-barba-namespace="journal"]
+	.entry__content
+	ol {
 	font-size: 18px;
 }
 
@@ -1974,7 +1982,9 @@ p {
 	top: calc(max(52px, 3.125vw) + 2rem);
 }
 
-.barba-container[data-barba-namespace="journal"][data-barba-namespace="journal"] .entry__thumbnail img {
+.barba-container[data-barba-namespace="journal"][data-barba-namespace="journal"]
+	.entry__thumbnail
+	img {
 	aspect-ratio: 3 / 1;
 	object-fit: cover;
 }
