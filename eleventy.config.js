@@ -86,6 +86,8 @@ module.exports = function (eleventyConfig) {
 		);
 	});
 
+	eleventyConfig.addShortcode("version", () => String(Date.now()));
+
 	const mdOptions = {
 		html: true,
 		breaks: true,
