@@ -483,16 +483,10 @@
 								transition: opacity 0.2s ease-in-out;
 							}
 							@media screen and (max-width: $mobile-breakpoint) {
-								display: flex;
-								gap: 1rem;
-								align-items: center;
 								width: 100%;
 								margin-bottom: 0.5em;
 								.client-logo {
-									opacity: 1;
-									max-height: 2em;
-									max-width: 100px;
-									order: -1;
+									display: none;
 								}
 							}
 						}
