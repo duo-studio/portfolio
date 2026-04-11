@@ -235,11 +235,155 @@ function hasHighEntropyToken(value, minLength = 12) {
 	});
 }
 
+const PERSONAL_EMAIL_PROVIDERS = new Set([
+	"gmail.com",
+	"googlemail.com",
+	"yahoo.com",
+	"hotmail.com",
+	"outlook.com",
+	"icloud.com",
+	"me.com",
+	"mac.com",
+	"aol.com",
+	"proton.me",
+	"protonmail.com",
+	"live.com",
+	"msn.com",
+	"comcast.net",
+]);
+
+const COMPANY_NOISE_WORDS = new Set([
+	"and",
+	"the",
+	"co",
+	"company",
+	"inc",
+	"incorporated",
+	"corp",
+	"corporation",
+	"llc",
+	"ltd",
+	"limited",
+	"pllc",
+	"studio",
+	"agency",
+	"group",
+	"holdings",
+	"partners",
+	"partner",
+]);
+
+const DOMAIN_NOISE_LABELS = new Set([
+	"www",
+	"mail",
+	"email",
+	"hello",
+	"contact",
+	"info",
+	"team",
+	"app",
+	"go",
+	"get",
+	"try",
+	"weare",
+	"hq",
+]);
+
 function isMajorBrandMismatch(company, emailDomain) {
 	const brand = String(company || "").trim().toLowerCase();
 	if (!brand) return false;
 	const majorBrands = ["google", "meta", "facebook", "apple", "amazon", "microsoft", "netflix", "tesla"];
 	return majorBrands.includes(brand) && !emailDomain.includes(`${brand}.com`);
+}
+
+function getCompanyIdentityTokens(company) {
+	return [...new Set(
+		String(company || "")
+			.toLowerCase()
+			.replace(/&/g, " and ")
+			.replace(/[^a-z0-9]+/g, " ")
+			.split(/\s+/)
+			.filter((token) => token.length >= 2 && !COMPANY_NOISE_WORDS.has(token)),
+	)];
+}
+
+function getDomainIdentityText(emailDomain) {
+	const labels = String(emailDomain || "")
+		.toLowerCase()
+		.split(".")
+		.filter(Boolean);
+
+	if (labels.length <= 1) {
+		return labels.join("");
+	}
+
+	return labels
+		.slice(0, -1)
+		.filter((label) => !DOMAIN_NOISE_LABELS.has(label))
+		.join("");
+}
+
+function assessCompanyEmailAlignment(company, emailDomain) {
+	if (!company || !emailDomain) {
+		return { status: "unknown" };
+	}
+
+	if (PERSONAL_EMAIL_PROVIDERS.has(emailDomain)) {
+		return { status: "personal" };
+	}
+
+	const companyTokens = getCompanyIdentityTokens(company);
+	if (!companyTokens.length) {
+		return { status: "unknown" };
+	}
+
+	const domainIdentity = getDomainIdentityText(emailDomain);
+	if (!domainIdentity) {
+		return { status: "unknown" };
+	}
+
+	const matchedTokens = companyTokens.filter((token) =>
+		token.length >= 3 && (domainIdentity.includes(token) || token.includes(domainIdentity)),
+	);
+
+	if (matchedTokens.length) {
+		return { status: "aligned", matchedTokens };
+	}
+
+	const initials = companyTokens.map((token) => token[0]).join("");
+	if (initials.length >= 2 && domainIdentity.includes(initials)) {
+		return { status: "aligned", matchedTokens: [initials] };
+	}
+
+	const strongTokens = companyTokens.filter((token) => token.length >= 4);
+	if (!strongTokens.length) {
+		return { status: "unknown" };
+	}
+
+	return {
+		status: "mismatch",
+		note: `Custom email domain "${emailDomain}" does not clearly reference "${company}".`,
+	};
+}
+
+function isContextPoorShortMessage(message) {
+	const trimmed = String(message || "").trim();
+	const words = trimmed.split(/\s+/).filter(Boolean);
+	if (words.length === 0) {
+		return true;
+	}
+
+	if (words.length <= 3) {
+		return true;
+	}
+
+	if (words.length >= 8) {
+		return false;
+	}
+
+	const hasBusinessIntent = /(website|site|branding|brand|design|development|project|quote|proposal|budget|timeline|launch|help|need|looking|interested|scope|call|seo|rebrand|redesign)/i.test(trimmed);
+	const hasBasicSentenceShape = /[.!?,]/.test(trimmed) || words.length >= 6;
+	return !hasBusinessIntent && !hasBasicSentenceShape;
 }
 
 function buildScamAudit({ name, email, company, message, referrer, ipAddress }) {
@@ -264,9 +408,12 @@ function buildScamAudit({ name, email, company, message, referrer, ipAddress }) 
 	}
 
 	const messageWordCount = message.trim().split(/\s+/).filter(Boolean).length;
-	if (messageWordCount < 8) {
-		score += 2;
-		signals.push("Very low-detail message.");
+	if (messageWordCount === 0) {
+		score += 3;
+		signals.push("Message is empty.");
+	} else if (isContextPoorShortMessage(message)) {
+		score += 1;
+		signals.push("Short message with little project context.");
 	}
 
 	if (!company || /^(test|n\/a|none|unknown)$/i.test(company.trim())) {
@@ -301,12 +448,10 @@ function buildScamAudit({ name, email, company, message, referrer, ipAddress }) 
 		signals.push("Company claims a major brand but email domain does not match.");
 	}
 
-	if (emailDomain && company) {
-		const normalizedCompany = company.toLowerCase().replace(/[^a-z0-9]/g, "");
-		if (normalizedCompany && !emailDomain.includes(normalizedCompany.slice(0, Math.min(normalizedCompany.length, 6))) && !/(gmail|yahoo|hotmail|outlook|icloud)/.test(emailDomain)) {
-			score += 1;
-			signals.push("Company name and email domain do not obviously align.");
-		}
+	const companyEmailAlignment = assessCompanyEmailAlignment(company, emailDomain);
+	if (companyEmailAlignment.status === "mismatch") {
+		score += 1;
+		signals.push(companyEmailAlignment.note);
 	}
 
 	const finalScore = Math.max(1, Math.min(10, score));
