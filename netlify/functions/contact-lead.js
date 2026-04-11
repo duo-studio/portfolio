@@ -372,8 +372,6 @@ async function sendResendEmail(lead, item, resendApiKey, fromEmail, fromName, fa
 		`Name: ${lead.name}`,
 		`Email: ${lead.email}`,
 		`Company: ${lead.company}`,
-		`Referrer: ${lead.referrer || "Unknown"}`,
-		`Page: ${lead.page}`,
 		"",
 		"Message:",
 		lead.message,
@@ -385,8 +383,6 @@ async function sendResendEmail(lead, item, resendApiKey, fromEmail, fromName, fa
 		{ label: "Name", value: escapeHtml(lead.name) },
 		{ label: "Email", value: `<a href="mailto:${escapeHtml(lead.email)}" style="color:#0f0d0d;text-decoration:none;">${escapeHtml(lead.email)}</a>` },
 		{ label: "Company", value: escapeHtml(lead.company) },
-		{ label: "Referrer", value: escapeHtml(lead.referrer || "Unknown") },
-		{ label: "Page", value: escapeHtml(lead.page) },
 	];
 
 	const summaryHtml = summaryRows
