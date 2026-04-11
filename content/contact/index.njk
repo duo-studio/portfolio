@@ -103,7 +103,12 @@ description: Contact Duo Studio for brand identity, web design, and graphic desi
                     </div>
                     <div class="col" id="form">
                         <div class="st__line"></div>
-                        <form method="POST" name="contact" data-netlify="true" netlify-honeypot="bot-field">
+                        <form
+                            method="POST"
+                            name="contact"
+                            action="/.netlify/functions/contact-lead"
+                            netlify-honeypot="bot-field"
+                            data-contact-form>
                             <div class="wrapper">
                                 <h2>Dear Duo Studio,</h2>
                                 <div class="highlight"></div>
@@ -128,7 +133,7 @@ description: Contact Duo Studio for brand identity, web design, and graphic desi
                                 <option value="Other">Other</option>
                             </select>
                             <input name="bot-field" type="hidden"/>
-                            <button class="btn__circle">
+                            <button class="btn__circle" type="submit">
                                 <div class="no-overflow">
                                     <div class="inner">
                                         <p>Send Message</p>
@@ -136,6 +141,7 @@ description: Contact Duo Studio for brand identity, web design, and graphic desi
                                     </div>
                                 </div>
                             </button>
+                            <p class="subtitle" id="contact-form-status" hidden style="margin-top: 1rem; max-width: 32rem;" aria-live="polite"></p>
                         </form>
                     </div>
                 </div>
@@ -143,3 +149,51 @@ description: Contact Duo Studio for brand identity, web design, and graphic desi
         </section>
     </main>
 </div>
+
+<script>
+(() => {
+    const form = document.querySelector('[data-contact-form]');
+    if (!form || !window.fetch) {
+        return;
+    }
+
+    const status = form.querySelector('#contact-form-status');
+    const button = form.querySelector('button[type="submit"]');
+
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        if (status) {
+            status.hidden = true;
+            status.textContent = '';
+        }
+
+        button?.setAttribute('disabled', 'disabled');
+
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                    'X-Requested-With': 'fetch'
+                },
+                body: new URLSearchParams(new FormData(form)).toString()
+            });
+
+            const payload = await response.json();
+            if (!response.ok || !payload.ok) {
+                throw new Error(payload.error || 'Something went wrong.');
+            }
+
+            window.location.href = '/contact/thank-you/';
+        } catch (error) {
+            if (status) {
+                status.hidden = false;
+                status.textContent = error.message || 'Something went wrong sending your message. Please email hello@duo-studio.co instead.';
+            }
+        } finally {
+            button?.removeAttribute('disabled');
+        }
+    });
+})();
+</script>

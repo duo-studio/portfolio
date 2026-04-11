@@ -2,6 +2,9 @@
 	publish = "_site"
 	command = "npm run build"
 
+[functions]
+	directory = "netlify/functions"
+
 [[redirects]]
   from = "/duo-studio-verizon"
   to = "https://www.verizon.com/business/resources/customer-success-stories/duo-studio-small-traveling-business/"
