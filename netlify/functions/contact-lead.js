@@ -19,6 +19,8 @@ const MONDAY_COLUMNS = {
 	lastContacted: "date_mm2a782p",
 	whyFit: "long_text_mm2an8yg",
 	aiNotes: "long_text_mm2anva6",
+	scamScore: "numeric_mm2afyk2",
+	scamAudit: "long_text_mm2aeexv",
 };
 
 function getEnv(name, fallbackPath) {
@@ -184,12 +186,13 @@ function buildWhyFit(inquiryType, scoreReasons) {
 	return [intro, ...scoreReasons].join(" ");
 }
 
-function buildAiNotes({ source, sourceDetail, inquiryType, fitScore, priority, nextStep, message }) {
+function buildAiNotes({ source, sourceDetail, inquiryType, fitScore, priority, nextStep, message, scamScore }) {
 	const notes = [
 		`Heuristic classification only, no LLM enrichment yet.`,
 		`Source: ${source}. ${sourceDetail}`,
 		`Inquiry Type: ${inquiryType}.`,
 		`Fit Score: ${fitScore}/10. Priority: ${priority}.`,
+		`Scam Score: ${scamScore}/10.`,
 		`Recommended Next Step: ${nextStep}`,
 	];
 
@@ -198,6 +201,69 @@ function buildAiNotes({ source, sourceDetail, inquiryType, fitScore, priority, n
 	}
 
 	return notes.join(" ");
+}
+
+function buildScamAudit({ name, email, company, message, referrer }) {
+	const text = `${name} ${email} ${company} ${message} ${referrer}`.toLowerCase();
+	let score = 1;
+	const signals = [];
+
+	const suspiciousPatterns = [
+		{ test: /(whatsapp|telegram|signal me|text me on)/, note: "Pushes conversation off normal business channels immediately.", weight: 2 },
+		{ test: /(kindly|dear sir|dear friend|greetings of the day)/, note: "Contains common scam-form phrasing.", weight: 2 },
+		{ test: /(urgent payment|invoice|outstanding payment|wire transfer|bank transfer|crypto|gift card)/, note: "Mentions money-transfer language unrelated to a normal project inquiry.", weight: 3 },
+		{ test: /(seo service|guest post|backlink|link exchange|casino|viagra|loan|forex|essay|air duct|tirefaster)/, note: "Matches spam/scam outreach patterns Duo is likely to receive.", weight: 4 },
+		{ test: /(guaranteed traffic|guaranteed ranking|100% results|earn money fast)/, note: "Promises unrealistic outcomes.", weight: 3 },
+		{ test: /(reply urgently|asap today|immediately respond)/, note: "Pressure language without real project detail.", weight: 1 },
+	];
+
+	for (const pattern of suspiciousPatterns) {
+		if (pattern.test.test(text)) {
+			score += pattern.weight;
+			signals.push(pattern.note);
+		}
+	}
+
+	const messageWordCount = message.trim().split(/\s+/).filter(Boolean).length;
+	if (messageWordCount < 8) {
+		score += 2;
+		signals.push("Very low-detail message.");
+	}
+
+	if (!company || /^(test|n\/a|none|unknown)$/i.test(company.trim())) {
+		score += 2;
+		signals.push("Missing or low-quality company identifier.");
+	}
+
+	const emailDomain = (email.split("@")[1] || "").toLowerCase();
+	if (emailDomain && /(mailinator|tempmail|10minutemail|guerrillamail)/.test(emailDomain)) {
+		score += 4;
+		signals.push("Disposable email domain.");
+	}
+
+	if (emailDomain && company) {
+		const normalizedCompany = company.toLowerCase().replace(/[^a-z0-9]/g, "");
+		if (normalizedCompany && !emailDomain.includes(normalizedCompany.slice(0, Math.min(normalizedCompany.length, 6))) && !/(gmail|yahoo|hotmail|outlook|icloud)/.test(emailDomain)) {
+			score += 1;
+			signals.push("Company name and email domain do not obviously align.");
+		}
+	}
+
+	const finalScore = Math.max(1, Math.min(10, score));
+	if (!signals.length) {
+		signals.push("No major scam indicators detected by the heuristic pass.");
+	}
+
+	const recommendation = finalScore >= 8
+		? "High caution. Verify identity before spending time on the lead."
+		: finalScore >= 5
+			? "Medium caution. Reply carefully and confirm legitimacy early."
+			: "Low scam risk based on current signals.";
+
+	return {
+		scamScore: finalScore,
+		scamAudit: [...signals, recommendation].join(" "),
+	};
 }
 
 async function mondayRequest(query, variables, token) {
@@ -243,6 +309,8 @@ async function createMondayLead(lead, token) {
 		[MONDAY_COLUMNS.lastContacted]: { date: lead.lastContacted },
 		[MONDAY_COLUMNS.whyFit]: lead.whyFit,
 		[MONDAY_COLUMNS.aiNotes]: lead.aiNotes,
+		[MONDAY_COLUMNS.scamScore]: lead.scamScore,
+		[MONDAY_COLUMNS.scamAudit]: lead.scamAudit,
 	};
 
 	if (lead.website) {
@@ -284,6 +352,7 @@ async function sendResendEmail(lead, item, resendApiKey, fromEmail, fromName, fa
 		`Inquiry Type: ${lead.inquiryType}`,
 		`Priority: ${lead.priority}`,
 		`Fit Score: ${lead.fitScore}/10`,
+		`Scam Score: ${lead.scamScore}/10`,
 		`Monday Item: ${item.name} (#${item.id})`,
 		`Next Step: ${lead.nextStep}`,
 		"",
@@ -306,6 +375,7 @@ async function sendResendEmail(lead, item, resendApiKey, fromEmail, fromName, fa
 		{ label: "Inquiry Type", value: escapeHtml(lead.inquiryType) },
 		{ label: "Priority", value: escapeHtml(lead.priority) },
 		{ label: "Fit Score", value: `${escapeHtml(String(lead.fitScore))}/10` },
+		{ label: "Scam Score", value: `${escapeHtml(String(lead.scamScore))}/10` },
 		{ label: "Monday Item", value: `${escapeHtml(item.name)} (#${escapeHtml(String(item.id))})` },
 	];
 
@@ -338,6 +408,10 @@ async function sendResendEmail(lead, item, resendApiKey, fromEmail, fromName, fa
 					<div style="margin-bottom:24px;">
 						<div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#7f7468;margin-bottom:10px;">Recommended Next Step</div>
 						<div style="padding:18px 20px;background:#111111;color:#f6f1e8;font-size:15px;line-height:1.8;">${escapeHtml(lead.nextStep)}</div>
+					</div>
+					<div style="margin-bottom:24px;">
+						<div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#7f7468;margin-bottom:10px;">Scam Audit</div>
+						<div style="padding:18px 20px;background:#ffffff;border:1px solid #e7dfd2;font-size:14px;line-height:1.8;color:#51483f;">${escapeHtml(lead.scamAudit)}</div>
 					</div>
 					<div>
 						<div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#7f7468;margin-bottom:10px;">AI Notes</div>
@@ -446,10 +520,11 @@ exports.handler = async (event) => {
 	const { source, detail: sourceDetail } = normalizeSource(referrer, message);
 	const inquiryType = detectInquiryType(message);
 	const { score: fitScore, priority, reasons } = scoreLead(message, inquiryType, source);
+	const { scamScore, scamAudit } = buildScamAudit({ name, email, company, message, referrer });
 	const projectSummary = summarizeMessage(message);
 	const nextStep = buildNextStep(priority, inquiryType);
 	const whyFit = buildWhyFit(inquiryType, reasons);
-	const aiNotes = buildAiNotes({ source, sourceDetail, inquiryType, fitScore, priority, nextStep, message });
+	const aiNotes = buildAiNotes({ source, sourceDetail, inquiryType, fitScore, priority, nextStep, message, scamScore });
 	const lead = {
 		name,
 		email,
@@ -463,6 +538,8 @@ exports.handler = async (event) => {
 		inquiryType,
 		priority,
 		fitScore,
+		scamScore,
+		scamAudit,
 		projectSummary,
 		nextStep,
 		whyFit,

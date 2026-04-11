@@ -12,6 +12,8 @@ This repo now routes the main `/contact/` form through a Netlify Function instea
    - Inquiry Type
    - Priority
    - Fit Score
+   - Scam Score
+   - Scam Audit
    - Project Summary
    - Next Step
    - Why They're a Fit
@@ -72,4 +74,5 @@ Then run the site locally however you normally do, or invoke the function direct
 - This only replaces the main contact form flow right now.
 - The footer subscribe form and RFP template form still use their existing behavior.
 - The enrichment is heuristic MVP logic, not LLM enrichment yet.
+- Scam scoring is also heuristic, intended as an early warning layer rather than a hard block.
 - Slack is optional by design so the core flow is not blocked on Slack setup.
