@@ -168,6 +168,36 @@ ol {
 			}
 		}
 	}
+
+	&[data-contact-submit-button] {
+		&:disabled {
+			opacity: 1;
+		}
+
+		&.loading {
+			cursor: progress;
+
+			.no-overflow {
+				.inner {
+					transform: translateY(-1.36em);
+					@media screen and (max-width: $mobile-breakpoint) {
+						transform: translateY(-2.72em);
+					}
+				}
+			}
+		}
+
+		&.success {
+			.no-overflow {
+				.inner {
+					transform: translateY(-2.72em);
+					@media screen and (max-width: $mobile-breakpoint) {
+						transform: translateY(-5.44em);
+					}
+				}
+			}
+		}
+	}
 }
 
 .btn__small {

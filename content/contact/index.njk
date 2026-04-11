@@ -137,10 +137,11 @@ description: Contact Duo Studio for brand identity, web design, and graphic desi
                             <div class="cf-turnstile" data-sitekey="0x4AAAAAAC8DZtzuh8lgMSoU" data-theme="light" data-appearance="interaction-only" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%);"></div>
                             <input name="bot-field" type="hidden"/>
                             <input name="page" type="hidden" value="/contact/"/>
-                            <button class="btn__circle" type="submit">
+                            <button class="btn__circle" type="submit" data-contact-submit-button aria-live="polite">
                                 <div class="no-overflow">
                                     <div class="inner">
                                         <p>Send Message</p>
+                                        <p>Sending...</p>
                                         <p>Message Sent!</p>
                                     </div>
                                 </div>
@@ -170,6 +171,7 @@ description: Contact Duo Studio for brand identity, web design, and graphic desi
 
         const turnstileToken = form.querySelector('[name="cf-turnstile-response"]')?.value;
 
+        button?.classList.remove('loading');
         button?.classList.remove('success');
 
         if (!turnstileToken) {
@@ -177,6 +179,8 @@ description: Contact Duo Studio for brand identity, web design, and graphic desi
         }
 
         button?.setAttribute('disabled', 'disabled');
+        button?.setAttribute('aria-busy', 'true');
+        button?.classList.add('loading');
 
         try {
             const response = await fetch(form.action, {
@@ -193,6 +197,7 @@ description: Contact Duo Studio for brand identity, web design, and graphic desi
                 throw new Error(payload.error || 'Something went wrong.');
             }
 
+            button?.classList.remove('loading');
             button?.classList.add('success');
             form.reset();
             referrer?.classList.remove('selected');
@@ -203,7 +208,9 @@ description: Contact Duo Studio for brand identity, web design, and graphic desi
         } catch (error) {
             console.error('Contact form submit failed', error);
         } finally {
+            button?.classList.remove('loading');
             button?.removeAttribute('disabled');
+            button?.removeAttribute('aria-busy');
         }
     });
 })();
