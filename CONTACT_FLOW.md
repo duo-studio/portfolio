@@ -43,6 +43,7 @@ Set these in Netlify site environment variables:
 Optional:
 
 - `SLACK_WEBHOOK_URL`
+- `MONDAY_ITEM_URL_BASE` (optional)
 
 Note: Slack incoming webhooks are usually channel-bound. If notifications are landing in the wrong channel, generate a new webhook specifically for `#project-management` and replace the existing `SLACK_WEBHOOK_URL` in Netlify.
 
@@ -53,6 +54,7 @@ Because only `mail.duo-studio.co` is verified in Resend so far:
 - `FROM_EMAIL=hello@mail.duo-studio.co`
 - `FROM_NAME=Duo Studio`
 - `REPLY_TO_EMAIL=hello@duo-studio.co`
+- `MONDAY_ITEM_URL_BASE=https://duostudiogroup.monday.com/boards/18408203777/pulses`
 
 If `duo-studio.co` itself gets verified in Resend later, `FROM_EMAIL` can be switched to:
 

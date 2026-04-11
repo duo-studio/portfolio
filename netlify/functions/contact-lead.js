@@ -342,6 +342,7 @@ async function sendResendEmail(lead, item, resendApiKey, fromEmail, fromName, fa
 	const replyTo = lead.email || fallbackReplyToEmail;
 	const from = fromName ? `${fromName} <${fromEmail}>` : fromEmail;
 	const logoUrl = "https://duo-studio.co/assets/Duo-Studio__logo.jpg";
+	const mondayItemUrl = getMondayItemUrl(item.id);
 	const text = [
 		`New Inquiry from ${lead.name}`,
 		"",
@@ -353,7 +354,7 @@ async function sendResendEmail(lead, item, resendApiKey, fromEmail, fromName, fa
 		"Message:",
 		lead.message,
 		"",
-		`Monday Item: ${item.name} (#${item.id})`,
+		`Monday Item: ${mondayItemUrl}`,
 	].join("\n");
 
 	const summaryRows = [
@@ -417,6 +418,7 @@ async function maybeSendSlackNotification(lead, item, webhookUrl) {
 		return;
 	}
 
+	const mondayItemUrl = getMondayItemUrl(item.id);
 	const lines = [
 		`New submission in duo-studio.co`,
 		`Name: ${lead.name}`,
@@ -432,7 +434,7 @@ async function maybeSendSlackNotification(lead, item, webhookUrl) {
 		`Source: ${lead.source}`,
 		`Scam Audit: ${lead.scamAudit}`,
 		`Next Step: ${lead.nextStep}`,
-		`Monday Item: ${item.name} (#${item.id})`,
+		`Monday Item: ${mondayItemUrl}`,
 	];
 
 	await fetch(webhookUrl, {
@@ -444,6 +446,11 @@ async function maybeSendSlackNotification(lead, item, webhookUrl) {
 			text: lines.join("\n"),
 		}),
 	});
+}
+
+function getMondayItemUrl(itemId) {
+	const baseUrl = process.env.MONDAY_ITEM_URL_BASE || `https://duostudiogroup.monday.com/boards/${MONDAY_BOARD_ID}/pulses`;
+	return `${baseUrl}/${itemId}`;
 }
 
 function escapeHtml(value) {
