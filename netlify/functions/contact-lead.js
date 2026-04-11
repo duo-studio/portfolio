@@ -607,48 +607,44 @@ async function sendResendEmail(lead, item, resendApiKey, fromEmail, fromName, fa
 	const replyTo = lead.email || fallbackReplyToEmail;
 	const from = fromName ? `${fromName} <${fromEmail}>` : fromEmail;
 	const logoUrl = "https://duo-studio.co/assets/logo.png";
-	const mondayItemUrl = getMondayItemUrl(item.id);
+	const companySuffix = lead.company ? ` at ${lead.company}` : "";
+	const subject = `New inquiry from ${lead.name}${companySuffix}`;
+	const headline = `${escapeHtml(lead.name)}${lead.company ? ` at ${escapeHtml(lead.company)}` : ""}`;
 	const text = [
-		`New Inquiry from ${lead.name}`,
+		subject,
 		"",
-		`Name: ${lead.name}`,
+		headline,
+		lead.website ? `Website: ${lead.website}` : null,
 		`Email: ${lead.email}`,
-		`Company: ${lead.company}`,
 		"",
-		"Message:",
 		lead.message,
 		"",
-		`Monday Item: ${mondayItemUrl}`,
-	].join("\n");
+		"Reply directly to respond.",
+	].filter(Boolean).join("\n");
 
-	const summaryRows = [
-		{ label: "Name", value: escapeHtml(lead.name) },
-		{ label: "Email", value: `<a href="mailto:${escapeHtml(lead.email)}" style="color:#0f0d0d;text-decoration:none;">${escapeHtml(lead.email)}</a>` },
-		{ label: "Company", value: escapeHtml(lead.company) },
-	];
-
-	const summaryHtml = summaryRows
-		.map((row) => `
-			<tr>
-				<td style="padding:12px 0;border-bottom:1px solid #f3e6ef;color:#0f0d0d;font-size:13px;font-weight:600;width:140px;vertical-align:top;">${row.label}</td>
-				<td style="padding:12px 0;border-bottom:1px solid #f3e6ef;color:#0f0d0d;font-size:15px;line-height:1.7;">${row.value}</td>
-			</tr>
-		`).join("");
-
+	const websiteHtml = lead.website
+		? `
+					<p style="margin:0 0 12px;color:#0f0d0d;font-size:15px;line-height:1.7;">
+						<a href="${escapeHtml(lead.website)}" style="color:#0f0d0d;text-decoration:underline;">${escapeHtml(lead.website)}</a>
+					</p>
+				`
+		: "";
+	const companyHtml = lead.company
+		? ` at ${escapeHtml(lead.company)}`
+		: "";
 	const html = `
-		<div style="margin:0;padding:32px 16px;background:#fefcff;font-family:Helvetica,Arial,sans-serif;color:#0f0d0d;">
-			<div style="max-width:720px;margin:0 auto;background:#fefcff;border:1px solid #f3e6ef;">
-				<div style="height:6px;background:#fefcff;"></div>
-				<div style="padding:32px 36px 18px;background:#fefcff;">
-					<img src="${logoUrl}" alt="Duo Studio" style="display:block;width:50px;max-width:100%;height:auto;margin:0 0 24px;" />
-					<h1 style="margin:0;color:#0f0d0d;font-size:30px;line-height:1.15;font-weight:600;">New Inquiry from ${escapeHtml(lead.name)}</h1>
-				</div>
-				<div style="padding:0 36px 36px;background:#fefcff;">
-					<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;margin-bottom:28px;">${summaryHtml}</table>
-					<div>
-						<div style="font-size:13px;font-weight:600;color:#0f0d0d;margin-bottom:12px;">Message</div>
-						<div style="padding:20px 22px;background:#fefcff;border:1px solid #f3e6ef;color:#0f0d0d;font-size:15px;line-height:1.8;">${formatMessageHtml(lead.message)}</div>
-					</div>
+		<div style="margin:0;padding:24px 16px;background:#fefcff;font-family:Helvetica,Arial,sans-serif;color:#0f0d0d;">
+			<div style="max-width:640px;margin:0 auto;background:#fefcff;border:1px solid #f3e6ef;">
+				<div style="padding:24px 28px 28px;background:#fefcff;">
+					<img src="${logoUrl}" alt="Duo Studio" style="display:block;width:32px;max-width:100%;height:auto;margin:0 0 18px;" />
+					<p style="margin:0 0 12px;color:#0f0d0d;font-size:20px;line-height:1.4;font-weight:600;">${escapeHtml(lead.name)}${companyHtml}</p>
+					${websiteHtml}
+					<p style="margin:0 0 20px;color:#0f0d0d;font-size:15px;line-height:1.7;">
+						<a href="mailto:${escapeHtml(lead.email)}" style="color:#0f0d0d;text-decoration:none;">${escapeHtml(lead.email)}</a>
+					</p>
+					<div style="margin:0 0 20px;color:#0f0d0d;font-size:15px;line-height:1.8;">${formatMessageHtml(lead.message)}</div>
+					<div style="height:1px;background:#f3e6ef;margin:0 0 16px;"></div>
+					<p style="margin:0;color:#6f626a;font-size:13px;line-height:1.6;">Reply directly to respond.</p>
 				</div>
 			</div>
 		</div>
@@ -664,7 +660,7 @@ async function sendResendEmail(lead, item, resendApiKey, fromEmail, fromName, fa
 			from,
 			to: ["hello@duo-studio.co"],
 			reply_to: replyTo,
-			subject: `New Inquiry from ${lead.name}`,
+			subject,
 			text,
 			html,
 		}),
