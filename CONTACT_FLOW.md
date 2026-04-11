@@ -51,7 +51,7 @@ Note: Slack incoming webhooks are usually channel-bound. If notifications are la
 Now that `duo-studio.co` is verified in Resend:
 
 - `FROM_EMAIL=hello@duo-studio.co`
-- `FROM_NAME=Duo Studio`
+- `FROM_NAME=The Duo Team`
 - `REPLY_TO_EMAIL=hello@duo-studio.co`
 - `MONDAY_ITEM_URL_BASE=https://duostudio-co.monday.com/boards/18408203777/views/249619657/pulses`
 
@@ -61,7 +61,7 @@ The Turnstile site key is embedded on the public contact form. The secret key mu
 
 The function uses the submitter's email as `reply_to` when available. That makes the internal notification directly replyable to the lead, while the visible sender still stays on the Duo side.
 
-The sender itself is formatted as `FROM_NAME <FROM_EMAIL>`, so the inbox display can read like `Duo Studio <hello@duo-studio.co>` instead of showing the raw mailbox alone.
+The sender itself is formatted as `FROM_NAME <FROM_EMAIL>`, so the inbox display can read like `The Duo Team <hello@duo-studio.co>` instead of showing the raw mailbox alone.
 
 If the lead email is missing or invalid, it falls back to `REPLY_TO_EMAIL`.
 
@@ -73,7 +73,7 @@ Example:
 export MONDAY_API_TOKEN="..."
 export RESEND_API_KEY="..."
 export FROM_EMAIL="hello@duo-studio.co"
-export FROM_NAME="Duo Studio"
+export FROM_NAME="The Duo Team"
 export REPLY_TO_EMAIL="hello@duo-studio.co"
 ```
 
