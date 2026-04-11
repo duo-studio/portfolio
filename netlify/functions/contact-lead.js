@@ -290,6 +290,18 @@ async function mondayRequest(query, variables, token) {
 }
 
 async function createMondayLead(lead, token) {
+	const createUpdateBody = [
+		`New submission in Duo Studio's website on page ${lead.page}`,
+		"",
+		`Name: ${lead.name}`,
+		`Email: ${lead.email}`,
+		`Company: ${lead.company}`,
+		`Referrer: ${lead.referrer || "Unknown"}`,
+		"",
+		"Message:",
+		lead.message,
+	].join("\n");
+
 	const columnValues = {
 		[MONDAY_COLUMNS.contactName]: lead.name,
 		[MONDAY_COLUMNS.email]: {
@@ -333,6 +345,17 @@ async function createMondayLead(lead, token) {
 		boardId: String(MONDAY_BOARD_ID),
 		itemName: lead.company || lead.name,
 		columnValues: JSON.stringify(columnValues),
+	}, token);
+
+	await mondayRequest(`
+		mutation CreateLeadUpdate($itemId: ID!, $body: String!) {
+			create_update(item_id: $itemId, body: $body) {
+				id
+			}
+		}
+	`, {
+		itemId: String(data.create_item.id),
+		body: createUpdateBody,
 	}, token);
 
 	return data.create_item;
@@ -379,7 +402,7 @@ async function sendResendEmail(lead, item, resendApiKey, fromEmail, fromName, fa
 			<div style="max-width:720px;margin:0 auto;background:#fefcff;border:1px solid #f3e6ef;">
 				<div style="height:6px;background:#fefcff;"></div>
 				<div style="padding:32px 36px 18px;background:#fefcff;">
-					<img src="${logoUrl}" alt="Duo Studio" style="display:block;width:90px;max-width:100%;height:auto;margin:0 0 24px;" />
+					<img src="${logoUrl}" alt="Duo Studio" style="display:block;width:50px;max-width:100%;height:auto;margin:0 0 24px;" />
 					<h1 style="margin:0;color:#0f0d0d;font-size:30px;line-height:1.15;font-weight:600;">New Inquiry from ${escapeHtml(lead.name)}</h1>
 				</div>
 				<div style="padding:0 36px 36px;background:#fefcff;">
