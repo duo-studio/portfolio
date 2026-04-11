@@ -270,10 +270,11 @@ async function createMondayLead(lead, token) {
 	return data.create_item;
 }
 
-async function sendResendEmail(lead, item, resendApiKey, fromEmail, fallbackReplyToEmail) {
+async function sendResendEmail(lead, item, resendApiKey, fromEmail, fromName, fallbackReplyToEmail) {
 	const replyTo = lead.email || fallbackReplyToEmail;
+	const from = fromName ? `${fromName} <${fromEmail}>` : fromEmail;
 	const text = [
-		"New Duo Studio lead received.",
+		"New Duo Studio lead received",
 		"",
 		`Company: ${lead.company}`,
 		`Contact: ${lead.name}`,
@@ -284,31 +285,67 @@ async function sendResendEmail(lead, item, resendApiKey, fromEmail, fallbackRepl
 		`Priority: ${lead.priority}`,
 		`Fit Score: ${lead.fitScore}/10`,
 		`Monday Item: ${item.name} (#${item.id})`,
+		`Next Step: ${lead.nextStep}`,
 		"",
-		"Message:",
+		"Project Summary",
+		lead.projectSummary,
+		"",
+		"Original Message",
 		lead.message,
 		"",
-		"AI Notes:",
+		"AI Notes",
 		lead.aiNotes,
 	].join("\n");
 
+	const summaryRows = [
+		{ label: "Contact", value: escapeHtml(lead.name) },
+		{ label: "Email", value: `<a href="mailto:${escapeHtml(lead.email)}" style="color:#111111;text-decoration:none;">${escapeHtml(lead.email)}</a>` },
+		{ label: "Company", value: escapeHtml(lead.company) },
+		{ label: "Referrer", value: escapeHtml(lead.referrer || "Unknown") },
+		{ label: "Source", value: escapeHtml(lead.source) },
+		{ label: "Inquiry Type", value: escapeHtml(lead.inquiryType) },
+		{ label: "Priority", value: escapeHtml(lead.priority) },
+		{ label: "Fit Score", value: `${escapeHtml(String(lead.fitScore))}/10` },
+		{ label: "Monday Item", value: `${escapeHtml(item.name)} (#${escapeHtml(String(item.id))})` },
+	];
+
+	const summaryHtml = summaryRows
+		.map((row) => `
+			<tr>
+				<td style="padding:10px 0;border-bottom:1px solid #ece7df;color:#6b6257;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;width:140px;vertical-align:top;">${row.label}</td>
+				<td style="padding:10px 0;border-bottom:1px solid #ece7df;color:#111111;font-size:15px;line-height:1.6;">${row.value}</td>
+			</tr>
+		`).join("");
+
 	const html = `
-		<h1>New Duo Studio lead</h1>
-		<p><strong>Company:</strong> ${escapeHtml(lead.company)}</p>
-		<p><strong>Contact:</strong> ${escapeHtml(lead.name)}<br />
-		<strong>Email:</strong> <a href="mailto:${escapeHtml(lead.email)}">${escapeHtml(lead.email)}</a><br />
-		<strong>Referrer:</strong> ${escapeHtml(lead.referrer || "Unknown")}<br />
-		<strong>Source:</strong> ${escapeHtml(lead.source)}<br />
-		<strong>Inquiry Type:</strong> ${escapeHtml(lead.inquiryType)}<br />
-		<strong>Priority:</strong> ${escapeHtml(lead.priority)}<br />
-		<strong>Fit Score:</strong> ${escapeHtml(String(lead.fitScore))}/10<br />
-		<strong>Monday Item:</strong> ${escapeHtml(item.name)} (#${escapeHtml(String(item.id))})</p>
-		<h2>Project Summary</h2>
-		<p>${escapeHtml(lead.projectSummary)}</p>
-		<h2>Message</h2>
-		<p>${escapeHtml(lead.message).replace(/\n/g, "<br />")}</p>
-		<h2>AI Notes</h2>
-		<p>${escapeHtml(lead.aiNotes)}</p>
+		<div style="margin:0;padding:32px 16px;background:#f6f1e8;font-family:Helvetica,Arial,sans-serif;color:#111111;">
+			<div style="max-width:720px;margin:0 auto;background:#fbf7f1;border:1px solid #e7dfd2;">
+				<div style="padding:28px 32px 20px;border-bottom:1px solid #e7dfd2;">
+					<div style="font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#7f7468;margin-bottom:12px;">Duo Studio</div>
+					<h1 style="margin:0;font-size:34px;line-height:1.1;font-weight:600;">New lead inquiry</h1>
+					<p style="margin:14px 0 0;color:#51483f;font-size:15px;line-height:1.7;max-width:560px;">A new contact form submission just came through the site and was logged in Monday. Key details are below.</p>
+				</div>
+				<div style="padding:28px 32px;">
+					<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;margin-bottom:28px;">${summaryHtml}</table>
+					<div style="margin-bottom:24px;">
+						<div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#7f7468;margin-bottom:10px;">Project Summary</div>
+						<div style="padding:18px 20px;background:#ffffff;border:1px solid #e7dfd2;font-size:15px;line-height:1.8;color:#111111;">${escapeHtml(lead.projectSummary)}</div>
+					</div>
+					<div style="margin-bottom:24px;">
+						<div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#7f7468;margin-bottom:10px;">Original Message</div>
+						<div style="padding:18px 20px;background:#ffffff;border:1px solid #e7dfd2;font-size:15px;line-height:1.8;color:#111111;white-space:pre-wrap;">${escapeHtml(lead.message)}</div>
+					</div>
+					<div style="margin-bottom:24px;">
+						<div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#7f7468;margin-bottom:10px;">Recommended Next Step</div>
+						<div style="padding:18px 20px;background:#111111;color:#f6f1e8;font-size:15px;line-height:1.8;">${escapeHtml(lead.nextStep)}</div>
+					</div>
+					<div>
+						<div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#7f7468;margin-bottom:10px;">AI Notes</div>
+						<div style="padding:18px 20px;background:#ffffff;border:1px solid #e7dfd2;font-size:14px;line-height:1.8;color:#51483f;">${escapeHtml(lead.aiNotes)}</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	`;
 
 	const response = await fetch("https://api.resend.com/emails", {
@@ -318,10 +355,10 @@ async function sendResendEmail(lead, item, resendApiKey, fromEmail, fallbackRepl
 			"Content-Type": "application/json",
 		},
 		body: JSON.stringify({
-			from: fromEmail,
+			from,
 			to: ["hello@duo-studio.co"],
 			reply_to: replyTo,
-			subject: `New lead: ${lead.company}`,
+			subject: `New Inquiry, ${lead.company}`,
 			text,
 			html,
 		}),
@@ -395,6 +432,7 @@ exports.handler = async (event) => {
 	const mondayToken = getEnv("MONDAY_API_TOKEN");
 	const resendApiKey = getEnv("RESEND_API_KEY", "/Users/leo/.config/resend/api_key");
 	const fromEmail = getEnv("FROM_EMAIL") || "hello@mail.duo-studio.co";
+	const fromName = getEnv("FROM_NAME") || "Duo Studio";
 	const fallbackReplyToEmail = getEnv("REPLY_TO_EMAIL") || "hello@duo-studio.co";
 	const slackWebhookUrl = getEnv("SLACK_WEBHOOK_URL");
 
@@ -435,7 +473,7 @@ exports.handler = async (event) => {
 
 	try {
 		const item = await createMondayLead(lead, mondayToken);
-		await sendResendEmail(lead, item, resendApiKey, fromEmail, fallbackReplyToEmail);
+		await sendResendEmail(lead, item, resendApiKey, fromEmail, fromName, fallbackReplyToEmail);
 		await maybeSendSlackNotification(lead, item, slackWebhookUrl);
 
 		return isFetchRequest

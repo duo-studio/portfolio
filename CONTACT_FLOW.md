@@ -26,6 +26,7 @@ Set these in Netlify site environment variables:
 - `MONDAY_API_TOKEN`
 - `RESEND_API_KEY`
 - `FROM_EMAIL`
+- `FROM_NAME`
 - `REPLY_TO_EMAIL`
 
 Optional:
@@ -37,6 +38,7 @@ Optional:
 Because only `mail.duo-studio.co` is verified in Resend so far:
 
 - `FROM_EMAIL=hello@mail.duo-studio.co`
+- `FROM_NAME=Duo Studio`
 - `REPLY_TO_EMAIL=hello@duo-studio.co`
 
 If `duo-studio.co` itself gets verified in Resend later, `FROM_EMAIL` can be switched to:
@@ -46,6 +48,8 @@ If `duo-studio.co` itself gets verified in Resend later, `FROM_EMAIL` can be swi
 ## Reply-To behavior
 
 The function uses the submitter's email as `reply_to` when available. That makes the internal notification directly replyable to the lead, while the visible sender still stays on the Duo side.
+
+The sender itself is formatted as `FROM_NAME <FROM_EMAIL>`, so the inbox display can read like `Duo Studio <hello@mail.duo-studio.co>` instead of showing the raw mailbox alone.
 
 If the lead email is missing or invalid, it falls back to `REPLY_TO_EMAIL`.
 
@@ -57,6 +61,7 @@ Example:
 export MONDAY_API_TOKEN="..."
 export RESEND_API_KEY="..."
 export FROM_EMAIL="hello@mail.duo-studio.co"
+export FROM_NAME="Duo Studio"
 export REPLY_TO_EMAIL="hello@duo-studio.co"
 ```
 
