@@ -20,13 +20,10 @@ This repo now routes the main `/contact/` form through a Netlify Function instea
    - Why They're a Fit
    - AI Notes / Recommendation
 5. Sends an internal notification email to `hello@duo-studio.co` via Resend
-   - minimal branded layout
-   - Duo logo
-   - Duo white background: `#fefcff`
-   - Duo black text: `#0f0d0d`
-   - solid pink accent bar
-   - heading: `New Inquiry from [Name]`
-   - fields: Name, Email, Company, Referrer, Message
+   - plain, message-first layout
+   - no logo or card chrome
+   - subject includes company when present
+   - body contains the message, then a lightweight sender line and optional website
 6. Optionally sends a Slack webhook notification if configured
    - legacy-style field formatting for readability in `#project-management`
    - plus AI triage details below the original submission
@@ -51,24 +48,20 @@ Note: Slack incoming webhooks are usually channel-bound. If notifications are la
 
 ## Recommended values right now
 
-Because only `mail.duo-studio.co` is verified in Resend so far:
+Now that `duo-studio.co` is verified in Resend:
 
-- `FROM_EMAIL=hello@mail.duo-studio.co`
+- `FROM_EMAIL=hello@duo-studio.co`
 - `FROM_NAME=Duo Studio`
 - `REPLY_TO_EMAIL=hello@duo-studio.co`
 - `MONDAY_ITEM_URL_BASE=https://duostudio-co.monday.com/boards/18408203777/views/249619657/pulses`
 
 The Turnstile site key is embedded on the public contact form. The secret key must be stored only in Netlify as `TURNSTILE_SECRET_KEY`.
 
-If `duo-studio.co` itself gets verified in Resend later, `FROM_EMAIL` can be switched to:
-
-- `hello@duo-studio.co`
-
 ## Reply-To behavior
 
 The function uses the submitter's email as `reply_to` when available. That makes the internal notification directly replyable to the lead, while the visible sender still stays on the Duo side.
 
-The sender itself is formatted as `FROM_NAME <FROM_EMAIL>`, so the inbox display can read like `Duo Studio <hello@mail.duo-studio.co>` instead of showing the raw mailbox alone.
+The sender itself is formatted as `FROM_NAME <FROM_EMAIL>`, so the inbox display can read like `Duo Studio <hello@duo-studio.co>` instead of showing the raw mailbox alone.
 
 If the lead email is missing or invalid, it falls back to `REPLY_TO_EMAIL`.
 
@@ -79,7 +72,7 @@ Example:
 ```bash
 export MONDAY_API_TOKEN="..."
 export RESEND_API_KEY="..."
-export FROM_EMAIL="hello@mail.duo-studio.co"
+export FROM_EMAIL="hello@duo-studio.co"
 export FROM_NAME="Duo Studio"
 export REPLY_TO_EMAIL="hello@duo-studio.co"
 ```

@@ -766,7 +766,7 @@ exports.handler = async (event) => {
 	const mondayToken = getEnv("MONDAY_API_TOKEN");
 	const resendApiKey = getEnv("RESEND_API_KEY", "/Users/leo/.config/resend/api_key");
 	const turnstileSecretKey = getEnv("TURNSTILE_SECRET_KEY");
-	const fromEmail = getEnv("FROM_EMAIL") || "hello@mail.duo-studio.co";
+	const fromEmail = getEnv("FROM_EMAIL") || "hello@duo-studio.co";
 	const fromName = getEnv("FROM_NAME") || "Duo Studio";
 	const fallbackReplyToEmail = getEnv("REPLY_TO_EMAIL") || "hello@duo-studio.co";
 	const slackWebhookUrl = getEnv("SLACK_WEBHOOK_URL");
