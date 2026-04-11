@@ -697,7 +697,7 @@ async function maybeSendSlackNotification(lead, item, webhookUrl) {
 		`> <${mondayItemUrl}|Monday Item>`,
 	];
 
-	await fetch(webhookUrl, {
+	const response = await fetch(webhookUrl, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
@@ -706,6 +706,11 @@ async function maybeSendSlackNotification(lead, item, webhookUrl) {
 			text: lines.join("\n"),
 		}),
 	});
+
+	if (!response.ok) {
+		const errorText = await response.text();
+		throw new Error(`Slack webhook failed with ${response.status}: ${errorText}`);
+	}
 }
 
 function getMondayItemUrl(itemId) {
@@ -828,13 +833,36 @@ exports.handler = async (event) => {
 	try {
 		const item = await createMondayLead(lead, mondayToken);
 		await sendResendEmail(lead, item, resendApiKey, fromEmail, fromName, fallbackReplyToEmail);
-		await maybeSendSlackNotification(lead, item, slackWebhookUrl);
+
+		try {
+			await maybeSendSlackNotification(lead, item, slackWebhookUrl);
+		} catch (error) {
+			console.error("Slack notification failed", {
+				message: error instanceof Error ? error.message : String(error),
+				leadEmail: lead.email,
+				mondayItemId: item.id,
+			});
+		}
 
 		return isFetchRequest
 			? json(200, { ok: true, itemId: item.id })
 			: redirect("/contact/thank-you/");
 	} catch (error) {
-		console.error("Contact lead flow failed", error);
+		const stage = error instanceof Error && error.message.startsWith("Resend failed")
+			? "resend"
+			: error instanceof Error && (
+				error.message.startsWith("Monday API request failed")
+				|| error.message.includes("create_item")
+				|| error.message.includes("create_update")
+			)
+				? "monday"
+				: "contact-flow";
+		console.error("Contact lead flow failed", {
+			stage,
+			message: error instanceof Error ? error.message : String(error),
+			leadEmail: lead.email,
+			page: lead.page,
+		});
 		return isFetchRequest
 			? json(500, { ok: false, error: "Something went wrong sending your message. Please email hello@duo-studio.co instead." })
 			: redirect("/contact/");
