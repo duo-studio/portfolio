@@ -658,8 +658,12 @@ function loadGlobalScripts() {
 
 		// FORM SUBMISSION (https://docs.netlify.com/forms/setup/)
 		const handleSubmit = (event) => {
-			event.preventDefault();
 			const myForm = event.target;
+			if (myForm.hasAttribute("data-contact-form")) {
+				return;
+			}
+
+			event.preventDefault();
 			const formData = new FormData(myForm);
 			const name = myForm.getAttribute("name");
 
@@ -678,6 +682,9 @@ function loadGlobalScripts() {
 		};
 
 		document.querySelectorAll("form").forEach((form) => {
+			if (form.hasAttribute("data-contact-form")) {
+				return;
+			}
 			form.addEventListener("submit", handleSubmit);
 		});
 	}

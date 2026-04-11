@@ -134,7 +134,7 @@ description: Contact Duo Studio for brand identity, web design, and graphic desi
                                 <option value="Referral">Referral</option>
                                 <option value="Other">Other</option>
                             </select>
-                            <div class="cf-turnstile" data-sitekey="0x4AAAAAAC8DZtzuh8lgMSoU" data-theme="light" style="margin-top: 1rem;"></div>
+                            <div class="cf-turnstile" data-sitekey="0x4AAAAAAC8DZtzuh8lgMSoU" data-theme="light" data-appearance="interaction-only" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%);"></div>
                             <input name="bot-field" type="hidden"/>
                             <input name="page" type="hidden" value="/contact/"/>
                             <button class="btn__circle" type="submit">
@@ -163,9 +163,12 @@ description: Contact Duo Studio for brand identity, web design, and graphic desi
 
     const status = form.querySelector('#contact-form-status');
     const button = form.querySelector('button[type="submit"]');
+    const turnstileElement = form.querySelector('.cf-turnstile');
+    const referrer = form.querySelector('#referrer');
 
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
+        event.stopImmediatePropagation();
 
         const turnstileToken = form.querySelector('[name="cf-turnstile-response"]')?.value;
 
@@ -174,10 +177,12 @@ description: Contact Duo Studio for brand identity, web design, and graphic desi
             status.textContent = '';
         }
 
+        button?.classList.remove('success');
+
         if (!turnstileToken) {
             if (status) {
                 status.hidden = false;
-                status.textContent = 'Please verify that you are human.';
+                status.textContent = 'Please try sending again.';
             }
             return;
         }
@@ -199,7 +204,18 @@ description: Contact Duo Studio for brand identity, web design, and graphic desi
                 throw new Error(payload.error || 'Something went wrong.');
             }
 
-            window.location.href = '/contact/thank-you/';
+            button?.classList.add('success');
+            form.reset();
+            referrer?.classList.remove('selected');
+
+            if (status) {
+                status.hidden = false;
+                status.textContent = 'Thanks, your message has been sent.';
+            }
+
+            if (window.turnstile && turnstileElement) {
+                window.turnstile.reset(turnstileElement);
+            }
         } catch (error) {
             if (status) {
                 status.hidden = false;
