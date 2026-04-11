@@ -405,7 +405,7 @@ async function sendResendEmail(lead, item, resendApiKey, fromEmail, fromName, fa
 					<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;margin-bottom:28px;">${summaryHtml}</table>
 					<div>
 						<div style="font-size:13px;font-weight:600;color:#0f0d0d;margin-bottom:12px;">Message</div>
-						<div style="padding:20px 22px;background:#fefcff;border:1px solid #f3e6ef;color:#0f0d0d;font-size:15px;line-height:1.8;white-space:pre-wrap;">${escapeHtml(lead.message)}</div>
+						<div style="padding:20px 22px;background:#fefcff;border:1px solid #f3e6ef;color:#0f0d0d;font-size:15px;line-height:1.8;">${formatMessageHtml(lead.message)}</div>
 					</div>
 				</div>
 			</div>
@@ -494,6 +494,10 @@ async function maybeSendSlackNotification(lead, item, webhookUrl) {
 function getMondayItemUrl(itemId) {
 	const baseUrl = process.env.MONDAY_ITEM_URL_BASE || `https://duostudio-co.monday.com/boards/${MONDAY_BOARD_ID}/views/249619657/pulses`;
 	return `${baseUrl}/${itemId}`;
+}
+
+function formatMessageHtml(value) {
+	return escapeHtml(String(value || "").trim()).replace(/\n/g, "<br />");
 }
 
 function escapeHtml(value) {
