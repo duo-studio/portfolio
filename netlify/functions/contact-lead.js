@@ -341,7 +341,7 @@ async function createMondayLead(lead, token) {
 async function sendResendEmail(lead, item, resendApiKey, fromEmail, fromName, fallbackReplyToEmail) {
 	const replyTo = lead.email || fallbackReplyToEmail;
 	const from = fromName ? `${fromName} <${fromEmail}>` : fromEmail;
-	const logoUrl = "https://duo-studio.co/assets/Duo-Studio__logo.jpg";
+	const logoUrl = "https://duo-studio.co/assets/Duo_Favicon@192x192.jpg";
 	const mondayItemUrl = getMondayItemUrl(item.id);
 	const text = [
 		`New Inquiry from ${lead.name}`,
@@ -350,6 +350,7 @@ async function sendResendEmail(lead, item, resendApiKey, fromEmail, fromName, fa
 		`Email: ${lead.email}`,
 		`Company: ${lead.company}`,
 		`Referrer: ${lead.referrer || "Unknown"}`,
+		`Page: ${lead.page}`,
 		"",
 		"Message:",
 		lead.message,
@@ -362,6 +363,7 @@ async function sendResendEmail(lead, item, resendApiKey, fromEmail, fromName, fa
 		{ label: "Email", value: `<a href="mailto:${escapeHtml(lead.email)}" style="color:#0f0d0d;text-decoration:none;">${escapeHtml(lead.email)}</a>` },
 		{ label: "Company", value: escapeHtml(lead.company) },
 		{ label: "Referrer", value: escapeHtml(lead.referrer || "Unknown") },
+		{ label: "Page", value: escapeHtml(lead.page) },
 	];
 
 	const summaryHtml = summaryRows
@@ -420,21 +422,42 @@ async function maybeSendSlackNotification(lead, item, webhookUrl) {
 
 	const mondayItemUrl = getMondayItemUrl(item.id);
 	const lines = [
-		`New submission in duo-studio.co`,
-		`Name: ${lead.name}`,
-		`Email: ${lead.email}`,
-		`Company: ${lead.company}`,
-		`Referrer: ${lead.referrer || "Unknown"}`,
-		`Message: ${lead.message}`,
+		`New submission in Duo Studio's website on page ${lead.page}`,
+		"> *Name*",
+		`> ${lead.name}`,
+		">",
+		"> *Email*",
+		`> ${lead.email}`,
+		">",
+		"> *Company*",
+		`> ${lead.company}`,
+		">",
+		"> *Referrer*",
+		`> ${lead.referrer || "Unknown"}`,
+		">",
+		"> *Message*",
+		`> ${lead.message.replace(/\n/g, "\n> ")}`,
 		"",
-		`AI Triage`,
-		`Fit Score: ${lead.fitScore}/10`,
-		`Scam Score: ${lead.scamScore}/10`,
-		`Inquiry Type: ${lead.inquiryType}`,
-		`Source: ${lead.source}`,
-		`Scam Audit: ${lead.scamAudit}`,
-		`Next Step: ${lead.nextStep}`,
-		`Monday Item: ${mondayItemUrl}`,
+		"*AI Audit*",
+		"*Fit Score:*",
+		`${lead.fitScore}/10`,
+		"",
+		"*Scam Score:*",
+		`${lead.scamScore}/10`,
+		"",
+		"*Inquiry Type:*",
+		`${lead.inquiryType}`,
+		"",
+		"*Source:*",
+		`${lead.source}`,
+		"",
+		"*Scam Audit:*",
+		`${lead.scamAudit}`,
+		"",
+		"*Next Step:*",
+		`${lead.nextStep}`,
+		"",
+		`<${mondayItemUrl}|Monday Item>`,
 	];
 
 	await fetch(webhookUrl, {
@@ -482,6 +505,7 @@ exports.handler = async (event) => {
 	const referrer = clean(body.referrer, 160);
 	const website = clean(body.website, 200);
 	const phone = clean(body.phone, 80);
+	const page = clean(body.page, 160) || "/contact/";
 
 	if (!name || !email || !company || !message) {
 		return isFetchRequest
@@ -526,6 +550,7 @@ exports.handler = async (event) => {
 		referrer,
 		website,
 		phone,
+		page,
 		source,
 		sourceDetail,
 		inquiryType,
