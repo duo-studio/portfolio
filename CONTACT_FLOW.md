@@ -14,6 +14,7 @@ This repo now routes the main `/contact/` form through a Netlify Function instea
    - Fit Score
    - Scam Score
    - Scam Audit
+   - IP Address capture
    - Project Summary
    - Next Step
    - Why They're a Fit
@@ -36,6 +37,7 @@ Set these in Netlify site environment variables:
 
 - `MONDAY_API_TOKEN`
 - `RESEND_API_KEY`
+- `TURNSTILE_SECRET_KEY`
 - `FROM_EMAIL`
 - `FROM_NAME`
 - `REPLY_TO_EMAIL`
@@ -55,6 +57,8 @@ Because only `mail.duo-studio.co` is verified in Resend so far:
 - `FROM_NAME=Duo Studio`
 - `REPLY_TO_EMAIL=hello@duo-studio.co`
 - `MONDAY_ITEM_URL_BASE=https://duostudio-co.monday.com/boards/18408203777/views/249619657/pulses`
+
+The Turnstile site key is embedded on the public contact form. The secret key must be stored only in Netlify as `TURNSTILE_SECRET_KEY`.
 
 If `duo-studio.co` itself gets verified in Resend later, `FROM_EMAIL` can be switched to:
 
@@ -87,5 +91,6 @@ Then run the site locally however you normally do, or invoke the function direct
 - This only replaces the main contact form flow right now.
 - The footer subscribe form and RFP template form still use their existing behavior.
 - The enrichment is heuristic MVP logic, not LLM enrichment yet.
-- Scam scoring is also heuristic, intended as an early warning layer rather than a hard block.
+- Scam scoring is heuristic, intended as an early warning layer rather than a hard block.
+- Turnstile blocks a chunk of low-effort bot traffic before it ever reaches Monday, email, or Slack.
 - Slack is optional by design so the core flow is not blocked on Slack setup.

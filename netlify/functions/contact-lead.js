@@ -4,6 +4,7 @@ const MONDAY_BOARD_ID = 18408203777;
 const MONDAY_COLUMNS = {
 	contactName: "text_mm2a46q7",
 	email: "email_mm2a625q",
+	ipAddress: "text_mm2a9v0y",
 	website: "text_mm2asr5w",
 	phone: "phone_mm2av6jq",
 	stage: "color_mm2a8a63",
@@ -85,6 +86,24 @@ function isoDate(daysFromNow = 0) {
 	const date = new Date();
 	date.setUTCDate(date.getUTCDate() + daysFromNow);
 	return date.toISOString().slice(0, 10);
+}
+
+function getHeader(event, name) {
+	return event.headers?.[name] || event.headers?.[name.toLowerCase()] || event.headers?.[name.toUpperCase()] || "";
+}
+
+function getClientIp(event) {
+	const forwardedFor = getHeader(event, "x-forwarded-for");
+	if (forwardedFor) {
+		return forwardedFor.split(",")[0].trim();
+	}
+
+	return clean(
+		getHeader(event, "x-nf-client-connection-ip") ||
+		getHeader(event, "client-ip") ||
+		getHeader(event, "x-bb-ip"),
+		120,
+	);
 }
 
 function normalizeSource(referrer, message) {
@@ -203,7 +222,27 @@ function buildAiNotes({ source, sourceDetail, inquiryType, fitScore, priority, n
 	return notes.join(" ");
 }
 
-function buildScamAudit({ name, email, company, message, referrer }) {
+function hasHighEntropyToken(value, minLength = 12) {
+	const tokens = String(value || "").split(/\s+/).filter(Boolean);
+	return tokens.some((token) => {
+		if (token.length < minLength) return false;
+		const lettersOnly = token.replace(/[^a-z]/gi, "");
+		if (lettersOnly.length < minLength - 2) return false;
+		const upperRatio = (token.match(/[A-Z]/g) || []).length / token.length;
+		const digitRatio = (token.match(/[0-9]/g) || []).length / token.length;
+		const vowelRatio = ((lettersOnly.match(/[aeiou]/gi) || []).length || 0) / lettersOnly.length;
+		return upperRatio > 0.45 || digitRatio > 0.2 || vowelRatio < 0.22;
+	});
+}
+
+function isMajorBrandMismatch(company, emailDomain) {
+	const brand = String(company || "").trim().toLowerCase();
+	if (!brand) return false;
+	const majorBrands = ["google", "meta", "facebook", "apple", "amazon", "microsoft", "netflix", "tesla"];
+	return majorBrands.includes(brand) && !emailDomain.includes(`${brand}.com`);
+}
+
+function buildScamAudit({ name, email, company, message, referrer, ipAddress }) {
 	const text = `${name} ${email} ${company} ${message} ${referrer}`.toLowerCase();
 	let score = 1;
 	const signals = [];
@@ -236,9 +275,30 @@ function buildScamAudit({ name, email, company, message, referrer }) {
 	}
 
 	const emailDomain = (email.split("@")[1] || "").toLowerCase();
+	const emailLocal = (email.split("@")[0] || "").toLowerCase();
 	if (emailDomain && /(mailinator|tempmail|10minutemail|guerrillamail)/.test(emailDomain)) {
 		score += 4;
 		signals.push("Disposable email domain.");
+	}
+	if (/(fringmail|fexbox|sharklasers|mailnesia)/.test(emailDomain)) {
+		score += 3;
+		signals.push("Suspicious or low-trust email domain.");
+	}
+	if (hasHighEntropyToken(emailLocal, 10)) {
+		score += 2;
+		signals.push("Email local-part looks auto-generated.");
+	}
+	if (hasHighEntropyToken(name, 10)) {
+		score += 4;
+		signals.push("Name field looks machine-generated or gibberish-like.");
+	}
+	if (hasHighEntropyToken(message, 14)) {
+		score += 5;
+		signals.push("Message contains high-entropy gibberish-like tokens.");
+	}
+	if (isMajorBrandMismatch(company, emailDomain)) {
+		score += 3;
+		signals.push("Company claims a major brand but email domain does not match.");
 	}
 
 	if (emailDomain && company) {
@@ -250,6 +310,9 @@ function buildScamAudit({ name, email, company, message, referrer }) {
 	}
 
 	const finalScore = Math.max(1, Math.min(10, score));
+	if (ipAddress) {
+		signals.push(`Observed client IP: ${ipAddress}.`);
+	}
 	if (!signals.length) {
 		signals.push("No major scam indicators detected by the heuristic pass.");
 	}
@@ -308,6 +371,7 @@ async function createMondayLead(lead, token) {
 			email: lead.email,
 			text: lead.email,
 		},
+		[MONDAY_COLUMNS.ipAddress]: lead.ipAddress || "Unknown",
 		[MONDAY_COLUMNS.stage]: { label: "New" },
 		[MONDAY_COLUMNS.priority]: { label: lead.priority },
 		[MONDAY_COLUMNS.fitScore]: lead.fitScore,
@@ -359,6 +423,39 @@ async function createMondayLead(lead, token) {
 	}, token);
 
 	return data.create_item;
+}
+
+async function verifyTurnstile(token, ipAddress, secretKey) {
+	if (!secretKey) {
+		throw new Error("Missing TURNSTILE_SECRET_KEY environment variable.");
+	}
+
+	if (!token) {
+		return { success: false };
+	}
+
+	const payload = new URLSearchParams({
+		secret: secretKey,
+		response: token,
+	});
+
+	if (ipAddress) {
+		payload.set("remoteip", ipAddress);
+	}
+
+	const response = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/x-www-form-urlencoded",
+		},
+		body: payload.toString(),
+	});
+
+	if (!response.ok) {
+		throw new Error(`Turnstile verification failed with ${response.status}`);
+	}
+
+	return response.json();
 }
 
 async function sendResendEmail(lead, item, resendApiKey, fromEmail, fromName, fallbackReplyToEmail) {
@@ -530,6 +627,8 @@ exports.handler = async (event) => {
 	const website = clean(body.website, 200);
 	const phone = clean(body.phone, 80);
 	const page = clean(body.page, 160) || "/contact/";
+	const turnstileToken = clean(body["cf-turnstile-response"], 4000);
+	const ipAddress = getClientIp(event);
 
 	if (!name || !email || !company || !message) {
 		return isFetchRequest
@@ -546,6 +645,7 @@ exports.handler = async (event) => {
 
 	const mondayToken = getEnv("MONDAY_API_TOKEN");
 	const resendApiKey = getEnv("RESEND_API_KEY", "/Users/leo/.config/resend/api_key");
+	const turnstileSecretKey = getEnv("TURNSTILE_SECRET_KEY");
 	const fromEmail = getEnv("FROM_EMAIL") || "hello@mail.duo-studio.co";
 	const fromName = getEnv("FROM_NAME") || "Duo Studio";
 	const fallbackReplyToEmail = getEnv("REPLY_TO_EMAIL") || "hello@duo-studio.co";
@@ -558,10 +658,24 @@ exports.handler = async (event) => {
 			: redirect("/contact/");
 	}
 
+	try {
+		const turnstileResult = await verifyTurnstile(turnstileToken, ipAddress, turnstileSecretKey);
+		if (!turnstileResult.success) {
+			return isFetchRequest
+				? json(400, { ok: false, error: "Please verify that you are human." })
+				: redirect("/contact/");
+		}
+	} catch (error) {
+		console.error("Turnstile verification failed", error);
+		return isFetchRequest
+			? json(500, { ok: false, error: "Form verification is not configured correctly yet." })
+			: redirect("/contact/");
+	}
+
 	const { source, detail: sourceDetail } = normalizeSource(referrer, message);
 	const inquiryType = detectInquiryType(message);
 	const { score: fitScore, priority, reasons } = scoreLead(message, inquiryType, source);
-	const { scamScore, scamAudit } = buildScamAudit({ name, email, company, message, referrer });
+	const { scamScore, scamAudit } = buildScamAudit({ name, email, company, message, referrer, ipAddress });
 	const projectSummary = summarizeMessage(message);
 	const nextStep = buildNextStep(priority, inquiryType);
 	const whyFit = buildWhyFit(inquiryType, reasons);
@@ -575,6 +689,7 @@ exports.handler = async (event) => {
 		website,
 		phone,
 		page,
+		ipAddress,
 		source,
 		sourceDetail,
 		inquiryType,

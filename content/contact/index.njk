@@ -68,6 +68,8 @@ description: Contact Duo Studio for brand identity, web design, and graphic desi
 }
 </script>
 
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
 <div class="barba-container loading" data-barba="container" data-barba-namespace="contact">
     <main>
         <section id="main">
@@ -132,6 +134,7 @@ description: Contact Duo Studio for brand identity, web design, and graphic desi
                                 <option value="Referral">Referral</option>
                                 <option value="Other">Other</option>
                             </select>
+                            <div class="cf-turnstile" data-sitekey="0x4AAAAAAC8DZtzuh8lgMSoU" data-theme="light" style="margin-top: 1rem;"></div>
                             <input name="bot-field" type="hidden"/>
                             <input name="page" type="hidden" value="/contact/"/>
                             <button class="btn__circle" type="submit">
@@ -164,9 +167,19 @@ description: Contact Duo Studio for brand identity, web design, and graphic desi
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
 
+        const turnstileToken = form.querySelector('[name="cf-turnstile-response"]')?.value;
+
         if (status) {
             status.hidden = true;
             status.textContent = '';
+        }
+
+        if (!turnstileToken) {
+            if (status) {
+                status.hidden = false;
+                status.textContent = 'Please verify that you are human.';
+            }
+            return;
         }
 
         button?.setAttribute('disabled', 'disabled');
