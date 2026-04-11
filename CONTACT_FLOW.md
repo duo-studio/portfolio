@@ -19,6 +19,10 @@ This repo now routes the main `/contact/` form through a Netlify Function instea
    - Why They're a Fit
    - AI Notes / Recommendation
 5. Sends an internal notification email to `hello@duo-studio.co` via Resend
+   - minimal branded layout
+   - Duo logo
+   - heading: `New Inquiry from [Name]`
+   - fields: Name, Email, Company, Referrer, Message
 6. Optionally sends a Slack webhook notification if configured
 
 ## Required environment variables
@@ -34,6 +38,8 @@ Set these in Netlify site environment variables:
 Optional:
 
 - `SLACK_WEBHOOK_URL`
+
+Note: Slack incoming webhooks are usually channel-bound. If notifications are landing in the wrong channel, generate a new webhook specifically for `#project-management` and replace the existing `SLACK_WEBHOOK_URL` in Netlify.
 
 ## Recommended values right now
 

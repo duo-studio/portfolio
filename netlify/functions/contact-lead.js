@@ -341,81 +341,49 @@ async function createMondayLead(lead, token) {
 async function sendResendEmail(lead, item, resendApiKey, fromEmail, fromName, fallbackReplyToEmail) {
 	const replyTo = lead.email || fallbackReplyToEmail;
 	const from = fromName ? `${fromName} <${fromEmail}>` : fromEmail;
+	const logoUrl = "https://duo-studio.co/assets/Duo-Studio__logo.jpg";
 	const text = [
-		"New Duo Studio lead received",
+		`New Inquiry from ${lead.name}`,
 		"",
-		`Company: ${lead.company}`,
-		`Contact: ${lead.name}`,
+		`Name: ${lead.name}`,
 		`Email: ${lead.email}`,
+		`Company: ${lead.company}`,
 		`Referrer: ${lead.referrer || "Unknown"}`,
-		`Source: ${lead.source}`,
-		`Inquiry Type: ${lead.inquiryType}`,
-		`Priority: ${lead.priority}`,
-		`Fit Score: ${lead.fitScore}/10`,
-		`Scam Score: ${lead.scamScore}/10`,
-		`Monday Item: ${item.name} (#${item.id})`,
-		`Next Step: ${lead.nextStep}`,
 		"",
-		"Project Summary",
-		lead.projectSummary,
-		"",
-		"Original Message",
+		"Message:",
 		lead.message,
 		"",
-		"AI Notes",
-		lead.aiNotes,
+		`Monday Item: ${item.name} (#${item.id})`,
 	].join("\n");
 
 	const summaryRows = [
-		{ label: "Contact", value: escapeHtml(lead.name) },
+		{ label: "Name", value: escapeHtml(lead.name) },
 		{ label: "Email", value: `<a href="mailto:${escapeHtml(lead.email)}" style="color:#111111;text-decoration:none;">${escapeHtml(lead.email)}</a>` },
 		{ label: "Company", value: escapeHtml(lead.company) },
 		{ label: "Referrer", value: escapeHtml(lead.referrer || "Unknown") },
-		{ label: "Source", value: escapeHtml(lead.source) },
-		{ label: "Inquiry Type", value: escapeHtml(lead.inquiryType) },
-		{ label: "Priority", value: escapeHtml(lead.priority) },
-		{ label: "Fit Score", value: `${escapeHtml(String(lead.fitScore))}/10` },
-		{ label: "Scam Score", value: `${escapeHtml(String(lead.scamScore))}/10` },
-		{ label: "Monday Item", value: `${escapeHtml(item.name)} (#${escapeHtml(String(item.id))})` },
 	];
 
 	const summaryHtml = summaryRows
 		.map((row) => `
 			<tr>
-				<td style="padding:10px 0;border-bottom:1px solid #ece7df;color:#6b6257;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;width:140px;vertical-align:top;">${row.label}</td>
-				<td style="padding:10px 0;border-bottom:1px solid #ece7df;color:#111111;font-size:15px;line-height:1.6;">${row.value}</td>
+				<td style="padding:12px 0;border-bottom:1px solid #eadbe8;color:#111111;font-size:13px;font-weight:600;width:140px;vertical-align:top;">${row.label}</td>
+				<td style="padding:12px 0;border-bottom:1px solid #eadbe8;color:#111111;font-size:15px;line-height:1.7;">${row.value}</td>
 			</tr>
 		`).join("");
 
 	const html = `
 		<div style="margin:0;padding:32px 16px;background:#f6f1e8;font-family:Helvetica,Arial,sans-serif;color:#111111;">
-			<div style="max-width:720px;margin:0 auto;background:#fbf7f1;border:1px solid #e7dfd2;">
-				<div style="padding:28px 32px 20px;border-bottom:1px solid #e7dfd2;">
-					<div style="font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#7f7468;margin-bottom:12px;">Duo Studio</div>
-					<h1 style="margin:0;font-size:34px;line-height:1.1;font-weight:600;">New lead inquiry</h1>
-					<p style="margin:14px 0 0;color:#51483f;font-size:15px;line-height:1.7;max-width:560px;">A new contact form submission just came through the site and was logged in Monday. Key details are below.</p>
+			<div style="max-width:720px;margin:0 auto;background:#f6f1e8;border:1px solid #eadbe8;">
+				<div style="height:6px;background:linear-gradient(90deg,#f05fa8 0%,#8a5cf6 100%);"></div>
+				<div style="padding:32px 36px 18px;background:#f6f1e8;">
+					<img src="${logoUrl}" alt="Duo Studio" style="display:block;width:180px;max-width:100%;height:auto;margin:0 0 24px;" />
+					<h1 style="margin:0;color:#111111;font-size:30px;line-height:1.15;font-weight:600;">New Inquiry from ${escapeHtml(lead.name)}</h1>
 				</div>
-				<div style="padding:28px 32px;">
+				<div style="padding:0 36px 36px;background:#f6f1e8;">
 					<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;margin-bottom:28px;">${summaryHtml}</table>
-					<div style="margin-bottom:24px;">
-						<div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#7f7468;margin-bottom:10px;">Project Summary</div>
-						<div style="padding:18px 20px;background:#ffffff;border:1px solid #e7dfd2;font-size:15px;line-height:1.8;color:#111111;">${escapeHtml(lead.projectSummary)}</div>
-					</div>
-					<div style="margin-bottom:24px;">
-						<div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#7f7468;margin-bottom:10px;">Original Message</div>
-						<div style="padding:18px 20px;background:#ffffff;border:1px solid #e7dfd2;font-size:15px;line-height:1.8;color:#111111;white-space:pre-wrap;">${escapeHtml(lead.message)}</div>
-					</div>
-					<div style="margin-bottom:24px;">
-						<div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#7f7468;margin-bottom:10px;">Recommended Next Step</div>
-						<div style="padding:18px 20px;background:#111111;color:#f6f1e8;font-size:15px;line-height:1.8;">${escapeHtml(lead.nextStep)}</div>
-					</div>
-					<div style="margin-bottom:24px;">
-						<div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#7f7468;margin-bottom:10px;">Scam Audit</div>
-						<div style="padding:18px 20px;background:#ffffff;border:1px solid #e7dfd2;font-size:14px;line-height:1.8;color:#51483f;">${escapeHtml(lead.scamAudit)}</div>
-					</div>
 					<div>
-						<div style="font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#7f7468;margin-bottom:10px;">AI Notes</div>
-						<div style="padding:18px 20px;background:#ffffff;border:1px solid #e7dfd2;font-size:14px;line-height:1.8;color:#51483f;">${escapeHtml(lead.aiNotes)}</div>
+						<div style="font-size:13px;font-weight:600;color:#111111;margin-bottom:12px;">Message</div>
+						<div style="padding:20px 22px;background:#ffffff;border:1px solid #eadbe8;color:#111111;font-size:15px;line-height:1.8;white-space:pre-wrap;">${escapeHtml(lead.message)}</div>
 					</div>
 				</div>
 			</div>
@@ -432,7 +400,7 @@ async function sendResendEmail(lead, item, resendApiKey, fromEmail, fromName, fa
 			from,
 			to: ["hello@duo-studio.co"],
 			reply_to: replyTo,
-			subject: `New Inquiry, ${lead.company}`,
+			subject: `New Inquiry from ${lead.name}`,
 			text,
 			html,
 		}),
