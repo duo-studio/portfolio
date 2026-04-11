@@ -769,9 +769,9 @@ exports.handler = async (event) => {
 
 	const mondayToken = getEnv("MONDAY_API_TOKEN");
 	const resendApiKey = getEnv("RESEND_API_KEY", "/Users/leo/.config/resend/api_key");
-	const fromEmail = getEnv("FROM_EMAIL") || "hello@duo-studio.co";
+	const fromEmail = "hello@duo-studio.co";
 	const fromName = getEnv("FROM_NAME") || "The Duo Team";
-	const fallbackReplyToEmail = getEnv("REPLY_TO_EMAIL") || "hello@duo-studio.co";
+	const fallbackReplyToEmail = "hello@duo-studio.co";
 	const slackWebhookUrl = getEnv("SLACK_WEBHOOK_URL");
 
 	if (!mondayToken || !resendApiKey) {
