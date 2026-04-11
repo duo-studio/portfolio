@@ -68,8 +68,6 @@ description: Contact Duo Studio for brand identity, web design, and graphic desi
 }
 </script>
 
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-
 <div class="barba-container loading" data-barba="container" data-barba-namespace="contact">
     <main>
         <section id="main">
@@ -134,7 +132,6 @@ description: Contact Duo Studio for brand identity, web design, and graphic desi
                                 <option value="Referral">Referral</option>
                                 <option value="Other">Other</option>
                             </select>
-                            <div class="cf-turnstile" data-sitekey="0x4AAAAAAC8DZtzuh8lgMSoU" data-theme="light" data-appearance="interaction-only" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%);"></div>
                             <input name="bot-field" type="hidden"/>
                             <input name="page" type="hidden" value="/contact/"/>
                             <button class="btn__circle" type="submit" data-contact-submit-button aria-live="polite">
@@ -162,21 +159,14 @@ description: Contact Duo Studio for brand identity, web design, and graphic desi
     }
 
     const button = form.querySelector('button[type="submit"]');
-    const turnstileElement = form.querySelector('.cf-turnstile');
     const referrer = form.querySelector('#referrer');
 
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
         event.stopImmediatePropagation();
 
-        const turnstileToken = form.querySelector('[name="cf-turnstile-response"]')?.value;
-
         button?.classList.remove('loading');
         button?.classList.remove('success');
-
-        if (!turnstileToken) {
-            return;
-        }
 
         button?.setAttribute('disabled', 'disabled');
         button?.setAttribute('aria-busy', 'true');
@@ -201,10 +191,6 @@ description: Contact Duo Studio for brand identity, web design, and graphic desi
             button?.classList.add('success');
             form.reset();
             referrer?.classList.remove('selected');
-
-            if (window.turnstile && turnstileElement) {
-                window.turnstile.reset(turnstileElement);
-            }
         } catch (error) {
             console.error('Contact form submit failed', error);
         } finally {

@@ -752,7 +752,6 @@ exports.handler = async (event) => {
 	const website = clean(body.website, 200);
 	const phone = clean(body.phone, 80);
 	const page = clean(body.page, 160) || "/contact/";
-	const turnstileToken = clean(body["cf-turnstile-response"], 4000);
 	const ipAddress = getClientIp(event);
 
 	if (!name || !email || !company || !message) {
@@ -770,7 +769,6 @@ exports.handler = async (event) => {
 
 	const mondayToken = getEnv("MONDAY_API_TOKEN");
 	const resendApiKey = getEnv("RESEND_API_KEY", "/Users/leo/.config/resend/api_key");
-	const turnstileSecretKey = getEnv("TURNSTILE_SECRET_KEY");
 	const fromEmail = getEnv("FROM_EMAIL") || "hello@duo-studio.co";
 	const fromName = getEnv("FROM_NAME") || "The Duo Team";
 	const fallbackReplyToEmail = getEnv("REPLY_TO_EMAIL") || "hello@duo-studio.co";
@@ -780,20 +778,6 @@ exports.handler = async (event) => {
 		console.error("Missing required environment variables for contact flow.");
 		return isFetchRequest
 			? json(500, { ok: false, error: "Lead routing is not configured yet." })
-			: redirect("/contact/");
-	}
-
-	try {
-		const turnstileResult = await verifyTurnstile(turnstileToken, ipAddress, turnstileSecretKey);
-		if (!turnstileResult.success) {
-			return isFetchRequest
-				? json(400, { ok: false, error: "Please verify that you are human." })
-				: redirect("/contact/");
-		}
-	} catch (error) {
-		console.error("Turnstile verification failed", error);
-		return isFetchRequest
-			? json(500, { ok: false, error: "Form verification is not configured correctly yet." })
 			: redirect("/contact/");
 	}
 
