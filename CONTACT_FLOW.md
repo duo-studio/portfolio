@@ -21,9 +21,14 @@ This repo now routes the main `/contact/` form through a Netlify Function instea
 5. Sends an internal notification email to `hello@duo-studio.co` via Resend
    - minimal branded layout
    - Duo logo
+   - Duo white background: `#fefcff`
+   - Duo black text: `#0f0d0d`
+   - solid pink accent bar
    - heading: `New Inquiry from [Name]`
    - fields: Name, Email, Company, Referrer, Message
 6. Optionally sends a Slack webhook notification if configured
+   - legacy-style field formatting for readability in `#project-management`
+   - plus AI triage details below the original submission
 
 ## Required environment variables
 
