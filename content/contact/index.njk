@@ -145,7 +145,6 @@ description: Contact Duo Studio for brand identity, web design, and graphic desi
                                     </div>
                                 </div>
                             </button>
-                            <p class="subtitle" id="contact-form-status" hidden style="margin-top: 1rem; max-width: 32rem;" aria-live="polite"></p>
                         </form>
                     </div>
                 </div>
@@ -161,7 +160,6 @@ description: Contact Duo Studio for brand identity, web design, and graphic desi
         return;
     }
 
-    const status = form.querySelector('#contact-form-status');
     const button = form.querySelector('button[type="submit"]');
     const turnstileElement = form.querySelector('.cf-turnstile');
     const referrer = form.querySelector('#referrer');
@@ -172,18 +170,9 @@ description: Contact Duo Studio for brand identity, web design, and graphic desi
 
         const turnstileToken = form.querySelector('[name="cf-turnstile-response"]')?.value;
 
-        if (status) {
-            status.hidden = true;
-            status.textContent = '';
-        }
-
         button?.classList.remove('success');
 
         if (!turnstileToken) {
-            if (status) {
-                status.hidden = false;
-                status.textContent = 'Please try sending again.';
-            }
             return;
         }
 
@@ -208,19 +197,11 @@ description: Contact Duo Studio for brand identity, web design, and graphic desi
             form.reset();
             referrer?.classList.remove('selected');
 
-            if (status) {
-                status.hidden = false;
-                status.textContent = 'Thanks, your message has been sent.';
-            }
-
             if (window.turnstile && turnstileElement) {
                 window.turnstile.reset(turnstileElement);
             }
         } catch (error) {
-            if (status) {
-                status.hidden = false;
-                status.textContent = error.message || 'Something went wrong sending your message. Please email hello@duo-studio.co instead.';
-            }
+            console.error('Contact form submit failed', error);
         } finally {
             button?.removeAttribute('disabled');
         }
