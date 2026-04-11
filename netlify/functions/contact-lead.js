@@ -496,7 +496,7 @@ async function maybeSendSlackNotification(lead, item, webhookUrl) {
 }
 
 function getMondayItemUrl(itemId) {
-	const baseUrl = process.env.MONDAY_ITEM_URL_BASE || `https://duostudiogroup.monday.com/boards/${MONDAY_BOARD_ID}/pulses`;
+	const baseUrl = process.env.MONDAY_ITEM_URL_BASE || `https://duostudio-co.monday.com/boards/${MONDAY_BOARD_ID}/views/249619657/pulses`;
 	return `${baseUrl}/${itemId}`;
 }
 

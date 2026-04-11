@@ -54,7 +54,7 @@ Because only `mail.duo-studio.co` is verified in Resend so far:
 - `FROM_EMAIL=hello@mail.duo-studio.co`
 - `FROM_NAME=Duo Studio`
 - `REPLY_TO_EMAIL=hello@duo-studio.co`
-- `MONDAY_ITEM_URL_BASE=https://duostudiogroup.monday.com/boards/18408203777/pulses`
+- `MONDAY_ITEM_URL_BASE=https://duostudio-co.monday.com/boards/18408203777/views/249619657/pulses`
 
 If `duo-studio.co` itself gets verified in Resend later, `FROM_EMAIL` can be switched to:
 
