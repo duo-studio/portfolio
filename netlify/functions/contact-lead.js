@@ -606,47 +606,26 @@ async function verifyTurnstile(token, ipAddress, secretKey) {
 async function sendResendEmail(lead, item, resendApiKey, fromEmail, fromName, fallbackReplyToEmail) {
 	const replyTo = lead.email || fallbackReplyToEmail;
 	const from = fromName ? `${fromName} <${fromEmail}>` : fromEmail;
-	const logoUrl = "https://duo-studio.co/assets/logo.png";
 	const companySuffix = lead.company ? ` at ${lead.company}` : "";
 	const subject = `New inquiry from ${lead.name}${companySuffix}`;
-	const headline = `${escapeHtml(lead.name)}${lead.company ? ` at ${escapeHtml(lead.company)}` : ""}`;
+	const senderLineParts = [
+		lead.name,
+		lead.company ? `at ${lead.company}` : null,
+		lead.email ? `<a href="mailto:${escapeHtml(lead.email)}">${escapeHtml(lead.email)}</a>` : null,
+	];
+	const senderLine = senderLineParts.filter(Boolean).join(" · ");
 	const text = [
-		subject,
-		"",
-		headline,
-		lead.website ? `Website: ${lead.website}` : null,
-		`Email: ${lead.email}`,
-		"",
 		lead.message,
 		"",
-		"Reply directly to respond.",
+		`From: ${lead.name}${lead.company ? ` at ${lead.company}` : ""}${lead.email ? ` (${lead.email})` : ""}`,
+		lead.website ? `Website: ${lead.website}` : null,
+		"",
 	].filter(Boolean).join("\n");
-
-	const websiteHtml = lead.website
-		? `
-					<p style="margin:0 0 12px;color:#0f0d0d;font-size:15px;line-height:1.7;">
-						<a href="${escapeHtml(lead.website)}" style="color:#0f0d0d;text-decoration:underline;">${escapeHtml(lead.website)}</a>
-					</p>
-				`
-		: "";
-	const companyHtml = lead.company
-		? ` at ${escapeHtml(lead.company)}`
-		: "";
 	const html = `
-		<div style="margin:0;padding:24px 16px;background:#fefcff;font-family:Helvetica,Arial,sans-serif;color:#0f0d0d;">
-			<div style="max-width:640px;margin:0 auto;background:#fefcff;border:1px solid #f3e6ef;">
-				<div style="padding:24px 28px 28px;background:#fefcff;">
-					<img src="${logoUrl}" alt="Duo Studio" style="display:block;width:32px;max-width:100%;height:auto;margin:0 0 18px;" />
-					<p style="margin:0 0 12px;color:#0f0d0d;font-size:20px;line-height:1.4;font-weight:600;">${escapeHtml(lead.name)}${companyHtml}</p>
-					${websiteHtml}
-					<p style="margin:0 0 20px;color:#0f0d0d;font-size:15px;line-height:1.7;">
-						<a href="mailto:${escapeHtml(lead.email)}" style="color:#0f0d0d;text-decoration:none;">${escapeHtml(lead.email)}</a>
-					</p>
-					<div style="margin:0 0 20px;color:#0f0d0d;font-size:15px;line-height:1.8;">${formatMessageHtml(lead.message)}</div>
-					<div style="height:1px;background:#f3e6ef;margin:0 0 16px;"></div>
-					<p style="margin:0;color:#6f626a;font-size:13px;line-height:1.6;">Reply directly to respond.</p>
-				</div>
-			</div>
+		<div style="margin:0;font-family:Helvetica,Arial,sans-serif;color:#0f0d0d;font-size:16px;line-height:1.7;">
+			<div>${formatMessageHtml(lead.message)}</div>
+			<p style="margin:18px 0 0;">From: ${senderLine}</p>
+			${lead.website ? `<p style="margin:6px 0 0;">Website: <a href="${escapeHtml(lead.website)}">${escapeHtml(lead.website)}</a></p>` : ""}
 		</div>
 	`;
 
