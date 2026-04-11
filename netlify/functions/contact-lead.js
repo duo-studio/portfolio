@@ -341,7 +341,7 @@ async function createMondayLead(lead, token) {
 async function sendResendEmail(lead, item, resendApiKey, fromEmail, fromName, fallbackReplyToEmail) {
 	const replyTo = lead.email || fallbackReplyToEmail;
 	const from = fromName ? `${fromName} <${fromEmail}>` : fromEmail;
-	const logoUrl = "https://duo-studio.co/assets/Duo_Favicon@192x192.jpg";
+	const logoUrl = "https://duo-studio.co/assets/logo.png";
 	const mondayItemUrl = getMondayItemUrl(item.id);
 	const text = [
 		`New Inquiry from ${lead.name}`,
@@ -377,9 +377,9 @@ async function sendResendEmail(lead, item, resendApiKey, fromEmail, fromName, fa
 	const html = `
 		<div style="margin:0;padding:32px 16px;background:#fefcff;font-family:Helvetica,Arial,sans-serif;color:#0f0d0d;">
 			<div style="max-width:720px;margin:0 auto;background:#fefcff;border:1px solid #f3e6ef;">
-				<div style="height:6px;background:#f05fa8;"></div>
+				<div style="height:6px;background:#fefcff;"></div>
 				<div style="padding:32px 36px 18px;background:#fefcff;">
-					<img src="${logoUrl}" alt="Duo Studio" style="display:block;width:180px;max-width:100%;height:auto;margin:0 0 24px;" />
+					<img src="${logoUrl}" alt="Duo Studio" style="display:block;width:90px;max-width:100%;height:auto;margin:0 0 24px;" />
 					<h1 style="margin:0;color:#0f0d0d;font-size:30px;line-height:1.15;font-weight:600;">New Inquiry from ${escapeHtml(lead.name)}</h1>
 				</div>
 				<div style="padding:0 36px 36px;background:#fefcff;">
@@ -437,27 +437,28 @@ async function maybeSendSlackNotification(lead, item, webhookUrl) {
 		">",
 		"> *Message*",
 		`> ${lead.message.replace(/\n/g, "\n> ")}`,
-		"",
-		"*AI Audit*",
-		"*Fit Score:*",
-		`${lead.fitScore}/10`,
-		"",
-		"*Scam Score:*",
-		`${lead.scamScore}/10`,
-		"",
-		"*Inquiry Type:*",
-		`${lead.inquiryType}`,
-		"",
-		"*Source:*",
-		`${lead.source}`,
-		"",
-		"*Scam Audit:*",
-		`${lead.scamAudit}`,
-		"",
-		"*Next Step:*",
-		`${lead.nextStep}`,
-		"",
-		`<${mondayItemUrl}|Monday Item>`,
+		">",
+		"> *AI Audit*",
+		">",
+		"> *Fit Score:*",
+		`> ${lead.fitScore}/10`,
+		">",
+		"> *Scam Score:*",
+		`> ${lead.scamScore}/10`,
+		">",
+		"> *Inquiry Type:*",
+		`> ${lead.inquiryType}`,
+		">",
+		"> *Source:*",
+		`> ${lead.source}`,
+		">",
+		"> *Scam Audit:*",
+		`> ${lead.scamAudit}`,
+		">",
+		"> *Next Step:*",
+		`> ${lead.nextStep}`,
+		">",
+		`> <${mondayItemUrl}|Monday Item>`,
 	];
 
 	await fetch(webhookUrl, {
