@@ -1182,7 +1182,59 @@ function loadStudioScripts() {
 	}
 }
 
+function initContactFormSubmission() {
+	const form = document.querySelector("[data-contact-form]");
+	if (!form || !window.fetch || form.dataset.contactBound === "true") {
+		return;
+	}
+
+	form.dataset.contactBound = "true";
+
+	const button = form.querySelector('button[type="submit"]');
+	const referrer = form.querySelector("#referrer");
+
+	form.addEventListener("submit", async (event) => {
+		event.preventDefault();
+		event.stopImmediatePropagation();
+
+		button?.classList.remove("loading");
+		button?.classList.remove("success");
+		button?.setAttribute("disabled", "disabled");
+		button?.setAttribute("aria-busy", "true");
+		button?.classList.add("loading");
+
+		try {
+			const response = await fetch(form.action, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+					"X-Requested-With": "fetch",
+				},
+				body: new URLSearchParams(new FormData(form)).toString(),
+			});
+
+			const payload = await response.json();
+			if (!response.ok || !payload.ok) {
+				throw new Error(payload.error || "Something went wrong.");
+			}
+
+			button?.classList.remove("loading");
+			button?.classList.add("success");
+			form.reset();
+			referrer?.classList.remove("selected");
+		} catch (error) {
+			console.error("Contact form submit failed", error);
+		} finally {
+			button?.classList.remove("loading");
+			button?.removeAttribute("disabled");
+			button?.removeAttribute("aria-busy");
+		}
+	});
+}
+
 function loadContactScripts() {
+	initContactFormSubmission();
+
 	var headline = document.querySelector(".headline__load"),
 		wrapper = document.querySelector("form .wrapper"),
 		textarea = document.querySelector("textarea"),
