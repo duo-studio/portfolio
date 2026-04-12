@@ -15,10 +15,22 @@ const markdownIt = require("markdown-it");
 const markdownItAttrs = require("markdown-it-attrs");
 
 module.exports = function (eleventyConfig) {
-	// Copy the contents of the `public` folder to the output folder
-	// For example, `./public/css/` ends up in `_site/css/`
+	// Copy only static and generated assets so source files in `public` remain
+	// source-of-truth without being served directly.
 	eleventyConfig.addPassthroughCopy({
-		"./public/": "/",
+		"./public/assets/": "/assets/",
+	});
+	eleventyConfig.addPassthroughCopy({
+		"./public/robots.txt": "/robots.txt",
+	});
+	eleventyConfig.addPassthroughCopy({
+		"./public/scripts/libs/": "/scripts/libs/",
+	});
+	eleventyConfig.addPassthroughCopy({
+		"./public/generated/scripts/": "/scripts/",
+	});
+	eleventyConfig.addPassthroughCopy({
+		"./public/generated/styles/": "/styles/",
 	});
 
 	// Run Eleventy when these files change:
@@ -26,6 +38,8 @@ module.exports = function (eleventyConfig) {
 
 	// Watch content images for the image pipeline.
 	eleventyConfig.addWatchTarget("content/**/*.{svg,webp,png,jpeg}");
+	eleventyConfig.addWatchTarget("public/scripts/**/*.js");
+	eleventyConfig.addWatchTarget("public/styles/**/*.{scss,css}");
 
 	// App plugins
 	eleventyConfig.addPlugin(pluginDrafts);

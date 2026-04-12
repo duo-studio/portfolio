@@ -53,19 +53,19 @@ eleventyComputed:
         <link rel="shortcut icon" type="image/jpg" href="/assets/Duo_Favicon@180x180.jpg" sizes="180x180"/>
         <link rel="shortcut icon" type="image/jpg" href="/assets/Duo_Favicon@192x192.jpg" sizes="192x192"/>
         <link rel="shortcut icon" type="image/jpg" href="/assets/Duo_Favicon@512x512.jpg" sizes="512x512"/>
-        <link rel="stylesheet" href="/styles/style-inline.css?v={% version %}"/>
-        <link rel="stylesheet" href="/styles/lenis.css?v={% version %}"/>
-        <link rel="preload" href="/styles/fonts.css?v={% version %}" as="style" onload='this.onload=null;this.rel="stylesheet"'/>
-        <noscript><link rel="stylesheet" href="/styles/fonts.css?v={% version %}"/></noscript>
-        <link rel="preload" href="/styles/style.css?v={% version %}" as="style" onload='this.onload=null;this.rel="stylesheet"'/>
-        <noscript><link rel="stylesheet" href="/styles/style.css?v={% version %}"/></noscript>
+        <link rel="stylesheet" href="{{ assets.styles.inline }}?v={% version %}"/>
+        <link rel="stylesheet" href="{{ assets.styles.lenis }}?v={% version %}"/>
+        <link rel="preload" href="{{ assets.styles.fonts }}?v={% version %}" as="style" onload='this.onload=null;this.rel="stylesheet"'/>
+        <noscript><link rel="stylesheet" href="{{ assets.styles.fonts }}?v={% version %}"/></noscript>
+        <link rel="preload" href="{{ assets.styles.main }}?v={% version %}" as="style" onload='this.onload=null;this.rel="stylesheet"'/>
+        <noscript><link rel="stylesheet" href="{{ assets.styles.main }}?v={% version %}"/></noscript>
         <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js" defer></script>
         <script src="https://unpkg.com/@barba/core" defer></script>
         <script src="/scripts/libs/gsap.min.js?v={% version %}" defer></script>
         <script src="/scripts/libs/lenis.min.js?v={% version %}" defer></script>
         <script src="/scripts/libs/ScrollTrigger.min.js?v={% version %}" defer></script>
         <script src="/scripts/libs/SplitText.min.js?v={% version %}" defer></script>
-        <script src="/scripts/global.js?v={% version %}" defer></script>
+        <script src="{{ assets.scripts.global }}?v={% version %}" defer></script>
         <script type="application/ld+json">
         {
             "@context": "https://schema.org",
