@@ -1192,13 +1192,28 @@ function initContactFormSubmission() {
 
 	const button = form.querySelector('button[type="submit"]');
 	const referrer = form.querySelector("#referrer");
+	const turnstileElement = form.querySelector(".cf-turnstile");
+
+	function resetTurnstileWidget() {
+		if (window.turnstile && turnstileElement) {
+			window.turnstile.reset(turnstileElement);
+		}
+	}
 
 	form.addEventListener("submit", async (event) => {
 		event.preventDefault();
 		event.stopImmediatePropagation();
 
+		const turnstileToken = form.querySelector('[name="cf-turnstile-response"]')?.value;
+
 		button?.classList.remove("loading");
 		button?.classList.remove("success");
+
+		if (!turnstileToken) {
+			resetTurnstileWidget();
+			return;
+		}
+
 		button?.setAttribute("disabled", "disabled");
 		button?.setAttribute("aria-busy", "true");
 		button?.classList.add("loading");
@@ -1222,8 +1237,10 @@ function initContactFormSubmission() {
 			button?.classList.add("success");
 			form.reset();
 			referrer?.classList.remove("selected");
+			resetTurnstileWidget();
 		} catch (error) {
 			console.error("Contact form submit failed", error);
+			resetTurnstileWidget();
 		} finally {
 			button?.classList.remove("loading");
 			button?.removeAttribute("disabled");

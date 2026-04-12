@@ -5,9 +5,11 @@ This repo now routes the main `/contact/` form through a Netlify Function instea
 ## What it does
 
 1. Accepts contact form submissions at `/.netlify/functions/contact-lead`
-2. Rejects honeypot hits quietly
-3. Creates a lead in Monday board `Sales CRM` (`18408203777`)
-4. Applies deterministic enrichment for:
+2. Requires a valid Cloudflare Turnstile token before any downstream processing
+3. Rejects honeypot hits quietly
+4. Hard-blocks obvious contact-form spam before Monday, email, or Slack side effects
+5. Creates a lead in Monday board `Sales CRM` (`18408203777`) for legitimate submissions
+6. Applies deterministic enrichment for:
    - Source
    - Inquiry Type
    - Priority
@@ -19,12 +21,12 @@ This repo now routes the main `/contact/` form through a Netlify Function instea
    - Next Step
    - Why They're a Fit
    - AI Notes / Recommendation
-5. Sends an internal notification email to `hello@duo-studio.co` via Resend
+7. Sends an internal notification email to `hello@duo-studio.co` via Resend
    - plain, message-first layout
    - no logo or card chrome
    - subject includes company when present
    - body contains the message, then a lightweight sender line and optional website
-6. Optionally sends a Slack webhook notification if configured
+8. Optionally sends a Slack webhook notification if configured
    - legacy-style field formatting for readability in `#project-management`
    - plus AI triage details below the original submission
 
@@ -55,7 +57,7 @@ Now that `duo-studio.co` is verified in Resend:
 - `REPLY_TO_EMAIL=hello@duo-studio.co`
 - `MONDAY_ITEM_URL_BASE=https://duostudio-co.monday.com/boards/18408203777/views/249619657/pulses`
 
-The Turnstile site key is embedded on the public contact form. The secret key must be stored only in Netlify as `TURNSTILE_SECRET_KEY`.
+The Turnstile site key is embedded on the public contact form (`0x4AAAAAAC8DZtzuh8lgMSoU`). The secret key must be stored only in Netlify as `TURNSTILE_SECRET_KEY`.
 
 ## Reply-To behavior
 
@@ -84,6 +86,7 @@ Then run the site locally however you normally do, or invoke the function direct
 - This only replaces the main contact form flow right now.
 - The footer subscribe form and RFP template form still use their existing behavior.
 - The enrichment is heuristic MVP logic, not LLM enrichment yet.
-- Scam scoring is heuristic, intended as an early warning layer rather than a hard block.
+- Scam scoring is heuristic, with a conservative hard-block layer for high-confidence outreach spam.
+- Current hard-block signals include Turnstile failure, unsubscribe language, shortened links, generic promotional outreach, and product-pitch phrasing like "we noticed your website" or "free forever plan".
 - Turnstile blocks a chunk of low-effort bot traffic before it ever reaches Monday, email, or Slack.
 - Slack is optional by design so the core flow is not blocked on Slack setup.

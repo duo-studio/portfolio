@@ -5,6 +5,8 @@ eleventyComputed:
 description: Contact Duo Studio for brand identity, web design, and graphic design services. Based in Baltimore and DC, serving clients nationwide. Call (301) 444-5447 or email hello@duo-studio.co.
 ---
 
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
 <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -132,6 +134,7 @@ description: Contact Duo Studio for brand identity, web design, and graphic desi
                                 <option value="Referral">Referral</option>
                                 <option value="Other">Other</option>
                             </select>
+                            <div class="cf-turnstile" data-sitekey="0x4AAAAAAC8DZtzuh8lgMSoU" data-theme="light" data-appearance="interaction-only" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%);"></div>
                             <input name="bot-field" type="hidden"/>
                             <input name="page" type="hidden" value="/contact/"/>
                             <button class="btn__circle" type="submit" data-contact-submit-button aria-live="polite">

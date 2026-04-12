@@ -386,6 +386,30 @@ function isContextPoorShortMessage(message) {
 	return !hasBusinessIntent && !hasBasicSentenceShape;
 }
 
+function countUrls(value) {
+	return (String(value || "").match(/(?:https?:\/\/|www\.|(?:bit\.ly|tinyurl\.com|t\.co|rb\.gy|ow\.ly|buff\.ly|rebrand\.ly)\/)[^\s)]+/gi) || []).length;
+}
+
+function shouldBlockSpamLead({ scamScore, scamAudit, message, inquiryType }) {
+	const audit = String(scamAudit || "").toLowerCase();
+	const text = String(message || "").toLowerCase();
+	const promoSignals = [
+		/we noticed your website/,
+		/free forever plan/,
+		/unsubscribe/,
+		/social profiles/,
+		/manage posts from one dashboard/,
+		/simple ai content/,
+	];
+	const matchedPromoSignals = promoSignals.filter((pattern) => pattern.test(text)).length;
+	const hasShortlink = /(bit\.ly|tinyurl\.com|t\.co|rb\.gy|ow\.ly|buff\.ly|rebrand\.ly)/.test(text);
+	const urls = countUrls(text);
+	const genericOutreach = inquiryType === "Unsure" && /(noticed your website|thought to reach out|totally optional|future emails from us)/.test(text);
+	const strongAuditSignal = audit.includes("unsolicited promotional outreach") || audit.includes("unsubscribe") || audit.includes("shortened link");
+
+	return scamScore >= 8 || matchedPromoSignals >= 2 || hasShortlink || (genericOutreach && urls >= 1) || (strongAuditSignal && scamScore >= 6);
+}
+
 function buildScamAudit({ name, email, company, message, referrer, ipAddress }) {
 	const text = `${name} ${email} ${company} ${message} ${referrer}`.toLowerCase();
 	let score = 1;
@@ -398,6 +422,11 @@ function buildScamAudit({ name, email, company, message, referrer, ipAddress }) 
 		{ test: /(seo service|guest post|backlink|link exchange|casino|viagra|loan|forex|essay|air duct|tirefaster)/, note: "Matches spam/scam outreach patterns Duo is likely to receive.", weight: 4 },
 		{ test: /(guaranteed traffic|guaranteed ranking|100% results|earn money fast)/, note: "Promises unrealistic outcomes.", weight: 3 },
 		{ test: /(reply urgently|asap today|immediately respond)/, note: "Pressure language without real project detail.", weight: 1 },
+		{ test: /(we noticed your website|thought to reach out|totally optional|future emails from us)/, note: "Generic unsolicited outreach language.", weight: 2 },
+		{ test: /(free forever plan|free plan|try our platform|book a demo|explore it here)/, note: "Promotional product pitch instead of a real project inquiry.", weight: 3 },
+		{ test: /(ai content|social profiles|manage posts from one dashboard|social media dashboard|content dashboard)/, note: "Tool promotion language common in contact-form spam.", weight: 2 },
+		{ test: /(unsubscribe|do not receive future emails|opt out)/, note: "Includes unsubscribe language that legitimate leads rarely send through a contact form.", weight: 4 },
+		{ test: /(bit\.ly|tinyurl\.com|t\.co|rb\.gy|ow\.ly|buff\.ly|rebrand\.ly)/, note: "Contains a shortened link.", weight: 4 },
 	];
 
 	for (const pattern of suspiciousPatterns) {
@@ -414,6 +443,15 @@ function buildScamAudit({ name, email, company, message, referrer, ipAddress }) 
 	} else if (isContextPoorShortMessage(message)) {
 		score += 1;
 		signals.push("Short message with little project context.");
+	}
+
+	const urlCount = countUrls(message);
+	if (urlCount >= 2) {
+		score += 3;
+		signals.push("Contains multiple links, which is unusual for a real lead inquiry.");
+	} else if (urlCount === 1 && /(unsubscribe|free forever|thought to reach out|explore it here)/.test(text)) {
+		score += 2;
+		signals.push("Pairs outreach copy with a promotional link.");
 	}
 
 	if (!company || /^(test|n\/a|none|unknown)$/i.test(company.trim())) {
@@ -752,6 +790,7 @@ exports.handler = async (event) => {
 	const website = clean(body.website, 200);
 	const phone = clean(body.phone, 80);
 	const page = clean(body.page, 160) || "/contact/";
+	const turnstileToken = clean(body["cf-turnstile-response"], 4000);
 	const ipAddress = getClientIp(event);
 
 	if (!name || !email || !company || !message) {
@@ -769,6 +808,7 @@ exports.handler = async (event) => {
 
 	const mondayToken = getEnv("MONDAY_API_TOKEN");
 	const resendApiKey = getEnv("RESEND_API_KEY", "/Users/leo/.config/resend/api_key");
+	const turnstileSecretKey = getEnv("TURNSTILE_SECRET_KEY");
 	const fromEmail = "hello@duo-studio.co";
 	const fromName = getEnv("FROM_NAME") || "The Duo Team";
 	const fallbackReplyToEmail = "hello@duo-studio.co";
@@ -778,6 +818,20 @@ exports.handler = async (event) => {
 		console.error("Missing required environment variables for contact flow.");
 		return isFetchRequest
 			? json(500, { ok: false, error: "Lead routing is not configured yet." })
+			: redirect("/contact/");
+	}
+
+	try {
+		const turnstileResult = await verifyTurnstile(turnstileToken, ipAddress, turnstileSecretKey);
+		if (!turnstileResult.success) {
+			return isFetchRequest
+				? json(400, { ok: false, error: "Please verify that you are human." })
+				: redirect("/contact/");
+		}
+	} catch (error) {
+		console.error("Turnstile verification failed", error);
+		return isFetchRequest
+			? json(500, { ok: false, error: "Form verification is not configured correctly yet." })
 			: redirect("/contact/");
 	}
 
@@ -813,6 +867,17 @@ exports.handler = async (event) => {
 		followUpDate: isoDate(2),
 		lastContacted: isoDate(0),
 	};
+
+	if (shouldBlockSpamLead({ scamScore, scamAudit, message, inquiryType })) {
+		console.warn("Blocked suspected spam contact lead", {
+			leadEmail: lead.email,
+			scamScore: lead.scamScore,
+			page: lead.page,
+		});
+		return isFetchRequest
+			? json(200, { ok: true, skipped: true })
+			: redirect("/contact/thank-you/");
+	}
 
 	try {
 		const item = await createMondayLead(lead, mondayToken);
