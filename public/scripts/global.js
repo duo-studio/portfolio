@@ -3,7 +3,181 @@ let lenisTickerCallback;
 var activeSplitInstances = [];
 var splitResizeHandler = null;
 
+function pushDataLayerEvent(eventName, params) {
+	if (typeof window.duoPushEvent === "function") {
+		window.duoPushEvent(eventName, params);
+		return;
+	}
+
+	window.dataLayer = window.dataLayer || [];
+	window.dataLayer.push(
+		Object.assign(
+			{
+				event: eventName,
+			},
+			params || {},
+		),
+	);
+}
+
+function normalizeAnalyticsText(value) {
+	return (value || "").replace(/\s+/g, " ").trim();
+}
+
+function getAnalyticsHref(element) {
+	if (!element || typeof element.getAttribute !== "function") {
+		return "";
+	}
+
+	return normalizeAnalyticsText(element.getAttribute("href") || "");
+}
+
+function getCtaLocation(element) {
+	var explicitLocation = element?.getAttribute("data-cta-location");
+	if (explicitLocation) {
+		return explicitLocation;
+	}
+
+	if (element?.closest(".roi-tool-results-cta")) {
+		return "roi_results";
+	}
+
+	if (element?.closest(".roi-next")) {
+		return "roi_next_step";
+	}
+
+	if (element?.closest("nav")) {
+		return "header_nav";
+	}
+
+	if (element?.closest("footer")) {
+		return "footer";
+	}
+
+	if (element?.closest("[data-contact-form]")) {
+		return "contact_form";
+	}
+
+	var section = element?.closest("section[id]");
+	if (section?.id) {
+		return section.id;
+	}
+
+	return "unknown";
+}
+
+function getCtaPayload(element) {
+	return {
+		link_text: normalizeAnalyticsText(element?.textContent),
+		href: getAnalyticsHref(element),
+		page_path: window.location.pathname,
+		cta_location: getCtaLocation(element),
+	};
+}
+
+function isContactIntentCta(payload) {
+	return (
+		payload.href.indexOf("/contact/") === 0 ||
+		payload.href.indexOf("mailto:") === 0 ||
+		payload.href.indexOf("tel:") === 0 ||
+		/contact|talk|call|email|get in touch|strategy call|start a project/i.test(
+			payload.link_text,
+		)
+	);
+}
+
+function isStartProjectCta(payload) {
+	return /start a project/i.test(payload.link_text);
+}
+
+function bindGlobalAnalyticsEvents() {
+	if (document.documentElement.dataset.analyticsBound === "true") {
+		return;
+	}
+
+	document.documentElement.dataset.analyticsBound = "true";
+
+	document.addEventListener("click", function (event) {
+		var target = event.target;
+		if (!target || typeof target.closest !== "function") {
+			return;
+		}
+
+		var element = target.closest("a[href], button[data-analytics-click]");
+		if (!element) {
+			return;
+		}
+
+		var payload = getCtaPayload(element);
+
+		if (isContactIntentCta(payload)) {
+			pushDataLayerEvent("cta_contact_click", payload);
+		}
+
+		if (isStartProjectCta(payload)) {
+			pushDataLayerEvent("cta_start_project_click", payload);
+		}
+
+		if (
+			document.querySelector(".roi-tool-page") &&
+			(element.closest(".roi-tool-results-cta") || element.closest(".roi-next"))
+		) {
+			pushDataLayerEvent(
+				"roi_calculator_cta_click",
+				Object.assign({ tool_name: "website_roi_calculator" }, payload),
+			);
+		}
+	});
+}
+
+function bindMeaningfulStart(form, eventName) {
+	var stateAttr = "data-analytics-" + eventName.replace(/_/g, "-");
+
+	if (!form || form.getAttribute(stateAttr) === "true") {
+		return;
+	}
+
+	function trackStart(target) {
+		if (!target || !form.contains(target)) {
+			return;
+		}
+
+		if (/^(hidden|submit|button)$/i.test(target.type || "")) {
+			return;
+		}
+
+		var value =
+			target.type === "checkbox" || target.type === "radio"
+				? String(Boolean(target.checked))
+				: normalizeAnalyticsText(target.value);
+
+		if (!value || value === "false") {
+			return;
+		}
+
+		form.setAttribute(stateAttr, "true");
+		pushDataLayerEvent(eventName, {
+			form_name: form.getAttribute("name") || form.getAttribute("id") || "unknown",
+			page_path: window.location.pathname,
+		});
+		form.removeEventListener("input", handleInput, true);
+		form.removeEventListener("change", handleChange, true);
+	}
+
+	function handleInput(event) {
+		trackStart(event.target);
+	}
+
+	function handleChange(event) {
+		trackStart(event.target);
+	}
+
+	form.addEventListener("input", handleInput, true);
+	form.addEventListener("change", handleChange, true);
+}
+
 document.addEventListener("DOMContentLoaded", function (event) {
+	bindGlobalAnalyticsEvents();
 	gsap.registerPlugin(ScrollTrigger, SplitText);
 
 	gsap.set(".cursor", { xPercent: -50, yPercent: -50 });
@@ -675,8 +849,7 @@ function loadGlobalScripts() {
 				.then(() => document.querySelector("button").classList.add("success"))
 				.catch((error) => alert(error));
 
-			window.dataLayer.push({
-				event: "formSubmission",
+			pushDataLayerEvent("formSubmission", {
 				form_name: name,
 			});
 		};
@@ -1189,6 +1362,7 @@ function initContactFormSubmission() {
 	}
 
 	form.dataset.contactBound = "true";
+	bindMeaningfulStart(form, "contact_form_start");
 
 	const button = form.querySelector('button[type="submit"]');
 	const referrer = form.querySelector("#referrer");
@@ -1210,6 +1384,11 @@ function initContactFormSubmission() {
 		button?.classList.remove("success");
 
 		if (!turnstileToken) {
+			pushDataLayerEvent("contact_form_submit_error", {
+				form_name: form.getAttribute("name") || "contact",
+				page_path: window.location.pathname,
+				error_message: "Missing verification token",
+			});
 			resetTurnstileWidget();
 			return;
 		}
@@ -1235,11 +1414,20 @@ function initContactFormSubmission() {
 
 			button?.classList.remove("loading");
 			button?.classList.add("success");
+			pushDataLayerEvent("formSubmission", {
+				form_name: form.getAttribute("name") || "contact",
+				page_path: window.location.pathname,
+			});
 			form.reset();
 			referrer?.classList.remove("selected");
 			resetTurnstileWidget();
 		} catch (error) {
 			console.error("Contact form submit failed", error);
+			pushDataLayerEvent("contact_form_submit_error", {
+				form_name: form.getAttribute("name") || "contact",
+				page_path: window.location.pathname,
+				error_message: normalizeAnalyticsText(error?.message || "Something went wrong."),
+			});
 			resetTurnstileWidget();
 		} finally {
 			button?.classList.remove("loading");
@@ -2677,9 +2865,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 	});
 
 	barba.hooks.afterEnter((data) => {
-		window.dataLayer = window.dataLayer || [];
-		window.dataLayer.push({
-			event: "virtualPageview",
+		pushDataLayerEvent("virtualPageview", {
 			pageUrl: data.next.url.path,
 			pageTitle: document.title,
 		});

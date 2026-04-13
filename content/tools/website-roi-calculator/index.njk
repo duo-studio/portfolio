@@ -1260,6 +1260,30 @@ description: A fast, honest read on the revenue your website isn't earning yet â
             }
         }
 
+        var hasTrackedStart = false;
+
+        function trackCalculatorStart(event) {
+            var target = event && event.target;
+            if (hasTrackedStart || !target || !form.contains(target)) {
+                return;
+            }
+
+            var value = String(target.value || "").trim();
+            if (!value) {
+                return;
+            }
+
+            hasTrackedStart = true;
+
+            if (typeof window.duoPushEvent === "function") {
+                window.duoPushEvent("roi_calculator_start", {
+                    form_name: "website_roi_calculator",
+                    tool_name: "website_roi_calculator",
+                    page_path: window.location.pathname,
+                });
+            }
+        }
+
         function render() {
             var snapshot = calculate(getInputs());
             var read = insight(snapshot);
@@ -1293,6 +1317,8 @@ description: A fast, honest read on the revenue your website isn't earning yet â
             write("focusBody3", read.focusAreas[2].body);
         }
 
+        form.addEventListener("input", trackCalculatorStart, true);
+        form.addEventListener("change", trackCalculatorStart, true);
         form.addEventListener("input", render);
         form.addEventListener("change", render);
         render();
