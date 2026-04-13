@@ -8,5 +8,6 @@ module.exports = {
 	},
 	scripts: {
 		global: "/scripts/global.min.js",
+		tools: "/scripts/tools.min.js",
 	},
 };

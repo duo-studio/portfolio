@@ -1,0 +1,1476 @@
+﻿/* Tools */
+
+/* Website ROI Calculator */
+    .roi-tool-page {
+        --roi-type-h1: clamp(50px, 7.5vw, 144px);
+        --roi-type-h2: clamp(30px, 2.9167vw, 56px);
+        --roi-type-h3: clamp(22px, 1.6667vw, 32px);
+        --roi-type-body: clamp(16px, 0.9375vw, 18px);
+        --roi-type-label: 14px;
+        --roi-track-display: -0.05em;
+        --roi-track-title: -0.03em;
+        --roi-track-heading: -0.02em;
+        --roi-track-label: 0.08em;
+        --roi-line-display: 1;
+        --roi-line-heading: 1.02;
+        --roi-line-body: 1.6;
+        --roi-kicker-size: var(--roi-type-label);
+        --roi-kicker-color: #5f5a58;
+        --roi-text-muted: #474342;
+        --roi-text-soft: #6a6462;
+        --roi-text-faint: #7f7875;
+        --roi-dark-text: #fefcff;
+        --roi-dark-text-muted: #fefcff;
+        --roi-dark-text-soft: #fefcff;
+        color: #0f0d0d;
+        background:
+            radial-gradient(circle at top left, rgba(228, 244, 229, 0.9), transparent 26%),
+            radial-gradient(circle at top right, rgba(241, 236, 248, 0.92), transparent 34%),
+            linear-gradient(180deg, #f7f4f1 0%, #f2efea 100%);
+    }
+
+    .roi-tool-page .section__wrapper {
+        padding-inline: calc(min(6vw, 115px));
+    }
+
+    .roi-tool-hero {
+        padding: 8rem 0 5rem;
+    }
+
+    .roi-tool-hero__header {
+        display: grid;
+        gap: 1.35rem;
+        margin-bottom: 2.25rem;
+    }
+
+    .roi-section-kicker {
+        margin: 0;
+        font-family: "SuisseIntl-Book-WebXL", sans-serif;
+        font-size: var(--roi-kicker-size);
+        line-height: 1.1;
+        letter-spacing: var(--roi-track-label);
+        text-transform: uppercase;
+        color: var(--roi-kicker-color);
+    }
+
+    .roi-tool-hero__header h1 {
+        margin: 0;
+        font-family: "PPMori-Regular", sans-serif;
+        font-size: var(--roi-type-h1);
+        line-height: var(--roi-line-display);
+        letter-spacing: var(--roi-track-display);
+        text-wrap: balance;
+    }
+
+    .roi-tool-hero__lede {
+        margin: 0;
+        max-width: 48rem;
+        font-size: var(--roi-type-body);
+        line-height: var(--roi-line-body);
+        color: var(--roi-text-muted);
+        text-wrap: balance;
+    }
+
+    .roi-tool-explainer {
+        display: grid;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .roi-tool-explainer__intro {
+        max-width: 56rem;
+    }
+
+    .roi-tool-explainer__intro h2 {
+        margin: 0 0 0.5rem;
+        font-family: "PPMori-Regular", sans-serif;
+        font-size: var(--roi-type-h3);
+        line-height: 1.05;
+        letter-spacing: var(--roi-track-heading);
+        text-wrap: balance;
+    }
+
+    .roi-tool-explainer__intro p {
+        margin: 0;
+        font-size: var(--roi-type-body);
+        line-height: var(--roi-line-body);
+        color: var(--roi-text-muted);
+    }
+
+    .roi-tool-explainer__grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    .roi-tool-explainer__item {
+        padding: 1rem 1.05rem;
+        border: 1px solid rgba(15, 13, 13, 0.08);
+        background: rgba(255, 255, 255, 0.46);
+    }
+
+    .roi-tool-explainer__item strong {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-family: "SuisseIntl-Regular-WebXL", sans-serif;
+        font-size: var(--roi-type-label);
+        line-height: 1.2;
+        letter-spacing: var(--roi-track-label);
+        text-transform: uppercase;
+    }
+
+    .roi-tool-explainer__item p {
+        margin: 0;
+        font-size: var(--roi-type-body);
+        line-height: var(--roi-line-body);
+        color: var(--roi-text-muted);
+    }
+
+    .roi-tool-shell {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.25rem;
+        align-items: start;
+    }
+
+    .roi-tool-pane {
+        padding: 1.35rem;
+        border: 1px solid rgba(15, 13, 13, 0.09);
+        background: rgba(255, 255, 255, 0.58);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        box-shadow: 0 1.5rem 3rem rgba(15, 13, 13, 0.06);
+    }
+
+    .roi-tool-pane--results {
+        background:
+            linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
+            #121212;
+        border-color: rgba(255, 255, 255, 0.06);
+        color: var(--roi-dark-text);
+    }
+
+    .roi-tool-pane--results .roi-tool-pane__header p {
+        color: var(--roi-dark-text-muted);
+    }
+
+    .roi-tool-pane__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        gap: 1rem;
+        margin-bottom: 1.35rem;
+    }
+
+    .roi-tool-pane__header h2,
+    .roi-tool-results__hero strong,
+    .roi-tool-scenario strong,
+    .roi-tool-metric strong,
+    .roi-tool-benefit h3 {
+        font-family: "PPMori-Regular", sans-serif;
+        letter-spacing: var(--roi-track-heading);
+        text-wrap: balance;
+    }
+
+    .roi-tool-pane__header h2 {
+        margin: 0 0 0.3rem;
+        font-size: var(--roi-type-h3);
+        line-height: 1.05;
+        text-wrap: balance;
+    }
+
+    .roi-tool-pane__header p {
+        margin: 0;
+        max-width: 30rem;
+        font-size: var(--roi-type-body);
+        line-height: var(--roi-line-body);
+        color: var(--roi-text-muted);
+    }
+
+    .roi-tool-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.55rem 0.75rem;
+        border-radius: 999px;
+        background: rgba(15, 13, 13, 0.05);
+        border: 1px solid rgba(15, 13, 13, 0.1);
+        font-family: "SuisseIntl-Book-WebXL", sans-serif;
+        font-size: var(--roi-type-label);
+        line-height: 1.1;
+        letter-spacing: var(--roi-track-label);
+        text-transform: uppercase;
+        white-space: nowrap;
+        color: #0f0d0d;
+    }
+
+    .roi-tool-status::before {
+        content: "";
+        width: 0.48rem;
+        height: 0.48rem;
+        border-radius: 50%;
+        background: #2d7d46;
+    }
+
+    .roi-tool-pane--results .roi-tool-status {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.18);
+        color: #fefcff;
+    }
+
+    .roi-tool-form {
+        display: grid;
+        gap: 1rem;
+    }
+
+    .roi-tool-field {
+        display: grid;
+        gap: 0.42rem;
+    }
+
+    .roi-tool-field__top {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        align-items: baseline;
+    }
+
+    .roi-tool-field label {
+        font-family: "SuisseIntl-Book-WebXL", sans-serif;
+        font-size: var(--roi-type-label);
+        line-height: 1.2;
+    }
+
+    .roi-tool-field small {
+        font-size: var(--roi-type-label);
+        line-height: 1.2;
+        color: var(--roi-text-faint);
+    }
+
+    .roi-tool-input {
+        display: flex;
+        align-items: center;
+        height: 3.4rem;
+        padding: 0 1rem;
+        border: 1px solid rgba(15, 13, 13, 0.08);
+        background: rgba(255, 255, 255, 0.78);
+    }
+
+    .roi-tool-input span,
+    .roi-tool-select select {
+        font-family: "SuisseIntl-Book-WebXL", sans-serif;
+    }
+
+    .roi-tool-input span {
+        flex: 0 0 auto;
+        margin-right: 0.5rem;
+        color: var(--roi-text-faint);
+    }
+
+    .roi-tool-input input,
+    .roi-tool-select select {
+        width: 100%;
+        border: 0;
+        background: transparent;
+        color: #0f0d0d;
+        font-family: "SuisseIntl-Book-WebXL", sans-serif;
+        font-size: var(--roi-type-body);
+        line-height: var(--roi-line-body);
+    }
+
+    .roi-tool-input input:focus,
+    .roi-tool-select select:focus {
+        outline: none;
+    }
+
+    .roi-tool-input:focus-within {
+        border-color: #2d7d46;
+        box-shadow: 0 0 0 1px #2d7d46;
+    }
+
+    .roi-tool-select {
+        padding-right: 0.55rem;
+    }
+
+    .roi-tool-divider {
+        height: 1px;
+        margin: 0.3rem 0 0.2rem;
+        background: rgba(15, 13, 13, 0.08);
+    }
+
+    .roi-tool-footnote {
+        margin: 0;
+        font-size: var(--roi-type-body);
+        line-height: var(--roi-line-body);
+        color: var(--roi-text-muted);
+    }
+
+    .roi-tool-results__hero {
+        display: grid;
+        gap: 0.7rem;
+        padding-bottom: 1.4rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .roi-tool-results__eyebrow {
+        margin: 0;
+        font-family: "SuisseIntl-Book-WebXL", sans-serif;
+        font-size: var(--roi-type-label);
+        line-height: 1.1;
+        letter-spacing: var(--roi-track-label);
+        text-transform: uppercase;
+        color: var(--roi-dark-text-soft);
+    }
+
+    .roi-tool-results__hero strong {
+        font-size: clamp(3.2rem, 5vw, 5rem);
+        line-height: 0.9;
+    }
+
+    .roi-tool-results__hero p {
+        margin: 0;
+        max-width: 40rem;
+        font-size: var(--roi-type-body);
+        line-height: var(--roi-line-body);
+        color: var(--roi-dark-text-muted);
+    }
+
+    .roi-tool-metrics {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.8rem;
+        padding: 1.35rem 0;
+    }
+
+    .roi-tool-metric {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .roi-tool-metric span,
+    .roi-tool-scenarios > p {
+        font-family: "SuisseIntl-Book-WebXL", sans-serif;
+    }
+
+    .roi-tool-metric span {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-size: var(--roi-type-label);
+        line-height: 1.2;
+        letter-spacing: var(--roi-track-label);
+        text-transform: uppercase;
+        color: var(--roi-dark-text-soft);
+    }
+
+    .roi-tool-metric strong {
+        display: block;
+        font-size: clamp(1.45rem, 2vw, 2rem);
+        line-height: 1;
+    }
+
+    .roi-tool-scenarios {
+        display: grid;
+        gap: 0.85rem;
+        padding-top: 0.2rem;
+    }
+
+    .roi-tool-scenarios > p {
+        margin: 0;
+        font-size: var(--roi-type-label);
+        line-height: 1.1;
+        letter-spacing: var(--roi-track-label);
+        text-transform: uppercase;
+        color: var(--roi-dark-text-soft);
+    }
+
+    .roi-tool-scenario-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.75rem;
+    }
+
+    .roi-tool-scenario {
+        padding: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.04);
+    }
+
+    .roi-tool-scenario.is-featured {
+        background: rgba(45, 125, 70, 0.14);
+        border-color: rgba(45, 125, 70, 0.36);
+    }
+
+    .roi-tool-scenario span {
+        display: block;
+        margin-bottom: 0.45rem;
+        font-size: var(--roi-type-label);
+        line-height: 1.2;
+        letter-spacing: var(--roi-track-label);
+        text-transform: uppercase;
+        color: var(--roi-dark-text-soft);
+    }
+
+    .roi-tool-scenario strong {
+        display: block;
+        font-size: clamp(1.3rem, 1.8vw, 1.65rem);
+        line-height: 1;
+        margin-bottom: 0.4rem;
+    }
+
+    .roi-tool-scenario p {
+        margin: 0;
+        font-size: var(--roi-type-body);
+        line-height: var(--roi-line-body);
+        color: var(--roi-dark-text-muted);
+    }
+
+    .roi-tool-results-cta {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.75rem;
+        padding-top: 1.2rem;
+        margin-top: 1.2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .roi-tool-results-cta__copy {
+        display: grid;
+        gap: 0.25rem;
+        grid-column: span 2;
+    }
+
+    .roi-tool-results-cta__copy p {
+        margin: 0;
+        font-size: var(--roi-type-body);
+        line-height: var(--roi-line-body);
+        color: var(--roi-dark-text-muted);
+    }
+
+    .roi-tool-results-cta__copy p:first-child {
+        font-family: "SuisseIntl-Book-WebXL", sans-serif;
+        font-size: var(--roi-kicker-size);
+        line-height: 1.1;
+        letter-spacing: var(--roi-track-label);
+        text-transform: uppercase;
+        color: var(--roi-dark-text-soft);
+    }
+
+    .roi-tool-results-cta__actions {
+        display: grid;
+        gap: 0.75rem;
+        align-content: start;
+    }
+
+    .roi-tool-results-cta .btn__small.--ghost {
+        border: 1px solid #ffffff;
+        color: #0f0d0d;
+        background: #ffffff;
+    }
+
+    .roi-tool-benefits {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+        margin-top: 2.25rem;
+    }
+
+    .roi-tool-benefit {
+        padding: 1.15rem 1.1rem 1.25rem;
+        border: 1px solid rgba(15, 13, 13, 0.08);
+        background: rgba(255, 255, 255, 0.46);
+    }
+
+    .roi-tool-benefit h3 {
+        margin: 0 0 0.45rem;
+        font-size: var(--roi-type-h3);
+        line-height: 1.08;
+    }
+
+    .roi-tool-benefit p {
+        margin: 0;
+        font-size: var(--roi-type-body);
+        line-height: var(--roi-line-body);
+        color: var(--roi-text-muted);
+    }
+
+    .roi-diagnosis {
+        padding: 0 0 5rem;
+        scroll-margin-top: 7rem;
+    }
+
+    .roi-diagnosis__header {
+        display: grid;
+        gap: 1rem;
+        margin-bottom: 2.25rem;
+    }
+
+    .roi-diagnosis__header h2,
+    .roi-diagnosis__issue h3 {
+        margin: 0;
+        letter-spacing: var(--roi-track-heading);
+    }
+
+    .roi-diagnosis__header h2 {
+        font-family: "PPMori-SemiBold", sans-serif;
+        font-size: var(--roi-type-h2);
+        line-height: 1.1;
+        letter-spacing: var(--roi-track-title);
+        text-transform: uppercase;
+        text-wrap: balance;
+    }
+
+    .roi-diagnosis__issue h3 {
+        font-family: "PPMori-Regular", sans-serif;
+    }
+
+    .roi-diagnosis__header > p:not(.roi-section-kicker),
+    .roi-diagnosis__takeaway > p:not(.roi-diagnosis__label),
+    .roi-diagnosis__next > p:not(.roi-diagnosis__label),
+    .roi-diagnosis__issue > p:not(.roi-diagnosis__label) {
+        margin: 0;
+        font-size: var(--roi-type-body);
+        line-height: var(--roi-line-body);
+        color: var(--roi-text-muted);
+    }
+
+    .roi-diagnosis__table {
+        display: grid;
+        gap: 0;
+        border: 1px solid rgba(15, 13, 13, 0.09);
+        background: rgba(255, 255, 255, 0.42);
+    }
+
+    .roi-diagnosis__takeaway,
+    .roi-diagnosis__next,
+    .roi-diagnosis__issue {
+        padding: 1.25rem;
+        background: transparent;
+    }
+
+    .roi-diagnosis__label {
+        display: inline-block;
+        margin: 0 0 0.75rem;
+        font-family: "SuisseIntl-Book-WebXL", sans-serif;
+        font-size: var(--roi-kicker-size);
+        line-height: 1.1;
+        letter-spacing: var(--roi-track-label);
+        text-transform: uppercase;
+        color: var(--roi-text-soft);
+    }
+
+    .roi-diagnosis__issues {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        border-top: 1px solid rgba(15, 13, 13, 0.09);
+        border-bottom: 1px solid rgba(15, 13, 13, 0.09);
+    }
+
+    .roi-diagnosis__issue {
+        border-right: 1px solid rgba(15, 13, 13, 0.09);
+    }
+
+    .roi-diagnosis__issue:last-child {
+        border-right: 0;
+    }
+
+    .roi-diagnosis__issue h3 {
+        font-size: var(--roi-type-h3);
+        line-height: 1.08;
+        margin-bottom: 0.45rem;
+    }
+
+    .roi-next {
+        padding: 4.5rem 0 5rem;
+        background:
+            radial-gradient(circle at top right, rgba(45, 125, 70, 0.16), transparent 30%),
+            linear-gradient(180deg, #171717 0%, #111111 100%);
+        color: #f7f3ef;
+    }
+
+    .roi-next__panel {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+        gap: 2.5rem;
+    }
+
+    .roi-next__primary,
+    .roi-next__secondary {
+        padding: 0;
+    }
+
+    .roi-next__primary h2,
+    .roi-next__secondary h3 {
+        margin: 0;
+        letter-spacing: var(--roi-track-heading);
+    }
+
+    .roi-next__primary h2 {
+        font-family: "PPMori-SemiBold", sans-serif;
+        font-size: var(--roi-type-h2);
+        line-height: 1.1;
+        letter-spacing: var(--roi-track-title);
+        text-transform: uppercase;
+        margin-bottom: 0.75rem;
+        text-wrap: balance;
+    }
+
+    .roi-next__secondary h3 {
+        font-family: "PPMori-Regular", sans-serif;
+    }
+
+    .roi-next__primary p,
+    .roi-next__secondary p,
+    .roi-next__secondary li {
+        margin: 0;
+        font-size: var(--roi-type-body);
+        line-height: var(--roi-line-body);
+        color: var(--roi-dark-text-muted);
+    }
+
+    .roi-next__actions {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        margin-top: 1.35rem;
+    }
+
+    .roi-next__secondary {
+        border-left: 1px solid rgba(255, 255, 255, 0.12);
+        padding-left: 2.5rem;
+        padding-top: 0.35rem;
+    }
+
+    .roi-next__secondary h3 {
+        font-size: var(--roi-type-h3);
+        line-height: 1.08;
+        margin-bottom: 0.55rem;
+    }
+
+    .roi-next .roi-section-kicker {
+        color: var(--roi-dark-text-soft);
+        margin-bottom: 0.85rem;
+    }
+
+    .roi-next .btn__small.--ghost {
+        border: 1px solid #ffffff;
+        color: #0f0d0d;
+        background: #ffffff;
+    }
+
+    .roi-next__secondary ul {
+        margin: 1rem 0 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 0.65rem;
+    }
+
+    .roi-next__secondary li {
+        display: flex;
+        gap: 0.55rem;
+        align-items: flex-start;
+    }
+
+    .roi-next__secondary li::before {
+        content: "";
+        width: 0.42rem;
+        height: 0.42rem;
+        margin-top: 0.45rem;
+        border-radius: 50%;
+        background: #2d7d46;
+        flex: 0 0 auto;
+    }
+
+    .roi-faq {
+        padding: 5rem 0;
+    }
+
+    .roi-faq__header {
+        display: grid;
+        gap: 1rem;
+        margin-bottom: 2.25rem;
+    }
+
+    .roi-faq__header h2 {
+        margin: 0;
+        font-family: "PPMori-SemiBold", sans-serif;
+        font-size: var(--roi-type-h2);
+        line-height: 1.1;
+        letter-spacing: var(--roi-track-title);
+        text-transform: uppercase;
+    }
+
+    .roi-faq__header > p:not(.roi-section-kicker) {
+        margin: 0;
+        max-width: 42rem;
+        font-size: var(--roi-type-body);
+        line-height: var(--roi-line-body);
+        color: var(--roi-text-muted);
+    }
+
+    .roi-faq__list {
+        border-top: 1px solid rgba(15, 13, 13, 0.09);
+    }
+
+    .roi-faq__item {
+        border-bottom: 1px solid rgba(15, 13, 13, 0.09);
+    }
+
+    .roi-faq__item summary {
+        list-style: none;
+        cursor: pointer;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 1rem;
+        align-items: center;
+        padding: 1.2rem 0;
+        font-family: "SuisseIntl-Regular-WebXL", sans-serif;
+        font-size: var(--roi-type-h3);
+        line-height: 1.2;
+        letter-spacing: var(--roi-track-heading);
+    }
+
+    .roi-faq__item summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .roi-faq__item summary::after {
+        content: "+";
+        font-family: "SuisseIntl-Book-WebXL", sans-serif;
+        font-size: var(--roi-type-body);
+        color: var(--roi-text-soft);
+    }
+
+    .roi-faq__item[open] summary::after {
+        content: "-";
+    }
+
+    .roi-faq__item p {
+        margin: 0;
+        padding: 0 0 1.25rem;
+        max-width: 48rem;
+        font-size: var(--roi-type-body);
+        line-height: 1.65;
+        color: var(--roi-text-muted);
+    }
+
+    @media screen and (max-width: 1180px) {
+        .roi-tool-shell,
+        .roi-next__panel {
+            grid-template-columns: 1fr;
+        }
+
+        .roi-next__secondary {
+            border-left: 0;
+            padding-top: 0;
+            padding-left: 0;
+        }
+    }
+
+    @media screen and (max-width: 840px) {
+        .roi-tool-page .section__wrapper {
+            padding-inline: 1.5rem;
+        }
+
+        .roi-tool-hero {
+            padding: 7rem 0 4rem;
+        }
+
+        .roi-tool-hero__header h1 {
+            font-size: clamp(3.1rem, 16vw, 5rem);
+        }
+
+        .roi-tool-metrics,
+        .roi-tool-scenario-grid,
+        .roi-tool-explainer__grid,
+        .roi-tool-benefits,
+        .roi-diagnosis__issues {
+            grid-template-columns: 1fr;
+        }
+
+        .roi-tool-results-cta {
+            grid-template-columns: 1fr;
+        }
+
+        .roi-tool-results-cta__actions {
+            grid-template-columns: 1fr;
+        }
+
+        .roi-tool-results-cta__copy {
+            grid-column: auto;
+        }
+
+        .roi-tool-pane__header {
+            flex-direction: column;
+            align-items: start;
+        }
+
+    }
+
+/* Website Conversion Audit Scorecard */
+    .audit-scorecard-page {
+        --audit-type-h1: clamp(50px, 7.5vw, 144px);
+        --audit-type-h2: clamp(30px, 2.9167vw, 56px);
+        --audit-type-h3: clamp(22px, 1.6667vw, 32px);
+        --audit-type-body: clamp(16px, 0.9375vw, 18px);
+        --audit-type-label: 14px;
+        --audit-track-display: -0.05em;
+        --audit-track-title: -0.03em;
+        --audit-track-heading: -0.02em;
+        --audit-track-label: 0.08em;
+        --audit-line-display: 1;
+        --audit-line-body: 1.6;
+        --audit-text: #0f0d0d;
+        --audit-text-muted: #474342;
+        --audit-text-soft: #6a6462;
+        --audit-kicker: #5f5a58;
+        --audit-border: rgba(15, 13, 13, 0.1);
+        --audit-surface: rgba(255, 255, 255, 0.58);
+        --audit-surface-strong: rgba(255, 255, 255, 0.76);
+        --audit-dark: #121212;
+        --audit-dark-border: rgba(255, 255, 255, 0.08);
+        --audit-dark-text: #fefcff;
+        --audit-accent: #2d7d46;
+        color: var(--audit-text);
+        background:
+            radial-gradient(circle at top left, rgba(228, 244, 229, 0.9), transparent 24%),
+            radial-gradient(circle at top right, rgba(241, 236, 248, 0.92), transparent 32%),
+            linear-gradient(180deg, #f7f4f1 0%, #f2efea 100%);
+    }
+
+    .audit-scorecard-page .section__wrapper {
+        padding-inline: calc(min(6vw, 115px));
+    }
+
+    .audit-hero {
+        padding: 8rem 0 5rem;
+    }
+
+    .audit-hero__header {
+        display: grid;
+        gap: 1.3rem;
+        margin-bottom: 2.25rem;
+    }
+
+    .audit-section-kicker {
+        margin: 0;
+        font-family: "SuisseIntl-Book-WebXL", sans-serif;
+        font-size: var(--audit-type-label);
+        line-height: 1.1;
+        letter-spacing: var(--audit-track-label);
+        text-transform: uppercase;
+        color: var(--audit-kicker);
+    }
+
+    .audit-diagnosis__header h2,
+    .audit-next__primary h2,
+    .audit-faq__header h2 {
+        margin: 0;
+        font-family: "PPMori-SemiBold", sans-serif;
+        font-size: var(--audit-type-h2);
+        line-height: 1.1;
+        letter-spacing: var(--audit-track-title);
+        text-transform: uppercase;
+        text-wrap: balance;
+    }
+
+    .audit-hero__header h1 {
+        margin: 0;
+        font-family: "PPMori-Regular", sans-serif;
+        font-size: var(--audit-type-h1);
+        line-height: var(--audit-line-display);
+        letter-spacing: var(--audit-track-display);
+        text-transform: none;
+        max-width: 17ch;
+        text-wrap: balance;
+    }
+
+    .audit-hero__lede,
+    .audit-explainer__intro p,
+    .audit-tool-pane__header p,
+    .audit-benefit p,
+    .audit-diagnosis__header > p:not(.audit-section-kicker),
+    .audit-diagnosis__lead p,
+    .audit-diagnosis__card p,
+    .audit-next__primary > p:not(.audit-section-kicker),
+    .audit-next__secondary li,
+    .audit-faq__header p,
+    .audit-faq__item p {
+        margin: 0;
+        font-size: var(--audit-type-body);
+        line-height: var(--audit-line-body);
+        color: var(--audit-text-muted);
+    }
+
+    .audit-hero__lede {
+        max-width: 48rem;
+        text-wrap: balance;
+    }
+
+    .audit-explainer {
+        display: grid;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .audit-explainer__intro {
+        max-width: 52rem;
+    }
+
+    .audit-explainer__intro h2 {
+        margin: 0 0 0.4rem;
+        font-family: "PPMori-Regular", sans-serif;
+        font-size: var(--audit-type-h3);
+        line-height: 1.05;
+        letter-spacing: var(--audit-track-heading);
+    }
+
+    .audit-explainer__grid,
+    .audit-benefits,
+    .audit-diagnosis__detail-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    .audit-results__category-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+.audit-explainer__item,
+.audit-benefit,
+.audit-results__category,
+.audit-results__fix,
+.audit-diagnosis__lead,
+.audit-diagnosis__card {
+    padding: 1rem 1.05rem;
+    border: 1px solid var(--audit-border);
+    background: rgba(255, 255, 255, 0.52);
+}
+
+.audit-diagnosis__lead,
+.audit-diagnosis__card {
+    display: grid;
+    align-content: start;
+    gap: 0.35rem;
+}
+
+    .audit-explainer__item strong,
+    .audit-benefit h3,
+    .audit-tool-pane__header h2,
+    .audit-results__hero strong,
+    .audit-results__category strong,
+    .audit-results__fix h3,
+    .audit-diagnosis__lead h3,
+    .audit-diagnosis__card h3,
+    .audit-next__secondary h3 {
+        margin: 0;
+        font-family: "PPMori-Regular", sans-serif;
+        letter-spacing: var(--audit-track-heading);
+        text-wrap: balance;
+    }
+
+    .audit-explainer__item strong {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-family: "SuisseIntl-Book-WebXL", sans-serif;
+        font-size: var(--audit-type-label);
+        line-height: 1.2;
+        letter-spacing: var(--audit-track-label);
+        text-transform: uppercase;
+    }
+
+    .audit-explainer__item p {
+        margin: 0;
+        font-size: var(--audit-type-body);
+        line-height: var(--audit-line-body);
+        color: var(--audit-text-muted);
+    }
+
+    .audit-shell {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.25rem;
+        align-items: start;
+    }
+
+    .audit-tool-pane {
+        padding: 1.35rem;
+        border: 1px solid var(--audit-border);
+        background: var(--audit-surface);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        box-shadow: 0 1.5rem 3rem rgba(15, 13, 13, 0.06);
+    }
+
+    .audit-tool-pane--results {
+        background:
+            linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
+            var(--audit-dark);
+        border-color: var(--audit-dark-border);
+        color: var(--audit-dark-text);
+    }
+
+    .audit-tool-pane__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        gap: 1rem;
+        margin-bottom: 1.35rem;
+    }
+
+    .audit-tool-pane__header h2 {
+        font-size: var(--audit-type-h3);
+        line-height: 1.05;
+    }
+
+    .audit-tool-pane--results .audit-tool-pane__header p,
+    .audit-tool-pane--results .audit-results__hero p,
+    .audit-tool-pane--results .audit-results__category span,
+    .audit-tool-pane--results .audit-results__fix p,
+    .audit-tool-pane--results .audit-results__cta-copy p {
+        color: var(--audit-dark-text);
+    }
+
+    .audit-tool-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.55rem 0.75rem;
+        border-radius: 999px;
+        background: rgba(15, 13, 13, 0.05);
+        border: 1px solid rgba(15, 13, 13, 0.1);
+        font-family: "SuisseIntl-Book-WebXL", sans-serif;
+        font-size: var(--audit-type-label);
+        line-height: 1.1;
+        letter-spacing: var(--audit-track-label);
+        text-transform: uppercase;
+        white-space: nowrap;
+        color: #0f0d0d;
+    }
+
+    .audit-tool-status::before {
+        content: "";
+        width: 0.48rem;
+        height: 0.48rem;
+        border-radius: 50%;
+        background: var(--audit-accent);
+    }
+
+    .audit-tool-pane--results .audit-tool-status {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.18);
+        color: var(--audit-dark-text);
+    }
+
+    .audit-form {
+        display: grid;
+        gap: 1rem;
+    }
+
+    .audit-group {
+        display: grid;
+        gap: 0.9rem;
+        margin: 0;
+        padding-inline: 0;
+        padding-top: 0.95rem;
+        min-inline-size: 0;
+        border: 0;
+        border-top: 1px solid var(--audit-border);
+    }
+
+    .audit-group:first-child {
+        padding-top: 0;
+        border-top: none;
+    }
+
+    .audit-group legend {
+        padding: 0;
+        margin: 0;
+        font-family: "PPMori-Regular", sans-serif;
+        font-size: var(--audit-type-h3);
+        line-height: 1.05;
+        letter-spacing: var(--audit-track-heading);
+    }
+
+    .audit-group__intro {
+        margin: -0.2rem 0 0;
+        font-size: var(--audit-type-body);
+        line-height: var(--audit-line-body);
+        color: var(--audit-text-muted);
+    }
+
+    .audit-question {
+        display: grid;
+        gap: 0.7rem;
+        padding: 0.95rem 1rem;
+        border: 1px solid var(--audit-border);
+        background: var(--audit-surface-strong);
+    }
+
+    .audit-question__prompt {
+        margin: 0;
+        font-family: "SuisseIntl-Book-WebXL", sans-serif;
+        font-size: var(--audit-type-body);
+        line-height: 1.45;
+        color: var(--audit-text);
+    }
+
+    .audit-question__options {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.55rem;
+    }
+
+    .audit-choice {
+        position: relative;
+    }
+
+    .audit-choice input {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        margin: 0;
+        cursor: pointer;
+    }
+
+    .audit-choice span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 3rem;
+        padding: 0.7rem 0.8rem;
+        border: 1px solid var(--audit-border);
+        background: #fff;
+        font-family: "SuisseIntl-Book-WebXL", sans-serif;
+        font-size: var(--audit-type-label);
+        line-height: 1.1;
+        letter-spacing: var(--audit-track-label);
+        text-transform: uppercase;
+        text-align: center;
+        transition: border-color 160ms ease, background-color 160ms ease, color 160ms ease;
+    }
+
+    .audit-choice input:checked + span {
+        border-color: #0f0d0d;
+        background: #0f0d0d;
+        color: #fefcff;
+    }
+
+    .audit-choice input:focus-visible + span {
+        outline: 2px solid #0f0d0d;
+        outline-offset: 2px;
+    }
+
+    .audit-footnote {
+        margin: 0;
+        padding-top: 0.5rem;
+        border-top: 1px solid var(--audit-border);
+        font-size: var(--audit-type-label);
+        line-height: 1.5;
+        color: var(--audit-text-soft);
+    }
+
+    .audit-results__hero {
+        display: grid;
+        gap: 0.3rem;
+        margin-bottom: 1.25rem;
+        padding-bottom: 1.1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .audit-results__eyebrow,
+    .audit-results__section-label,
+    .audit-diagnosis__label {
+        margin: 0;
+        font-family: "SuisseIntl-Book-WebXL", sans-serif;
+        font-size: var(--audit-type-label);
+        line-height: 1.1;
+        letter-spacing: var(--audit-track-label);
+        text-transform: uppercase;
+    }
+
+    .audit-results__hero strong {
+        font-family: "PPMori-Regular", sans-serif;
+        font-size: var(--audit-type-h2);
+        line-height: 1.05;
+        letter-spacing: var(--audit-track-title);
+        font-variant-numeric: lining-nums tabular-nums;
+    }
+
+    .audit-results__hero strong span {
+        font: inherit;
+        letter-spacing: inherit;
+        line-height: inherit;
+        color: inherit;
+    }
+
+    .audit-results__hero p {
+        max-width: 34rem;
+    }
+
+    .audit-results__category-grid {
+        margin-bottom: 1rem;
+    }
+
+    .audit-results__category {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .audit-results__category span {
+        display: block;
+        margin-bottom: 0.6rem;
+    }
+
+    .audit-results__category strong {
+        display: block;
+        margin-bottom: 0.2rem;
+        font-size: clamp(1.7rem, 3vw, 2.4rem);
+        line-height: 1;
+    }
+
+    .audit-results__priority {
+        display: grid;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .audit-results__priority-header p {
+        color: var(--audit-dark-text);
+    }
+
+    .audit-results__priority-list {
+        display: grid;
+        gap: 0.85rem;
+    }
+
+    .audit-results__fix {
+        background: rgba(255, 255, 255, 0.04);
+        border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .audit-results__fix h3,
+    .audit-diagnosis__lead h3,
+    .audit-diagnosis__card h3,
+    .audit-next__secondary h3 {
+        font-size: var(--audit-type-h3);
+        line-height: 1.05;
+    }
+
+.audit-results__fix p,
+.audit-diagnosis__lead p,
+.audit-diagnosis__card p {
+    margin-top: 0;
+}
+
+    .audit-results__cta {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        align-items: end;
+    }
+
+    .audit-results__cta-copy p:first-child {
+        margin-bottom: 0.35rem;
+    }
+
+    .audit-results__cta-actions {
+        display: grid;
+        gap: 0.55rem;
+    }
+
+    .audit-results__cta-actions .btn__small.--ghost {
+        background: #fff;
+        border-color: #fff;
+        color: #0f0d0d;
+    }
+
+    .audit-benefits {
+        margin-top: 2.25rem;
+    }
+
+    .audit-benefit h3 {
+        font-size: var(--audit-type-h3);
+        line-height: 1.05;
+        margin-bottom: 0.45rem;
+    }
+
+    .audit-diagnosis {
+        padding: 0 0 5rem;
+        scroll-margin-top: 7rem;
+    }
+
+    .audit-diagnosis__header {
+        display: grid;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .audit-diagnosis__lead {
+        margin-bottom: 1rem;
+    }
+
+.audit-diagnosis__label {
+    margin-bottom: 0.7rem;
+    color: var(--audit-kicker);
+}
+
+    .audit-next {
+        padding: 5rem 0;
+        background: #131313;
+        color: #fefcff;
+    }
+
+    .audit-next__panel {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2rem;
+        align-items: start;
+    }
+
+    .audit-next__primary,
+    .audit-next__secondary {
+        display: grid;
+        gap: 1rem;
+    }
+
+    .audit-next__primary > p:not(.audit-section-kicker),
+    .audit-next__secondary li {
+        color: #fefcff;
+    }
+
+    .audit-next__secondary {
+        padding-left: 2rem;
+        border-left: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .audit-next__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        padding-top: 0.35rem;
+    }
+
+    .audit-next .btn__small.--ghost {
+        background: #fff;
+        border-color: #fff;
+        color: #0f0d0d;
+    }
+
+    .audit-next__secondary ul {
+        margin: 0;
+        padding-left: 1.1rem;
+        display: grid;
+        gap: 0.75rem;
+    }
+
+    .audit-faq {
+        padding: 5rem 0 6rem;
+    }
+
+    .audit-faq__header {
+        display: grid;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        max-width: 48rem;
+    }
+
+    .audit-faq__list {
+        display: grid;
+        gap: 0;
+        border-top: 1px solid var(--audit-border);
+    }
+
+    .audit-faq__item {
+        border-bottom: 1px solid var(--audit-border);
+    }
+
+    .audit-faq__item summary {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        list-style: none;
+        cursor: pointer;
+        padding: 1rem 0;
+        font-family: "SuisseIntl-Regular-WebXL", sans-serif;
+        font-size: var(--audit-type-body);
+        line-height: 1.45;
+        color: var(--audit-text);
+    }
+
+    .audit-faq__item summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .audit-faq__item summary::after {
+        content: "+";
+        flex-shrink: 0;
+        font-family: "SuisseIntl-Regular-WebXL", sans-serif;
+    }
+
+    .audit-faq__item[open] summary::after {
+        content: "-";
+    }
+
+    .audit-faq__item p {
+        padding: 0 0 1rem;
+        max-width: 48rem;
+    }
+
+    @media screen and (max-width: 960px) {
+        .audit-shell,
+        .audit-results__cta,
+        .audit-next__panel {
+            grid-template-columns: 1fr;
+        }
+
+        .audit-explainer__grid,
+        .audit-benefits,
+        .audit-results__category-grid,
+        .audit-diagnosis__detail-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .audit-results__cta-actions {
+            grid-template-columns: 1fr;
+        }
+
+        .audit-next__secondary {
+            padding-left: 0;
+            border-left: none;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.18);
+        }
+    }
+
+    @media screen and (max-width: 767px) {
+        .audit-scorecard-page .section__wrapper {
+            padding-inline: 1.5rem;
+        }
+
+        .audit-hero {
+            padding: 7rem 0 4rem;
+        }
+
+        .audit-hero__header h1 {
+            font-size: clamp(3.1rem, 16vw, 5rem);
+        }
+
+        .audit-choice span {
+            min-height: 2.7rem;
+            font-size: 12px;
+        }
+
+        .audit-tool-pane__header {
+            flex-direction: column;
+            align-items: start;
+        }
+    }

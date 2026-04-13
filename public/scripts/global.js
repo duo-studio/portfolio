@@ -2002,6 +2002,10 @@ function load404Scripts() {
 
 function loadToolsScripts() {
 	document.querySelector(".barba-container").classList.remove("loading");
+
+	if (typeof window.initToolsPages === "function") {
+		window.initToolsPages();
+	}
 }
 
 function loadPrivacyScripts() {

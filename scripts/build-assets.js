@@ -40,6 +40,10 @@ const jsAssets = [
 		source: "scripts/global.js",
 		output: "scripts/global.min.js",
 	},
+	{
+		source: "scripts/tools.js",
+		output: "scripts/tools.min.js",
+	},
 ];
 
 async function ensureDir(filePath) {

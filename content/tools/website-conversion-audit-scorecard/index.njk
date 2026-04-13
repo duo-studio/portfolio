@@ -1,0 +1,419 @@
+﻿---
+layout: layouts/base.njk
+permalink: /tools/website-conversion-audit-scorecard/
+eleventyComputed:
+    title: "Website Conversion Audit Scorecard | {{ metadata.title }}"
+description: "Use this free website conversion audit scorecard to assess clarity, trust, CTA strength, and user friction, then see where your website is most likely underperforming."
+---
+
+<div class="barba-container loading audit-scorecard-page" data-barba="container" data-barba-namespace="tools">
+    <main>
+        <section class="audit-hero" id="main">
+            <div class="section__wrapper">
+                <div class="audit-hero__header">
+                    <p class="audit-section-kicker">Tool - Conversion Audit</p>
+                    <h1>Website conversion audit scorecard</h1>
+                    <p class="audit-hero__lede">
+                        Review the parts of your site that most often decide whether attention turns into inquiry.
+                    </p>
+                </div>
+
+                <div class="audit-explainer">
+                    <div class="audit-explainer__intro">
+                        <h2>What it helps uncover</h2>
+                        <p>
+                            A quick strategic read on whether your site feels clear, credible, easy to act on,
+                            and well considered across the journey.
+                        </p>
+                    </div>
+                    <div class="audit-explainer__grid">
+                        <article class="audit-explainer__item">
+                            <strong>Assess</strong>
+                            <p>Score clarity, trust, CTA strength, and user friction across eight practical questions.</p>
+                        </article>
+                        <article class="audit-explainer__item">
+                            <strong>Surface</strong>
+                            <p>See which area is strongest, which one is dragging performance down, and where to start.</p>
+                        </article>
+                        <article class="audit-explainer__item">
+                            <strong>Prioritize</strong>
+                            <p>Turn a vague sense that the site is underperforming into a clearer list of first fixes.</p>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="audit-shell" data-audit-tool>
+                    <section class="audit-tool-pane" aria-labelledby="audit-form-title">
+                        <div class="audit-tool-pane__header">
+                            <div>
+                                <h2 id="audit-form-title">Scorecard inputs</h2>
+                                <p>Choose the option that best matches the site today. The readout updates as you go.</p>
+                            </div>
+                            <div class="audit-tool-status">Live scorecard</div>
+                        </div>
+
+                        <form class="audit-form" data-audit-form>
+                            <fieldset class="audit-group">
+                                <legend>Clarity</legend>
+                                <p class="audit-group__intro">Can a new visitor understand the offer, the audience, and the value without extra work?</p>
+
+                                <div class="audit-question">
+                                    <p class="audit-question__prompt">A new visitor can tell what we do and who it is for within the first screen.</p>
+                                    <div class="audit-question__options">
+                                        <label class="audit-choice"><input type="radio" name="clarityStory" value="3" checked><span>Strong</span></label>
+                                        <label class="audit-choice"><input type="radio" name="clarityStory" value="2"><span>Mixed</span></label>
+                                        <label class="audit-choice"><input type="radio" name="clarityStory" value="1"><span>Weak</span></label>
+                                    </div>
+                                </div>
+
+                                <div class="audit-question">
+                                    <p class="audit-question__prompt">The offer feels specific, differentiated, and relevant to the kind of work we want more of.</p>
+                                    <div class="audit-question__options">
+                                        <label class="audit-choice"><input type="radio" name="clarityOffer" value="3"><span>Strong</span></label>
+                                        <label class="audit-choice"><input type="radio" name="clarityOffer" value="2" checked><span>Mixed</span></label>
+                                        <label class="audit-choice"><input type="radio" name="clarityOffer" value="1"><span>Weak</span></label>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <fieldset class="audit-group">
+                                <legend>Trust</legend>
+                                <p class="audit-group__intro">Do the proof and credibility signals reduce risk at the moments where they matter most?</p>
+
+                                <div class="audit-question">
+                                    <p class="audit-question__prompt">Proof sits close to the claims and calls to action that need support.</p>
+                                    <div class="audit-question__options">
+                                        <label class="audit-choice"><input type="radio" name="trustProof" value="3"><span>Strong</span></label>
+                                        <label class="audit-choice"><input type="radio" name="trustProof" value="2" checked><span>Mixed</span></label>
+                                        <label class="audit-choice"><input type="radio" name="trustProof" value="1"><span>Weak</span></label>
+                                    </div>
+                                </div>
+
+                                <div class="audit-question">
+                                    <p class="audit-question__prompt">The site shows outcomes, examples, or credibility signals that make the work feel lower-risk.</p>
+                                    <div class="audit-question__options">
+                                        <label class="audit-choice"><input type="radio" name="trustSignals" value="3"><span>Strong</span></label>
+                                        <label class="audit-choice"><input type="radio" name="trustSignals" value="2" checked><span>Mixed</span></label>
+                                        <label class="audit-choice"><input type="radio" name="trustSignals" value="1"><span>Weak</span></label>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <fieldset class="audit-group">
+                                <legend>CTA</legend>
+                                <p class="audit-group__intro">Is the next step obvious, well placed, and easy enough to follow through on?</p>
+
+                                <div class="audit-question">
+                                    <p class="audit-question__prompt">The primary CTA is clear and repeated at the moments where interest tends to peak.</p>
+                                    <div class="audit-question__options">
+                                        <label class="audit-choice"><input type="radio" name="ctaClarity" value="3"><span>Strong</span></label>
+                                        <label class="audit-choice"><input type="radio" name="ctaClarity" value="2" checked><span>Mixed</span></label>
+                                        <label class="audit-choice"><input type="radio" name="ctaClarity" value="1"><span>Weak</span></label>
+                                    </div>
+                                </div>
+
+                                <div class="audit-question">
+                                    <p class="audit-question__prompt">The path from interest to inquiry feels light, clear, and low-friction.</p>
+                                    <div class="audit-question__options">
+                                        <label class="audit-choice"><input type="radio" name="ctaFriction" value="3"><span>Strong</span></label>
+                                        <label class="audit-choice"><input type="radio" name="ctaFriction" value="2" checked><span>Mixed</span></label>
+                                        <label class="audit-choice"><input type="radio" name="ctaFriction" value="1"><span>Weak</span></label>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <fieldset class="audit-group">
+                                <legend>Experience</legend>
+                                <p class="audit-group__intro">Does the site feel easy to use, especially on smaller screens where friction shows up fastest?</p>
+
+                                <div class="audit-question">
+                                    <p class="audit-question__prompt">The mobile experience feels clean, easy to scan, and fully considered.</p>
+                                    <div class="audit-question__options">
+                                        <label class="audit-choice"><input type="radio" name="uxMobile" value="3"><span>Strong</span></label>
+                                        <label class="audit-choice"><input type="radio" name="uxMobile" value="2" checked><span>Mixed</span></label>
+                                        <label class="audit-choice"><input type="radio" name="uxMobile" value="1"><span>Weak</span></label>
+                                    </div>
+                                </div>
+
+                                <div class="audit-question">
+                                    <p class="audit-question__prompt">Pages feel focused and well paced instead of crowded, scattered, or hard to parse.</p>
+                                    <div class="audit-question__options">
+                                        <label class="audit-choice"><input type="radio" name="uxHierarchy" value="3"><span>Strong</span></label>
+                                        <label class="audit-choice"><input type="radio" name="uxHierarchy" value="2" checked><span>Mixed</span></label>
+                                        <label class="audit-choice"><input type="radio" name="uxHierarchy" value="1"><span>Weak</span></label>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <p class="audit-footnote">
+                                This is a directional scorecard, not a substitute for a full audit. The goal is to
+                                make the strongest points of friction easier to see, faster.
+                            </p>
+                        </form>
+                    </section>
+
+                    <section class="audit-tool-pane audit-tool-pane--results" aria-labelledby="audit-results-title">
+                        <div class="audit-tool-pane__header">
+                            <div>
+                                <h2 id="audit-results-title">Readout</h2>
+                                <p>An overall score, a clearer read on what is helping, and the parts of the site most likely holding performance back.</p>
+                            </div>
+                            <div class="audit-tool-status">Live audit</div>
+                        </div>
+
+                        <div class="audit-results__hero">
+                            <p class="audit-results__eyebrow">Overall readiness score</p>
+                            <strong><span data-audit-output="overallScore">0</span>/100</strong>
+                            <p data-audit-output="overallLabel">A clearer read appears here as the scorecard fills in.</p>
+                        </div>
+
+                        <div class="audit-results__category-grid">
+                            <article class="audit-results__category">
+                                <span>Clarity</span>
+                                <strong data-audit-output="clarityScore">0</strong>
+                                <p data-audit-output="clarityLabel">Needs attention</p>
+                            </article>
+                            <article class="audit-results__category">
+                                <span>Trust</span>
+                                <strong data-audit-output="trustScore">0</strong>
+                                <p data-audit-output="trustLabel">Needs attention</p>
+                            </article>
+                            <article class="audit-results__category">
+                                <span>CTA</span>
+                                <strong data-audit-output="ctaScore">0</strong>
+                                <p data-audit-output="ctaLabel">Needs attention</p>
+                            </article>
+                            <article class="audit-results__category">
+                                <span>Experience</span>
+                                <strong data-audit-output="uxScore">0</strong>
+                                <p data-audit-output="uxLabel">Needs attention</p>
+                            </article>
+                        </div>
+
+                        <div class="audit-results__priority">
+                            <div class="audit-results__priority-header">
+                                <p class="audit-results__section-label">Priority fixes</p>
+                            </div>
+                            <div class="audit-results__priority-list">
+                                <article class="audit-results__fix">
+                                    <h3 data-audit-output="priorityTitle1">Sharpen the first-screen story</h3>
+                                    <p data-audit-output="priorityBody1">A focused priority read will appear here.</p>
+                                </article>
+                                <article class="audit-results__fix">
+                                    <h3 data-audit-output="priorityTitle2">Move proof closer to risk</h3>
+                                    <p data-audit-output="priorityBody2">A focused priority read will appear here.</p>
+                                </article>
+                                <article class="audit-results__fix">
+                                    <h3 data-audit-output="priorityTitle3">Reduce inquiry friction</h3>
+                                    <p data-audit-output="priorityBody3">A focused priority read will appear here.</p>
+                                </article>
+                            </div>
+                        </div>
+
+                        <div class="audit-results__cta">
+                            <div class="audit-results__cta-copy">
+                                <p class="audit-results__section-label">Next move</p>
+                                <p>If the weak spots feel accurate, the next step is translating them into page-level changes and stronger decision-making cues.</p>
+                            </div>
+                            <div class="audit-results__cta-actions">
+                                <a class="btn__small cursor__hover --highlight" href="/contact/">Start a project</a>
+                                <a class="btn__small --ghost cursor__hover --highlight" href="/tools/website-roi-calculator/">See the ROI calculator</a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="audit-benefits">
+                    <article class="audit-benefit">
+                        <h3>Useful before a redesign conversation</h3>
+                        <p>It helps separate "something feels off" from a clearer picture of where the site is underperforming.</p>
+                    </article>
+                    <article class="audit-benefit">
+                        <h3>Focused on conversion behavior</h3>
+                        <p>The questions stay close to clarity, trust, CTA structure, and friction instead of generic marketing checklists.</p>
+                    </article>
+                    <article class="audit-benefit">
+                        <h3>Built to point toward action</h3>
+                        <p>The output stays compact and strategic so it is easier to decide what deserves attention first.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="audit-diagnosis" id="diagnosis">
+            <div class="section__wrapper">
+                <div class="audit-diagnosis__header">
+                    <p class="audit-section-kicker">Diagnosis</p>
+                    <h2>What the score suggests</h2>
+                    <p>
+                        A plain read on what the pattern points to, what is already helping, and where we'd start tightening the site.
+                    </p>
+                </div>
+
+                <article class="audit-diagnosis__lead">
+                    <p class="audit-diagnosis__label">Analysis</p>
+                    <h3 data-audit-output="diagnosisHeadline">The site shows a mixed foundation with a few specific points of friction.</h3>
+                    <p data-audit-output="diagnosisSummary">As the score changes, the plain-English interpretation updates here.</p>
+                </article>
+
+                <div class="audit-diagnosis__detail-grid">
+                    <article class="audit-diagnosis__card">
+                        <p class="audit-diagnosis__label">Strongest area</p>
+                        <h3 data-audit-output="strengthHeadline">Clarity is helping more than it hurts.</h3>
+                        <p data-audit-output="strengthSummary">A sharper read on the best-performing category appears here.</p>
+                    </article>
+                    <article class="audit-diagnosis__card">
+                        <p class="audit-diagnosis__label">Main friction</p>
+                        <h3 data-audit-output="frictionHeadline">CTA structure is slowing momentum.</h3>
+                        <p data-audit-output="frictionSummary">A sharper read on the weakest category appears here.</p>
+                    </article>
+                    <article class="audit-diagnosis__card">
+                        <p class="audit-diagnosis__label">Where we'd start</p>
+                        <h3 data-audit-output="nextHeadline">Tighten the most consequential weak spot first.</h3>
+                        <p data-audit-output="nextSummary">A practical first move appears here once the scorecard has enough information.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="audit-next">
+            <div class="section__wrapper">
+                <div class="audit-next__panel">
+                    <div class="audit-next__primary">
+                        <p class="audit-section-kicker">Next step</p>
+                        <h2>Want a closer read on the actual site?</h2>
+                        <p>
+                            If the scorecard feels directionally right, the next move is looking at the real pages:
+                            the story, the proof, the CTA hierarchy, and the mobile experience in context.
+                        </p>
+
+                        <div class="audit-next__actions">
+                            <a class="btn__small cursor__hover --highlight" href="/contact/">Start a project</a>
+                            <a class="btn__small --ghost cursor__hover --highlight" href="/tools/website-roi-calculator/">Pair it with ROI</a>
+                        </div>
+                    </div>
+
+                    <div class="audit-next__secondary">
+                        <p class="audit-section-kicker">What we'd review</p>
+                        <h3>The deeper review would cover</h3>
+                        <ul>
+                            <li>First-screen story, offer specificity, and positioning fit</li>
+                            <li>Trust cues, proof placement, and where risk still feels unresolved</li>
+                            <li>CTA hierarchy, mobile friction, and the path from landing to inquiry</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="audit-faq">
+            <div class="section__wrapper">
+                <div class="audit-faq__header">
+                    <p class="audit-section-kicker">FAQ</p>
+                    <h2>How to read this scorecard</h2>
+                    <p>
+                        It is designed to make the main points of friction easier to see quickly, not to pretend a quick score is a full site strategy.
+                    </p>
+                </div>
+
+                <div class="audit-faq__list">
+                    <details class="audit-faq__item">
+                        <summary>What is a website conversion audit scorecard?</summary>
+                        <p>
+                            A website conversion audit scorecard is a lightweight diagnostic that scores the parts of a site most likely to influence inquiry behavior, including clarity, trust, CTA strength, and friction.
+                        </p>
+                    </details>
+
+                    <details class="audit-faq__item">
+                        <summary>How is the website conversion score calculated?</summary>
+                        <p>
+                            Each answer contributes to one of four categories. The tool then averages those category scores into an overall readiness score and surfaces the strongest and weakest areas.
+                        </p>
+                    </details>
+
+                    <details class="audit-faq__item">
+                        <summary>Is this a substitute for a full website audit?</summary>
+                        <p>
+                            No. It is a fast directional read meant to surface patterns and priorities. A full audit would review the actual pages, messaging, CTA structure, and user journey in context.
+                        </p>
+                    </details>
+
+                    <details class="audit-faq__item">
+                        <summary>What should I do if the score is low?</summary>
+                        <p>
+                            Start with the weakest category the tool surfaces. In most cases, the best first move is improving clarity, proof, or the path to inquiry before investing in more traffic.
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "WebApplication",
+                    "name": "Website Conversion Audit Scorecard",
+                    "url": "https://duo-studio.co/tools/website-conversion-audit-scorecard/",
+                    "applicationCategory": "BusinessApplication",
+                    "operatingSystem": "Any",
+                    "isAccessibleForFree": true,
+                    "offers": {
+                        "@type": "Offer",
+                        "price": "0",
+                        "priceCurrency": "USD"
+                    },
+                    "description": "A free website conversion audit scorecard that assesses clarity, trust, CTA strength, and friction, then identifies likely weak spots in your website experience.",
+                    "featureList": [
+                        "Scores website clarity, trust, CTA strength, and experience",
+                        "Calculates an overall readiness score",
+                        "Highlights strongest and weakest areas",
+                        "Recommends three priority fixes"
+                    ]
+                },
+                {
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                        {
+                            "@type": "Question",
+                            "name": "What is a website conversion audit scorecard?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "A website conversion audit scorecard is a lightweight diagnostic that scores the parts of a site most likely to influence inquiry behavior, including clarity, trust, CTA strength, and friction."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "How is the website conversion score calculated?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Each answer contributes to one of four categories. The tool then averages those category scores into an overall readiness score and surfaces the strongest and weakest areas."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Is this a substitute for a full website audit?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "No. It is a fast directional read meant to surface patterns and priorities. A full audit would review the actual pages, messaging, CTA structure, and user journey in context."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "What should I do if the score is low?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Start with the weakest category the tool surfaces. In most cases, the best first move is improving clarity, proof, or the path to inquiry before investing in more traffic."
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+        </script>
+
+        {% include "layouts/footer.njk" %}
+    </main>
+</div>
+
