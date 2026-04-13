@@ -48,8 +48,6 @@ Conversion problems are rarely mysterious once you know where to look. After aud
 
 Here's a practical run-through of what's actually going wrong and what to do about it.
 
----
-
 <h2 id="unclear-value-proposition">Your Messaging Isn't Clear Enough</h2>
 
 The single most common reason a website doesn't convert is that visitors can't immediately understand what you do, who you do it for, and why they should care.
@@ -66,8 +64,6 @@ Common symptoms of messaging problems:
 
 The fix isn't to hire a copywriter to make things sound prettier. It's to do the harder work of getting specific. What problem do you solve? For whom? What does success actually look like for your client? Lead with that.
 
----
-
 <h2 id="poor-information-architecture">Visitors Can't Find What They Need</h2>
 
 Even when the messaging is solid, a disorganized site will kill conversions. Information architecture — the way your content is structured and navigated — determines whether a motivated visitor can move from "I'm interested" to "I'm ready to contact you."
@@ -83,8 +79,6 @@ Think about the questions a prospective client has when they arrive on your site
 Your site should answer those questions in that order, with a clear path connecting each answer to the next. If visitors have to hunt, they leave.
 
 A quick gut-check: have someone unfamiliar with your business try to find specific information on your site while narrating their thinking. Watch where they hesitate. That's your IA problem.
-
----
 
 <h2 id="weak-calls-to-action">Your Calls to Action Are Too Weak</h2>
 
@@ -103,8 +97,6 @@ The solution is a tiered CTA approach:
 
 Every CTA should be specific. "Get a Quote" converts better than "Contact Us." "See Our Work" converts better than "Portfolio." The more concrete you are about what happens next, the more likely someone is to click.
 
----
-
 <h2 id="mobile-experience">Your Mobile Experience Is Broken</h2>
 
 More than half of web traffic happens on mobile — and for many service businesses, it skews even higher for first-touch visits from social media or search. Yet mobile experience is consistently the most neglected part of a website build.
@@ -122,8 +114,6 @@ Test your site on an actual phone — not just in Chrome's device emulator. Tap 
 
 If your site was last redesigned more than three years ago, mobile experience is almost certainly part of your conversion problem. It may be worth exploring what a redesign would involve — our guide on [How Much Does a Website Redesign Cost in 2026?](/guides/website-redesign-cost/) breaks down what factors drive the investment.
 
----
-
 <h2 id="page-speed">The Page Is Too Slow</h2>
 
 Page speed is a conversion killer that most business owners never consider because the problem is invisible to them — they view the site on fast office Wi-Fi and it loads fine. But visitors on mobile connections, or in regions with slower infrastructure, experience something very different.
@@ -139,8 +129,6 @@ Common culprits:
 Run your site through Google PageSpeed Insights or GTmetrix. The report will tell you exactly what's slowing you down. Many of the fixes — image compression, lazy loading, script deferral — are straightforward and don't require a full rebuild.
 
 A target to aim for: under three seconds to first meaningful paint on a mid-tier mobile connection. If you're at six, eight, or ten seconds, fixing speed alone could meaningfully improve your conversion rate.
-
----
 
 <h2 id="trust-signals">You're Missing Trust Signals</h2>
 
@@ -160,8 +148,6 @@ Trust signals include:
 
 If your site is light on any of these, that's worth addressing before investing more in traffic generation. This is also related to brand positioning — if your brand is presenting mixed signals about quality or focus, it compounds the trust problem. See [7 Signs Your Brand Has Outgrown Itself](/guides/signs-you-need-rebrand/) for a useful self-assessment.
 
----
-
 <h2 id="form-friction">Your Forms Are Creating Friction</h2>
 
 You've done everything right — clear messaging, good IA, strong CTAs, fast load time, trust signals in place — and then someone reaches your contact form and doesn't submit it.
@@ -179,8 +165,6 @@ The most common form mistakes:
 **Forms that are broken.** This sounds obvious, but it happens more than you'd think. Test your contact form regularly from different browsers and devices. Check that submissions actually reach your inbox. A spam filter misconfiguration or a server error can silently swallow leads for weeks.
 
 **Generic confirmation pages.** After a form is submitted, most sites show a dull "Thank you for your message" message. Use that moment — reinforce that you'll be in touch soon, offer a useful resource while they wait, or prompt them to follow your social channels. It's a small thing that leaves a better impression.
-
----
 
 <h2 id="faq">FAQ</h2>
 
@@ -215,8 +199,6 @@ Look for an agency that approaches your site as a business problem, not a design
 </details>
 
 </div>
-
----
 
 <h2 id="final-thoughts">Final Thoughts</h2>
 

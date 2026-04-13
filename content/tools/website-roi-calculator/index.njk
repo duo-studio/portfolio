@@ -2,19 +2,33 @@
 layout: layouts/base.njk
 permalink: /tools/website-roi-calculator/
 eleventyComputed:
-    title: Website ROI Calculator | {{ metadata.title }}
-description: A fast, honest read on the revenue your website isn't earning yet â€” from Duo Studio.
+    title: "Website ROI Calculator: Estimate Lost Leads & Revenue | {{ metadata.title }}"
+description: "Use this free website ROI calculator to estimate lost leads, missed revenue, and conversion upside from improving your website."
 ---
 
 <style>
     .roi-tool-page {
-        --roi-kicker-size: 0.78rem;
-        --roi-kicker-color: rgba(15, 13, 13, 0.72);
-        --roi-text-muted: rgba(15, 13, 13, 0.82);
-        --roi-text-soft: rgba(15, 13, 13, 0.68);
-        --roi-text-faint: rgba(15, 13, 13, 0.58);
-        --roi-dark-text-muted: rgba(247, 243, 239, 0.84);
-        --roi-dark-text-soft: rgba(247, 243, 239, 0.68);
+        --roi-type-h1: clamp(50px, 7.5vw, 144px);
+        --roi-type-h2: clamp(30px, 2.9167vw, 56px);
+        --roi-type-h3: clamp(22px, 1.6667vw, 32px);
+        --roi-type-body: clamp(16px, 0.9375vw, 18px);
+        --roi-type-label: 14px;
+        --roi-track-display: -0.05em;
+        --roi-track-title: -0.03em;
+        --roi-track-heading: -0.02em;
+        --roi-track-label: 0.08em;
+        --roi-line-display: 1;
+        --roi-line-heading: 1.02;
+        --roi-line-body: 1.6;
+        --roi-kicker-size: var(--roi-type-label);
+        --roi-kicker-color: #5f5a58;
+        --roi-text-muted: #474342;
+        --roi-text-soft: #6a6462;
+        --roi-text-faint: #7f7875;
+        --roi-dark-text: #fefcff;
+        --roi-dark-text-muted: #fefcff;
+        --roi-dark-text-soft: #fefcff;
+        color: #0f0d0d;
         background:
             radial-gradient(circle at top left, rgba(228, 244, 229, 0.9), transparent 26%),
             radial-gradient(circle at top right, rgba(241, 236, 248, 0.92), transparent 34%),
@@ -39,7 +53,8 @@ description: A fast, honest read on the revenue your website isn't earning yet â
         margin: 0;
         font-family: "SuisseIntl-Book-WebXL", sans-serif;
         font-size: var(--roi-kicker-size);
-        letter-spacing: 0.08em;
+        line-height: 1.1;
+        letter-spacing: var(--roi-track-label);
         text-transform: uppercase;
         color: var(--roi-kicker-color);
     }
@@ -47,18 +62,74 @@ description: A fast, honest read on the revenue your website isn't earning yet â
     .roi-tool-hero__header h1 {
         margin: 0;
         font-family: "PPMori-Regular", sans-serif;
-        font-size: clamp(4rem, 7vw, 7.25rem);
-        line-height: 0.92;
-        letter-spacing: -0.065em;
+        font-size: var(--roi-type-h1);
+        line-height: var(--roi-line-display);
+        letter-spacing: var(--roi-track-display);
         text-wrap: balance;
     }
 
     .roi-tool-hero__lede {
         margin: 0;
-        font-size: clamp(1.05rem, 1.4vw, 1.26rem);
-        line-height: 1.55;
+        max-width: 48rem;
+        font-size: var(--roi-type-body);
+        line-height: var(--roi-line-body);
         color: var(--roi-text-muted);
         text-wrap: balance;
+    }
+
+    .roi-tool-explainer {
+        display: grid;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .roi-tool-explainer__intro {
+        max-width: 56rem;
+    }
+
+    .roi-tool-explainer__intro h2 {
+        margin: 0 0 0.5rem;
+        font-family: "PPMori-Regular", sans-serif;
+        font-size: var(--roi-type-h3);
+        line-height: 1.05;
+        letter-spacing: var(--roi-track-heading);
+        text-wrap: balance;
+    }
+
+    .roi-tool-explainer__intro p {
+        margin: 0;
+        font-size: var(--roi-type-body);
+        line-height: var(--roi-line-body);
+        color: var(--roi-text-muted);
+    }
+
+    .roi-tool-explainer__grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    .roi-tool-explainer__item {
+        padding: 1rem 1.05rem;
+        border: 1px solid rgba(15, 13, 13, 0.08);
+        background: rgba(255, 255, 255, 0.46);
+    }
+
+    .roi-tool-explainer__item strong {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-family: "SuisseIntl-Regular-WebXL", sans-serif;
+        font-size: var(--roi-type-label);
+        line-height: 1.2;
+        letter-spacing: var(--roi-track-label);
+        text-transform: uppercase;
+    }
+
+    .roi-tool-explainer__item p {
+        margin: 0;
+        font-size: var(--roi-type-body);
+        line-height: var(--roi-line-body);
+        color: var(--roi-text-muted);
     }
 
     .roi-tool-shell {
@@ -82,7 +153,7 @@ description: A fast, honest read on the revenue your website isn't earning yet â
             linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
             #121212;
         border-color: rgba(255, 255, 255, 0.06);
-        color: #f7f3ef;
+        color: var(--roi-dark-text);
     }
 
     .roi-tool-pane--results .roi-tool-pane__header p {
@@ -103,19 +174,22 @@ description: A fast, honest read on the revenue your website isn't earning yet â
     .roi-tool-metric strong,
     .roi-tool-benefit h3 {
         font-family: "PPMori-Regular", sans-serif;
-        letter-spacing: -0.045em;
+        letter-spacing: var(--roi-track-heading);
+        text-wrap: balance;
     }
 
     .roi-tool-pane__header h2 {
         margin: 0 0 0.3rem;
-        font-size: clamp(1.6rem, 2vw, 2rem);
+        font-size: var(--roi-type-h3);
+        line-height: 1.05;
+        text-wrap: balance;
     }
 
     .roi-tool-pane__header p {
         margin: 0;
         max-width: 30rem;
-        font-size: 0.95rem;
-        line-height: 1.55;
+        font-size: var(--roi-type-body);
+        line-height: var(--roi-line-body);
         color: var(--roi-text-muted);
     }
 
@@ -126,9 +200,14 @@ description: A fast, honest read on the revenue your website isn't earning yet â
         padding: 0.55rem 0.75rem;
         border-radius: 999px;
         background: rgba(15, 13, 13, 0.05);
+        border: 1px solid rgba(15, 13, 13, 0.1);
         font-family: "SuisseIntl-Book-WebXL", sans-serif;
-        font-size: 0.8rem;
+        font-size: var(--roi-type-label);
+        line-height: 1.1;
+        letter-spacing: var(--roi-track-label);
+        text-transform: uppercase;
         white-space: nowrap;
+        color: #0f0d0d;
     }
 
     .roi-tool-status::before {
@@ -141,6 +220,8 @@ description: A fast, honest read on the revenue your website isn't earning yet â
 
     .roi-tool-pane--results .roi-tool-status {
         background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.18);
+        color: #fefcff;
     }
 
     .roi-tool-form {
@@ -162,11 +243,13 @@ description: A fast, honest read on the revenue your website isn't earning yet â
 
     .roi-tool-field label {
         font-family: "SuisseIntl-Book-WebXL", sans-serif;
-        font-size: 0.88rem;
+        font-size: var(--roi-type-label);
+        line-height: 1.2;
     }
 
     .roi-tool-field small {
-        font-size: 0.82rem;
+        font-size: var(--roi-type-label);
+        line-height: 1.2;
         color: var(--roi-text-faint);
     }
 
@@ -196,8 +279,9 @@ description: A fast, honest read on the revenue your website isn't earning yet â
         border: 0;
         background: transparent;
         color: #0f0d0d;
-        font-size: 1rem;
-        line-height: 1.4;
+        font-family: "SuisseIntl-Book-WebXL", sans-serif;
+        font-size: var(--roi-type-body);
+        line-height: var(--roi-line-body);
     }
 
     .roi-tool-input input:focus,
@@ -222,8 +306,8 @@ description: A fast, honest read on the revenue your website isn't earning yet â
 
     .roi-tool-footnote {
         margin: 0;
-        font-size: 0.88rem;
-        line-height: 1.55;
+        font-size: var(--roi-type-body);
+        line-height: var(--roi-line-body);
         color: var(--roi-text-muted);
     }
 
@@ -237,8 +321,9 @@ description: A fast, honest read on the revenue your website isn't earning yet â
     .roi-tool-results__eyebrow {
         margin: 0;
         font-family: "SuisseIntl-Book-WebXL", sans-serif;
-        font-size: 0.8rem;
-        letter-spacing: 0.08em;
+        font-size: var(--roi-type-label);
+        line-height: 1.1;
+        letter-spacing: var(--roi-track-label);
         text-transform: uppercase;
         color: var(--roi-dark-text-soft);
     }
@@ -251,8 +336,8 @@ description: A fast, honest read on the revenue your website isn't earning yet â
     .roi-tool-results__hero p {
         margin: 0;
         max-width: 40rem;
-        font-size: 1rem;
-        line-height: 1.6;
+        font-size: var(--roi-type-body);
+        line-height: var(--roi-line-body);
         color: var(--roi-dark-text-muted);
     }
 
@@ -279,9 +364,9 @@ description: A fast, honest read on the revenue your website isn't earning yet â
     .roi-tool-metric span {
         display: block;
         margin-bottom: 0.35rem;
-        font-size: 0.8rem;
-        line-height: 1.4;
-        letter-spacing: 0.06em;
+        font-size: var(--roi-type-label);
+        line-height: 1.2;
+        letter-spacing: var(--roi-track-label);
         text-transform: uppercase;
         color: var(--roi-dark-text-soft);
     }
@@ -300,8 +385,9 @@ description: A fast, honest read on the revenue your website isn't earning yet â
 
     .roi-tool-scenarios > p {
         margin: 0;
-        font-size: 0.82rem;
-        letter-spacing: 0.08em;
+        font-size: var(--roi-type-label);
+        line-height: 1.1;
+        letter-spacing: var(--roi-track-label);
         text-transform: uppercase;
         color: var(--roi-dark-text-soft);
     }
@@ -326,9 +412,9 @@ description: A fast, honest read on the revenue your website isn't earning yet â
     .roi-tool-scenario span {
         display: block;
         margin-bottom: 0.45rem;
-        font-size: 0.8rem;
-        line-height: 1.4;
-        letter-spacing: 0.06em;
+        font-size: var(--roi-type-label);
+        line-height: 1.2;
+        letter-spacing: var(--roi-track-label);
         text-transform: uppercase;
         color: var(--roi-dark-text-soft);
     }
@@ -342,8 +428,8 @@ description: A fast, honest read on the revenue your website isn't earning yet â
 
     .roi-tool-scenario p {
         margin: 0;
-        font-size: 0.92rem;
-        line-height: 1.45;
+        font-size: var(--roi-type-body);
+        line-height: var(--roi-line-body);
         color: var(--roi-dark-text-muted);
     }
 
@@ -364,15 +450,16 @@ description: A fast, honest read on the revenue your website isn't earning yet â
 
     .roi-tool-results-cta__copy p {
         margin: 0;
-        font-size: 0.95rem;
-        line-height: 1.5;
+        font-size: var(--roi-type-body);
+        line-height: var(--roi-line-body);
         color: var(--roi-dark-text-muted);
     }
 
     .roi-tool-results-cta__copy p:first-child {
         font-family: "SuisseIntl-Book-WebXL", sans-serif;
         font-size: var(--roi-kicker-size);
-        letter-spacing: 0.08em;
+        line-height: 1.1;
+        letter-spacing: var(--roi-track-label);
         text-transform: uppercase;
         color: var(--roi-dark-text-soft);
     }
@@ -404,13 +491,14 @@ description: A fast, honest read on the revenue your website isn't earning yet â
 
     .roi-tool-benefit h3 {
         margin: 0 0 0.45rem;
-        font-size: 1.1rem;
+        font-size: var(--roi-type-h3);
+        line-height: 1.08;
     }
 
     .roi-tool-benefit p {
         margin: 0;
-        font-size: 0.95rem;
-        line-height: 1.55;
+        font-size: var(--roi-type-body);
+        line-height: var(--roi-line-body);
         color: var(--roi-text-muted);
     }
 
@@ -428,13 +516,20 @@ description: A fast, honest read on the revenue your website isn't earning yet â
     .roi-diagnosis__header h2,
     .roi-diagnosis__issue h3 {
         margin: 0;
-        font-family: "PPMori-Regular", sans-serif;
-        letter-spacing: -0.045em;
+        letter-spacing: var(--roi-track-heading);
     }
 
     .roi-diagnosis__header h2 {
-        font-size: clamp(2.35rem, 4vw, 4.2rem);
-        line-height: 0.94;
+        font-family: "PPMori-SemiBold", sans-serif;
+        font-size: var(--roi-type-h2);
+        line-height: 1.1;
+        letter-spacing: var(--roi-track-title);
+        text-transform: uppercase;
+        text-wrap: balance;
+    }
+
+    .roi-diagnosis__issue h3 {
+        font-family: "PPMori-Regular", sans-serif;
     }
 
     .roi-diagnosis__header > p:not(.roi-section-kicker),
@@ -442,8 +537,8 @@ description: A fast, honest read on the revenue your website isn't earning yet â
     .roi-diagnosis__next > p:not(.roi-diagnosis__label),
     .roi-diagnosis__issue > p:not(.roi-diagnosis__label) {
         margin: 0;
-        font-size: 1rem;
-        line-height: 1.6;
+        font-size: var(--roi-type-body);
+        line-height: var(--roi-line-body);
         color: var(--roi-text-muted);
     }
 
@@ -466,7 +561,8 @@ description: A fast, honest read on the revenue your website isn't earning yet â
         margin: 0 0 0.75rem;
         font-family: "SuisseIntl-Book-WebXL", sans-serif;
         font-size: var(--roi-kicker-size);
-        letter-spacing: 0.08em;
+        line-height: 1.1;
+        letter-spacing: var(--roi-track-label);
         text-transform: uppercase;
         color: var(--roi-text-soft);
     }
@@ -487,7 +583,8 @@ description: A fast, honest read on the revenue your website isn't earning yet â
     }
 
     .roi-diagnosis__issue h3 {
-        font-size: 1.1rem;
+        font-size: var(--roi-type-h3);
+        line-height: 1.08;
         margin-bottom: 0.45rem;
     }
 
@@ -513,22 +610,29 @@ description: A fast, honest read on the revenue your website isn't earning yet â
     .roi-next__primary h2,
     .roi-next__secondary h3 {
         margin: 0;
-        font-family: "PPMori-Regular", sans-serif;
-        letter-spacing: -0.045em;
+        letter-spacing: var(--roi-track-heading);
     }
 
     .roi-next__primary h2 {
-        font-size: clamp(2.2rem, 4vw, 4rem);
-        line-height: 0.94;
+        font-family: "PPMori-SemiBold", sans-serif;
+        font-size: var(--roi-type-h2);
+        line-height: 1.1;
+        letter-spacing: var(--roi-track-title);
+        text-transform: uppercase;
         margin-bottom: 0.75rem;
+        text-wrap: balance;
+    }
+
+    .roi-next__secondary h3 {
+        font-family: "PPMori-Regular", sans-serif;
     }
 
     .roi-next__primary p,
     .roi-next__secondary p,
     .roi-next__secondary li {
         margin: 0;
-        font-size: 1rem;
-        line-height: 1.6;
+        font-size: var(--roi-type-body);
+        line-height: var(--roi-line-body);
         color: var(--roi-dark-text-muted);
     }
 
@@ -546,7 +650,8 @@ description: A fast, honest read on the revenue your website isn't earning yet â
     }
 
     .roi-next__secondary h3 {
-        font-size: 1.2rem;
+        font-size: var(--roi-type-h3);
+        line-height: 1.08;
         margin-bottom: 0.55rem;
     }
 
@@ -597,17 +702,18 @@ description: A fast, honest read on the revenue your website isn't earning yet â
 
     .roi-faq__header h2 {
         margin: 0;
-        font-family: "PPMori-Regular", sans-serif;
-        font-size: clamp(2.2rem, 4vw, 4rem);
-        line-height: 0.94;
-        letter-spacing: -0.045em;
+        font-family: "PPMori-SemiBold", sans-serif;
+        font-size: var(--roi-type-h2);
+        line-height: 1.1;
+        letter-spacing: var(--roi-track-title);
+        text-transform: uppercase;
     }
 
     .roi-faq__header > p:not(.roi-section-kicker) {
         margin: 0;
         max-width: 42rem;
-        font-size: 1rem;
-        line-height: 1.6;
+        font-size: var(--roi-type-body);
+        line-height: var(--roi-line-body);
         color: var(--roi-text-muted);
     }
 
@@ -627,9 +733,10 @@ description: A fast, honest read on the revenue your website isn't earning yet â
         gap: 1rem;
         align-items: center;
         padding: 1.2rem 0;
-        font-family: "PPMori-Regular", sans-serif;
-        font-size: clamp(1.15rem, 1.6vw, 1.45rem);
-        letter-spacing: -0.03em;
+        font-family: "SuisseIntl-Regular-WebXL", sans-serif;
+        font-size: var(--roi-type-h3);
+        line-height: 1.2;
+        letter-spacing: var(--roi-track-heading);
     }
 
     .roi-faq__item summary::-webkit-details-marker {
@@ -639,7 +746,7 @@ description: A fast, honest read on the revenue your website isn't earning yet â
     .roi-faq__item summary::after {
         content: "+";
         font-family: "SuisseIntl-Book-WebXL", sans-serif;
-        font-size: 1.2rem;
+        font-size: var(--roi-type-body);
         color: var(--roi-text-soft);
     }
 
@@ -651,8 +758,8 @@ description: A fast, honest read on the revenue your website isn't earning yet â
         margin: 0;
         padding: 0 0 1.25rem;
         max-width: 48rem;
-        font-size: 1rem;
-        line-height: 1.6;
+        font-size: var(--roi-type-body);
+        line-height: 1.65;
         color: var(--roi-text-muted);
     }
 
@@ -684,6 +791,7 @@ description: A fast, honest read on the revenue your website isn't earning yet â
 
         .roi-tool-metrics,
         .roi-tool-scenario-grid,
+        .roi-tool-explainer__grid,
         .roi-tool-benefits,
         .roi-diagnosis__issues {
             grid-template-columns: 1fr;
@@ -715,10 +823,33 @@ description: A fast, honest read on the revenue your website isn't earning yet â
             <div class="section__wrapper">
                 <div class="roi-tool-hero__header">
                     <p class="roi-section-kicker">Tool â€” Website ROI</p>
-                    <h1>Your website might earn less than it should</h1>
+                    <h1>Website ROI calculator for lost leads and revenue</h1>
                     <p class="roi-tool-hero__lede">
-                        See what your site earns now, where value is leaking, and where a better path to inquiry would take you.
+                        Estimate lost leads, missed revenue, and the upside of a better-converting site.
                     </p>
+                </div>
+
+                <div class="roi-tool-explainer">
+                    <div class="roi-tool-explainer__intro">
+                        <h2>What it shows</h2>
+                        <p>
+                            A quick read on what your site earns now and what stronger conversion could unlock.
+                        </p>
+                    </div>
+                    <div class="roi-tool-explainer__grid">
+                        <article class="roi-tool-explainer__item">
+                            <strong>Inputs</strong>
+                            <p>Monthly traffic, website conversion rate, lead-to-close rate, and average project value.</p>
+                        </article>
+                        <article class="roi-tool-explainer__item">
+                            <strong>Outputs</strong>
+                            <p>Current leads, closed projects, monthly revenue, annual opportunity, and conversion scenarios.</p>
+                        </article>
+                        <article class="roi-tool-explainer__item">
+                            <strong>Read</strong>
+                            <p>See where value may be leaking before you spend more to drive traffic.</p>
+                        </article>
+                    </div>
                 </div>
 
                 <div class="roi-tool-shell" data-roi-tool>
@@ -866,16 +997,16 @@ description: A fast, honest read on the revenue your website isn't earning yet â
 
                 <div class="roi-tool-benefits">
                     <article class="roi-tool-benefit">
-                        <h3>Fast to run</h3>
-                        <p>Five inputs get you to a credible first read &mdash; no spreadsheets, no logins.</p>
+                        <h3>Designed for a quick first estimate</h3>
+                        <p>Enter a few website and revenue assumptions to get an immediate read on current performance and upside.</p>
                     </article>
                     <article class="roi-tool-benefit">
-                        <h3>Tied to revenue</h3>
-                        <p>Leads, closed work, and annual revenue &mdash; the numbers that actually move the business.</p>
+                        <h3>Focused on lead and revenue impact</h3>
+                        <p>The model stays anchored to leads, closed projects, monthly revenue, and annual opportunity.</p>
                     </article>
                     <article class="roi-tool-benefit">
-                        <h3>Built to point somewhere</h3>
-                        <p>Not just a number on a screen. A sharper read on what to look at next.</p>
+                        <h3>Built to support a website diagnosis</h3>
+                        <p>The estimate connects the number to likely friction points so the next move is easier to see.</p>
                     </article>
                 </div>
             </div>
@@ -974,40 +1105,105 @@ description: A fast, honest read on the revenue your website isn't earning yet â
 
                 <div class="roi-faq__list">
                     <details class="roi-faq__item">
-                        <summary>How is the estimate calculated?</summary>
+                        <summary>What is a website ROI calculator?</summary>
                         <p>
-                            The current-state read uses monthly traffic, conversion rate, lead-to-close rate, and
-                            average project value. The scenarios then shift conversion rate only, and recalculate
+                            A website ROI calculator estimates how much lead and revenue opportunity a site may be
+                            creating now, and how much additional value could be unlocked if conversion improves.
+                        </p>
+                    </details>
+
+                    <details class="roi-faq__item">
+                        <summary>How does this website ROI calculator estimate lost revenue?</summary>
+                        <p>
+                            The current-state estimate uses monthly traffic, conversion rate, lead-to-close rate,
+                            and average project value. The scenarios then raise conversion rate only and recalculate
                             the revenue impact from there.
                         </p>
                     </details>
 
                     <details class="roi-faq__item">
-                        <summary>Is this meant to be exact?</summary>
+                        <summary>Is this website ROI estimate exact?</summary>
                         <p>
-                            No &mdash; it's directional by design. The value is in showing whether the upside is
-                            meaningful and where the friction likely sits, not in dressing up a number.
+                            No &mdash; it is directional by design. The goal is to show whether the upside looks
+                            meaningful and where website friction is most likely reducing inquiry volume.
                         </p>
                     </details>
 
                     <details class="roi-faq__item">
-                        <summary>Why are the scenarios based on conversion only?</summary>
+                        <summary>What should I do if the calculator shows strong upside?</summary>
                         <p>
-                            To keep the read transparent. Traffic quality, close rate, and project value stay
-                            steady while conversion moves &mdash; so the upside is easy to read, and easy to trust.
-                        </p>
-                    </details>
-
-                    <details class="roi-faq__item">
-                        <summary>What happens next if the upside looks real?</summary>
-                        <p>
-                            A closer read on the actual site. First-screen story, proof placement, CTA hierarchy,
-                            mobile friction, and the path from landing to inquiry &mdash; that's where the gains live.
+                            The next step is a closer read on the actual website: first-screen story, proof placement,
+                            CTA hierarchy, mobile friction, and the path from landing to inquiry.
                         </p>
                     </details>
                 </div>
             </div>
         </section>
+
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "WebApplication",
+                    "name": "Website ROI Calculator",
+                    "url": "https://duo-studio.co/tools/website-roi-calculator/",
+                    "applicationCategory": "BusinessApplication",
+                    "operatingSystem": "Any",
+                    "isAccessibleForFree": true,
+                    "offers": {
+                        "@type": "Offer",
+                        "price": "0",
+                        "priceCurrency": "USD"
+                    },
+                    "description": "A free website ROI calculator that estimates lost leads, missed revenue, and conversion upside from improving your website.",
+                    "featureList": [
+                        "Estimates current leads and closed projects",
+                        "Calculates current monthly revenue",
+                        "Models conservative, realistic, and ambitious conversion scenarios",
+                        "Highlights likely website leakage areas"
+                    ]
+                },
+                {
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                        {
+                            "@type": "Question",
+                            "name": "What is a website ROI calculator?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "A website ROI calculator estimates how much lead and revenue opportunity a site may be creating now, and how much additional value could be unlocked if conversion improves."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "How does this website ROI calculator estimate lost revenue?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "The current-state estimate uses monthly traffic, conversion rate, lead-to-close rate, and average project value. The scenarios then raise conversion rate only and recalculate the revenue impact from there."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Is this website ROI estimate exact?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "No. It is directional by design. The goal is to show whether the upside looks meaningful and where website friction is most likely reducing inquiry volume."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "What should I do if the calculator shows strong upside?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "The next step is a closer read on the actual website: first-screen story, proof placement, CTA hierarchy, mobile friction, and the path from landing to inquiry."
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+        </script>
 
         {% include "layouts/footer.njk" %}
     </main>
