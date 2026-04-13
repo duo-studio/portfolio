@@ -1812,6 +1812,10 @@ function load404Scripts() {
 	document.querySelector(".barba-container").classList.remove("loading");
 }
 
+function loadToolsScripts() {
+	document.querySelector(".barba-container").classList.remove("loading");
+}
+
 function loadPrivacyScripts() {
 	var headline = document.querySelector(".headline__load");
 	var splitInner = new SplitText(headline, {
@@ -2833,6 +2837,16 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 					imagesLoaded(scrollContainer, function () {
 						loadArchiveScripts();
+					});
+				},
+			},
+			{
+				namespace: "tools",
+				afterEnter({ next }) {
+					var scrollContainer = next.container;
+
+					imagesLoaded(scrollContainer, function () {
+						loadToolsScripts();
 					});
 				},
 			},

@@ -314,7 +314,7 @@
 			display: grid;
 			margin: 0 auto;
 			text-align: center;
-			gap: $gutter / 2;
+			gap: calc(#{$gutter} / 2);
 			grid-template:
 				"excerpt"
 				"thumbnail"

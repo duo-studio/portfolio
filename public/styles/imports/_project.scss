@@ -90,7 +90,7 @@
 			padding: $spacer $gutter;
 			text-wrap: balance;
 			@media screen and (max-width: $mobile-breakpoint) {
-				padding: $mobile-spacer $mobile-gutter #{$mobile-spacer / 2} !important;
+				padding: $mobile-spacer $mobile-gutter calc(#{$mobile-spacer} / 2) !important;
 			}
 		}
 
@@ -145,7 +145,7 @@
 				align-items: center;
 				@media screen and (max-width: $mobile-breakpoint) {
 					flex-direction: column;
-					padding: 0 $mobile-gutter #{$mobile-spacer / 2};
+					padding: 0 $mobile-gutter calc(#{$mobile-spacer} / 2);
 				}
 				.inner {
 					display: flex;
@@ -1334,7 +1334,7 @@
 			padding: $spacer 0;
 
 			@media screen and (max-width: $mobile-breakpoint) {
-				padding: $mobile-spacer 0 #{$mobile-spacer / 2};
+				padding: $mobile-spacer 0 calc(#{$mobile-spacer} / 2);
 			}
 			h2 {
 				padding: 0 $gutter $headline-spacing;
@@ -1653,7 +1653,7 @@
 						padding: 0 $mobile-gutter $mobile-gutter;
 					}
 					.col {
-						width: calc(100% / 3 - #{$gutter / 1.5});
+						width: calc(100% / 3 - calc(#{$gutter} / 1.5));
 						@media screen and (max-width: $mobile-breakpoint) {
 							width: 65vw;
 							max-width: 17rem;
