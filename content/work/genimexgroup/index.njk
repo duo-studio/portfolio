@@ -67,6 +67,28 @@ description: Custom website design for Genimex Group, a global manufacturing com
                 </div>
             </div>
         </section>
+        {% set impact = {
+            heading: "Clearer for visitors. Simpler for the team behind it.",
+            meta: ["3+ year partnership", "24+ modular sections"],
+            cards: [
+                {
+                    label: "Clarity",
+                    title: "What Genimex does comes through faster.",
+                    body: "Services, capabilities, and proof are easier to understand at a glance."
+                },
+                {
+                    label: "Sales readiness",
+                    title: "Inquiry paths feel more intentional.",
+                    body: "Service pages, case studies, and forms work together to support better first conversations."
+                },
+                {
+                    label: "Operations",
+                    title: "The site is easier to maintain.",
+                    body: "Content, media, and SEO details can be updated in the CMS without a developer."
+                }
+            ]
+        } %}
+        {% include "partials/work-impact.njk" %}
         <section id="sec__001">
             <div class="section__wrapper">
                 <div class="container">
@@ -77,7 +99,7 @@ description: Custom website design for Genimex Group, a global manufacturing com
                 <div class="row">
                     <div class="col st__text">
                         <h2>
-                            “We've been working with Duo Studio for over three years, and they have been an incredible partner in transforming our website at Genimex. Their team is not only visionary but also highly responsive, always there to support us with prompt solutions and creative insights. Thanks to their expertise, our website has evolved to reflect our brand’s capabilities and global reach.”
+                            “We’ve been working with Duo Studio for over three years, and they have been an incredible partner in transforming our website at Genimex. Their team is not only visionary but also highly responsive, always there to support us with prompt solutions and creative insights. Thanks to their expertise, our website has evolved to reflect our brand’s capabilities and global reach.”
                         </h2>
                         <h3>Anna Pappas</h3>
                         <p>Head of Marketing & Business Development</p>

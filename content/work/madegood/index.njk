@@ -67,6 +67,28 @@ description: Driving forward company culture through brand messaging.
                 </div>
             </div>
         </section>
+        {% set impact = {
+            heading: "A portfolio and brand story that pull in the same direction.",
+            meta: ["Messaging framework", "Motion-led portfolio"],
+            cards: [
+                {
+                    label: "Positioning",
+                    title: "The brand says what the visuals already suggest.",
+                    body: "A clearer messaging system helps articulate Made Good's personality, values, and point of view."
+                },
+                {
+                    label: "Proof",
+                    title: "The work feels more compelling in context.",
+                    body: "Motion-led interactions and portfolio structure give the case studies more energy and clarity."
+                },
+                {
+                    label: "Business development",
+                    title: "The site works harder as a credibility tool.",
+                    body: "Brand story and portfolio now support the same conversation with prospective clients."
+                }
+            ]
+        } %}
+        {% include "partials/work-impact.njk" %}
         <section id="sec__001">
             <div class="section__wrapper">
                 <div class="container">

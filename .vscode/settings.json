@@ -1,1 +1,7 @@
-{"emmet.includeLanguages":{"nunjucks":"html","njk":"html"}}
+{
+	"emmet.includeLanguages": {
+		"nunjucks": "html",
+		"njk": "html"
+	},
+	"task.allowAutomaticTasks": "on"
+}

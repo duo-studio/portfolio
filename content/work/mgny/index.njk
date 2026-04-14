@@ -68,6 +68,28 @@ description: A people-first brand approach to complex property regulations.
                 </div>
             </div>
         </section>
+        {% set impact = {
+            heading: "Complex services made clearer and easier to find.",
+            meta: ["SEO-ready structure", "Services + resources"],
+            cards: [
+                {
+                    label: "Clarity",
+                    title: "A technical offer feels easier to understand.",
+                    body: "Services, team, resources, and project work are organized into a clearer structure."
+                },
+                {
+                    label: "Visibility",
+                    title: "The site supports search and education.",
+                    body: "SEO-focused subservice pages and a stronger information architecture create a better foundation for discovery."
+                },
+                {
+                    label: "Trust",
+                    title: "The brand feels more human and more credible.",
+                    body: "Relatable messaging and custom illustrations make a complex category easier to engage with."
+                }
+            ]
+        } %}
+        {% include "partials/work-impact.njk" %}
         <section id="sec__001">
             <div class="section__wrapper">
                 <div class="container">

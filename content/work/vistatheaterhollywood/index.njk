@@ -67,6 +67,28 @@ description: Website redesign for Vista Theater Hollywood, Quentin Tarantino's h
                 </div>
             </div>
         </section>
+        {% set impact = {
+            heading: "Programming first, ticketing faster, updates easier.",
+            meta: ["Programming-first design", "Ongoing schedule support"],
+            cards: [
+                {
+                    label: "Clarity",
+                    title: "Films and events are easier to scan.",
+                    body: "Current and upcoming programming, special events, and showtimes are structured around what visitors need first."
+                },
+                {
+                    label: "Ticketing",
+                    title: "The path from browsing to tickets is shorter.",
+                    body: "Filtering across dates and screenings helps people move from discovery into ticketing with less friction."
+                },
+                {
+                    label: "Operations",
+                    title: "The site can keep up with the theater.",
+                    body: "Frequent schedule changes, festivals, and special initiatives are supported through an update-friendly system."
+                }
+            ]
+        } %}
+        {% include "partials/work-impact.njk" %}
         <section id="sec__001">
             <div class="section__wrapper">
                 <div class="container">

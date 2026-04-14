@@ -69,6 +69,28 @@ description: Evolving the Cruefilms brand.
                 </div>
             </div>
         </section>
+        {% set impact = {
+            heading: "A sharper portfolio and a more distinct brand presence.",
+            meta: ["Interactive portfolio", "Audience-specific contact"],
+            cards: [
+                {
+                    label: "Positioning",
+                    title: "The brand feels more ownable online.",
+                    body: "The refresh gave Cruefilms a clearer digital identity that better matches the tone of their work."
+                },
+                {
+                    label: "Proof",
+                    title: "The work takes center stage faster.",
+                    body: "Interactive portfolio patterns and case-study structure make the films easier to browse and evaluate."
+                },
+                {
+                    label: "Conversion",
+                    title: "Inquiry starts with better context.",
+                    body: "Audience-specific contact paths help route the right conversations from the website."
+                }
+            ]
+        } %}
+        {% include "partials/work-impact.njk" %}
         <section id="sec__001">
             <div class="section__wrapper">
                 <div class="container">

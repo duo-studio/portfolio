@@ -10,3 +10,5 @@ public/styles/style-inline.css
 public/styles/style-inline.css.map
 public/styles/membership.css
 public/styles/membership.css.map
+.dev-session.*
+tmp-dev-*.log

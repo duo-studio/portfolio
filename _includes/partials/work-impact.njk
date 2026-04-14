@@ -1,0 +1,37 @@
+<section id="impact">
+    <div class="section__wrapper">
+        <div class="impact__stack">
+            {# <div class="impact__heading">
+                <span class="impact__heading-label">Our Impact</span>
+                <h2>{{ impact.heading }}</h2>
+                {% if impact.meta and impact.meta.length %}
+                    <div class="impact__meta">
+                        {% for item in impact.meta %}
+                            <span>{{ item }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div> #}
+            <div class="impact__cards">
+                {% for card in impact.cards %}
+                    <article class="impact__card">
+                        <p class="impact__card-label">{{ card.label }}</p>
+                        <h3>{{ card.title }}</h3>
+                        <p>{{ card.body }}</p>
+                    </article>
+                {% endfor %}
+            </div>
+            {# <article class="impact__cta">
+                <div class="impact__cta-copy">
+                    <p class="impact__eyebrow">{{ impact.cta_eyebrow or "Similar challenge?" }}</p>
+                    <h3>{{ impact.cta_title or "Need a site that reflects how your business actually works?" }}</h3>
+                </div>
+                <div class="impact__cta-actions">
+                    <a class="btn__circle" href="{{ impact.cta_href or '/contact/' }}">
+                        <p>{{ impact.cta_label or "Start a project" }}</p>
+                    </a>
+                </div>
+            </article> #}
+        </div>
+    </div>
+</section>

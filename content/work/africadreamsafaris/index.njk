@@ -66,6 +66,28 @@ description: Website redesign for Africa Dream Safaris, a luxury Tanzania safari
                 </div>
             </div>
         </section>
+        {% set impact = {
+            heading: "Easier to explore. Easier to plan. Easier to book.",
+            meta: ["Safari encyclopedia", "Refined inquiry flow"],
+            cards: [
+                {
+                    label: "Clarity",
+                    title: "A large content library feels easier to navigate.",
+                    body: "Regions, lodges, planning guidance, and safari types are organized into a clearer decision-making path."
+                },
+                {
+                    label: "Booking",
+                    title: "High-intent visitors get better context before inquiry.",
+                    body: "Storytelling and practical planning work together so travelers can move toward booking with more confidence."
+                },
+                {
+                    label: "Operations",
+                    title: "Structured content is easier to manage at scale.",
+                    body: "A custom WordPress setup centralizes regions, lodges, and reusable content across the site."
+                }
+            ]
+        } %}
+        {% include "partials/work-impact.njk" %}
         <section id="sec__001">
             <div class="section__wrapper">
                 <div class="container">

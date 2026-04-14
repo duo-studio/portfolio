@@ -66,6 +66,28 @@ description: Duo Studio provided Lumina with a multi-purpose E-Commerce experien
                 </div>
             </div>
         </section>
+        {% set impact = {
+            heading: "A clearer nonprofit experience across tickets, donations, and sign-ups.",
+            meta: ["Multi-purpose ecommerce", "Events + calendar"],
+            cards: [
+                {
+                    label: "Clarity",
+                    title: "Visitors can find the right action faster.",
+                    body: "Shows, policies, calendar content, and key pathways are easier to browse across the site."
+                },
+                {
+                    label: "Conversion",
+                    title: "Ticketing, donations, and registration work together.",
+                    body: "The e-commerce journey was refined to support multiple intents without creating unnecessary friction."
+                },
+                {
+                    label: "Operations",
+                    title: "Programming is easier to present online.",
+                    body: "Timelines, galleries, and event content give Lumina a clearer digital system to manage."
+                }
+            ]
+        } %}
+        {% include "partials/work-impact.njk" %}
         <section id="sec__001">
             <div class="section__wrapper">
                 <div class="container">

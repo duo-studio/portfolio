@@ -64,6 +64,28 @@ description: Duo Studio helped Amparo Art, a new commerce brand, find its place 
                 </div>
             </div>
         </section>
+        {% set impact = {
+            heading: "A new marketplace with a clearer point of view.",
+            meta: ["Brand from scratch", "Gallery + commerce"],
+            cards: [
+                {
+                    label: "Positioning",
+                    title: "The brand feels established from day one.",
+                    body: "Naming, identity, and art direction gave Amparo a distinct presence in a traditional category."
+                },
+                {
+                    label: "Discovery",
+                    title: "Buyers can picture the work in context.",
+                    body: "Virtual room tools, filtering, and gallery browsing make it easier to explore before committing."
+                },
+                {
+                    label: "Commerce",
+                    title: "The path to purchase feels more complete.",
+                    body: "API integration and clearer product exploration support a smoother route from discovery to checkout."
+                }
+            ]
+        } %}
+        {% include "partials/work-impact.njk" %}
         <section id="sec__001">
             <div class="section__wrapper">
                 <div class="container">

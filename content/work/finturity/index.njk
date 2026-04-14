@@ -70,6 +70,28 @@ description: A feminine brand approach in a male-dominated industry.
                 </div>
             </div>
         </section>
+        {% set impact = {
+            heading: "A more ownable brand for a trust-driven category.",
+            meta: ["Naming + identity", "Website + collateral"],
+            cards: [
+                {
+                    label: "Positioning",
+                    title: "The brand stands apart quickly.",
+                    body: "Naming, identity, and messaging gave Finturity a clearer place in a crowded financial category."
+                },
+                {
+                    label: "Trust",
+                    title: "Financial planning feels more approachable.",
+                    body: "Educational content and lifestyle-led storytelling support clarity without feeling overwhelming."
+                },
+                {
+                    label: "Consistency",
+                    title: "The brand carries across every touchpoint.",
+                    body: "Website, collateral, and content work together as one cohesive system."
+                }
+            ]
+        } %}
+        {% include "partials/work-impact.njk" %}
         <section id="sec__001">
             <div class="section__wrapper">
                 <div class="container">

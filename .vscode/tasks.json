@@ -1,0 +1,33 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "duo: dev watch",
+			"type": "npm",
+			"script": "dev",
+			"isBackground": true,
+			"runOptions": {
+				"runOn": "folderOpen",
+				"instanceLimit": 1
+			},
+			"presentation": {
+				"reveal": "silent",
+				"panel": "dedicated",
+				"showReuseMessage": false,
+				"clear": false
+			},
+			"problemMatcher": [
+				{
+					"pattern": {
+						"regexp": "^$"
+					},
+					"background": {
+						"activeOnStart": true,
+						"beginsPattern": "^> .*dev(:assets|:site)?",
+						"endsPattern": "(\\[assets\\] watching public/styles and public/scripts|\\[11ty\\].*(Watching|Server at))"
+					}
+				}
+			]
+		}
+	]
+}
