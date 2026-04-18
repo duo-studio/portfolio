@@ -1,11 +1,13 @@
 ---
 headline: "Baltimore Web Design: Finding the Right Agency for Your Business"
+displayHeadline: "Finding the right web design partner in Baltimore"
+cardHeadline: "Finding the right web design partner in Baltimore"
 description: "A local guide to evaluating Baltimore web design agencies — what to look for, what to expect, and how to find the right fit for your project."
 author: Duo Studio
 date: 2026-03-18
 category: Guide
-thumbImage: guides/baltimore-web-design/featured.webp
-featImage: ./featured.webp
+thumbImage: "guides/baltimore-web-design/featured.svg"
+featImage: "./featured.svg"
 metaImage: false
 imageCaption: false
 permalink: /guides/baltimore-web-design/

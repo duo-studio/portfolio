@@ -1,11 +1,13 @@
 ---
 headline: "Small Business Website Design: What to Expect (and What to Spend)"
+displayHeadline: "What a small business website needs to do well"
+cardHeadline: "What a small business website needs to do well"
 description: "Template vs custom, timeline, budget, and what actually matters when getting a professional website for your small business."
 author: Dat Nguyen
 date: 2026-01-08
 category: Guide
-thumbImage: guides/small-business-website-design/featured.webp
-featImage: ./featured.webp
+thumbImage: "guides/small-business-website-design/featured.svg"
+featImage: "./featured.svg"
 metaImage: false
 imageCaption: false
 permalink: /guides/small-business-website-design/

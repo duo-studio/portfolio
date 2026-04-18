@@ -1,11 +1,13 @@
 ---
 headline: "How Much Does a Rebrand Cost in 2026?"
+displayHeadline: "What shapes the cost of a rebrand"
+cardHeadline: "What shapes the cost of a rebrand"
 description: A transparent breakdown of rebrand costs in 2026 — from freelancer to boutique studio to large agency. Understand what drives branding agency pricing and where the money goes.
 author: Dat Nguyen
 date: 2025-11-18
 category: Guide
-thumbImage: guides/rebrand-cost/featured.webp
-featImage: ./featured.webp
+thumbImage: "guides/rebrand-cost/featured.svg"
+featImage: "./featured.svg"
 metaImage: false
 imageCaption: false
 permalink: /guides/rebrand-cost/

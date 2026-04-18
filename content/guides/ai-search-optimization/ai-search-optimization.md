@@ -1,11 +1,13 @@
 ---
 headline: "AI Search Optimization: How to Get Your Website Cited by ChatGPT, Perplexity, and Google AI Overviews"
+displayHeadline: "What it takes to earn visibility in AI search"
+cardHeadline: "What it takes to earn visibility in AI search"
 description: "AI search is changing how people find businesses. Here's what actually works to get your site cited in AI-generated answers — from someone doing it."
 author: Dat Nguyen
 date: 2026-02-28
 category: Guide
-thumbImage: guides/ai-search-optimization/featured.webp
-featImage: ./featured.webp
+thumbImage: "guides/ai-search-optimization/featured.svg"
+featImage: "./featured.svg"
 metaImage: false
 imageCaption: false
 permalink: /guides/ai-search-optimization/

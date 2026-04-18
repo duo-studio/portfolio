@@ -4,6 +4,8 @@ eleventyComputed:
 layout: layouts/base.njk
 ---
 
+{% set postDisplayHeadline = displayHeadline or headline %}
+
 <div class="barba-container loading" data-barba="container" data-barba-namespace="journal">
     <main>
         <section id="post" class="entry">
@@ -17,7 +19,15 @@ layout: layouts/base.njk
                         <p class="subtitle">{{ imageCaption }}</p>
                     {% endif %}
                 </div>
-                <h1 class="entry__headline title-2 headline__load">{{ headline }}</h1>
+                {% if archiveHref and archiveLabel %}
+                    <a href="{{ archiveHref }}" class="entry__back cursor__hover --highlight" aria-label="{{ archiveLabel }}">
+                        <svg class="entry__back-icon" viewBox="0 0 34 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                            <path d="M32 8H4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                            <path d="M8.5 3L3 8L8.5 13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                {% endif %}
+                <h1 class="entry__headline title-2 headline__load">{{ postDisplayHeadline }}</h1>
                 <ul class="entry__metadata">
                     <div class="st__line"></div>
                     {% if author %}
@@ -66,17 +76,18 @@ layout: layouts/base.njk
                             {% set guideCount = 0 %}
                             {% for item in collections.all | reverse %}
                                 {% if item.data.category == "Guide" and item.url != page.url and guideCount < 3 %}
+                                    {% set relatedGuideHeadline = item.data.displayHeadline or item.data.headline %}
                                     <a class="col cursor__hover --highlight" href="{{ item.data.permalink }}" style="width: calc(33.333% - 1rem);">
                                         {% if item.data.featImage %}
                                             {% set guideSlug = item.url | replace("/guides/", "") | replace("/", "") %}
-                                            {% set guideThumb = "../" + guideSlug + "/featured.webp" %}
+                                            {% set guideThumb = item.data.featImage | replace("./", "../" + guideSlug + "/") %}
                                             <div class="no-overflow">
                                                 <div class="entry__related--thumbnail">
-                                                    {% image guideThumb, item.data.headline %}
+                                                    {% image guideThumb, relatedGuideHeadline %}
                                                 </div>
                                             </div>
                                         {% endif %}
-                                        <h3>{{ item.data.headline }}</h3>
+                                        <h3>{{ relatedGuideHeadline }}</h3>
                                     </a>
                                     {% set guideCount = guideCount + 1 %}
                                 {% endif %}
@@ -93,6 +104,7 @@ layout: layouts/base.njk
                             {% for post in postslist | reverse %}
                                 {% if page.url != post.url %}
                                     {% if count < 2 %}
+                                        {% set relatedPostHeadline = post.data.displayHeadline or post.data.headline %}
                                         <a class="col cursor__hover --highlight" href="{% if post.data.externalLink %}{{ post.data.externalLink }}{% else %}{{ post.data.permalink }}{% endif %}" target="{% if post.data.externalLink %}_blank{% else %}_self{% endif %}">
                                             {% set relatedThumb = "../"+post.data.permalink+post.data.featImage %}
                                             <div class="no-overflow">
@@ -100,7 +112,7 @@ layout: layouts/base.njk
                                                     {% image relatedThumb, "featured-image" %}
                                                 </div>
                                             </div>
-                                            <h3>{{ post.data.headline }}</h3>
+                                            <h3>{{ relatedPostHeadline }}</h3>
                                         </a>
                                     {% endif %}
                                     {% set count = count + 1 %}

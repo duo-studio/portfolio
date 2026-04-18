@@ -1,0 +1,33 @@
+---
+layout: layouts/base.njk
+eleventyComputed:
+  title: Guides | {{ metadata.title }}
+description: Thoughtful guides on branding, websites, and AI search from Duo Studio.
+---
+
+<div class="barba-container loading" data-barba="container" data-barba-namespace="journal">
+    <main>
+        <section id="banner">
+            <div class="section__wrapper">
+                <h1 class="top headline__load">Guides</h1>
+            </div>
+        </section>
+        <section id="index">
+            <div class="section__wrapper">
+                <div class="row">
+                    <p>
+                        {% set postslistCounter = collections.guides | length %}
+                        <span class="count">{{ postslistCounter }}</span>
+                        Guides
+                    </p>
+                </div>
+            </div>
+            <div class="posts">
+                <div class="st__line"></div>
+                {% set postslist = collections.guides %}
+                {% include "postslist.njk" %}
+            </div>
+        </section>
+        {% include "layouts/footer.njk" %}
+    </main>
+</div>

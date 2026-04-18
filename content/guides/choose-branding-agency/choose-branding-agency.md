@@ -1,11 +1,13 @@
 ---
 headline: "How to Choose a Branding Agency: A Practical Buying Guide"
+displayHeadline: "What to look for in a branding agency"
+cardHeadline: "What to look for in a branding agency"
 description: Learn what to look for in a branding agency, what questions to ask, how to evaluate portfolios, and the red flags that should send you running.
 author: Dat Nguyen
 date: 2026-02-05
 category: Guide
-thumbImage: guides/choose-branding-agency/featured.webp
-featImage: ./featured.webp
+thumbImage: "guides/choose-branding-agency/featured.svg"
+featImage: "./featured.svg"
 metaImage: false
 imageCaption: false
 permalink: /guides/choose-branding-agency/

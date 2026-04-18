@@ -1,11 +1,13 @@
 ---
 headline: "When Should You Rebrand? 7 Signs You've Outgrown Your Brand"
+displayHeadline: "When the brand no longer fits the business"
+cardHeadline: "When the brand no longer fits the business"
 description: Not sure if it's time to rebrand? These 7 signs reveal when your brand has stopped working for you — and what it's costing you to ignore it.
 author: Sonia Polyzos
 date: 2025-12-04
 category: Guide
-thumbImage: guides/signs-you-need-rebrand/featured.webp
-featImage: ./featured.webp
+thumbImage: "guides/signs-you-need-rebrand/featured.svg"
+featImage: "./featured.svg"
 metaImage: false
 imageCaption: false
 permalink: /guides/signs-you-need-rebrand/

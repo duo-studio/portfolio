@@ -1,11 +1,13 @@
 ---
 headline: "Branding and Web Design for Tech Companies"
+displayHeadline: "What helps a tech brand stand apart"
+cardHeadline: "What helps a tech brand stand apart"
 description: Tech company branding requires more than good design. Learn how B2B tech and SaaS companies can differentiate, build trust, and turn their website into a sales engine.
 author: Dat Nguyen
 date: 2026-02-20
 category: Guide
-thumbImage: guides/tech-company-branding/featured.webp
-featImage: ./featured.webp
+thumbImage: "guides/tech-company-branding/featured.svg"
+featImage: "./featured.svg"
 metaImage: false
 imageCaption: false
 permalink: /guides/tech-company-branding/

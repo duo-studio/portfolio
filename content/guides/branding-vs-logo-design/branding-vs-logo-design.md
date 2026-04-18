@@ -1,11 +1,13 @@
 ---
 headline: "Branding vs. Logo Design: What's the Difference?"
+displayHeadline: "A logo is one part of the brand"
+cardHeadline: "A logo is one part of the brand"
 description: Think you just need a logo? Learn the real difference between branding and logo design, and why brand identity is the foundation every business needs first.
 author: Sonia Polyzos
 date: 2026-01-09
 category: Guide
-thumbImage: guides/branding-vs-logo-design/featured.webp
-featImage: ./featured.webp
+thumbImage: "guides/branding-vs-logo-design/featured.svg"
+featImage: "./featured.svg"
 metaImage: false
 imageCaption: false
 permalink: /guides/branding-vs-logo-design/

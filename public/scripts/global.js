@@ -2666,10 +2666,13 @@ function loadJournalScripts() {
 					var count = document.querySelectorAll(
 						".entry__item:not(.hidden)",
 					).length;
+					var suffix = document.querySelector(".suffix");
 					document.querySelector(".count").textContent = count;
-					count > 1
-						? (document.querySelector(".suffix").textContent = "Entries")
-						: (document.querySelector(".suffix").textContent = "Entry");
+					if (suffix) {
+						count > 1
+							? (suffix.textContent = "Entries")
+							: (suffix.textContent = "Entry");
+					}
 					ScrollTrigger.refresh();
 				});
 				tl.to(".entry", { opacity: 1, ease: "power2.easeOut" });

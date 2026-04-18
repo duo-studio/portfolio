@@ -1,11 +1,13 @@
 ---
 headline: "How to Choose a Web Design Agency (Without Wasting Your Budget)"
+displayHeadline: "What to look for in a web design agency"
+cardHeadline: "What to look for in a web design agency"
 description: "A practical guide to evaluating web design agencies — what to look for in portfolios, process, and proposals before signing anything."
 author: Sonia Polyzos
 date: 2026-02-14
 category: Guide
-thumbImage: guides/choose-web-design-agency/featured.webp
-featImage: ./featured.webp
+thumbImage: "guides/choose-web-design-agency/featured.svg"
+featImage: "./featured.svg"
 metaImage: false
 imageCaption: false
 permalink: /guides/choose-web-design-agency/

@@ -1,11 +1,13 @@
 ---
 headline: "What Does a Branding Agency Actually Do?"
+displayHeadline: "What a branding agency is there to shape"
+cardHeadline: "What a branding agency is there to shape"
 description: Wondering what a branding agency does and what to expect from the process? We walk through every phase — from discovery to launch — so you know exactly what you're paying for.
 author: Dat Nguyen
 date: 2026-01-22
 category: Guide
-thumbImage: guides/what-branding-agency-does/featured.webp
-featImage: ./featured.webp
+thumbImage: "guides/what-branding-agency-does/featured.svg"
+featImage: "./featured.svg"
 metaImage: false
 imageCaption: false
 permalink: /guides/what-branding-agency-does/

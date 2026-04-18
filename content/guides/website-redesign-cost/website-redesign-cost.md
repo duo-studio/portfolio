@@ -1,11 +1,13 @@
 ---
 headline: "How Much Does a Website Redesign Cost in 2026?"
+displayHeadline: "What shapes the cost of a website redesign"
+cardHeadline: "What shapes the cost of a website redesign"
 description: "A transparent breakdown of website redesign costs — from template builds to fully custom sites. What drives pricing and where the money goes."
 author: Dat Nguyen
 date: 2025-12-10
 category: Guide
-thumbImage: guides/website-redesign-cost/featured.webp
-featImage: ./featured.webp
+thumbImage: "guides/website-redesign-cost/featured.svg"
+featImage: "./featured.svg"
 metaImage: false
 imageCaption: false
 permalink: /guides/website-redesign-cost/

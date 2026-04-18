@@ -1,11 +1,13 @@
 ---
 headline: "Why Your Website Isn't Converting (And What to Do About It)"
+displayHeadline: "Why traffic isn't turning into leads"
+cardHeadline: "Why traffic isn't turning into leads"
 description: "Your site gets traffic but no leads? Here's a practical diagnostic — the real reasons websites fail to convert and what actually fixes them."
 author: Sonia Polyzos
 date: 2026-03-05
 category: Guide
-thumbImage: guides/website-not-converting/featured.webp
-featImage: ./featured.webp
+thumbImage: "guides/website-not-converting/featured.svg"
+featImage: "./featured.svg"
 metaImage: false
 imageCaption: false
 permalink: /guides/website-not-converting/

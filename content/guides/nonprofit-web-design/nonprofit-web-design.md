@@ -1,11 +1,13 @@
 ---
 headline: "Web Design for Nonprofits: A Complete Guide"
+displayHeadline: "What nonprofit websites need to make clear"
+cardHeadline: "What nonprofit websites need to make clear"
 description: A complete nonprofit web design guide covering donor trust, impact storytelling, accessibility, fundraising UX, and budget realities for a redesign.
 author: Sonia Polyzos
 date: 2026-03-10
 category: Guide
-thumbImage: guides/nonprofit-web-design/featured.webp
-featImage: ./featured.webp
+thumbImage: "guides/nonprofit-web-design/featured.svg"
+featImage: "./featured.svg"
 metaImage: false
 imageCaption: false
 permalink: /guides/nonprofit-web-design/

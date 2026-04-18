@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" fill="none">
+<rect width="1600" height="900" fill="#FEFCFF"/>
+<rect x="24" y="24" width="1552" height="852" rx="28" fill="#FEFCFF" stroke="#0F0D0D" stroke-opacity="0.08"/>
+<line x1="72" y1="118" x2="1528" y2="118" stroke="#0F0D0D" stroke-opacity="0.08"/>
+<line x1="72" y1="782" x2="1528" y2="782" stroke="#0F0D0D" stroke-opacity="0.08"/>
+<circle cx="90" cy="90" r="5" fill="#0F0D0D" fill-opacity="0.12"/>
+<circle cx="1510" cy="810" r="5" fill="#0F0D0D" fill-opacity="0.12"/>
+<rect x="280" y="230" width="420" height="280" rx="32" fill="#FEFCFF" stroke="#0F0D0D" stroke-opacity="0.14"/>
+<rect x="410" y="290" width="420" height="280" rx="32" fill="#F3F3F3" stroke="#0F0D0D" stroke-opacity="0.14"/>
+<rect x="540" y="350" width="420" height="280" rx="32" fill="#FEFCFF" stroke="#0F0D0D" stroke-opacity="0.14"/>
+<rect x="566" y="392" width="144" height="18" rx="9" fill="#EDBFFF" fill-opacity="0.7"/>
+<rect x="566" y="434" width="310" height="18" rx="9" fill="#0F0D0D" fill-opacity="0.12"/>
+<rect x="566" y="476" width="280" height="18" rx="9" fill="#0F0D0D" fill-opacity="0.12"/>
+<polyline points="1080,305 1120,345 1188,265" stroke="#0F0D0D" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.22"/>
+<polyline points="1180,470 1220,510 1288,430" stroke="#EDBFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.72"/>
+<circle cx="1210" cy="675" r="140" fill="#EDBFFF" fill-opacity="0.24"/>
+</svg>

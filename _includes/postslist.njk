@@ -1,11 +1,12 @@
 <ul reversed class="entry">
     {% for post in postslist | reverse %}
+        {% set postArchiveHeadline = post.data.displayHeadline or post.data.headline %}
         <li class="entry__item" data-attribute-category="{{ post.data.category | lower }}">
             <div class="st__line"></div>
             <div class="section__wrapper">
                 <a href="{% if post.data.externalLink %}{{ post.data.externalLink }}{% else %}{{ post.data.permalink }}{% endif %}" target="{% if post.data.externalLink %}_blank{% else %}_self{% endif %}" class="entry__link cursor__hover --highlight">
                     <div class="col st__text">
-                        <h2>{{ post.data.headline }}</h2>
+                        <h2>{{ postArchiveHeadline }}</h2>
                         <div class="entry__meta">
                             <div class="btn__small --tag">
                                 {{ post.data.category }}

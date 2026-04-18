@@ -1,11 +1,13 @@
 ---
 headline: "Headless WordPress vs Traditional WordPress: Which Is Right for Your Business?"
+displayHeadline: "Choosing between headless and traditional WordPress"
+cardHeadline: "Choosing between headless and traditional WordPress"
 description: "A plain-English breakdown of headless vs traditional WordPress — real costs, tradeoffs, and which setup actually fits your business."
 author: Dat Nguyen
 date: 2026-01-22
 category: Guide
-thumbImage: guides/headless-wordpress-vs-traditional/featured.webp
-featImage: ./featured.webp
+thumbImage: "guides/headless-wordpress-vs-traditional/featured.svg"
+featImage: "./featured.svg"
 metaImage: false
 imageCaption: false
 permalink: /guides/headless-wordpress-vs-traditional/
