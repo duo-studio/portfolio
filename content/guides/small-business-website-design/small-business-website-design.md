@@ -6,8 +6,8 @@ description: "Template vs custom, timeline, budget, and what actually matters wh
 author: Dat Nguyen
 date: 2026-01-08
 category: Guide
-thumbImage: "guides/small-business-website-design/featured.svg"
-featImage: "./featured.svg"
+thumbImage: "guides/small-business-website-design/archive.webp"
+featImage: "./featured-sync.webp"
 metaImage: false
 imageCaption: false
 permalink: /guides/small-business-website-design/

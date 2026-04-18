@@ -6,8 +6,8 @@ description: Not sure if it's time to rebrand? These 7 signs reveal when your br
 author: Sonia Polyzos
 date: 2025-12-04
 category: Guide
-thumbImage: "guides/signs-you-need-rebrand/featured.svg"
-featImage: "./featured.svg"
+thumbImage: "guides/signs-you-need-rebrand/archive.webp"
+featImage: "./featured-sync.webp"
 metaImage: false
 imageCaption: false
 permalink: /guides/signs-you-need-rebrand/

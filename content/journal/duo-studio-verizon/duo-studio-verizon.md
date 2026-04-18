@@ -5,7 +5,7 @@ date: 2022-03-09
 category: News
 Author: Verizon Business
 thumbImage: journal/duo-studio-verizon/duo-studioxverizon@600.webp
-featImage: ./duo-studio.webp
+featImage: ./duo-studio-hero.webp
 imageCaption: "Image: Verizon"
 permalink: /duo-studio-verizon/
 externalLink: https://www.verizon.com/business/resources/customer-success-stories/duo-studio-small-traveling-business/

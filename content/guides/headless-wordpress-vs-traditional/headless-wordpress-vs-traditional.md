@@ -6,8 +6,8 @@ description: "A plain-English breakdown of headless vs traditional WordPress —
 author: Dat Nguyen
 date: 2026-01-22
 category: Guide
-thumbImage: "guides/headless-wordpress-vs-traditional/featured.svg"
-featImage: "./featured.svg"
+thumbImage: "guides/headless-wordpress-vs-traditional/archive.webp"
+featImage: "./featured-sync.webp"
 metaImage: false
 imageCaption: false
 permalink: /guides/headless-wordpress-vs-traditional/

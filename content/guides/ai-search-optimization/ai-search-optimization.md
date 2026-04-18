@@ -6,10 +6,10 @@ description: "AI search is changing how people find businesses. Here's what actu
 author: Dat Nguyen
 date: 2026-02-28
 category: Guide
-thumbImage: "guides/ai-search-optimization/featured.svg"
-featImage: "./featured.svg"
+thumbImage: "guides/ai-search-optimization/archive.webp"
+featImage: "./featured-sync.webp"
 metaImage: false
-imageCaption: false
+imageCaption: "Image: Nikin / Pixabay"
 permalink: /guides/ai-search-optimization/
 eleventyExcludeFromCollections: false
 ignore: false

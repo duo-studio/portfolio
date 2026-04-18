@@ -6,8 +6,8 @@ description: Duo Studio is a Baltimore branding agency and web design studio hel
 author: Duo Studio
 date: 2026-03-25
 category: Guide
-thumbImage: "guides/baltimore-branding-agency/featured.svg"
-featImage: "./featured.svg"
+thumbImage: "guides/baltimore-branding-agency/archive.webp"
+featImage: "./featured-sync.webp"
 metaImage: false
 imageCaption: false
 permalink: /guides/baltimore-branding-agency/

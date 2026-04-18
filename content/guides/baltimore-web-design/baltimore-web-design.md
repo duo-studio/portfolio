@@ -6,8 +6,8 @@ description: "A local guide to evaluating Baltimore web design agencies — what
 author: Duo Studio
 date: 2026-03-18
 category: Guide
-thumbImage: "guides/baltimore-web-design/featured.svg"
-featImage: "./featured.svg"
+thumbImage: "guides/baltimore-web-design/archive.webp"
+featImage: "./featured-sync.webp"
 metaImage: false
 imageCaption: false
 permalink: /guides/baltimore-web-design/

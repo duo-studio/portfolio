@@ -6,8 +6,8 @@ description: "A practical guide to evaluating web design agencies — what to lo
 author: Sonia Polyzos
 date: 2026-02-14
 category: Guide
-thumbImage: "guides/choose-web-design-agency/featured.svg"
-featImage: "./featured.svg"
+thumbImage: "guides/choose-web-design-agency/archive.webp"
+featImage: "./featured-sync.webp"
 metaImage: false
 imageCaption: false
 permalink: /guides/choose-web-design-agency/

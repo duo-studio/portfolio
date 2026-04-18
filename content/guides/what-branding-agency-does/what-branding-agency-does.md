@@ -6,8 +6,8 @@ description: Wondering what a branding agency does and what to expect from the p
 author: Dat Nguyen
 date: 2026-01-22
 category: Guide
-thumbImage: "guides/what-branding-agency-does/featured.svg"
-featImage: "./featured.svg"
+thumbImage: "guides/what-branding-agency-does/archive.webp"
+featImage: "./featured-sync.webp"
 metaImage: false
 imageCaption: false
 permalink: /guides/what-branding-agency-does/

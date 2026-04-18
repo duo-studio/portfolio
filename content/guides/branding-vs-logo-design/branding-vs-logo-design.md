@@ -6,8 +6,8 @@ description: Think you just need a logo? Learn the real difference between brand
 author: Sonia Polyzos
 date: 2026-01-09
 category: Guide
-thumbImage: "guides/branding-vs-logo-design/featured.svg"
-featImage: "./featured.svg"
+thumbImage: "guides/branding-vs-logo-design/archive.webp"
+featImage: "./featured-sync.webp"
 metaImage: false
 imageCaption: false
 permalink: /guides/branding-vs-logo-design/
