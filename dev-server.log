@@ -1,0 +1,172 @@
+[dev] Starting single dev session.
+[assets] building (initial)
+[assets] ready
+[assets] watching public/styles and public/scripts
+[11ty/eleventy-base-blog] Including drafts.
+[11ty] Copied 656 files / Wrote 49 files in 0.88 seconds (18.0ms each, v2.0.1)
+[11ty] Watching…
+[assets] building (public\styles\imports\_journal.scss)
+[assets] ready
+[assets] building (public\scripts\global.js)
+[assets] ready
+[11ty] File changed: content\guides\ai-search-optimization\archive.webp
+[11ty] File changed: content\guides\ai-search-optimization\featured-photo.webp
+[11ty] Copied 656 files / Wrote 49 files in 3.24 seconds (66.1ms each, v2.0.1)
+[11ty] Copied 656 files / Wrote 49 files in 0.55 seconds (11.2ms each, v2.0.1)
+[11ty] File changed: content\guides\ai-search-optimization\ai-search-optimization.md
+[11ty] Copied 656 files / Wrote 49 files in 0.59 seconds (12.0ms each, v2.0.1)
+[assets] building (public\styles\imports\_journal.scss)
+[assets] ready
+[assets] building (public\styles\imports\_journal.scss)
+[assets] ready
+[assets] building (public\styles\imports\_journal.scss)
+[assets] ready
+[11ty] File added: content\guides\ai-search-optimization\featured-photo.webp.tmp.webp
+[11ty] Copied 656 files / Wrote 49 files in 0.68 seconds (13.9ms each, v2.0.1)
+[11ty] File changed: content\guides\branding-vs-logo-design\branding-vs-logo-design.md
+[11ty] File changed: content\guides\baltimore-web-design\baltimore-web-design.md
+[11ty] File changed: content\guides\ai-search-optimization\ai-search-optimization.md
+[11ty] File changed: content\guides\baltimore-branding-agency\baltimore-branding-agency.md
+[11ty] File changed: content\guides\choose-branding-agency\choose-branding-agency.md
+[11ty] File changed: content\guides\signs-you-need-rebrand\signs-you-need-rebrand.md
+[11ty] File changed: content\guides\choose-web-design-agency\choose-web-design-agency.md
+[11ty] File changed: content\guides\nonprofit-web-design\nonprofit-web-design.md
+[11ty] File changed: content\guides\tech-company-branding\tech-company-branding.md
+[11ty] File changed: content\guides\website-not-converting\website-not-converting.md
+[11ty] File changed: content\guides\headless-wordpress-vs-traditional\headless-wordpress-vs-traditional.md
+[11ty] File changed: content\guides\small-business-website-design\small-business-website-design.md
+[11ty] File changed: content\guides\rebrand-cost\rebrand-cost.md
+[11ty] File changed: content\guides\website-redesign-cost\website-redesign-cost.md
+[11ty] File changed: content\guides\what-branding-agency-does\what-branding-agency-does.md
+[11ty] File changed: content\journal\duo-studio-verizon\duo-studio-verizon.md
+[11ty] Wrote 0 files in 0.09 seconds (v2.0.1)
+[11ty] Wrote 0 files in 0.08 seconds (v2.0.1)
+[11ty] File added: content\guides\ai-search-optimization\featured-hero.webp
+[11ty] Wrote 0 files in 0.08 seconds (v2.0.1)
+[11ty] File added: content\guides\baltimore-branding-agency\featured-hero.webp
+[11ty] Wrote 0 files in 0.15 seconds (v2.0.1)
+[11ty] File added: content\guides\branding-vs-logo-design\featured-hero.webp
+[11ty] File added: content\guides\baltimore-web-design\featured-hero.webp
+[11ty] Wrote 0 files in 0.11 seconds (v2.0.1)
+[11ty] File added: content\guides\choose-branding-agency\featured-hero.webp
+[11ty] Wrote 0 files in 0.15 seconds (v2.0.1)
+[11ty] File added: content\guides\choose-web-design-agency\featured-hero.webp
+[11ty] File added: content\guides\headless-wordpress-vs-traditional\featured-hero.webp
+[11ty] File added: content\guides\nonprofit-web-design\featured-hero.webp
+[11ty] File added: content\guides\rebrand-cost\featured-hero.webp
+[11ty] File added: content\guides\signs-you-need-rebrand\featured-hero.webp
+[11ty] File added: content\guides\small-business-website-design\featured-hero.webp
+[11ty] File added: content\guides\tech-company-branding\featured-hero.webp
+[11ty] File added: content\guides\website-not-converting\featured-hero.webp
+[11ty] File added: content\guides\website-redesign-cost\featured-hero.webp
+[11ty] File added: content\guides\what-branding-agency-does\featured-hero.webp
+[11ty] File added: content\journal\duo-studio-verizon\duo-studio-hero.webp
+[11ty] Wrote 0 files in 3.11 seconds (v2.0.1)
+[11ty] Copied 19 files / Wrote 41 files in 23.48 seconds (572.7ms each, v2.0.1)
+[assets] building (public\styles\imports\_journal.scss)
+[assets] ready
+[assets] building (public\styles\imports\_journal.scss)
+[assets] ready
+[assets] building (public\styles\imports\_journal.scss)
+[assets] ready
+[11ty] File changed: content\guides\ai-search-optimization\featured-hero.webp
+[11ty] File changed: content\guides\baltimore-branding-agency\featured-hero.webp
+[11ty] File changed: content\guides\baltimore-web-design\featured-hero.webp
+[11ty] File changed: content\guides\branding-vs-logo-design\featured-hero.webp
+[11ty] File changed: content\guides\choose-branding-agency\featured-hero.webp
+[11ty] Copied 656 files / Wrote 49 files in 0.76 seconds (15.5ms each, v2.0.1)
+[11ty] File changed: content\guides\choose-web-design-agency\featured-hero.webp
+[11ty] File changed: content\guides\headless-wordpress-vs-traditional\featured-hero.webp
+[11ty] Copied 656 files / Wrote 49 files in 0.79 seconds (16.1ms each, v2.0.1)
+[11ty] Copied 656 files / Wrote 49 files in 0.59 seconds (12.0ms each, v2.0.1)
+[11ty] File changed: content\guides\baltimore-branding-agency\baltimore-branding-agency.md
+[11ty] File changed: content\guides\ai-search-optimization\ai-search-optimization.md
+[11ty] File changed: content\guides\branding-vs-logo-design\branding-vs-logo-design.md
+[11ty] File changed: content\guides\choose-branding-agency\choose-branding-agency.md
+[11ty] File changed: content\guides\baltimore-web-design\baltimore-web-design.md
+[11ty] File changed: content\guides\choose-web-design-agency\choose-web-design-agency.md
+[11ty] Wrote 0 files in 0.11 seconds (v2.0.1)
+[11ty] File changed: content\guides\headless-wordpress-vs-traditional\headless-wordpress-vs-traditional.md
+[11ty] File changed: content\guides\rebrand-cost\rebrand-cost.md
+[11ty] File changed: content\guides\signs-you-need-rebrand\signs-you-need-rebrand.md
+[11ty] File changed: content\guides\website-redesign-cost\website-redesign-cost.md
+[11ty] File changed: content\guides\nonprofit-web-design\nonprofit-web-design.md
+[11ty] File changed: content\guides\website-not-converting\website-not-converting.md
+[11ty] File changed: content\guides\what-branding-agency-does\what-branding-agency-does.md
+[11ty] File changed: content\guides\tech-company-branding\tech-company-branding.md
+[11ty] File changed: content\guides\small-business-website-design\small-business-website-design.md
+[11ty] Wrote 0 files in 0.09 seconds (v2.0.1)
+[11ty] Wrote 0 files in 0.14 seconds (v2.0.1)
+[11ty] File added: content\guides\ai-search-optimization\featured-single.webp
+[11ty] Wrote 0 files in 0.06 seconds (v2.0.1)
+[11ty] File added: content\guides\baltimore-branding-agency\featured-single.webp
+[11ty] Wrote 0 files in 0.12 seconds (v2.0.1)
+[11ty] File added: content\guides\baltimore-web-design\featured-single.webp
+[11ty] Wrote 0 files in 0.09 seconds (v2.0.1)
+[11ty] File added: content\guides\branding-vs-logo-design\featured-single.webp
+[11ty] Wrote 0 files in 0.10 seconds (v2.0.1)
+[11ty] File added: content\guides\choose-branding-agency\featured-single.webp
+[11ty] File added: content\guides\choose-web-design-agency\featured-single.webp
+[11ty] Wrote 0 files in 0.50 seconds (v2.0.1)
+[11ty] File added: content\guides\headless-wordpress-vs-traditional\featured-single.webp
+[11ty] File added: content\guides\nonprofit-web-design\featured-single.webp
+[11ty] File added: content\guides\rebrand-cost\featured-single.webp
+[11ty] File added: content\guides\signs-you-need-rebrand\featured-single.webp
+[11ty] File added: content\guides\small-business-website-design\featured-single.webp
+[11ty] File added: content\guides\tech-company-branding\featured-single.webp
+[11ty] File added: content\guides\website-not-converting\featured-single.webp
+[11ty] File added: content\guides\website-redesign-cost\featured-single.webp
+[11ty] File added: content\guides\what-branding-agency-does\featured-single.webp
+[11ty] Wrote 0 files in 2.29 seconds (v2.0.1)
+[11ty] Copied 19 files / Wrote 48 files in 24.06 seconds (501.3ms each, v2.0.1)
+[11ty] File changed: content\guides\ai-search-optimization\featured-single.webp
+[11ty] File changed: content\guides\baltimore-branding-agency\featured-single.webp
+[11ty] File changed: content\guides\baltimore-web-design\featured-single.webp
+[11ty] File changed: content\guides\branding-vs-logo-design\featured-single.webp
+[11ty] File changed: content\guides\choose-branding-agency\featured-single.webp
+[11ty] File changed: content\guides\choose-web-design-agency\featured-single.webp
+[11ty] File changed: content\guides\headless-wordpress-vs-traditional\featured-single.webp
+[11ty] Copied 656 files / Wrote 49 files in 0.82 seconds (16.7ms each, v2.0.1)
+[11ty] Copied 656 files / Wrote 49 files in 0.68 seconds (13.9ms each, v2.0.1)
+[11ty] File changed: content\guides\branding-vs-logo-design\branding-vs-logo-design.md
+[11ty] File changed: content\guides\choose-branding-agency\choose-branding-agency.md
+[11ty] File changed: content\guides\ai-search-optimization\ai-search-optimization.md
+[11ty] File changed: content\guides\baltimore-web-design\baltimore-web-design.md
+[11ty] File changed: content\guides\baltimore-branding-agency\baltimore-branding-agency.md
+[11ty] File changed: content\guides\choose-web-design-agency\choose-web-design-agency.md
+[11ty] File changed: content\guides\signs-you-need-rebrand\signs-you-need-rebrand.md
+[11ty] File changed: content\guides\nonprofit-web-design\nonprofit-web-design.md
+[11ty] File changed: content\guides\headless-wordpress-vs-traditional\headless-wordpress-vs-traditional.md
+[11ty] File changed: content\guides\rebrand-cost\rebrand-cost.md
+[11ty] File changed: content\guides\what-branding-agency-does\what-branding-agency-does.md
+[11ty] Wrote 0 files in 0.09 seconds (v2.0.1)
+[11ty] File changed: content\guides\tech-company-branding\tech-company-branding.md
+[11ty] File changed: content\guides\small-business-website-design\small-business-website-design.md
+[11ty] File changed: content\guides\website-not-converting\website-not-converting.md
+[11ty] File changed: content\guides\website-redesign-cost\website-redesign-cost.md
+[11ty] Wrote 0 files in 0.08 seconds (v2.0.1)
+[11ty] Wrote 0 files in 0.15 seconds (v2.0.1)
+[11ty] File added: content\guides\ai-search-optimization\featured-sync.webp
+[11ty] Wrote 0 files in 0.12 seconds (v2.0.1)
+[11ty] File added: content\guides\baltimore-branding-agency\featured-sync.webp
+[11ty] Wrote 0 files in 0.10 seconds (v2.0.1)
+[11ty] File added: content\guides\baltimore-web-design\featured-sync.webp
+[11ty] Wrote 0 files in 0.31 seconds (v2.0.1)
+[11ty] File added: content\guides\choose-branding-agency\featured-sync.webp
+[11ty] File added: content\guides\branding-vs-logo-design\featured-sync.webp
+[11ty] File added: content\guides\choose-web-design-agency\featured-sync.webp
+[11ty] File added: content\guides\headless-wordpress-vs-traditional\featured-sync.webp
+[11ty] File added: content\guides\nonprofit-web-design\featured-sync.webp
+[11ty] File added: content\guides\rebrand-cost\featured-sync.webp
+[11ty] File added: content\guides\signs-you-need-rebrand\featured-sync.webp
+[11ty] File added: content\guides\small-business-website-design\featured-sync.webp
+[11ty] File added: content\guides\tech-company-branding\featured-sync.webp
+[11ty] File added: content\guides\website-not-converting\featured-sync.webp
+[11ty] File added: content\guides\website-redesign-cost\featured-sync.webp
+[11ty] File added: content\guides\what-branding-agency-does\featured-sync.webp
+[11ty] Wrote 0 files in 2.37 seconds (v2.0.1)
+[11ty] Copied 19 files / Wrote 82 files in 34.04 seconds (415.1ms each, v2.0.1)
+[assets] building (public\styles\imports\_journal.scss)
+[assets] ready
+[assets] building (public\scripts\tools.js)
+[assets] ready

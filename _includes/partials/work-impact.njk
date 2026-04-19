@@ -1,7 +1,7 @@
-<section id="impact">
+{# <section id="impact">
     <div class="section__wrapper">
         <div class="impact__stack">
-            {# <div class="impact__heading">
+            <div class="impact__heading">
                 <span class="impact__heading-label">Our Impact</span>
                 <h2>{{ impact.heading }}</h2>
                 {% if impact.meta and impact.meta.length %}
@@ -11,7 +11,7 @@
                         {% endfor %}
                     </div>
                 {% endif %}
-            </div> #}
+            </div>
             <div class="impact__cards">
                 {% for card in impact.cards %}
                     <article class="impact__card">
@@ -21,7 +21,7 @@
                     </article>
                 {% endfor %}
             </div>
-            {# <article class="impact__cta">
+            <article class="impact__cta">
                 <div class="impact__cta-copy">
                     <p class="impact__eyebrow">{{ impact.cta_eyebrow or "Similar challenge?" }}</p>
                     <h3>{{ impact.cta_title or "Need a site that reflects how your business actually works?" }}</h3>
@@ -31,7 +31,7 @@
                         <p>{{ impact.cta_label or "Start a project" }}</p>
                     </a>
                 </div>
-            </article> #}
+            </article>
         </div>
     </div>
-</section>
+</section> #}
