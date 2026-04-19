@@ -1366,7 +1366,7 @@ function initContactFormSubmission() {
 
 	const button = form.querySelector('button[type="submit"]');
 	const referrer = form.querySelector("#referrer");
-	const turnstileElement = form.querySelector(".cf-turnstile");
+	const turnstileElement = form.querySelector("[data-turnstile-container]");
 	const status = form.querySelector("[data-contact-form-status]");
 	let turnstileWidgetId = null;
 
@@ -1449,7 +1449,6 @@ function initContactFormSubmission() {
 
 			const script = document.createElement("script");
 			script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
-			script.defer = true;
 			script.async = false;
 			script.dataset.turnstileScript = "true";
 			script.addEventListener("load", () => {

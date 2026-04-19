@@ -1797,7 +1797,7 @@ nav {
 								max-width: 320px;
 								margin-top: 1rem;
 
-								.cf-turnstile {
+								[data-turnstile-container] {
 									min-height: 65px;
 								}
 
