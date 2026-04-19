@@ -1426,9 +1426,7 @@ function initContactFormSubmission() {
 				return;
 			}
 
-			window.turnstile.ready(() => {
-				resolve(window.turnstile);
-			});
+			resolve(window.turnstile);
 		};
 
 		window.__duoTurnstilePromise = new Promise((resolve, reject) => {
@@ -1451,8 +1449,8 @@ function initContactFormSubmission() {
 
 			const script = document.createElement("script");
 			script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
-			script.async = true;
 			script.defer = true;
+			script.async = false;
 			script.dataset.turnstileScript = "true";
 			script.addEventListener("load", () => {
 				script.dataset.loaded = "true";
