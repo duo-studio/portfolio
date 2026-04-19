@@ -1792,6 +1792,37 @@ nav {
 								}
 							}
 
+							.contact-form__verification {
+								width: 100%;
+								max-width: 320px;
+								margin-top: 1rem;
+
+								.cf-turnstile {
+									min-height: 65px;
+								}
+
+								.contact-form__status {
+									margin-top: 0.75rem;
+									max-width: 28rem;
+									font-size: 14px;
+									line-height: 1.5;
+									opacity: 0.7;
+
+									&[data-state="error"] {
+										opacity: 1;
+									}
+
+									&[data-state="success"] {
+										opacity: 0.85;
+									}
+								}
+
+								@media screen and (max-width: $mobile-breakpoint) {
+									padding-inline: $mobile-gutter;
+									max-width: none;
+								}
+							}
+
 							.btn__circle {
 								position: absolute;
 								bottom: 0;

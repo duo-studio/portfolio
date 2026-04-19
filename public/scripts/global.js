@@ -1367,29 +1367,176 @@ function initContactFormSubmission() {
 	const button = form.querySelector('button[type="submit"]');
 	const referrer = form.querySelector("#referrer");
 	const turnstileElement = form.querySelector(".cf-turnstile");
+	const status = form.querySelector("[data-contact-form-status]");
+	let turnstileWidgetId = null;
+
+	function setStatus(message, state = "") {
+		if (!status) {
+			return;
+		}
+
+		status.textContent = message || "";
+		status.hidden = !message;
+
+		if (state) {
+			status.dataset.state = state;
+			return;
+		}
+
+		delete status.dataset.state;
+	}
+
+	function getTurnstileToken() {
+		return form.querySelector('[name="cf-turnstile-response"]')?.value?.trim() || "";
+	}
+
+	function wait(ms) {
+		return new Promise((resolve) => {
+			setTimeout(resolve, ms);
+		});
+	}
+
+	async function waitForTurnstileToken(timeoutMs = 2500) {
+		const startedAt = Date.now();
+
+		while (Date.now() - startedAt < timeoutMs) {
+			const token = getTurnstileToken();
+			if (token) {
+				return token;
+			}
+
+			await wait(100);
+		}
+
+		return "";
+	}
+
+	function loadTurnstileScript() {
+		if (window.turnstile?.render) {
+			return Promise.resolve(window.turnstile);
+		}
+
+		if (window.__duoTurnstilePromise) {
+			return window.__duoTurnstilePromise;
+		}
+
+		const finish = (resolve, reject) => {
+			if (!window.turnstile?.render) {
+				reject(new Error("Verification could not load. Please refresh and try again."));
+				return;
+			}
+
+			window.turnstile.ready(() => {
+				resolve(window.turnstile);
+			});
+		};
+
+		window.__duoTurnstilePromise = new Promise((resolve, reject) => {
+			const existingScript = document.querySelector('script[data-turnstile-script="true"]');
+			if (existingScript) {
+				if (existingScript.dataset.loaded === "true") {
+					finish(resolve, reject);
+					return;
+				}
+
+				existingScript.addEventListener("load", () => {
+					existingScript.dataset.loaded = "true";
+					finish(resolve, reject);
+				}, { once: true });
+				existingScript.addEventListener("error", () => {
+					reject(new Error("Verification could not load. Please refresh and try again."));
+				}, { once: true });
+				return;
+			}
+
+			const script = document.createElement("script");
+			script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+			script.async = true;
+			script.defer = true;
+			script.dataset.turnstileScript = "true";
+			script.addEventListener("load", () => {
+				script.dataset.loaded = "true";
+				finish(resolve, reject);
+			}, { once: true });
+			script.addEventListener("error", () => {
+				reject(new Error("Verification could not load. Please refresh and try again."));
+			}, { once: true });
+			document.head.appendChild(script);
+		}).catch((error) => {
+			delete window.__duoTurnstilePromise;
+			throw error;
+		});
+
+		return window.__duoTurnstilePromise;
+	}
+
+	async function renderTurnstileWidget() {
+		if (!turnstileElement || turnstileWidgetId !== null) {
+			return turnstileWidgetId;
+		}
+
+		const turnstile = await loadTurnstileScript();
+		turnstileWidgetId = turnstile.render(turnstileElement, {
+			sitekey: turnstileElement.dataset.sitekey,
+			theme: turnstileElement.dataset.theme || "light",
+			appearance: turnstileElement.dataset.appearance || "interaction-only",
+			callback: () => {
+				setStatus("");
+			},
+			"error-callback": () => {
+				setStatus("Verification could not load. Please refresh and try again.", "error");
+			},
+			"expired-callback": () => {
+				setStatus("Verification expired. Please try again.", "error");
+			},
+			"timeout-callback": () => {
+				setStatus("Verification timed out. Please try again.", "error");
+			},
+		});
+
+		return turnstileWidgetId;
+	}
 
 	function resetTurnstileWidget() {
-		if (window.turnstile && turnstileElement) {
-			window.turnstile.reset(turnstileElement);
+		if (window.turnstile && turnstileWidgetId !== null) {
+			window.turnstile.reset(turnstileWidgetId);
 		}
 	}
+
+	renderTurnstileWidget().catch((error) => {
+		console.error("Turnstile failed to render", error);
+		setStatus(error.message || "Verification could not load. Please refresh and try again.", "error");
+	});
 
 	form.addEventListener("submit", async (event) => {
 		event.preventDefault();
 		event.stopImmediatePropagation();
-
-		const turnstileToken = form.querySelector('[name="cf-turnstile-response"]')?.value;
+		setStatus("");
 
 		button?.classList.remove("loading");
 		button?.classList.remove("success");
 
+		try {
+			await renderTurnstileWidget();
+		} catch (error) {
+			console.error("Turnstile failed to render", error);
+			pushDataLayerEvent("contact_form_submit_error", {
+				form_name: form.getAttribute("name") || "contact",
+				page_path: window.location.pathname,
+				error_message: normalizeAnalyticsText(error?.message || "Verification could not load."),
+			});
+			setStatus(error.message || "Verification could not load. Please refresh and try again.", "error");
+			return;
+		}
+
+		const turnstileToken = getTurnstileToken() || await waitForTurnstileToken();
 		if (!turnstileToken) {
 			pushDataLayerEvent("contact_form_submit_error", {
 				form_name: form.getAttribute("name") || "contact",
 				page_path: window.location.pathname,
 				error_message: "Missing verification token",
 			});
-			resetTurnstileWidget();
+			setStatus("Please complete the verification check and try again.", "error");
 			return;
 		}
 
@@ -1414,6 +1561,7 @@ function initContactFormSubmission() {
 
 			button?.classList.remove("loading");
 			button?.classList.add("success");
+			setStatus("Message sent. We'll be in touch soon.", "success");
 			pushDataLayerEvent("formSubmission", {
 				form_name: form.getAttribute("name") || "contact",
 				page_path: window.location.pathname,
@@ -1428,6 +1576,10 @@ function initContactFormSubmission() {
 				page_path: window.location.pathname,
 				error_message: normalizeAnalyticsText(error?.message || "Something went wrong."),
 			});
+			setStatus(
+				error?.message || "Something went wrong sending your message. Please email hello@duo-studio.co instead.",
+				"error",
+			);
 			resetTurnstileWidget();
 		} finally {
 			button?.classList.remove("loading");
