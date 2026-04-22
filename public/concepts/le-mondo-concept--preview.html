@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Le Mondo · Homepage Concept · Preview Board</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<style>
+			:root {
+				--bg: #170b15;
+				--panel: #241120;
+				--panel-soft: #311831;
+				--paper: #fff6e8;
+				--ink: #fff6e8;
+				--ink-soft: rgba(255, 246, 232, 0.76);
+				--orange: #ff9255;
+				--mint: #58d7cf;
+				--lilac: #c3bef7;
+				--yellow: #ffe36d;
+				--outline: #1f1120;
+				--f-display: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+				--f-sans: "Trebuchet MS", "Avenir Next", "Segoe UI", Arial, sans-serif;
+				--tracking: 0.12em;
+			}
+
+			*,
+			*::before,
+			*::after {
+				box-sizing: border-box;
+			}
+
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				min-width: 2060px;
+				background:
+					radial-gradient(circle at 12% 16%, rgba(255, 103, 169, 0.12), transparent 18%),
+					radial-gradient(circle at 88% 16%, rgba(88, 215, 207, 0.12), transparent 18%),
+					#170b15;
+				color: var(--ink);
+				font-family: var(--f-sans);
+				-webkit-font-smoothing: antialiased;
+			}
+
+			a {
+				color: inherit;
+			}
+
+			.board {
+				padding: 72px 64px 96px;
+			}
+
+			.hero {
+				display: grid;
+				grid-template-columns: minmax(0, 1fr) 360px;
+				gap: 40px;
+				align-items: end;
+				margin-bottom: 30px;
+			}
+
+			.title {
+				font-family: var(--f-display);
+				font-size: 54px;
+				line-height: 0.92;
+				letter-spacing: 0.03em;
+				text-transform: uppercase;
+				margin: 0;
+			}
+
+			.deck {
+				margin-top: 16px;
+				max-width: 920px;
+				font-size: 15px;
+				line-height: 1.65;
+				color: var(--ink-soft);
+			}
+
+			.pills {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 10px;
+				margin-top: 18px;
+			}
+
+			.pill {
+				display: inline-flex;
+				align-items: center;
+				padding: 8px 12px;
+				border: 2px solid rgba(255, 255, 255, 0.14);
+				background: rgba(255, 255, 255, 0.04);
+				font-size: 10px;
+				font-weight: 800;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+			}
+
+			.pill--hot {
+				border-color: rgba(255, 146, 85, 0.5);
+				color: var(--orange);
+			}
+
+			.sidebar {
+				padding: 22px 22px 24px;
+				background: rgba(255, 255, 255, 0.04);
+				border: 1px solid rgba(255, 255, 255, 0.12);
+			}
+
+			.sidebar h2 {
+				margin: 0;
+				font-family: var(--f-display);
+				font-size: 28px;
+				line-height: 0.96;
+				letter-spacing: 0.03em;
+				text-transform: uppercase;
+			}
+
+			.sidebar p {
+				margin: 14px 0 0;
+				font-size: 13px;
+				line-height: 1.6;
+				color: var(--ink-soft);
+			}
+
+			.links {
+				display: flex;
+				flex-direction: column;
+				gap: 10px;
+				margin-top: 18px;
+			}
+
+			.links a {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				padding: 12px 14px;
+				border: 2px solid var(--outline);
+				background: var(--paper);
+				color: #23111f;
+				font-size: 11px;
+				font-weight: 800;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				text-decoration: none;
+				box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.18);
+			}
+
+			.links a:nth-child(2) {
+				background: var(--mint);
+			}
+
+			.links a:nth-child(3) {
+				background: var(--orange);
+			}
+
+			.layout {
+				display: grid;
+				grid-template-columns: 1100px 420px;
+				gap: 48px;
+				align-items: start;
+			}
+
+			.label-row {
+				display: flex;
+				align-items: baseline;
+				justify-content: space-between;
+				padding: 0 4px 14px;
+				font-size: 11px;
+				font-weight: 800;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				color: rgba(255, 246, 232, 0.64);
+			}
+
+			.label-row strong {
+				color: var(--yellow);
+			}
+
+			.desktop-slot,
+			.mobile-slot {
+				background: rgba(255, 255, 255, 0.04);
+				border: 1px solid rgba(255, 255, 255, 0.12);
+				box-shadow: 0 34px 80px rgba(0, 0, 0, 0.45);
+				overflow: hidden;
+			}
+
+			.desktop-slot {
+				padding: 20px 20px 24px;
+			}
+
+			.mobile-slot {
+				padding: 20px 20px 24px;
+			}
+
+			.scale {
+				position: relative;
+				transform-origin: top left;
+			}
+
+			.scale--desktop {
+				width: 1440px;
+				height: 1100px;
+				transform: scale(0.7361);
+			}
+
+			.scale--mobile {
+				width: 375px;
+				height: 1530px;
+				transform: scale(1);
+			}
+
+			iframe {
+				width: 100%;
+				height: 100%;
+				border: 0;
+				display: block;
+				background: white;
+			}
+
+			.note-card {
+				margin-top: 20px;
+				padding: 18px;
+				background: rgba(255, 255, 255, 0.04);
+				border: 1px solid rgba(255, 255, 255, 0.12);
+			}
+
+			.note-card h3 {
+				margin: 0 0 10px;
+				font-family: var(--f-display);
+				font-size: 24px;
+				line-height: 0.98;
+				letter-spacing: 0.03em;
+				text-transform: uppercase;
+			}
+
+			.note-card ul {
+				margin: 0;
+				padding-left: 18px;
+				color: var(--ink-soft);
+				font-size: 13px;
+				line-height: 1.65;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div class="board">
+			<header class="hero">
+				<div>
+					<h1 class="title">Le Mondo · Homepage Concept</h1>
+					<div class="deck">
+						Pattern borrowed from the Motor House set: separate the concept into
+						clear desktop, mobile, preview, and annotation files. The design move
+						itself is different here: louder, taped-up, and poster-first so the
+						homepage still feels like Le Mondo while finally leading with what's on.
+					</div>
+					<div class="pills">
+						<span class="pill pill--hot">Based on live Le Mondo events</span>
+						<span class="pill">Featured: DIGITAL XSCAPE</span>
+						<span class="pill">Supporting: Lockbox, BATH SALLTS, Embodied Acting</span>
+						<span class="pill">Desktop 1440 × 900 / Mobile 375 × 812</span>
+					</div>
+				</div>
+
+				<aside class="sidebar sidebar--review">
+					<h2>File Set</h2>
+					<p>
+						This preview board keeps the full-size frame files intact and gives you
+						a single place to check the concept before linking or exporting.
+					</p>
+					<div class="links">
+						<a href="./le-mondo-concept--desktop.html">Open desktop frame</a>
+						<a href="./le-mondo-concept--mobile.html">Open mobile frame</a>
+						<a href="./le-mondo-concept--annotations.html">Open annotations</a>
+					</div>
+				</aside>
+			</header>
+
+			<section class="layout">
+				<div>
+					<div class="label-row">
+						<span><strong>Desktop Frame</strong></span>
+						<span>Shareable artboard</span>
+					</div>
+					<div class="desktop-slot">
+						<div class="scale scale--desktop">
+							<iframe src="./le-mondo-concept--desktop.html" title="Le Mondo desktop concept"></iframe>
+						</div>
+					</div>
+				</div>
+
+				<div>
+					<div class="label-row">
+						<span><strong>Mobile Frame</strong></span>
+						<span>Responsive companion</span>
+					</div>
+					<div class="mobile-slot">
+						<div class="scale scale--mobile">
+							<iframe src="./le-mondo-concept--mobile.html" title="Le Mondo mobile concept"></iframe>
+						</div>
+					</div>
+
+					<div class="note-card note-card--summary">
+						<h3>In this concept</h3>
+						<ul>
+							<li>DJ/RAVE: DIGITAL XSCAPE leads the homepage as the featured event.</li>
+							<li>The next three events stay grouped in the rail beside the hero.</li>
+							<li>Le Mondo's venue description sits below the shows block.</li>
+							<li>Membership remains on the page, but after the programming modules.</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+		</div>
+	</body>
+</html>

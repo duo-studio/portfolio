@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Eubie Blake - Homepage Concept - Annotations</title>
+		<meta name="viewport" content="width=1440" />
+		<style>
+			:root {
+				--bg: #101621;
+				--panel: rgba(255, 255, 255, 0.05);
+				--line: rgba(255, 255, 255, 0.12);
+				--text: #f7f3ed;
+				--muted: rgba(247, 243, 237, 0.72);
+				--cyan: #20d8df;
+				--violet: #957fc8;
+				--orange: #ef9709;
+				--gold: #d8bf7a;
+				--ink: #121418;
+				--sans: "Avenir Next", "Segoe UI", Arial, sans-serif;
+				--tracking: 0.16em;
+			}
+
+			*,
+			*::before,
+			*::after { box-sizing: border-box; }
+
+			html, body { margin: 0; padding: 0; }
+
+			body {
+				display: flex;
+				justify-content: center;
+				background:
+					radial-gradient(circle at 14% 14%, rgba(32, 216, 223, 0.14), transparent 18%),
+					radial-gradient(circle at 84% 10%, rgba(149, 127, 200, 0.12), transparent 18%),
+					linear-gradient(180deg, #141b29 0%, #0f151f 100%);
+				color: var(--text);
+				font-family: var(--sans);
+			}
+
+			.frame {
+				width: 1440px;
+				padding: 56px 64px 68px;
+				background: linear-gradient(180deg, rgba(16, 22, 33, 0.98), rgba(11, 15, 22, 1));
+			}
+
+			.head {
+				display: flex;
+				align-items: flex-end;
+				justify-content: space-between;
+				gap: 32px;
+				padding-bottom: 28px;
+				border-bottom: 1px solid var(--line);
+			}
+
+			.head__left {
+				display: flex;
+				align-items: center;
+				gap: 24px;
+			}
+
+			.head__left img { width: 112px; }
+
+			.head__title {
+				font-size: 42px;
+				line-height: 0.94;
+				letter-spacing: -0.03em;
+			}
+
+			.head__sub {
+				margin-top: 10px;
+				font-size: 12px;
+				font-weight: 900;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				color: var(--gold);
+			}
+
+			.head__right {
+				max-width: 430px;
+				font-size: 13px;
+				line-height: 1.64;
+				color: var(--muted);
+			}
+
+			.compare {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 28px;
+				margin-top: 36px;
+			}
+
+			.panel {
+				padding: 26px 28px 30px;
+				border: 1px solid var(--line);
+				background: var(--panel);
+			}
+
+			.tag {
+				display: inline-flex;
+				align-items: center;
+				padding: 8px 12px;
+				font-size: 11px;
+				font-weight: 900;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+			}
+
+			.panel--before .tag {
+				background: rgba(255, 255, 255, 0.08);
+				color: var(--muted);
+			}
+
+			.panel--after .tag {
+				background: var(--cyan);
+				color: var(--ink);
+			}
+
+			.panel h2 {
+				margin: 18px 0 14px;
+				font-size: 42px;
+				line-height: 0.96;
+				letter-spacing: -0.03em;
+			}
+
+			.panel p {
+				margin: 0;
+				font-size: 16px;
+				line-height: 1.68;
+				color: var(--muted);
+			}
+
+			.callouts {
+				display: grid;
+				grid-template-columns: repeat(4, 1fr);
+				gap: 24px;
+				margin-top: 40px;
+			}
+
+			.callout {
+				padding: 24px 22px 24px;
+				border: 1px solid var(--line);
+				background: var(--panel);
+				display: grid;
+				gap: 14px;
+			}
+
+			.callout__num {
+				width: 46px;
+				height: 46px;
+				display: grid;
+				place-items: center;
+				font-size: 26px;
+				font-weight: 900;
+				color: var(--ink);
+				background: var(--cyan);
+			}
+
+			.callout:nth-child(2) .callout__num { background: var(--gold); }
+			.callout:nth-child(3) .callout__num { background: var(--violet); color: #fff; }
+			.callout:nth-child(4) .callout__num { background: var(--orange); }
+
+			.callout h3 {
+				margin: 0;
+				font-size: 28px;
+				line-height: 0.98;
+				letter-spacing: -0.03em;
+			}
+
+			.callout p {
+				margin: 0;
+				font-size: 14px;
+				line-height: 1.64;
+				color: var(--muted);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="frame">
+			<header class="head">
+				<div class="head__left">
+					<img src="./assets/eubie-logo.png" alt="Eubie Blake Cultural Center" />
+					<div>
+						<div class="head__title">Eubie Blake homepage annotations</div>
+						<div class="head__sub">Canonical concept set</div>
+					</div>
+				</div>
+				<div class="head__right">This concept stays grounded in the live official site as of April 20, 2026: Roy Crosse is the clearest current exhibition, and Peabody @TheEubie! is the clearest upcoming dated performance. The redesign changes hierarchy and flow, not the institution's identity.</div>
+			</header>
+
+			<section class="compare">
+				<article class="panel panel--before">
+					<span class="tag">Before</span>
+					<h2>Mission first</h2>
+					<p>The live homepage leads with broad mission language before showing any specific program, date, or exhibition. A new visitor has to interpret the institution before they can tell what is actually happening there.</p>
+				</article>
+
+				<article class="panel panel--after">
+					<span class="tag">After</span>
+					<h2>Programming first</h2>
+					<p>The concept answers the basic visitor question immediately: what is on view now, when can I go, and what is the next dated event. The institution still feels like Eubie, but the sequence is more usable.</p>
+				</article>
+			</section>
+
+			<section class="callouts">
+				<article class="callout">
+					<div class="callout__num">1</div>
+					<h3>One clear hero story</h3>
+					<p>The current Roy Crosse exhibition becomes the single above-the-fold lead instead of competing with another abstract hero message.</p>
+				</article>
+
+				<article class="callout">
+					<div class="callout__num">2</div>
+					<h3>Exhibition image supports the story</h3>
+					<p>The featured poster stays visible, but it now supports the main content instead of creating a second panel the visitor has to decode separately.</p>
+				</article>
+
+				<article class="callout">
+					<div class="callout__num">3</div>
+					<h3>Coming up follows naturally</h3>
+					<p>Peabody @TheEubie! appears as the next step after the exhibition details and calls to action, which makes the homepage easier to scan in order.</p>
+				</article>
+
+				<article class="callout">
+					<div class="callout__num">4</div>
+					<h3>Program color cues come from the logo</h3>
+					<p>The brighter cyan, violet, yellow, orange, and green accents echo the portrait logo without turning the page into a full rebrand.</p>
+				</article>
+			</section>
+		</div>
+	</body>
+</html>

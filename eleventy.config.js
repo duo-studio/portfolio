@@ -32,6 +32,9 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy({
 		"./public/generated/styles/": "/styles/",
 	});
+	eleventyConfig.addPassthroughCopy({
+		"./public/concepts/": "/concepts/",
+	});
 
 	// Run Eleventy when these files change:
 	// https://www.11ty.dev/docs/watch-serve/#add-your-own-watch-targets

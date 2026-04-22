@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Eubie Blake Concept</title>
+		<link rel="stylesheet" href="./concept-shell.css" />
+	</head>
+	<body
+		style="
+			--shell-page: #ffffff;
+			--shell-bg-top: #222c41;
+			--shell-bg: #0f1319;
+			--shell-glow: rgba(32, 216, 223, 0.16);
+			--shell-frame: rgba(15, 13, 13, 0.12);
+			--shell-card: #ffffff;
+			--shell-fallback: #0f0d0d;
+			--shell-meta: #0f0d0d;
+		"
+	>
+		<main
+			class="concept-shell"
+			data-concept-shell
+			data-desktop="./eubie-blake-concept--desktop.html"
+			data-mobile="./eubie-blake-concept--mobile.html"
+			data-desktop-width="1440"
+			data-mobile-width="375"
+			data-mobile-breakpoint="767"
+		>
+			<div class="concept-meta" aria-hidden="true">
+				<div>Imagined concept for Eubie Blake by Duo Studio</div>
+				<div class="concept-meta__right">Preview only</div>
+			</div>
+			<section class="concept-stage" data-concept-stage>
+				<div class="concept-canvas-wrap">
+					<div class="concept-canvas" data-concept-canvas>
+						<iframe title="Eubie Blake homepage concept" loading="eager" scrolling="no"></iframe>
+					</div>
+				</div>
+			</section>
+			<noscript>
+				<p class="concept-shell__fallback">
+					<a href="./eubie-blake-concept--desktop.html">Open the desktop concept</a>
+					or
+					<a href="./eubie-blake-concept--mobile.html">open the mobile concept</a>.
+				</p>
+			</noscript>
+		</main>
+		<script src="./concept-shell.js"></script>
+	</body>
+</html>

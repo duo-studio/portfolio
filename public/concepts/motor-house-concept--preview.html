@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Motor House · Homepage Concept · Preview</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<style>
+			:root {
+				--bg: #060504;
+				--panel: #120e0b;
+				--panel-soft: #17120f;
+				--ink: #fffaf3;
+				--ink-soft: #d1c4b3;
+				--ink-mute: #8f8171;
+				--rule: rgba(255, 233, 209, 0.12);
+				--orange: #ea5a1f;
+				--orange-ink: #1d1008;
+				--f-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+				--f-display: "Archivo", "Inter", "Helvetica Neue", Arial, sans-serif;
+				--tracking: 0.14em;
+			}
+
+			*,
+			*::before,
+			*::after {
+				box-sizing: border-box;
+			}
+
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				min-width: 1980px;
+				background:
+					radial-gradient(circle at top, rgba(234, 90, 31, 0.08), transparent 22%),
+					var(--bg);
+				color: var(--ink-soft);
+				font-family: var(--f-sans);
+				-webkit-font-smoothing: antialiased;
+			}
+
+			a {
+				color: inherit;
+				text-decoration: none;
+			}
+
+			.pasteboard {
+				padding: 72px 72px 96px;
+				display: grid;
+				grid-template-columns: 1440px 420px;
+				gap: 56px;
+				align-items: start;
+			}
+
+			.meta-bar {
+				display: grid;
+				grid-template-columns: 280px 1fr;
+				gap: 56px;
+				align-items: start;
+				margin-bottom: 20px;
+				padding: 0 4px;
+			}
+
+			.headline {
+				font-family: var(--f-display);
+				font-size: 38px;
+				font-weight: 800;
+				line-height: 0.95;
+				letter-spacing: -0.03em;
+				color: var(--ink);
+			}
+
+			.deck {
+				max-width: 860px;
+				font-size: 14px;
+				line-height: 1.65;
+				color: var(--ink-soft);
+			}
+
+			.deck strong {
+				color: var(--orange);
+				font-weight: 700;
+			}
+
+			.pills {
+				display: flex;
+				gap: 10px;
+				margin-top: 18px;
+				flex-wrap: wrap;
+			}
+
+			.pill {
+				display: inline-flex;
+				align-items: center;
+				padding: 7px 12px;
+				border: 1px solid var(--rule);
+				font-size: 10px;
+				font-weight: 700;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				color: var(--ink-mute);
+			}
+
+			.pill--hot {
+				border-color: rgba(234, 90, 31, 0.4);
+				color: var(--orange);
+			}
+
+			.label-row {
+				display: flex;
+				align-items: baseline;
+				justify-content: space-between;
+				padding: 0 4px;
+				margin-bottom: 14px;
+				font-size: 11px;
+				font-weight: 700;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				color: var(--ink-mute);
+			}
+
+			.frame-shell {
+				background: #0f0b09;
+				border: 1px solid rgba(255, 255, 255, 0.06);
+				box-shadow:
+					0 34px 110px rgba(0, 0, 0, 0.65),
+					0 12px 34px rgba(0, 0, 0, 0.44);
+				overflow: hidden;
+			}
+
+			.frame-shell--desktop {
+				width: 1440px;
+			}
+
+			.frame-shell--mobile {
+				width: 375px;
+				margin: 0 auto;
+			}
+
+			iframe {
+				display: block;
+				width: 100%;
+				border: 0;
+				background: transparent;
+			}
+
+			.desktop-frame {
+				height: 1080px;
+			}
+
+			.mobile-frame {
+				height: 1240px;
+			}
+
+			.sidebar {
+				position: sticky;
+				top: 28px;
+				display: grid;
+				gap: 20px;
+			}
+
+			.card {
+				padding: 22px;
+				background: linear-gradient(180deg, var(--panel) 0%, var(--panel-soft) 100%);
+				border: 1px solid var(--rule);
+			}
+
+			.card h2,
+			.card h3 {
+				margin: 0;
+				font-family: var(--f-display);
+				color: var(--ink);
+				letter-spacing: -0.02em;
+			}
+
+			.card h2 {
+				font-size: 26px;
+				line-height: 1;
+			}
+
+			.card h3 {
+				font-size: 20px;
+				line-height: 1.05;
+			}
+
+			.card p {
+				margin: 12px 0 0;
+				font-size: 13px;
+				line-height: 1.6;
+				color: var(--ink-soft);
+			}
+
+			.links {
+				display: grid;
+				gap: 10px;
+				margin-top: 18px;
+			}
+
+			.links a {
+				display: inline-flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 14px;
+				padding: 12px 14px;
+				border: 1px solid var(--rule);
+				font-size: 10px;
+				font-weight: 800;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				color: var(--ink);
+			}
+
+			.links a span {
+				color: var(--orange);
+			}
+
+			.notes {
+				margin: 14px 0 0;
+				padding-left: 18px;
+				display: grid;
+				gap: 10px;
+				font-size: 13px;
+				line-height: 1.55;
+				color: var(--ink-soft);
+			}
+
+		</style>
+	</head>
+	<body>
+		<div class="pasteboard">
+			<div>
+				<div class="meta-bar">
+					<div class="headline">Motor House Concept</div>
+					<div>
+						<div class="deck">
+							This version makes the homepage feel like a live program landing page.
+							<strong>DAT FEEL GOOD</strong> leads the first view, while the next three
+							events stay visible inside the same dark, warm stage instead of dropping
+							into a separate strip.
+						</div>
+						<div class="pills">
+							<span class="pill pill--hot">Desktop Canonical</span>
+							<span class="pill">Mobile Companion</span>
+							<span class="pill">Annotations Separate</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="label-row">
+					<span><strong>Desktop Frame</strong></span>
+					<span>1440 × 900 shareable artboard</span>
+				</div>
+				<div class="frame-shell frame-shell--desktop">
+					<iframe
+						class="desktop-frame"
+						src="./motor-house-concept--desktop.html"
+						title="Motor House desktop concept"
+					></iframe>
+				</div>
+			</div>
+
+			<div class="sidebar">
+				<div class="card card--review">
+					<h2>Review Set</h2>
+					<p>
+						Desktop is now the default concept direction. Mobile follows the same
+						full-bleed event-first structure, and the annotation page stays separate.
+					</p>
+
+					<div class="links">
+						<a href="./motor-house-concept--desktop.html">Open desktop <span>→</span></a>
+						<a href="./motor-house-concept--mobile.html">Open mobile <span>→</span></a>
+						<a href="./motor-house-concept--annotations.html">Open annotations <span>→</span></a>
+					</div>
+				</div>
+
+				<div>
+					<div class="label-row">
+						<span><strong>Mobile Frame</strong></span>
+						<span>375 × 812 companion</span>
+					</div>
+					<div class="frame-shell frame-shell--mobile">
+						<iframe
+							class="mobile-frame"
+							src="./motor-house-concept--mobile.html"
+							title="Motor House mobile concept"
+						></iframe>
+					</div>
+				</div>
+
+				<div class="card card--summary">
+					<h3>In This Concept</h3>
+					<ul class="notes">
+						<li>The featured event occupies the homepage hero.</li>
+						<li>The next three events stay visible within the same first-view composition.</li>
+						<li>About content remains on the page, but below the programming.</li>
+						<li>The existing Motor House palette, logo, and tone stay intact.</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

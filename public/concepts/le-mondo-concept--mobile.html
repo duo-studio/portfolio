@@ -1,0 +1,651 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Le Mondo · Homepage Concept · Mobile 375</title>
+		<meta name="viewport" content="width=375" />
+		<style>
+			:root {
+				--ink: #23111f;
+				--paper: #fff4df;
+				--paper-cool: #f4efff;
+				--cream: #fff8ef;
+				--plum: #5f335f;
+				--plum-deep: #381934;
+				--pink: #ff67a9;
+				--orange: #ff9255;
+				--peach: #ffc38b;
+				--mint: #58d7cf;
+				--lilac: #c3bef7;
+				--yellow: #ffe36d;
+				--outline: #1f1120;
+				--f-display: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+				--f-sans: "Trebuchet MS", "Avenir Next", "Segoe UI", Arial, sans-serif;
+				--tracking: 0.12em;
+			}
+
+			*,
+			*::before,
+			*::after {
+				box-sizing: border-box;
+			}
+
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+			}
+
+			html {
+				background: #170b15;
+			}
+
+			body {
+				display: flex;
+				justify-content: center;
+				background:
+					radial-gradient(circle at 12% 14%, rgba(255, 103, 169, 0.16), transparent 18%),
+					radial-gradient(circle at 82% 18%, rgba(88, 215, 207, 0.18), transparent 18%),
+					#170b15;
+				font-family: var(--f-sans);
+				color: var(--ink);
+			}
+
+			a {
+				color: inherit;
+				text-decoration: none;
+			}
+
+			img {
+				display: block;
+				max-width: 100%;
+			}
+
+			.frame {
+				position: relative;
+				width: 375px;
+				min-height: 1530px;
+				padding: 14px 14px 44px;
+				overflow: hidden;
+				background:
+					linear-gradient(180deg, rgba(255, 244, 223, 0.96), rgba(255, 238, 211, 0.98)),
+					var(--paper);
+			}
+
+			.frame::before,
+			.frame::after {
+				content: "";
+				position: absolute;
+				border-radius: 999px;
+				pointer-events: none;
+			}
+
+			.frame::before {
+				width: 132px;
+				height: 132px;
+				left: -40px;
+				top: 112px;
+				background: rgba(88, 215, 207, 0.18);
+			}
+
+			.frame::after {
+				width: 120px;
+				height: 120px;
+				right: -32px;
+				top: 276px;
+				background: rgba(255, 103, 169, 0.16);
+			}
+
+			.bar {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				padding: 6px 2px 14px;
+				position: relative;
+				z-index: 2;
+			}
+
+			.bar img {
+				width: 132px;
+				height: auto;
+			}
+
+			.menu {
+				width: 48px;
+				height: 48px;
+				display: grid;
+				place-items: center;
+				border: 2px solid var(--outline);
+				background: var(--paper-cool);
+				box-shadow: 6px 6px 0 rgba(35, 17, 31, 0.1);
+			}
+
+			.menu span {
+				display: block;
+				width: 18px;
+				height: 2px;
+				background: var(--outline);
+				box-shadow:
+					0 -6px 0 var(--outline),
+					0 6px 0 var(--outline);
+			}
+
+			.utility {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 8px;
+				padding-bottom: 14px;
+				font-size: 10px;
+				font-weight: 800;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				color: var(--plum);
+				position: relative;
+				z-index: 2;
+			}
+
+			.utility span,
+			.utility a {
+				display: inline-flex;
+				align-items: center;
+				padding: 7px 9px;
+				background: rgba(255, 255, 255, 0.62);
+				border: 2px solid var(--outline);
+			}
+
+			.hero {
+				position: relative;
+				z-index: 2;
+				padding: 14px;
+				background: var(--cream);
+				border: 3px solid var(--outline);
+				box-shadow: 0 18px 32px rgba(35, 17, 31, 0.18);
+			}
+
+			.hero__kickers {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 8px;
+				margin-bottom: 14px;
+			}
+
+			.kicker {
+				display: inline-flex;
+				align-items: center;
+				padding: 8px 10px;
+				border: 2px solid var(--outline);
+				font-size: 10px;
+				font-weight: 800;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				box-shadow: 5px 5px 0 rgba(35, 17, 31, 0.1);
+			}
+
+			.kicker--orange {
+				background: var(--orange);
+				transform: rotate(-2deg);
+			}
+
+			.kicker--mint {
+				background: var(--mint);
+				transform: rotate(2deg);
+			}
+
+			.poster {
+				position: relative;
+				padding: 12px;
+				background: var(--paper-cool);
+				border: 3px solid var(--outline);
+				box-shadow: 10px 10px 0 rgba(95, 51, 95, 0.16);
+				transform: rotate(-2deg);
+				margin-bottom: 18px;
+			}
+
+			.poster::before {
+				content: "";
+				position: absolute;
+				left: 50%;
+				top: -14px;
+				width: 84px;
+				height: 22px;
+				transform: translateX(-50%) rotate(-4deg);
+				background: rgba(255, 227, 109, 0.94);
+				border: 2px solid var(--outline);
+			}
+
+			.poster img {
+				width: 100%;
+				aspect-ratio: 1206 / 1609;
+				object-fit: cover;
+				border: 2px solid var(--outline);
+			}
+
+			.date-note {
+				position: absolute;
+				right: 8px;
+				bottom: 16px;
+				padding: 8px 10px;
+				background: var(--mint);
+				border: 2px solid var(--outline);
+				font-size: 10px;
+				font-weight: 800;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				transform: rotate(4deg);
+				box-shadow: 6px 6px 0 rgba(35, 17, 31, 0.1);
+			}
+
+			.title-stack {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 8px;
+				margin-bottom: 14px;
+			}
+
+			.title-chip {
+				display: inline-block;
+				padding: 10px 14px 8px;
+				border: 3px solid var(--outline);
+				font-family: var(--f-display);
+				font-size: 42px;
+				line-height: 0.92;
+				letter-spacing: 0.02em;
+				text-transform: uppercase;
+				box-shadow: 8px 8px 0 rgba(35, 17, 31, 0.1);
+			}
+
+			.title-chip--purple {
+				background: var(--lilac);
+				color: var(--plum-deep);
+				transform: rotate(-1.5deg);
+			}
+
+			.title-chip--pink {
+				background: var(--pink);
+				color: #fff7fc;
+				transform: rotate(1deg);
+			}
+
+			.title-chip--mint {
+				background: var(--mint);
+				transform: rotate(-1deg);
+			}
+
+			.meta {
+				display: flex;
+				flex-direction: column;
+				gap: 6px;
+				margin-bottom: 14px;
+				font-size: 12px;
+				font-weight: 800;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				color: var(--plum);
+			}
+
+			.desc {
+				margin: 0 0 14px;
+				font-size: 15px;
+				line-height: 1.5;
+				color: rgba(35, 17, 31, 0.84);
+			}
+
+			.badges {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 8px;
+				margin-bottom: 16px;
+			}
+
+			.badges span {
+				display: inline-flex;
+				align-items: center;
+				padding: 8px 10px;
+				border: 2px solid var(--outline);
+				background: white;
+				font-size: 10px;
+				font-weight: 800;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+			}
+
+			.ctas {
+				display: flex;
+				flex-direction: column;
+				gap: 10px;
+			}
+
+			.btn {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				padding: 14px 16px;
+				border: 2px solid var(--outline);
+				font-size: 11px;
+				font-weight: 800;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				box-shadow: 8px 8px 0 rgba(35, 17, 31, 0.1);
+			}
+
+			.btn--primary {
+				background: var(--orange);
+			}
+
+			.btn--secondary {
+				background: var(--paper-cool);
+			}
+
+			.events {
+				position: relative;
+				z-index: 2;
+				margin-top: 18px;
+				padding: 14px;
+				border: 3px solid var(--outline);
+				background: rgba(95, 51, 95, 0.94);
+				color: #fff8ef;
+				box-shadow: 0 18px 32px rgba(35, 17, 31, 0.18);
+			}
+
+			.events__label {
+				display: inline-flex;
+				align-items: center;
+				padding: 8px 10px;
+				background: var(--mint);
+				border: 2px solid var(--outline);
+				color: var(--outline);
+				font-size: 10px;
+				font-weight: 800;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				box-shadow: 5px 5px 0 rgba(35, 17, 31, 0.18);
+			}
+
+			.events h2 {
+				margin: 16px 0 10px;
+				font-family: var(--f-display);
+				font-size: 36px;
+				line-height: 0.95;
+				letter-spacing: 0.02em;
+				text-transform: uppercase;
+			}
+
+			.events-list {
+				display: flex;
+				flex-direction: column;
+				gap: 12px;
+			}
+
+			.event {
+				display: grid;
+				grid-template-columns: 78px minmax(0, 1fr);
+				gap: 10px;
+				padding: 10px;
+				background: rgba(255, 248, 239, 0.12);
+				border: 2px solid rgba(255, 255, 255, 0.16);
+			}
+
+			.event img {
+				width: 78px;
+				height: 78px;
+				object-fit: cover;
+				border: 2px solid var(--outline);
+			}
+
+			.event__title {
+				font-family: var(--f-display);
+				font-size: 22px;
+				line-height: 0.96;
+				letter-spacing: 0.02em;
+				text-transform: uppercase;
+				margin-bottom: 8px;
+			}
+
+			.event__meta {
+				font-size: 11px;
+				font-weight: 800;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				color: var(--peach);
+				margin-bottom: 6px;
+			}
+
+			.event__cta {
+				font-size: 10px;
+				font-weight: 800;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				text-decoration: underline;
+				text-decoration-thickness: 2px;
+				text-underline-offset: 4px;
+			}
+
+			.event-foot {
+				margin-top: 12px;
+				padding: 10px 12px;
+				background: rgba(255, 227, 109, 0.94);
+				border: 2px solid var(--outline);
+				color: var(--outline);
+				font-size: 10px;
+				font-weight: 800;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				transform: rotate(-1deg);
+				box-shadow: 6px 6px 0 rgba(35, 17, 31, 0.18);
+			}
+
+			.about,
+			.member {
+				position: relative;
+				z-index: 2;
+				margin-top: 18px;
+				padding: 16px;
+				border: 3px solid var(--outline);
+				box-shadow: 0 18px 32px rgba(35, 17, 31, 0.18);
+			}
+
+			.about {
+				background: rgba(255, 248, 239, 0.92);
+			}
+
+			.member {
+				background: linear-gradient(180deg, #fff8ef 0%, #ffe7f3 100%);
+			}
+
+			.section-tag {
+				display: inline-flex;
+				align-items: center;
+				padding: 8px 10px;
+				border: 2px solid var(--outline);
+				background: var(--lilac);
+				font-size: 10px;
+				font-weight: 800;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				box-shadow: 5px 5px 0 rgba(35, 17, 31, 0.1);
+			}
+
+			.about p,
+			.member p {
+				margin: 14px 0 0;
+				font-size: 15px;
+				line-height: 1.5;
+				color: rgba(35, 17, 31, 0.84);
+			}
+
+			.about strong {
+				background: linear-gradient(180deg, transparent 58%, rgba(255, 227, 109, 0.78) 58%);
+			}
+
+			.member h2 {
+				margin: 14px 0 0;
+				font-family: var(--f-display);
+				font-size: 34px;
+				line-height: 0.96;
+				letter-spacing: 0.02em;
+				text-transform: uppercase;
+				color: var(--plum-deep);
+			}
+
+			.member .btn {
+				margin-top: 14px;
+			}
+
+			.fold {
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 812px;
+				border-top: 1px dashed rgba(95, 51, 95, 0.46);
+				pointer-events: none;
+				z-index: 20;
+			}
+
+			.fold::after {
+				content: "375 x 812 FOLD";
+				position: absolute;
+				right: 10px;
+				top: -18px;
+				padding: 3px 7px;
+				background: var(--paper);
+				color: var(--plum);
+				font-size: 9px;
+				font-weight: 800;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+			}
+
+			body.nofold .fold {
+				display: none;
+			}
+		</style>
+	</head>
+	<body class="nofold">
+		<div class="frame">
+			<div class="bar">
+				<img src="./assets/le-mondo-logo.png" alt="Le Mondo" />
+				<div class="menu" aria-hidden="true"><span></span></div>
+			</div>
+
+			<div class="utility">
+				<a href="https://www.lemondo.org/calendar">Shows</a>
+				<span>406 N Howard St</span>
+				<a href="https://www.lemondo.org/memberships">Memberships</a>
+			</div>
+
+			<section class="hero">
+				<div class="hero__kickers">
+					<span class="kicker kicker--orange">Featured This Week</span>
+					<span class="kicker kicker--mint">QTIBIPOC bass collective</span>
+				</div>
+
+				<div class="poster">
+					<img src="./assets/le-mondo-digital-xscape.jpeg" alt="DJ/RAVE: DIGITAL XSCAPE poster" />
+					<div class="date-note">Fri Apr 24 · 9 PM</div>
+				</div>
+
+				<div class="title-stack">
+					<span class="title-chip title-chip--purple">DJ/RAVE:</span>
+					<span class="title-chip title-chip--pink">Digital</span>
+					<span class="title-chip title-chip--mint">Xscape</span>
+				</div>
+
+				<div class="meta">
+					<span>Fri, Apr 24</span>
+					<span>9:00 PM · Le Mondo</span>
+					<span>406 N Howard St · Baltimore</span>
+				</div>
+
+				<p class="desc">
+					A QTIBIPOC collective bringing the bass to Baltimore. ARE YOU READY 2
+					XSCAPE?
+				</p>
+
+				<div class="badges">
+					<span>18+</span>
+					<span>$10-20</span>
+					<span>NOTAFLOF</span>
+				</div>
+
+				<div class="ctas">
+					<a class="btn btn--primary" href="https://www.lemondo.org/events/dj-rave-digital-xscape-6">
+						Get Tickets
+					</a>
+					<a class="btn btn--secondary" href="https://www.lemondo.org/calendar">
+						Full Calendar of Events
+					</a>
+				</div>
+			</section>
+
+			<section class="events">
+				<div class="events__label">Next 3 on the calendar</div>
+				<h2>What else is on?</h2>
+				<div class="events-list">
+					<a class="event" href="https://www.lemondo.org/events/dj-music-lockbox">
+						<img src="./assets/le-mondo-lockbox.jpeg" alt="DJ/MUSIC: Lockbox poster" />
+						<div>
+							<div class="event__title">DJ/MUSIC: Lockbox</div>
+							<div class="event__meta">Sat, Apr 25 · 8:00 PM</div>
+							<div class="event__cta">Get Tickets</div>
+						</div>
+					</a>
+
+					<a class="event" href="https://www.lemondo.org/events/music-bath-sallts-2026-04-26-14-30">
+						<img src="./assets/le-mondo-bath-sallts.png" alt="MUSIC: BATH SALLTS poster" />
+						<div>
+							<div class="event__title">MUSIC: BATH SALLTS</div>
+							<div class="event__meta">Sun, Apr 26 · 2:30 PM</div>
+							<div class="event__cta">Get Tickets</div>
+						</div>
+					</a>
+
+					<a class="event" href="https://www.lemondo.org/events/embodied-acting-workshop-series-2026-04-28-18-30">
+						<img src="./assets/le-mondo-embodied.png" alt="Embodied Acting: Workshop Series poster" />
+						<div>
+							<div class="event__title">Embodied Acting: Workshop Series</div>
+							<div class="event__meta">Tue, Apr 28 · 6:30 PM</div>
+							<div class="event__cta">RSVP</div>
+						</div>
+					</a>
+				</div>
+
+				<div class="event-foot">
+					Also on Sunday night: MUSIC: b00b + Trash Rocket + sleeptalk
+				</div>
+			</section>
+
+			<section class="about">
+				<div class="section-tag">What Le Mondo Is</div>
+				<p>
+					Le Mondo is an <strong>artist-owned performance venue and bar</strong>
+					offering theater, music, and multidisciplinary arts programming, studio
+					spaces, music practice and rehearsal space, and affordable event rentals.
+				</p>
+			</section>
+
+			<section class="member">
+				<div class="section-tag">Membership</div>
+				<h2>Join the Club</h2>
+				<p>
+					Say YES to local, independent, artist-driven space for art. Tap into
+					community and get exposed to daring new artists and performance work from
+					down your street to across the world.
+				</p>
+				<a class="btn btn--primary" href="https://www.lemondo.org/memberships">
+					Join the Club
+				</a>
+			</section>
+
+			<div class="fold"></div>
+		</div>
+
+		<script>
+			document.addEventListener("keydown", function (event) {
+				if (event.key === "f" || event.key === "F") {
+					document.body.classList.toggle("nofold");
+				}
+			});
+		</script>
+	</body>
+</html>

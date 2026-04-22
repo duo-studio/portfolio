@@ -1,0 +1,939 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Le Mondo · Homepage Concept · Desktop 1440</title>
+		<meta name="viewport" content="width=1440" />
+		<style>
+			:root {
+				--page: #23111f;
+				--ink: #23111f;
+				--paper: #fff4df;
+				--paper-warm: #ffe8c5;
+				--paper-cool: #f4efff;
+				--cream: #fff8ef;
+				--plum: #5f335f;
+				--plum-deep: #381934;
+				--pink: #ff67a9;
+				--orange: #ff9255;
+				--peach: #ffc38b;
+				--mint: #58d7cf;
+				--lilac: #c3bef7;
+				--yellow: #ffe36d;
+				--outline: #1f1120;
+				--shadow: 0 16px 0 rgba(35, 17, 31, 0.15);
+				--shadow-card: 0 18px 36px rgba(35, 17, 31, 0.18);
+				--f-display: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+				--f-sans: "Trebuchet MS", "Avenir Next", "Segoe UI", Arial, sans-serif;
+				--tracking: 0.12em;
+			}
+
+			*,
+			*::before,
+			*::after {
+				box-sizing: border-box;
+			}
+
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+			}
+
+			html {
+				background: #170b15;
+			}
+
+			body {
+				display: flex;
+				justify-content: center;
+				background:
+					radial-gradient(circle at 12% 14%, rgba(255, 103, 169, 0.16), transparent 18%),
+					radial-gradient(circle at 88% 18%, rgba(88, 215, 207, 0.16), transparent 20%),
+					radial-gradient(circle at 50% 84%, rgba(255, 227, 109, 0.12), transparent 22%),
+					#170b15;
+				font-family: var(--f-sans);
+				color: var(--ink);
+			}
+
+			a {
+				color: inherit;
+				text-decoration: none;
+			}
+
+			img {
+				display: block;
+				max-width: 100%;
+			}
+
+			.frame {
+				position: relative;
+				width: 1440px;
+				overflow: hidden;
+				background:
+					linear-gradient(180deg, rgba(255, 244, 223, 0.96), rgba(255, 239, 214, 0.98)),
+					var(--paper);
+			}
+
+			.frame::before,
+			.frame::after {
+				content: "";
+				position: absolute;
+				border-radius: 999px;
+				pointer-events: none;
+				opacity: 0.9;
+			}
+
+			.frame::before {
+				width: 260px;
+				height: 260px;
+				left: -74px;
+				top: 128px;
+				background: rgba(88, 215, 207, 0.18);
+			}
+
+			.frame::after {
+				width: 220px;
+				height: 220px;
+				right: -80px;
+				top: 224px;
+				background: rgba(255, 103, 169, 0.16);
+			}
+
+			.topline {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				padding: 18px 40px 14px;
+				font-size: 11px;
+				font-weight: 700;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				color: var(--plum);
+			}
+
+			.topline__left,
+			.topline__right {
+				display: flex;
+				align-items: center;
+				gap: 18px;
+			}
+
+			.topline__right a {
+				text-decoration: underline;
+				text-decoration-thickness: 2px;
+				text-underline-offset: 4px;
+			}
+
+			.nav {
+				margin: 0 28px;
+				padding: 18px 24px;
+				display: grid;
+				grid-template-columns: auto 1fr auto;
+				align-items: center;
+				gap: 28px;
+				border: 2px solid var(--outline);
+				background: rgba(255, 248, 239, 0.9);
+				box-shadow: 0 12px 0 rgba(95, 51, 95, 0.12);
+				position: relative;
+				z-index: 2;
+			}
+
+			.nav__logo img {
+				width: 198px;
+				height: auto;
+			}
+
+			.nav__main {
+				display: flex;
+				align-items: center;
+				flex-wrap: wrap;
+				gap: 18px 22px;
+				justify-content: center;
+			}
+
+			.nav__main a,
+			.nav__main span,
+			.nav__secondary a {
+				font-size: 12px;
+				font-weight: 700;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				color: var(--plum);
+			}
+
+			.nav__main a.is-active {
+				color: var(--outline);
+				background: var(--yellow);
+				padding: 8px 12px;
+				border: 2px solid var(--outline);
+				transform: rotate(-2deg);
+				box-shadow: 6px 6px 0 rgba(35, 17, 31, 0.12);
+			}
+
+			.nav__secondary {
+				display: flex;
+				align-items: center;
+				gap: 12px;
+				justify-content: flex-end;
+			}
+
+			.ticket-chip {
+				display: inline-flex;
+				align-items: center;
+				gap: 10px;
+				padding: 11px 14px;
+				background: var(--mint);
+				border: 2px solid var(--outline);
+				font-size: 11px;
+				font-weight: 800;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				box-shadow: 6px 6px 0 rgba(35, 17, 31, 0.12);
+				transform: rotate(2deg);
+			}
+
+			.subnav {
+				padding: 14px 46px 0;
+				display: flex;
+				gap: 18px;
+				flex-wrap: wrap;
+				align-items: center;
+				font-size: 11px;
+				font-weight: 700;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				color: rgba(95, 51, 95, 0.88);
+			}
+
+			.subnav a {
+				position: relative;
+			}
+
+			.subnav a + a::before {
+				content: "•";
+				position: absolute;
+				left: -11px;
+				color: var(--orange);
+			}
+
+			.hero {
+				padding: 26px 28px 0;
+				display: grid;
+				grid-template-columns: minmax(0, 1.6fr) minmax(340px, 0.9fr);
+				gap: 24px;
+				align-items: start;
+			}
+
+			.featured {
+				position: relative;
+				padding: 26px;
+				background:
+					linear-gradient(135deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0)),
+					var(--cream);
+				border: 3px solid var(--outline);
+				box-shadow: var(--shadow-card);
+				display: grid;
+				grid-template-columns: 352px minmax(0, 1fr);
+				gap: 26px;
+				align-items: start;
+				min-height: 586px;
+				overflow: hidden;
+			}
+
+			.featured::before {
+				content: "";
+				position: absolute;
+				right: -28px;
+				bottom: 34px;
+				width: 214px;
+				height: 214px;
+				background: rgba(195, 190, 247, 0.58);
+				border-radius: 48% 52% 44% 56%;
+				transform: rotate(18deg);
+			}
+
+			.featured::after {
+				content: "";
+				position: absolute;
+				left: 286px;
+				top: 34px;
+				width: 118px;
+				height: 118px;
+				background: rgba(255, 227, 109, 0.66);
+				border-radius: 18px;
+				transform: rotate(-14deg);
+			}
+
+			.poster-wrap {
+				position: relative;
+				z-index: 1;
+			}
+
+			.poster-frame {
+				position: relative;
+				padding: 16px;
+				background: var(--paper-cool);
+				border: 3px solid var(--outline);
+				box-shadow: 12px 12px 0 rgba(95, 51, 95, 0.18);
+				transform: rotate(-3deg);
+			}
+
+			.poster-frame::before,
+			.poster-frame::after {
+				content: "";
+				position: absolute;
+				width: 96px;
+				height: 26px;
+				background: rgba(255, 227, 109, 0.9);
+				border: 2px solid var(--outline);
+				left: 50%;
+				transform: translateX(-50%) rotate(-4deg);
+			}
+
+			.poster-frame::before {
+				top: -16px;
+			}
+
+			.poster-frame::after {
+				bottom: -16px;
+			}
+
+			.poster-frame img {
+				aspect-ratio: 1206 / 1609;
+				width: 100%;
+				object-fit: cover;
+				border: 2px solid var(--outline);
+				background: #eee0ff;
+			}
+
+			.poster-note {
+				position: absolute;
+				right: -8px;
+				bottom: 18px;
+				padding: 10px 12px;
+				background: var(--mint);
+				border: 2px solid var(--outline);
+				font-size: 11px;
+				font-weight: 800;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				box-shadow: 8px 8px 0 rgba(35, 17, 31, 0.12);
+				transform: rotate(5deg);
+				z-index: 2;
+			}
+
+			.featured__copy {
+				position: relative;
+				z-index: 2;
+				display: flex;
+				flex-direction: column;
+				gap: 18px;
+			}
+
+			.kicker-row {
+				display: flex;
+				align-items: center;
+				flex-wrap: wrap;
+				gap: 10px 12px;
+			}
+
+			.kicker,
+			.bubble {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				min-height: 34px;
+				padding: 8px 12px;
+				border: 2px solid var(--outline);
+				font-size: 11px;
+				font-weight: 800;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				box-shadow: 5px 5px 0 rgba(35, 17, 31, 0.1);
+			}
+
+			.kicker {
+				background: var(--orange);
+				transform: rotate(-2deg);
+			}
+
+			.bubble {
+				background: var(--lilac);
+				transform: rotate(2deg);
+			}
+
+			.title-stack {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 10px;
+			}
+
+			.title-chip {
+				display: inline-block;
+				padding: 12px 18px 10px;
+				border: 3px solid var(--outline);
+				font-family: var(--f-display);
+				font-size: 64px;
+				line-height: 0.9;
+				letter-spacing: 0.02em;
+				text-transform: uppercase;
+				box-shadow: 10px 10px 0 rgba(35, 17, 31, 0.12);
+			}
+
+			.title-chip--purple {
+				background: var(--lilac);
+				color: var(--plum-deep);
+				transform: rotate(-1.5deg);
+			}
+
+			.title-chip--pink {
+				background: var(--pink);
+				color: #fff6fb;
+				transform: rotate(1.1deg);
+			}
+
+			.title-chip--mint {
+				background: var(--mint);
+				color: var(--outline);
+				transform: rotate(-1deg);
+			}
+
+			.when {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 10px 12px;
+				font-size: 14px;
+				font-weight: 700;
+				line-height: 1.4;
+				color: var(--plum-deep);
+			}
+
+			.when span {
+				display: inline-flex;
+				align-items: center;
+				gap: 12px;
+			}
+
+			.when span + span::before {
+				content: "/";
+				color: rgba(95, 51, 95, 0.5);
+				font-weight: 700;
+			}
+
+			.featured__desc {
+				max-width: 444px;
+				margin: 0;
+				font-size: 17px;
+				line-height: 1.5;
+				color: rgba(35, 17, 31, 0.82);
+			}
+
+			.badges {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 10px;
+			}
+
+			.badge {
+				display: inline-flex;
+				align-items: center;
+				padding: 9px 12px;
+				border: 2px solid var(--outline);
+				background: #fff;
+				font-size: 11px;
+				font-weight: 800;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+			}
+
+			.ctas {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 12px;
+				align-items: center;
+			}
+
+			.btn {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				padding: 14px 18px;
+				border: 2px solid var(--outline);
+				font-size: 12px;
+				font-weight: 800;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				box-shadow: 8px 8px 0 rgba(35, 17, 31, 0.1);
+			}
+
+			.btn--primary {
+				background: var(--orange);
+			}
+
+			.btn--secondary {
+				background: var(--paper-cool);
+			}
+
+			.featured__foot {
+				display: flex;
+				align-items: center;
+				flex-wrap: wrap;
+				gap: 12px;
+				padding-top: 10px;
+				font-size: 11px;
+				font-weight: 700;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				color: var(--plum);
+			}
+
+			.featured__foot strong {
+				color: var(--outline);
+			}
+
+			.sidebar {
+				position: relative;
+				z-index: 1;
+				padding: 20px;
+				background: rgba(95, 51, 95, 0.94);
+				color: #fff9f1;
+				border: 3px solid var(--outline);
+				box-shadow: var(--shadow-card);
+			}
+
+			.sidebar::before {
+				content: "";
+				position: absolute;
+				left: -18px;
+				top: 28px;
+				width: 56px;
+				height: 56px;
+				background: var(--yellow);
+				border: 2px solid var(--outline);
+				transform: rotate(-16deg);
+			}
+
+			.sidebar__inner {
+				position: relative;
+				z-index: 1;
+			}
+
+			.sidebar__eyebrow {
+				display: inline-flex;
+				align-items: center;
+				padding: 8px 12px;
+				background: var(--mint);
+				border: 2px solid var(--outline);
+				color: var(--outline);
+				font-size: 11px;
+				font-weight: 800;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				box-shadow: 6px 6px 0 rgba(35, 17, 31, 0.18);
+				transform: rotate(2deg);
+			}
+
+			.sidebar__title {
+				margin: 22px 0 8px;
+				font-family: var(--f-display);
+				font-size: 44px;
+				line-height: 0.96;
+				letter-spacing: 0.02em;
+				text-transform: uppercase;
+			}
+
+			.sidebar__deck {
+				margin: 0 0 18px;
+				font-size: 14px;
+				line-height: 1.5;
+				color: rgba(255, 249, 241, 0.82);
+			}
+
+			.stack {
+				display: flex;
+				flex-direction: column;
+				gap: 14px;
+			}
+
+			.event {
+				display: grid;
+				grid-template-columns: 86px minmax(0, 1fr);
+				gap: 12px;
+				padding: 12px;
+				background: rgba(255, 248, 239, 0.12);
+				border: 2px solid rgba(255, 255, 255, 0.18);
+			}
+
+			.event:nth-child(2) {
+				transform: rotate(-1deg);
+			}
+
+			.event:nth-child(3) {
+				transform: rotate(1deg);
+			}
+
+			.event img {
+				width: 86px;
+				height: 86px;
+				object-fit: cover;
+				border: 2px solid var(--outline);
+				background: rgba(255, 255, 255, 0.2);
+			}
+
+			.event__title {
+				font-family: var(--f-display);
+				font-size: 24px;
+				line-height: 0.96;
+				text-transform: uppercase;
+				letter-spacing: 0.02em;
+				margin-bottom: 8px;
+			}
+
+			.event__meta {
+				font-size: 12px;
+				font-weight: 700;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				color: var(--peach);
+			}
+
+			.event__cta {
+				display: inline-block;
+				margin-top: 8px;
+				font-size: 11px;
+				font-weight: 800;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				text-decoration: underline;
+				text-decoration-thickness: 2px;
+				text-underline-offset: 4px;
+			}
+
+			.sidebar__tail {
+				margin-top: 18px;
+				padding: 12px 14px;
+				background: rgba(255, 227, 109, 0.94);
+				border: 2px solid var(--outline);
+				color: var(--outline);
+				font-size: 11px;
+				font-weight: 800;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				box-shadow: 7px 7px 0 rgba(35, 17, 31, 0.18);
+				transform: rotate(-1.5deg);
+			}
+
+			.lower {
+				padding: 22px 28px 74px;
+			}
+
+			.band {
+				display: grid;
+				grid-template-columns: minmax(0, 1.35fr) 340px;
+				gap: 24px;
+				align-items: start;
+			}
+
+			.about,
+			.member {
+				position: relative;
+				padding: 24px 26px;
+				border: 3px solid var(--outline);
+				box-shadow: var(--shadow-card);
+				overflow: hidden;
+			}
+
+			.about {
+				background: rgba(255, 248, 239, 0.92);
+			}
+
+			.about::before {
+				content: "";
+				position: absolute;
+				right: -22px;
+				top: -28px;
+				width: 108px;
+				height: 108px;
+				border-radius: 50%;
+				background: rgba(88, 215, 207, 0.26);
+			}
+
+			.member {
+				background: linear-gradient(180deg, #fff8ef 0%, #ffe7f3 100%);
+			}
+
+			.section-tag {
+				display: inline-flex;
+				align-items: center;
+				padding: 8px 12px;
+				border: 2px solid var(--outline);
+				background: var(--lilac);
+				font-size: 11px;
+				font-weight: 800;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				box-shadow: 6px 6px 0 rgba(35, 17, 31, 0.1);
+				transform: rotate(-1.5deg);
+			}
+
+			.about__copy {
+				margin: 18px 0 0;
+				max-width: 760px;
+				font-size: 28px;
+				line-height: 1.24;
+				letter-spacing: -0.02em;
+				color: var(--plum-deep);
+			}
+
+			.about__copy strong {
+				background: linear-gradient(180deg, transparent 58%, rgba(255, 227, 109, 0.78) 58%);
+			}
+
+			.about__meta {
+				margin-top: 18px;
+				display: flex;
+				flex-wrap: wrap;
+				gap: 12px 18px;
+				font-size: 11px;
+				font-weight: 800;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				color: var(--plum);
+			}
+
+			.member h2 {
+				margin: 18px 0 10px;
+				font-family: var(--f-display);
+				font-size: 44px;
+				line-height: 0.95;
+				letter-spacing: 0.02em;
+				text-transform: uppercase;
+				color: var(--plum-deep);
+			}
+
+			.member p {
+				margin: 0;
+				font-size: 15px;
+				line-height: 1.55;
+				color: rgba(35, 17, 31, 0.84);
+			}
+
+			.member .btn {
+				margin-top: 18px;
+			}
+
+			.fold {
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 900px;
+				border-top: 1px dashed rgba(95, 51, 95, 0.46);
+				pointer-events: none;
+				z-index: 20;
+			}
+
+			.fold::after {
+				content: "1440 x 900 FOLD";
+				position: absolute;
+				right: 14px;
+				top: -18px;
+				padding: 3px 8px;
+				background: var(--paper);
+				color: var(--plum);
+				font-size: 10px;
+				font-weight: 800;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+			}
+
+			body.nofold .fold {
+				display: none;
+			}
+		</style>
+	</head>
+	<body class="nofold">
+		<div class="frame">
+			<div class="topline">
+				<div class="topline__left">
+					<span>406 N Howard St · Baltimore, MD</span>
+					<span>Artist-run performance venue + bar</span>
+				</div>
+				<div class="topline__right">
+					<a href="https://www.lemondo.org/calendar">Full Calendar of Events</a>
+					<a href="http://www.instagram.com/lemondoarts">Instagram</a>
+				</div>
+			</div>
+
+			<nav class="nav" aria-label="Primary">
+				<a class="nav__logo" href="https://www.lemondo.org/">
+					<img src="./assets/le-mondo-logo.png" alt="Le Mondo" />
+				</a>
+				<div class="nav__main">
+					<a class="is-active" href="https://www.lemondo.org/calendar">Shows</a>
+					<a href="https://www.lemondo.org/ourstory">Our Story</a>
+					<span>The Space</span>
+					<a href="https://www.lemondo.org/memberships">Memberships</a>
+					<a href="https://www.lemondo.org/blog">News</a>
+				</div>
+				<div class="nav__secondary">
+					<a class="ticket-chip" href="https://www.lemondo.org/events/dj-rave-digital-xscape-6">
+						Get Tickets
+					</a>
+				</div>
+			</nav>
+
+			<div class="subnav">
+				<a href="https://www.lemondo.org/rentals">Rentals</a>
+				<a href="https://www.lemondo.org/booking">Booking</a>
+				<a href="https://www.lemondo.org/studios">Studios</a>
+				<a href="https://www.lemondo.org/contact">Getting Here</a>
+			</div>
+
+			<section class="hero">
+				<article class="featured">
+					<div class="poster-wrap">
+						<div class="poster-frame">
+							<img
+								src="./assets/le-mondo-digital-xscape.jpeg"
+								alt="DJ/RAVE: DIGITAL XSCAPE poster"
+							/>
+						</div>
+						<div class="poster-note">Fri Apr 24 · 9 PM</div>
+					</div>
+
+					<div class="featured__copy">
+						<div class="kicker-row">
+							<span class="kicker">Featured This Week</span>
+							<span class="bubble">QTIBIPOC bass collective</span>
+						</div>
+
+						<div class="title-stack">
+							<span class="title-chip title-chip--purple">DJ/RAVE:</span>
+							<span class="title-chip title-chip--pink">Digital</span>
+							<span class="title-chip title-chip--mint">Xscape</span>
+						</div>
+
+						<div class="when">
+							<span>Fri, Apr 24</span>
+							<span>9:00 PM</span>
+							<span>Le Mondo · 406 N Howard St</span>
+						</div>
+
+						<p class="featured__desc">
+							A QTIBIPOC collective bringing the bass to Baltimore. ARE YOU READY 2
+							XSCAPE?
+						</p>
+
+						<div class="badges">
+							<span class="badge">18+</span>
+							<span class="badge">$10-20</span>
+							<span class="badge">NOTAFLOF</span>
+						</div>
+
+						<div class="ctas">
+							<a class="btn btn--primary" href="https://www.lemondo.org/events/dj-rave-digital-xscape-6">
+								Get Tickets
+							</a>
+							<a class="btn btn--secondary" href="https://www.lemondo.org/calendar">
+								Full Calendar of Events
+							</a>
+						</div>
+
+						<div class="featured__foot">
+							<span><strong>Two-day passes</strong> with Lockbox are available.</span>
+							<span>Music · dancefloor · late-night energy</span>
+						</div>
+					</div>
+				</article>
+
+				<aside class="sidebar">
+					<div class="sidebar__inner">
+						<div class="sidebar__eyebrow">Next 3 on the calendar</div>
+						<h2 class="sidebar__title">What else is on?</h2>
+						<p class="sidebar__deck">
+							DJ nights, live music, and workshop programming keep moving through
+							the week at Le Mondo.
+						</p>
+
+						<div class="stack">
+							<a class="event" href="https://www.lemondo.org/events/dj-music-lockbox">
+								<img src="./assets/le-mondo-lockbox.jpeg" alt="DJ/MUSIC: Lockbox poster" />
+								<div>
+									<div class="event__title">DJ/MUSIC: Lockbox</div>
+									<div class="event__meta">Sat, Apr 25 · 8:00 PM</div>
+									<div class="event__cta">Get Tickets</div>
+								</div>
+							</a>
+
+							<a class="event" href="https://www.lemondo.org/events/music-bath-sallts-2026-04-26-14-30">
+								<img src="./assets/le-mondo-bath-sallts.png" alt="MUSIC: BATH SALLTS poster" />
+								<div>
+									<div class="event__title">MUSIC: BATH SALLTS</div>
+									<div class="event__meta">Sun, Apr 26 · 2:30 PM</div>
+									<div class="event__cta">Get Tickets</div>
+								</div>
+							</a>
+
+							<a class="event" href="https://www.lemondo.org/events/embodied-acting-workshop-series-2026-04-28-18-30">
+								<img src="./assets/le-mondo-embodied.png" alt="Embodied Acting: Workshop Series poster" />
+								<div>
+									<div class="event__title">Embodied Acting: Workshop Series</div>
+									<div class="event__meta">Tue, Apr 28 · 6:30 PM</div>
+									<div class="event__cta">RSVP</div>
+								</div>
+							</a>
+						</div>
+
+						<div class="sidebar__tail">
+							Also on Sunday night: MUSIC: b00b + Trash Rocket + sleeptalk
+						</div>
+					</div>
+				</aside>
+			</section>
+
+			<section class="lower">
+				<div class="band">
+					<article class="about">
+						<div class="section-tag">What Le Mondo Is</div>
+						<p class="about__copy">
+							Le Mondo is an <strong>artist-owned performance venue and bar</strong>
+							offering theater, music, and multidisciplinary arts programming,
+							studio spaces, music practice and rehearsal space, and affordable
+							event rentals.
+						</p>
+						<div class="about__meta">
+							<span>Shows · Bar · Studios · Rentals</span>
+							<span>Bromo Arts District</span>
+							<a href="https://www.lemondo.org/ourstory">Read Our Story</a>
+						</div>
+					</article>
+
+					<aside class="member">
+						<div class="section-tag">Membership</div>
+						<h2>Join the Club</h2>
+						<p>
+							Say YES to local, independent, artist-driven space for art. Tap into
+							community and get exposed to daring new artists and performance work
+							from down your street to across the world.
+						</p>
+						<a class="btn btn--primary" href="https://www.lemondo.org/memberships">
+							Join the Club
+						</a>
+					</aside>
+				</div>
+			</section>
+
+			<div class="fold"></div>
+		</div>
+
+		<script>
+			document.addEventListener("keydown", function (event) {
+				if (event.key === "f" || event.key === "F") {
+					document.body.classList.toggle("nofold");
+				}
+			});
+		</script>
+	</body>
+</html>

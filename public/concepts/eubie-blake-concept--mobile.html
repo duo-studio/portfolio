@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Eubie Blake - Homepage Concept - Mobile</title>
+		<meta name="viewport" content="width=375" />
+		<style>
+			:root {
+				--paper: #f7f3ed;
+				--paper-deep: #ece4d6;
+				--ink: #121418;
+				--ink-soft: rgba(18, 20, 24, 0.76);
+				--navy: #212b3e;
+				--navy-deep: #11161e;
+				--cyan: #20d8df;
+				--violet: #957fc8;
+				--purple: #8b4f84;
+				--orange: #ef9709;
+				--lime: #3ddb36;
+				--red: #ee1716;
+				--yellow: #fff000;
+				--gold-bright: #d8bf7a;
+				--line: rgba(18, 20, 24, 0.12);
+				--display: "Avenir Next", "Segoe UI", Arial, sans-serif;
+				--sans: "Avenir Next", "Segoe UI", Arial, sans-serif;
+				--tracking: 0.16em;
+			}
+
+			*,
+			*::before,
+			*::after {
+				box-sizing: border-box;
+			}
+
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+			}
+
+			html {
+				background: #0d1016;
+			}
+
+			body {
+				display: flex;
+				justify-content: center;
+				background:
+					radial-gradient(circle at 18% 18%, rgba(32, 216, 223, 0.14), transparent 24%),
+					radial-gradient(circle at 84% 12%, rgba(149, 127, 200, 0.12), transparent 18%),
+					linear-gradient(180deg, #222c41 0%, #0f1319 100%);
+				font-family: var(--sans);
+			}
+
+			a {
+				color: inherit;
+				text-decoration: none;
+			}
+
+			img {
+				display: block;
+				max-width: 100%;
+			}
+
+			.frame {
+				width: 375px;
+				min-height: 1540px;
+				background: var(--paper);
+				color: var(--ink);
+			}
+
+			.masthead {
+				display: grid;
+				grid-template-columns: minmax(0, 1fr) auto;
+				align-items: center;
+				gap: 12px;
+				padding: 14px 16px;
+				background: var(--navy-deep);
+				border-bottom: 3px solid var(--cyan);
+				color: #ffffff;
+			}
+
+			.brand {
+				display: grid;
+				grid-template-columns: 38px minmax(0, 1fr);
+				align-items: center;
+				gap: 10px;
+				min-width: 0;
+			}
+
+			.brand img {
+				width: 38px;
+			}
+
+			.brand__eyebrow {
+				display: block;
+				margin-bottom: 2px;
+				font-size: 7px;
+				font-weight: 900;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				color: var(--gold-bright);
+			}
+
+			.brand__name {
+				display: block;
+				font-size: 17px;
+				font-weight: 700;
+				line-height: 1;
+				letter-spacing: 0.03em;
+				text-transform: uppercase;
+			}
+
+			.utility {
+				display: flex;
+				align-items: center;
+				gap: 8px;
+			}
+
+			.utility a {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				min-height: 34px;
+				padding: 0 10px;
+				font-size: 9px;
+				font-weight: 900;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				border: 1px solid rgba(255, 255, 255, 0.22);
+			}
+
+			.utility .donate {
+				background: #ffffff;
+				color: var(--ink);
+			}
+
+			.hero-band {
+				position: relative;
+				overflow: hidden;
+				padding: 18px 16px 22px;
+				background: linear-gradient(180deg, rgba(33, 43, 62, 0.98), rgba(17, 22, 30, 1));
+				color: #ffffff;
+			}
+
+			.hero-band::before {
+				content: "";
+				position: absolute;
+				left: 0;
+				top: 48px;
+				width: 14px;
+				height: 210px;
+				background: linear-gradient(180deg, var(--orange) 0 20%, var(--yellow) 20% 42%, var(--cyan) 42% 68%, var(--violet) 68% 100%);
+			}
+
+			.kicker {
+				margin: 0 0 14px;
+				font-size: 10px;
+				font-weight: 900;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				color: var(--cyan);
+			}
+
+			h1 {
+				margin: 0;
+				font-family: var(--display);
+				font-size: 46px;
+				font-weight: 700;
+				line-height: 0.94;
+				letter-spacing: -0.05em;
+			}
+
+			.hero__title-sub {
+				display: block;
+				margin-top: 12px;
+				font-size: 20px;
+				font-weight: 700;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				color: var(--gold-bright);
+			}
+
+			.hero__deck {
+				margin: 16px 0 0;
+				font-size: 15px;
+				line-height: 1.66;
+				color: rgba(247, 243, 237, 0.76);
+			}
+
+			.hero-poster {
+				margin-top: 18px;
+				padding: 14px;
+				background: var(--paper);
+				box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+			}
+
+			.hero-poster img {
+				width: 100%;
+				aspect-ratio: 0.76 / 1;
+				object-fit: cover;
+				object-position: center top;
+			}
+
+			.detail-list {
+				display: grid;
+				gap: 12px;
+				margin-top: 18px;
+			}
+
+			.detail {
+				padding: 14px 14px 12px;
+				border: 1px solid rgba(247, 243, 237, 0.16);
+				background: rgba(247, 243, 237, 0.08);
+			}
+
+			.detail strong {
+				display: block;
+				margin-bottom: 6px;
+				font-size: 9px;
+				font-weight: 900;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				color: var(--gold-bright);
+			}
+
+			.detail span {
+				display: block;
+				font-size: 15px;
+				line-height: 1.48;
+				color: #ffffff;
+			}
+
+			.actions {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 10px;
+				margin-top: 18px;
+			}
+
+			.button {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				min-height: 44px;
+				padding: 0 16px;
+				font-size: 10px;
+				font-weight: 900;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+			}
+
+			.button--primary {
+				background: #ffffff;
+				color: var(--ink);
+			}
+
+			.button--secondary {
+				border: 1px solid rgba(247, 243, 237, 0.3);
+				color: #ffffff;
+			}
+
+			.comingup-card {
+				margin-top: 20px;
+				padding: 18px;
+				background: rgba(247, 243, 237, 0.98);
+				color: var(--ink);
+				border-top: 4px solid var(--cyan);
+				box-shadow: 0 18px 36px rgba(0, 0, 0, 0.16);
+			}
+
+			.event-eyebrow {
+				display: block;
+				margin-bottom: 12px;
+				font-size: 9px;
+				font-weight: 900;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				color: var(--cyan);
+			}
+
+			.event-grid {
+				display: grid;
+				grid-template-columns: 92px minmax(0, 1fr);
+				gap: 14px;
+				align-items: start;
+			}
+
+			.event-grid img {
+				width: 92px;
+				height: 122px;
+				object-fit: cover;
+			}
+
+			.comingup-card h2 {
+				margin: 0;
+				font-size: 28px;
+				font-weight: 700;
+				line-height: 0.96;
+				letter-spacing: -0.03em;
+			}
+
+			.event-meta {
+				margin-top: 10px;
+				padding-top: 10px;
+				border-top: 1px solid var(--line);
+			}
+
+			.event-meta p {
+				margin: 0;
+				font-size: 13px;
+				line-height: 1.56;
+				color: var(--ink-soft);
+			}
+
+			.event-meta p + p {
+				margin-top: 5px;
+			}
+
+			.event-meta strong {
+				color: var(--ink);
+			}
+
+			.event-card__button {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				min-height: 42px;
+				margin-top: 14px;
+				padding: 0 16px;
+				background: var(--cyan);
+				color: var(--ink);
+				font-size: 10px;
+				font-weight: 900;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+			}
+
+			.lower {
+				padding: 18px 16px 26px;
+				display: grid;
+				gap: 18px;
+			}
+
+			.program-panel {
+				padding: 18px;
+				background: #ffffff;
+				border-top: 4px solid var(--ink);
+				box-shadow: 0 16px 32px rgba(17, 22, 30, 0.08);
+			}
+
+			.program-panel__eyebrow,
+			.quote-panel__eyebrow {
+				margin: 0;
+				font-size: 9px;
+				font-weight: 900;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+			}
+
+			.program-panel__eyebrow {
+				color: var(--ink);
+			}
+
+			.program-panel h3 {
+				margin: 12px 0 0;
+				font-size: 34px;
+				font-weight: 700;
+				line-height: 0.96;
+				letter-spacing: -0.03em;
+			}
+
+			.program-panel p {
+				margin: 12px 0 0;
+				font-size: 14px;
+				line-height: 1.62;
+				color: var(--ink-soft);
+			}
+
+			.program-tags {
+				display: grid;
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+				gap: 10px;
+				margin-top: 16px;
+			}
+
+			.program-tag {
+				display: grid;
+				align-items: end;
+				min-height: 58px;
+				padding: 10px;
+				font-size: 10px;
+				font-weight: 900;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+			}
+
+			.program-tag:nth-child(1) { background: var(--cyan); color: var(--ink); }
+			.program-tag:nth-child(2) { background: var(--violet); color: #fff; }
+			.program-tag:nth-child(3) { background: var(--purple); color: #fff; }
+			.program-tag:nth-child(4) { background: var(--red); color: #fff; }
+			.program-tag:nth-child(5) { background: var(--yellow); color: var(--ink); }
+			.program-tag:nth-child(6) { background: var(--lime); color: var(--ink); }
+
+			.quote-panel {
+				display: grid;
+				gap: 16px;
+				padding: 18px;
+				background: linear-gradient(180deg, rgba(17, 22, 30, 0.98), rgba(10, 12, 17, 1));
+				color: var(--paper);
+				border-top: 4px solid var(--purple);
+			}
+
+			.quote-panel__eyebrow {
+				color: var(--gold-bright);
+			}
+
+			blockquote {
+				margin: 0;
+				font-size: 34px;
+				font-weight: 700;
+				line-height: 0.98;
+				letter-spacing: -0.03em;
+			}
+
+			cite {
+				display: block;
+				margin-top: 10px;
+				font-style: normal;
+				font-size: 11px;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				color: rgba(247, 243, 237, 0.68);
+			}
+
+			.quote-panel p {
+				margin: 0;
+				font-size: 14px;
+				line-height: 1.62;
+				color: rgba(247, 243, 237, 0.76);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="frame">
+			<header class="masthead">
+				<a class="brand" href="https://www.eubieblake.org/">
+					<img src="./assets/eubie-logo.png" alt="Eubie Blake Cultural Center" />
+					<span>
+						<span class="brand__eyebrow">Baltimore cultural center</span>
+						<span class="brand__name">Eubie Blake</span>
+					</span>
+				</a>
+				<div class="utility">
+					<a href="https://www.eubieblake.org/calendar">Calendar</a>
+					<a class="donate" href="https://www.eubieblake.org/donate">Donate</a>
+				</div>
+			</header>
+
+			<section class="hero-band">
+				<p class="kicker">On view now</p>
+				<h1>
+					Contrast Between Dreams and
+					<span class="hero__title-sub">Reality / The Art of Roy Crosse</span>
+				</h1>
+				<p class="hero__deck">Roy Crosse is on view now at the Eubie Blake Cultural Center, where exhibitions, performance, and cultural education bring Baltimore artists and audiences together under one roof.</p>
+
+				<div class="hero-poster">
+					<img src="./assets/eubie-roy-crosse-small.png" alt="Contrast Between Dreams and Reality: The Art of Roy Crosse" />
+				</div>
+
+				<div class="detail-list">
+					<div class="detail">
+						<strong>Exhibition dates</strong>
+						<span>April 11 - June 6, 2026</span>
+					</div>
+					<div class="detail">
+						<strong>Gallery hours</strong>
+						<span>Wednesday through Friday, 1:00 PM - 6:00 PM. Saturday, 11:00 AM - 3:00 PM.</span>
+					</div>
+				</div>
+
+				<div class="actions">
+					<a class="button button--primary" href="https://www.eubieblake.org/calendar/opening-reception-contrast-between-dreams-and-reality-the-art-of-roy-crosse">View Exhibition</a>
+					<a class="button button--secondary" href="https://www.eubieblake.org/calendar">Open Calendar</a>
+				</div>
+
+				<article class="comingup-card">
+					<span class="event-eyebrow">Coming up at the center</span>
+					<div class="event-grid">
+						<img src="./assets/eubie-peabody-small.png" alt="Peabody at The Eubie graduate jazz ensemble concert" />
+						<div>
+							<h2>Peabody @TheEubie!</h2>
+							<div class="event-meta">
+								<p><strong>Friday, May 1, 2026</strong></p>
+								<p>7:30 PM - 9:30 PM</p>
+								<p>Join the Graduate Jazz Ensemble, led by acclaimed trumpeter Sean Jones, for an evening with some of Peabody's most accomplished student artists.</p>
+							</div>
+							<a class="event-card__button" href="https://www.eubieblake.org/calendar/peabody-theeubie">View Event</a>
+						</div>
+					</div>
+				</article>
+			</section>
+
+			<section class="lower">
+				<section class="program-panel">
+					<p class="program-panel__eyebrow">Explore our programs</p>
+					<h3>Music, dance, visual art, literary arts, STEAMB, and youth programs all live inside the same creative home.</h3>
+					<p>The center's calendar moves across generations and disciplines, connecting exhibitions and live performance to Baltimore's Black cultural legacy.</p>
+					<div class="program-tags" aria-label="Programs">
+						<div class="program-tag">Music</div>
+						<div class="program-tag">Dance</div>
+						<div class="program-tag">Visual Arts</div>
+						<div class="program-tag">Literary / Spoken Word</div>
+						<div class="program-tag">STEAMB</div>
+						<div class="program-tag">Youth Specific</div>
+					</div>
+				</section>
+
+				<aside class="quote-panel">
+					<div>
+						<p class="quote-panel__eyebrow">Center voice</p>
+						<blockquote>"Trust only movement. Life happens at the level of events, not of words."</blockquote>
+						<cite>Eubie Blake</cite>
+					</div>
+					<p>We support, develop, promote and advocate for cultural and educational programming in the visual and performing arts.</p>
+				</aside>
+			</section>
+		</div>
+	</body>
+</html>

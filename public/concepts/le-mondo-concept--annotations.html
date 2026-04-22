@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Le Mondo · Homepage Concept · Annotations</title>
+		<meta name="viewport" content="width=1440" />
+		<style>
+			:root {
+				--page: #22111f;
+				--card: #2f1730;
+				--paper: #fff6e8;
+				--paper-soft: #fff1d7;
+				--ink: #23111f;
+				--plum: #5f335f;
+				--plum-deep: #381934;
+				--pink: #ff67a9;
+				--orange: #ff9255;
+				--mint: #58d7cf;
+				--lilac: #c3bef7;
+				--yellow: #ffe36d;
+				--outline: #1f1120;
+				--f-display: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+				--f-sans: "Trebuchet MS", "Avenir Next", "Segoe UI", Arial, sans-serif;
+				--tracking: 0.12em;
+			}
+
+			* {
+				box-sizing: border-box;
+			}
+
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+			}
+
+			html {
+				background: #170b15;
+			}
+
+			body {
+				display: flex;
+				justify-content: center;
+				background:
+					radial-gradient(circle at 12% 20%, rgba(255, 103, 169, 0.12), transparent 18%),
+					radial-gradient(circle at 86% 16%, rgba(88, 215, 207, 0.14), transparent 18%),
+					#170b15;
+				font-family: var(--f-sans);
+				color: var(--paper);
+			}
+
+			.frame {
+				width: 1440px;
+				padding: 54px 68px 64px;
+				background:
+					linear-gradient(180deg, rgba(34, 17, 31, 0.97), rgba(47, 23, 48, 0.98)),
+					var(--page);
+			}
+
+			.head {
+				display: flex;
+				align-items: flex-end;
+				justify-content: space-between;
+				gap: 32px;
+				padding-bottom: 28px;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+			}
+
+			.head__left {
+				display: flex;
+				align-items: center;
+				gap: 24px;
+			}
+
+			.head__left img {
+				width: 184px;
+				height: auto;
+			}
+
+			.head__title {
+				font-family: var(--f-display);
+				font-size: 38px;
+				line-height: 0.94;
+				letter-spacing: 0.03em;
+				text-transform: uppercase;
+			}
+
+			.head__sub {
+				margin-top: 10px;
+				font-size: 12px;
+				font-weight: 800;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				color: rgba(255, 246, 232, 0.7);
+			}
+
+			.head__right {
+				max-width: 360px;
+				font-size: 12px;
+				line-height: 1.55;
+				color: rgba(255, 246, 232, 0.78);
+			}
+
+			.head__right strong {
+				color: var(--yellow);
+			}
+
+			.compare {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 28px;
+				margin-top: 38px;
+			}
+
+			.panel {
+				padding: 26px 28px 30px;
+				border: 2px solid rgba(255, 255, 255, 0.12);
+				background: rgba(255, 255, 255, 0.04);
+			}
+
+			.panel--after {
+				background: rgba(255, 255, 255, 0.06);
+			}
+
+			.panel__tag {
+				display: inline-flex;
+				align-items: center;
+				padding: 8px 12px;
+				border: 2px solid var(--outline);
+				font-size: 11px;
+				font-weight: 800;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.18);
+			}
+
+			.panel--before .panel__tag {
+				background: var(--paper-soft);
+				color: var(--plum-deep);
+			}
+
+			.panel--after .panel__tag {
+				background: var(--orange);
+				color: var(--ink);
+			}
+
+			.panel h2 {
+				margin: 18px 0 14px;
+				font-family: var(--f-display);
+				font-size: 44px;
+				line-height: 0.96;
+				letter-spacing: 0.02em;
+				text-transform: uppercase;
+			}
+
+			.panel p {
+				margin: 0;
+				font-size: 16px;
+				line-height: 1.55;
+				color: rgba(255, 246, 232, 0.84);
+			}
+
+			.panel--before p strong {
+				color: var(--pink);
+			}
+
+			.panel--after p strong {
+				color: var(--mint);
+			}
+
+			.callouts {
+				display: grid;
+				grid-template-columns: repeat(4, 1fr);
+				gap: 24px;
+				margin-top: 42px;
+			}
+
+			.callout {
+				padding: 26px 22px 26px;
+				background: rgba(255, 255, 255, 0.05);
+				border: 2px solid rgba(255, 255, 255, 0.12);
+				display: flex;
+				flex-direction: column;
+				gap: 14px;
+			}
+
+			.callout:nth-child(1) .callout__num {
+				background: var(--orange);
+			}
+
+			.callout:nth-child(2) .callout__num {
+				background: var(--mint);
+			}
+
+			.callout:nth-child(3) .callout__num {
+				background: var(--yellow);
+			}
+
+			.callout:nth-child(4) .callout__num {
+				background: var(--lilac);
+			}
+
+			.callout__num {
+				width: 48px;
+				height: 48px;
+				display: grid;
+				place-items: center;
+				border: 2px solid var(--outline);
+				color: var(--ink);
+				font-family: var(--f-display);
+				font-size: 26px;
+				line-height: 1;
+				box-shadow: 7px 7px 0 rgba(0, 0, 0, 0.18);
+			}
+
+			.callout__head {
+				font-family: var(--f-display);
+				font-size: 26px;
+				line-height: 0.98;
+				letter-spacing: 0.02em;
+				text-transform: uppercase;
+			}
+
+			.callout__body {
+				font-size: 14px;
+				line-height: 1.58;
+				color: rgba(255, 246, 232, 0.82);
+			}
+
+			.callout__tag {
+				margin-top: auto;
+				padding-top: 12px;
+				border-top: 1px solid rgba(255, 255, 255, 0.12);
+				font-size: 10px;
+				font-weight: 800;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				color: rgba(255, 246, 232, 0.6);
+			}
+
+			.foot {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 28px;
+				margin-top: 42px;
+				padding-top: 22px;
+				border-top: 1px solid rgba(255, 255, 255, 0.12);
+			}
+
+			.foot__q {
+				font-family: var(--f-display);
+				font-size: 28px;
+				line-height: 0.98;
+				letter-spacing: 0.02em;
+				text-transform: uppercase;
+			}
+
+			.foot__q strong {
+				color: var(--yellow);
+			}
+
+			.foot__meta {
+				font-size: 11px;
+				font-weight: 800;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				color: rgba(255, 246, 232, 0.62);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="frame">
+			<header class="head">
+				<div class="head__left">
+					<img src="./assets/le-mondo-logo.png" alt="Le Mondo" />
+					<div>
+						<div class="head__title">Homepage Concept Annotations</div>
+						<div class="head__sub">Le Mondo · Hero + Immediate Module</div>
+					</div>
+				</div>
+				<div class="head__right">
+					This concept keeps Claude's clean multi-frame presentation, but the
+					design language itself stays specific to <strong>Le Mondo's poster,
+					cutout, artist-run energy</strong>.
+				</div>
+			</header>
+
+			<section class="compare">
+				<article class="panel panel--before">
+					<div class="panel__tag">Before</div>
+					<h2>Join the Club leads</h2>
+					<p>
+						The current homepage opens with a <strong>membership pitch</strong> and
+						general identity language. Visitors have to scroll or click before they
+						see a real show with a date attached to it.
+					</p>
+				</article>
+
+				<article class="panel panel--after">
+					<div class="panel__tag">After</div>
+					<h2>Programming comes first</h2>
+					<p>
+						The first read is now a specific event, with a visible date, time, and
+						ticket path. <strong>Membership still exists</strong>, but it follows
+						the calendar instead of blocking it.
+					</p>
+				</article>
+			</section>
+
+			<section class="callouts">
+				<article class="callout">
+					<div class="callout__num">1</div>
+					<div class="callout__head">Featured event replaces the pitch</div>
+					<div class="callout__body">
+						DIGITAL XSCAPE becomes the hero, so a first-time visitor can tell what
+						is happening this week in a single glance.
+					</div>
+					<div class="callout__tag">Programming visibility</div>
+				</article>
+
+				<article class="callout">
+					<div class="callout__num">2</div>
+					<div class="callout__head">The next 3 shows stay visible</div>
+					<div class="callout__body">
+						Lockbox, BATH SALLTS, and Embodied Acting sit beside or directly below
+						the hero so the site communicates volume, not just one-off promotion.
+					</div>
+					<div class="callout__tag">Perceived programming volume</div>
+				</article>
+
+				<article class="callout">
+					<div class="callout__num">3</div>
+					<div class="callout__head">Identity and membership move down</div>
+					<div class="callout__body">
+						The artist-owned venue description and JOIN THE CLUB language still have
+						a place, but they now follow the reason to care.
+					</div>
+					<div class="callout__tag">Hierarchy correction</div>
+				</article>
+
+				<article class="callout">
+					<div class="callout__num">4</div>
+					<div class="callout__head">The collage language stays intact</div>
+					<div class="callout__body">
+						Paper tones, loud color chips, taped posters, and imperfect rotation
+						keep the concept rooted in Le Mondo instead of smoothing it into a
+						generic events template.
+					</div>
+					<div class="callout__tag">Brand preservation</div>
+				</article>
+			</section>
+
+			<footer class="foot">
+				<div class="foot__q">
+					What happens when an <strong>artist-run venue</strong> behaves like a
+					venue on the homepage?
+				</div>
+				<div class="foot__meta">
+					Source material: live Le Mondo homepage, calendar, event posters, and
+					membership copy · April 20, 2026
+				</div>
+			</footer>
+		</div>
+	</body>
+</html>

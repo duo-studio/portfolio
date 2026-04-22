@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Eubie Blake - Homepage Concept - Preview</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<style>
+			:root {
+				--bg: #101621;
+				--panel: #1c2536;
+				--text: #f7f3ed;
+				--muted: rgba(247, 243, 237, 0.72);
+				--cyan: #20d8df;
+				--violet: #957fc8;
+				--gold: #d8bf7a;
+				--line: rgba(255, 255, 255, 0.12);
+				--sans: "Avenir Next", "Segoe UI", Arial, sans-serif;
+				--display: "Avenir Next", "Segoe UI", Arial, sans-serif;
+				--tracking: 0.16em;
+			}
+
+			*,
+			*::before,
+			*::after { box-sizing: border-box; }
+
+			html, body { margin: 0; padding: 0; }
+
+			body {
+				min-width: 2000px;
+				background:
+					radial-gradient(circle at 14% 14%, rgba(32, 216, 223, 0.14), transparent 18%),
+					radial-gradient(circle at 84% 10%, rgba(149, 127, 200, 0.12), transparent 18%),
+					linear-gradient(180deg, #141b29 0%, #0f151f 100%);
+				color: var(--text);
+				font-family: var(--sans);
+			}
+
+			a { color: inherit; }
+
+			.board { padding: 68px 60px 84px; }
+
+			.hero {
+				display: grid;
+				grid-template-columns: minmax(0, 1fr) 340px;
+				gap: 36px;
+				align-items: end;
+				margin-bottom: 28px;
+			}
+
+			.title {
+				margin: 0;
+				font-family: var(--display);
+				font-size: 56px;
+				line-height: 0.92;
+				letter-spacing: -0.04em;
+			}
+
+			.deck {
+				margin-top: 14px;
+				max-width: 900px;
+				font-size: 15px;
+				line-height: 1.68;
+				color: var(--muted);
+			}
+
+			.pills {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 10px;
+				margin-top: 18px;
+			}
+
+			.pill {
+				display: inline-flex;
+				align-items: center;
+				padding: 8px 12px;
+				border: 1px solid var(--line);
+				background: rgba(255, 255, 255, 0.04);
+				font-size: 10px;
+				font-weight: 800;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+			}
+
+			.pill--hot {
+				border-color: rgba(32, 216, 223, 0.36);
+				color: var(--cyan);
+			}
+
+			.sidebar {
+				padding: 22px;
+				background: rgba(255, 255, 255, 0.04);
+				border: 1px solid var(--line);
+			}
+
+			.sidebar h2 {
+				margin: 0;
+				font-size: 30px;
+				line-height: 0.96;
+				letter-spacing: -0.03em;
+			}
+
+			.sidebar p {
+				margin: 12px 0 0;
+				font-size: 13px;
+				line-height: 1.62;
+				color: var(--muted);
+			}
+
+			.links {
+				display: flex;
+				flex-direction: column;
+				gap: 10px;
+				margin-top: 18px;
+			}
+
+			.links a {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				padding: 12px 14px;
+				background: #ffffff;
+				color: #121418;
+				font-size: 10px;
+				font-weight: 900;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				text-decoration: none;
+			}
+
+			.links a:nth-child(2) { background: #dff9fb; }
+			.links a:nth-child(3) { background: var(--cyan); }
+
+			.layout {
+				display: grid;
+				grid-template-columns: 1100px 420px;
+				gap: 42px;
+				align-items: start;
+			}
+
+			.label-row {
+				display: flex;
+				align-items: baseline;
+				justify-content: space-between;
+				padding: 0 4px 14px;
+				font-size: 11px;
+				font-weight: 800;
+				letter-spacing: var(--tracking);
+				text-transform: uppercase;
+				color: rgba(247, 243, 237, 0.62);
+			}
+
+			.label-row strong { color: var(--gold); }
+
+			.slot {
+				background: rgba(255, 255, 255, 0.04);
+				border: 1px solid var(--line);
+				box-shadow: 0 28px 72px rgba(0, 0, 0, 0.42);
+				overflow: hidden;
+				padding: 18px 18px 22px;
+			}
+
+			.scale {
+				position: relative;
+				transform-origin: top left;
+			}
+
+			.scale--desktop {
+				width: 1440px;
+				height: 1080px;
+				transform: scale(0.7361);
+			}
+
+			.scale--mobile {
+				width: 375px;
+				height: 1540px;
+				transform: scale(1);
+			}
+
+			iframe {
+				width: 100%;
+				height: 100%;
+				border: 0;
+				display: block;
+				background: white;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div class="board">
+			<section class="hero">
+				<div>
+					<h1 class="title">Eubie Blake<br />Homepage Concept</h1>
+					<p class="deck">This concept keeps the institutional backbone of the center but changes the homepage sequence. The first read now answers what is on view, when it is open, and what is coming up next before the visitor has to dig through broader mission language.</p>
+					<div class="pills">
+						<span class="pill pill--hot">Canonical concept set</span>
+						<span class="pill">Desktop 1440 x 900 / Mobile 375 x 812</span>
+						<span class="pill">Current exhibition + next dated performance</span>
+					</div>
+				</div>
+
+				<aside class="sidebar">
+					<h2>Frame set</h2>
+					<p>Updated around the new Eubie direction: full-width hero, clear supporting exhibition visual, and a stronger distinction between what is on view and what is coming up next.</p>
+					<div class="links">
+						<a href="./eubie-blake-concept--desktop.html">Open desktop frame</a>
+						<a href="./eubie-blake-concept--mobile.html">Open mobile frame</a>
+						<a href="./eubie-blake-concept--annotations.html">Open annotations</a>
+					</div>
+				</aside>
+			</section>
+
+			<section class="layout">
+				<div>
+					<div class="label-row">
+						<span><strong>Desktop Frame</strong></span>
+						<span>Canonical concept</span>
+					</div>
+					<div class="slot">
+						<div class="scale scale--desktop">
+							<iframe src="./eubie-blake-concept--desktop.html" title="Eubie Blake desktop concept"></iframe>
+						</div>
+					</div>
+				</div>
+
+				<div>
+					<div class="label-row">
+						<span><strong>Mobile Frame</strong></span>
+						<span>Canonical concept</span>
+					</div>
+					<div class="slot">
+						<div class="scale scale--mobile">
+							<iframe src="./eubie-blake-concept--mobile.html" title="Eubie Blake mobile concept"></iframe>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		</div>
+	</body>
+</html>

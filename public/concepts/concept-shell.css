@@ -1,0 +1,116 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	min-height: 100vh;
+	padding: clamp(10px, 1.5vw, 24px);
+	background: var(--shell-page, #ffffff);
+	overflow-x: hidden;
+}
+
+.concept-shell {
+	width: min(100%, 1488px);
+	margin: 0 auto;
+}
+
+.concept-meta {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	margin-bottom: 0.85rem;
+	font-family: "SuisseIntl-Book-WebXL", "Avenir Next", "Segoe UI", Arial, sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	letter-spacing: -0.03em;
+	line-height: 1.2;
+	color: var(--shell-meta, #0f0d0d);
+	user-select: none;
+}
+
+.concept-meta__right {
+	opacity: 0.58;
+}
+
+.concept-stage {
+	padding: clamp(8px, 1vw, 14px);
+	border: 1px solid var(--shell-frame, rgba(15, 13, 13, 0.12));
+	background: var(--shell-card, #ffffff);
+	box-shadow: 0 22px 44px rgba(15, 13, 13, 0.08);
+}
+
+.concept-canvas-wrap {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+
+.concept-canvas {
+	position: relative;
+	min-height: 320px;
+	overflow: hidden;
+	background: #050403;
+	contain: layout paint;
+	user-select: none;
+}
+
+.concept-canvas iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: block;
+	border: 0;
+	background: transparent;
+	transform-origin: top left;
+	pointer-events: none;
+	user-select: none;
+}
+
+.concept-shell__fallback {
+	margin: 1rem 0 0;
+	font-family: "SuisseIntl-Book-WebXL", "Avenir Next", "Segoe UI", Arial, sans-serif;
+	font-size: 14px;
+	color: var(--shell-fallback, #0f0d0d);
+}
+
+.concept-shell__fallback a {
+	color: inherit;
+}
+
+@media screen and (max-width: 767px) {
+	body {
+		padding: 0;
+		background: var(--shell-page, #ffffff);
+	}
+
+	.concept-shell {
+		width: 100%;
+	}
+
+	.concept-meta {
+		padding: 0 16px;
+		margin: 0 0 0.65rem;
+		font-size: 14px;
+	}
+
+	.concept-stage {
+		padding: 0;
+		border: 0;
+		background: transparent;
+		box-shadow: none;
+	}
+
+	.concept-canvas {
+		min-height: 0;
+		width: 100% !important;
+	}
+}
