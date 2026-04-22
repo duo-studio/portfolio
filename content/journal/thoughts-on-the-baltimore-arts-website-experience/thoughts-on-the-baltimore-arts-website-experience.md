@@ -17,9 +17,9 @@ A first-time visitor makes up their mind in 50 milliseconds. For an arts organiz
 <div class="entry__content--sidebar-concepts">
 <p>The three concepts referenced in this piece are collected here for quick access while you read.</p>
 <ul>
-<li><strong>Le Mondo</strong><br /><span class="entry__sidebar-link-row"><a href="/concepts/le-mondo-concept--desktop.html" target="_blank" rel="noopener noreferrer">View desktop</a></span><span class="entry__sidebar-link-row"><a href="/concepts/le-mondo-concept--mobile.html" target="_blank" rel="noopener noreferrer">View mobile</a></span><span class="entry__sidebar-link-row"><a href="/concepts/le-mondo-concept--annotations.html" target="_blank" rel="noopener noreferrer">View annotations</a></span></li>
-<li><strong>Motor House</strong><br /><span class="entry__sidebar-link-row"><a href="/concepts/motor-house-concept--desktop.html" target="_blank" rel="noopener noreferrer">View desktop</a></span><span class="entry__sidebar-link-row"><a href="/concepts/motor-house-concept--mobile.html" target="_blank" rel="noopener noreferrer">View mobile</a></span><span class="entry__sidebar-link-row"><a href="/concepts/motor-house-concept--annotations.html" target="_blank" rel="noopener noreferrer">View annotations</a></span></li>
-<li><strong>Eubie Blake</strong><br /><span class="entry__sidebar-link-row"><a href="/concepts/eubie-blake-concept--desktop.html" target="_blank" rel="noopener noreferrer">View desktop</a></span><span class="entry__sidebar-link-row"><a href="/concepts/eubie-blake-concept--mobile.html" target="_blank" rel="noopener noreferrer">View mobile</a></span><span class="entry__sidebar-link-row"><a href="/concepts/eubie-blake-concept--annotations.html" target="_blank" rel="noopener noreferrer">View annotations</a></span></li>
+<li><strong>Le Mondo</strong><br /><span class="entry__sidebar-link-row"><a href="/concepts/le-mondo-concept.html?view=desktop" target="_blank" rel="noopener noreferrer">View desktop</a></span><span class="entry__sidebar-link-row"><a href="/concepts/le-mondo-concept.html?view=mobile" target="_blank" rel="noopener noreferrer">View mobile</a></span><span class="entry__sidebar-link-row"><a href="/concepts/le-mondo-concept--annotations.html" target="_blank" rel="noopener noreferrer">View annotations</a></span></li>
+<li><strong>Motor House</strong><br /><span class="entry__sidebar-link-row"><a href="/concepts/motor-house-concept.html?view=desktop" target="_blank" rel="noopener noreferrer">View desktop</a></span><span class="entry__sidebar-link-row"><a href="/concepts/motor-house-concept.html?view=mobile" target="_blank" rel="noopener noreferrer">View mobile</a></span><span class="entry__sidebar-link-row"><a href="/concepts/motor-house-concept--annotations.html" target="_blank" rel="noopener noreferrer">View annotations</a></span></li>
+<li><strong>Eubie Blake</strong><br /><span class="entry__sidebar-link-row"><a href="/concepts/eubie-blake-concept.html?view=desktop" target="_blank" rel="noopener noreferrer">View desktop</a></span><span class="entry__sidebar-link-row"><a href="/concepts/eubie-blake-concept.html?view=mobile" target="_blank" rel="noopener noreferrer">View mobile</a></span><span class="entry__sidebar-link-row"><a href="/concepts/eubie-blake-concept--annotations.html" target="_blank" rel="noopener noreferrer">View annotations</a></span></li>
 </ul>
 </div>
 </div>
@@ -76,8 +76,8 @@ Le Mondo opens with a membership pitch, carried in the cutout-collage language t
 We drew a concept that keeps the visual system intact — orange, pink, turquoise, layered shapes, display type — and moves a featured show, a ticket CTA, and the next 3 events into the first view. The membership ask moves below, where it follows the programming rather than precedes it.
 
 <p class="entry__concept-links">
-<a href="/concepts/le-mondo-concept--desktop.html" target="_blank" rel="noopener noreferrer">View desktop</a> &bull;
-<a href="/concepts/le-mondo-concept--mobile.html" target="_blank" rel="noopener noreferrer">View mobile</a> &bull;
+<a href="/concepts/le-mondo-concept.html?view=desktop" target="_blank" rel="noopener noreferrer">View desktop</a> &bull;
+<a href="/concepts/le-mondo-concept.html?view=mobile" target="_blank" rel="noopener noreferrer">View mobile</a> &bull;
 <a href="/concepts/le-mondo-concept--annotations.html" target="_blank" rel="noopener noreferrer">View annotations</a>
 </p>
 
@@ -88,8 +88,8 @@ Motor House opens with a brand film — a well-produced 3-minute YouTube embed. 
 Our concept moves the film to a supporting page and brings upcoming events into the first view. The dark warm palette stays. The logomark stays. The film remains for visitors who want it; it just stops standing between a stranger and the calendar.
 
 <p class="entry__concept-links">
-<a href="/concepts/motor-house-concept--desktop.html" target="_blank" rel="noopener noreferrer">View desktop</a> &bull;
-<a href="/concepts/motor-house-concept--mobile.html" target="_blank" rel="noopener noreferrer">View mobile</a> &bull;
+<a href="/concepts/motor-house-concept.html?view=desktop" target="_blank" rel="noopener noreferrer">View desktop</a> &bull;
+<a href="/concepts/motor-house-concept.html?view=mobile" target="_blank" rel="noopener noreferrer">View mobile</a> &bull;
 <a href="/concepts/motor-house-concept--annotations.html" target="_blank" rel="noopener noreferrer">View annotations</a>
 </p>
 
@@ -100,8 +100,8 @@ Eubie Blake opens with a mission statement: *"Bringing artists and audiences fro
 Our concept replaces the mission line with 2 pieces of current programming: the exhibition on view now on one side of the hero, the next few events on the other. The mission moves to a supporting role below. Navy and teal stay. The colorful Eubie Blake portrait mark — the strongest visual asset on the site — stays exactly where it is.
 
 <p class="entry__concept-links">
-<a href="/concepts/eubie-blake-concept--desktop.html" target="_blank" rel="noopener noreferrer">View desktop</a> &bull;
-<a href="/concepts/eubie-blake-concept--mobile.html" target="_blank" rel="noopener noreferrer">View mobile</a> &bull;
+<a href="/concepts/eubie-blake-concept.html?view=desktop" target="_blank" rel="noopener noreferrer">View desktop</a> &bull;
+<a href="/concepts/eubie-blake-concept.html?view=mobile" target="_blank" rel="noopener noreferrer">View mobile</a> &bull;
 <a href="/concepts/eubie-blake-concept--annotations.html" target="_blank" rel="noopener noreferrer">View annotations</a>
 </p>
 

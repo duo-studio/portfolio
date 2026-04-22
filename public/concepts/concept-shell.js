@@ -19,6 +19,10 @@
 	const desktopWidth = Number(root.dataset.desktopWidth || 1440);
 	const mobileWidth = Number(root.dataset.mobileWidth || 375);
 	const mobileBreakpoint = Number(root.dataset.mobileBreakpoint || 767);
+	const query = new URLSearchParams(window.location.search);
+	const forcedViewParam = query.get("view");
+	const forcedView = forcedViewParam === "desktop" || forcedViewParam === "mobile" ? forcedViewParam : "";
+	const metaRight = root.querySelector(".concept-meta__right");
 
 	let currentView = "";
 	let currentWidth = desktopWidth;
@@ -46,6 +50,10 @@
 	}
 
 	function getPreferredView() {
+		if (forcedView) {
+			return forcedView;
+		}
+
 		return window.innerWidth <= mobileBreakpoint ? "mobile" : "desktop";
 	}
 
@@ -127,6 +135,11 @@
 	});
 
 	window.addEventListener("resize", function () {
+		if (forcedView) {
+			applyScale();
+			return;
+		}
+
 		const nextView = getPreferredView();
 
 		if (nextView !== currentView) {
@@ -141,6 +154,10 @@
 		new ResizeObserver(function () {
 			applyScale();
 		}).observe(stage);
+	}
+
+	if (forcedView && metaRight) {
+		metaRight.textContent = forcedView === "mobile" ? "Mobile preview only" : "Desktop preview only";
 	}
 
 	setView(true);
