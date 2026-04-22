@@ -242,14 +242,6 @@
 				font-weight: 400;
 				letter-spacing: -0.03em;
 			}
-			h3 {
-				font-family: $font-ppmori;
-				font-size: clamp(16px, 1.25vw, 24px);
-				line-height: 1.1;
-				letter-spacing: -0.02em;
-				font-weight: 400;
-			}
-
 			ul,
 			ol {
 				font-size: $font-size-p;
@@ -319,6 +311,55 @@
 
 					@media screen and (max-width: $mobile-breakpoint-s) {
 						margin-bottom: 0;
+					}
+				}
+				&-concepts {
+					margin-top: 2rem;
+					padding-top: 1.5rem;
+					border-top: 1px solid rgba($color-black, 0.12);
+
+					@media screen and (max-width: $mobile-breakpoint-s) {
+						margin-top: 1.5rem;
+						padding-top: 1.25rem;
+					}
+
+					p {
+						margin-bottom: 1rem;
+					}
+
+					ul {
+						list-style: none;
+						padding-left: 0;
+						margin: 0;
+					}
+
+					li {
+						font-size: $font-size-p;
+						line-height: 1.36;
+						letter-spacing: -0.02em;
+
+						&::before {
+							content: none;
+						}
+
+						&:not(:last-child) {
+							margin-bottom: 0.9rem;
+						}
+
+						strong {
+							font-family: $font-suisse-r;
+							font-weight: 600;
+						}
+					}
+
+					.entry__sidebar-link-row {
+						display: block;
+						padding-left: 1rem;
+						margin-top: 0.35rem;
+					}
+
+					a {
+						text-decoration: underline;
 					}
 				}
 				&-toc {
@@ -605,20 +646,16 @@
 
 		&__concept-links {
 			margin-top: 1.15rem;
+			margin-bottom: 4rem !important;
 			display: flex;
 			align-items: center;
 			flex-wrap: wrap;
 			gap: 0.85rem;
-			font-family: $font-suisse;
-			font-size: 14px;
+			font-family: $font-suisse-r;
+			font-size: $font-size-p;
 			line-height: 1.36;
 
-			.btn__small {
-				text-decoration: none;
-				cursor: pointer;
-			}
-
-			a:not(.btn__small) {
+			a {
 				text-decoration: underline;
 			}
 		}

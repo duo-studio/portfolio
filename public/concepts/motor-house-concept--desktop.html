@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<title>Motor House · Homepage Concept · Desktop V2</title>
+		<title>Motor House - Homepage Concept - Desktop V2</title>
 		<meta name="viewport" content="width=1440" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,20 +12,21 @@
 		/>
 		<style>
 			:root {
-				--bg-page: #110d0a;
-				--bg-deep: #0a0705;
-				--bg-panel: rgba(12, 9, 7, 0.86);
-				--bg-panel-soft: rgba(28, 21, 17, 0.9);
-				--bg-band: #17110d;
-				--ink: #fffaf3;
-				--ink-soft: #d6c9b9;
-				--ink-mute: #9a8e80;
-				--ink-dim: #61584d;
-				--rule: rgba(255, 233, 209, 0.12);
-				--rule-strong: rgba(255, 233, 209, 0.22);
+				--bg-page: #090909;
+				--bg-surface: #131313;
+				--bg-surface-soft: #171717;
+				--bg-rail: #171411;
+				--bg-card: #211c18;
+				--ink: #f7f2ea;
+				--ink-soft: #d6cbbd;
+				--ink-mute: #9c8f7e;
+				--ink-dark: #f3e9dc;
+				--ink-dark-soft: #aa9d8e;
+				--rule: rgba(255, 241, 223, 0.12);
+				--rule-strong: rgba(255, 241, 223, 0.2);
 				--orange: #ea5a1f;
 				--orange-hot: #ff6f2d;
-				--orange-ink: #1d1008;
+				--orange-ink: #1c1008;
 				--f-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
 				--f-display: "Archivo", "Inter", "Helvetica Neue", Arial, sans-serif;
 				--tracking-caps: 0.14em;
@@ -45,15 +46,13 @@
 			}
 
 			html {
-				background: #050403;
+				background: #050505;
 			}
 
 			body {
 				display: flex;
 				justify-content: center;
-				background:
-					radial-gradient(circle at top, rgba(234, 90, 31, 0.08), transparent 24%),
-					linear-gradient(180deg, #080605 0%, #050403 100%);
+				background: linear-gradient(180deg, #070707 0%, #050505 100%);
 				font-family: var(--f-sans);
 				color: var(--ink);
 				-webkit-font-smoothing: antialiased;
@@ -69,41 +68,21 @@
 				position: relative;
 				width: 1440px;
 				overflow: hidden;
-				background:
-					linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0)),
-					var(--bg-page);
-			}
-
-			.frame::before {
-				content: "";
-				position: absolute;
-				inset: 0;
-				background:
-					repeating-linear-gradient(
-						90deg,
-						transparent 0,
-						transparent 118px,
-						rgba(255, 233, 209, 0.025) 118px,
-						rgba(255, 233, 209, 0.025) 119px
-					);
-				opacity: 0.45;
-				pointer-events: none;
+				background: var(--bg-page);
 			}
 
 			.shell {
-				position: relative;
-				z-index: 1;
 				width: min(1320px, calc(100% - 80px));
 				margin: 0 auto;
 			}
 
 			.utility {
-				border-bottom: 1px solid var(--rule);
-				background: rgba(5, 4, 3, 0.94);
+				border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+				background: #070707;
 			}
 
 			.utility .shell {
-				height: 30px;
+				height: 28px;
 				display: flex;
 				align-items: center;
 				justify-content: space-between;
@@ -120,11 +99,8 @@
 			}
 
 			.masthead {
-				position: relative;
-				z-index: 2;
-				background: rgba(10, 7, 5, 0.9);
-				backdrop-filter: blur(12px);
 				border-bottom: 1px solid var(--rule);
+				background: #0d0d0d;
 			}
 
 			.masthead .shell {
@@ -184,43 +160,25 @@
 				font-weight: 800;
 				letter-spacing: var(--tracking-caps);
 				text-transform: uppercase;
-				border: 1px solid rgba(0, 0, 0, 0.12);
+				border: 1px solid rgba(0, 0, 0, 0.14);
 			}
 
 			.hero {
-				position: relative;
-				min-height: 680px;
+				padding: 42px 0 0;
 				background:
-					linear-gradient(90deg, rgba(7, 5, 4, 0.99) 0%, rgba(7, 5, 4, 0.92) 42%, rgba(7, 5, 4, 0.4) 66%, rgba(7, 5, 4, 0.52) 100%),
-					url("https://static.wixstatic.com/media/d43b94_b36d6a99ed314857abe962c0249e8063~mv2.jpg/v1/fill/w_1600,h_1100,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/d43b94_b36d6a99ed314857abe962c0249e8063~mv2.jpg")
-						82% center / cover no-repeat;
+					linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0)),
+					var(--bg-page);
 			}
 
-			.hero::before {
-				content: "";
-				position: absolute;
-				inset: 0;
-				background:
-					linear-gradient(180deg, rgba(234, 90, 31, 0.1) 0%, transparent 30%),
-					linear-gradient(180deg, transparent 52%, rgba(5, 4, 3, 0.88) 100%);
-				pointer-events: none;
-			}
-
-			.hero .shell {
-				padding: 54px 0 58px;
-			}
-
-			.hero__grid {
+			.hero__stage {
 				display: grid;
-				grid-template-columns: minmax(0, 1.28fr) 392px;
-				gap: 32px;
-				align-items: end;
-				min-height: 568px;
+				grid-template-columns: minmax(0, 1.22fr) minmax(360px, 0.78fr);
+				gap: 48px;
+				align-items: stretch;
 			}
 
 			.hero__copy {
-				max-width: 690px;
-				padding-top: 30px;
+				padding: 50px 0 26px;
 			}
 
 			.hero__topline {
@@ -236,58 +194,46 @@
 			}
 
 			.hero__topline strong {
-				color: var(--orange);
-			}
-
-			.pulse {
 				display: inline-flex;
 				align-items: center;
 				gap: 8px;
+				color: var(--orange);
 			}
 
-			.pulse::before {
+			.hero__topline strong::before {
 				content: "";
-				width: 7px;
-				height: 7px;
+				width: 8px;
+				height: 8px;
 				border-radius: 50%;
 				background: var(--orange);
-				box-shadow: 0 0 0 0 rgba(234, 90, 31, 0.4);
-				animation: pulse 1.9s ease-out infinite;
-			}
-
-			@keyframes pulse {
-				0% {
-					box-shadow: 0 0 0 0 rgba(234, 90, 31, 0.45);
-				}
-				100% {
-					box-shadow: 0 0 0 12px rgba(234, 90, 31, 0);
-				}
 			}
 
 			.hero h1 {
 				margin: 0;
+				max-width: 820px;
 				font-family: var(--f-display);
-				font-size: 70px;
-				line-height: 0.9;
+				font-size: 82px;
+				line-height: 0.88;
 				letter-spacing: var(--tracking-tight);
 				text-transform: uppercase;
-				max-width: 680px;
-				text-shadow: 0 8px 28px rgba(0, 0, 0, 0.34);
+				color: var(--ink);
 			}
 
 			.hero h1 span {
 				display: block;
-				font-size: 43px;
+				margin-top: 12px;
+				font-size: 36px;
 				font-weight: 600;
+				line-height: 1;
 				color: var(--ink-soft);
-				letter-spacing: -0.02em;
-				margin-top: 10px;
+				text-transform: none;
+				letter-spacing: -0.025em;
 			}
 
 			.hero__lede {
-				margin: 20px 0 0;
-				max-width: 580px;
-				font-size: 16px;
+				margin: 22px 0 0;
+				max-width: 620px;
+				font-size: 17px;
 				line-height: 1.65;
 				color: var(--ink-soft);
 			}
@@ -296,15 +242,15 @@
 				display: grid;
 				grid-template-columns: repeat(3, minmax(0, 1fr));
 				gap: 16px;
+				max-width: 700px;
 				margin-top: 30px;
-				max-width: 720px;
 				padding-top: 20px;
 				border-top: 1px solid var(--rule);
 			}
 
 			.hero__meta-item {
 				display: grid;
-				gap: 6px;
+				gap: 7px;
 			}
 
 			.hero__meta-label {
@@ -317,10 +263,10 @@
 
 			.hero__meta-value {
 				font-family: var(--f-display);
-				font-size: 18px;
+				font-size: 20px;
 				font-weight: 600;
-				line-height: 1.25;
-				letter-spacing: -0.01em;
+				line-height: 1.2;
+				letter-spacing: -0.02em;
 				color: var(--ink);
 			}
 
@@ -336,7 +282,7 @@
 				align-items: center;
 				padding: 8px 12px;
 				border: 1px solid var(--rule-strong);
-				background: rgba(255, 255, 255, 0.04);
+				background: rgba(255, 255, 255, 0.03);
 				font-size: 10px;
 				font-weight: 700;
 				letter-spacing: var(--tracking-caps);
@@ -375,36 +321,129 @@
 
 			.btn--ghost {
 				border-color: var(--rule-strong);
-				background: rgba(255, 255, 255, 0.02);
+				background: transparent;
 				color: var(--ink);
 			}
 
 			.btn--ghost:hover {
-				border-color: rgba(255, 233, 209, 0.34);
+				border-color: rgba(255, 241, 223, 0.34);
 			}
 
-			.hero__foot {
-				margin-top: 18px;
+			.hero__visual {
+				display: grid;
+				align-items: center;
+			}
+
+			.marquee {
+				position: relative;
+				min-height: 520px;
+				padding: 16px;
+				border: 1px solid var(--rule);
+				background: #0b0b0b;
+				box-shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+			}
+
+			.marquee__surface {
+				position: relative;
+				min-height: 486px;
+				height: 100%;
+				border: 1px solid rgba(255, 241, 223, 0.12);
+				overflow: hidden;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background: #111;
+			}
+
+			.marquee__surface::before {
+				content: "";
+				position: absolute;
+				inset: 0;
+				background:
+					linear-gradient(180deg, rgba(9, 9, 9, 0.05) 0%, rgba(9, 9, 9, 0.1) 46%, rgba(9, 9, 9, 0.62) 100%),
+					linear-gradient(90deg, rgba(9, 9, 9, 0.05) 0%, rgba(9, 9, 9, 0.08) 54%, rgba(9, 9, 9, 0.34) 100%);
+			}
+
+			.marquee__surface::after {
+				content: "";
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				height: 3px;
+				background: var(--orange);
+			}
+
+			.marquee__art {
+				display: block;
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
+				object-position: 64% center;
+				filter: saturate(0.88) brightness(0.9);
+			}
+
+			.marquee__label {
+				position: absolute;
+				top: 16px;
+				left: 16px;
+				z-index: 1;
+				display: inline-flex;
+				align-items: center;
+				padding: 8px 12px;
+				background: rgba(9, 9, 9, 0.82);
+				border: 1px solid var(--rule);
 				font-size: 10px;
+				font-weight: 800;
+				letter-spacing: var(--tracking-caps);
+				text-transform: uppercase;
+				color: var(--ink);
+			}
+
+			.marquee__note {
+				position: absolute;
+				left: 18px;
+				bottom: 18px;
+				z-index: 1;
+				max-width: 250px;
+				padding-top: 10px;
+				border-top: 2px solid var(--orange);
+				font-size: 11px;
 				font-weight: 700;
 				letter-spacing: var(--tracking-caps);
 				text-transform: uppercase;
-				color: var(--ink-mute);
+				color: var(--ink);
+				text-align: left;
 			}
 
-			.schedule {
-				align-self: end;
-				background: linear-gradient(180deg, var(--bg-panel) 0%, rgba(17, 13, 10, 0.95) 100%);
-				border: 1px solid var(--rule);
-				box-shadow: 0 28px 60px rgba(0, 0, 0, 0.34);
+			.program-rail {
+				margin-top: 32px;
 			}
 
-			.schedule__head {
-				padding: 18px 22px 16px;
-				border-bottom: 1px solid var(--rule);
+			.program-rail__inner {
+				display: grid;
+				grid-template-columns: 200px repeat(3, minmax(0, 1fr));
+				background: var(--bg-rail);
+				color: var(--ink-dark);
+				border-top: 3px solid var(--orange);
+				border-bottom: 1px solid rgba(255, 241, 223, 0.08);
 			}
 
-			.schedule__eyebrow {
+			.program-rail__intro {
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				padding: 24px 22px;
+				border-right: 1px solid rgba(255, 241, 223, 0.1);
+				background: rgba(255, 255, 255, 0.02);
+			}
+
+			.program-rail__intro-main {
+				display: grid;
+				align-content: start;
+			}
+
+			.program-rail__eyebrow {
 				font-size: 10px;
 				font-weight: 800;
 				letter-spacing: var(--tracking-caps);
@@ -412,109 +451,139 @@
 				color: var(--orange);
 			}
 
-			.schedule__title {
-				margin: 8px 0 0;
+			.program-rail__title {
+				margin: 12px 0 0;
 				font-family: var(--f-display);
 				font-size: 26px;
 				line-height: 1;
-				letter-spacing: -0.02em;
+				letter-spacing: -0.025em;
 				text-transform: uppercase;
 			}
 
-			.schedule__range {
-				margin-top: 8px;
-				font-size: 11px;
-				font-weight: 600;
-				letter-spacing: var(--tracking-caps);
-				text-transform: uppercase;
-				color: var(--ink-mute);
-			}
-
-			.schedule__list {
-				padding: 0 22px;
-			}
-
-			.schedule-item {
-				display: grid;
-				grid-template-columns: 72px minmax(0, 1fr);
-				gap: 14px;
-				padding: 18px 0;
-				border-bottom: 1px solid var(--rule);
-			}
-
-			.schedule-item:last-child {
-				border-bottom: 0;
-			}
-
-			.schedule-item__thumb {
-				width: 72px;
-				height: 72px;
-				background-size: cover;
-				background-position: center;
-				border: 1px solid var(--rule);
-			}
-
-			.schedule-item__meta {
-				font-size: 10px;
-				font-weight: 700;
-				letter-spacing: var(--tracking-caps);
-				text-transform: uppercase;
-				color: var(--orange);
-			}
-
-			.schedule-item__title {
-				margin-top: 7px;
-				font-family: var(--f-display);
-				font-size: 22px;
-				line-height: 1.02;
-				letter-spacing: -0.02em;
-				color: var(--ink);
-			}
-
-			.schedule-item__venue {
-				margin-top: 7px;
-				font-size: 10px;
-				font-weight: 600;
-				letter-spacing: var(--tracking-caps);
-				text-transform: uppercase;
-				color: var(--ink-mute);
-			}
-
-			.schedule-item__cta {
-				display: inline-flex;
-				align-items: center;
-				gap: 8px;
+			.program-rail__range {
 				margin-top: 10px;
 				font-size: 10px;
 				font-weight: 800;
 				letter-spacing: var(--tracking-caps);
 				text-transform: uppercase;
-				color: var(--ink);
+				color: var(--ink-dark-soft);
 			}
 
-			.schedule-item__cta span {
+			.program-rail__copy {
+				margin: 14px 0 0;
+				font-size: 13px;
+				line-height: 1.6;
+				color: var(--ink-dark-soft);
+			}
+
+			.program-rail__intro-foot {
+				display: grid;
+				gap: 12px;
+				margin-top: 24px;
+				padding-top: 14px;
+				border-top: 1px solid rgba(255, 241, 223, 0.1);
+			}
+
+			.program-rail__location {
+				font-size: 10px;
+				font-weight: 800;
+				letter-spacing: var(--tracking-caps);
+				text-transform: uppercase;
+				color: var(--ink-dark-soft);
+			}
+
+			.program-rail__link {
+				display: inline-flex;
+				align-items: center;
+				gap: 8px;
+				font-size: 10px;
+				font-weight: 800;
+				letter-spacing: var(--tracking-caps);
+				text-transform: uppercase;
+				color: var(--ink-dark);
+			}
+
+			.program-rail__link span {
 				color: var(--orange);
 			}
 
-			.schedule__footer {
-				padding: 16px 22px 20px;
-				border-top: 1px solid var(--rule);
-				font-size: 10px;
-				font-weight: 700;
-				letter-spacing: var(--tracking-caps);
-				text-transform: uppercase;
-				color: var(--ink-mute);
+			.program-card {
+				display: grid;
+				grid-template-rows: auto 1fr;
+				border-right: 1px solid rgba(255, 241, 223, 0.1);
+				background: var(--bg-card);
+				align-content: start;
 			}
 
-			.schedule__footer strong {
-				color: var(--ink);
+			.program-card:last-child {
+				border-right: 0;
+			}
+
+			.program-card__image {
+				display: block;
+				padding: 14px 14px 12px;
+				border-bottom: 1px solid rgba(255, 241, 223, 0.08);
+			}
+
+			.program-card__image img {
+				display: block;
+				width: 100%;
+				height: auto;
+				border: 1px solid rgba(255, 241, 223, 0.1);
+				background: #100d0b;
+				box-shadow: 0 10px 20px rgba(0, 0, 0, 0.14);
+				filter: saturate(0.82) brightness(0.88);
+			}
+
+			.program-card__body {
+				padding: 16px 18px 18px;
+				display: grid;
+				align-content: start;
+			}
+
+			.program-card__meta {
+				font-size: 10px;
+				font-weight: 800;
+				letter-spacing: var(--tracking-caps);
+				text-transform: uppercase;
+				color: var(--orange);
+			}
+
+			.program-card__title {
+				margin-top: 8px;
+				font-family: var(--f-display);
+				font-size: 20px;
+				line-height: 1.05;
+				letter-spacing: -0.025em;
+			}
+
+			.program-card__venue {
+				margin-top: 8px;
+				font-size: 10px;
+				font-weight: 600;
+				letter-spacing: 0.04em;
+				text-transform: uppercase;
+				color: var(--ink-dark-soft);
+			}
+
+			.program-card__cta {
+				display: inline-flex;
+				align-items: center;
+				gap: 8px;
+				margin-top: 14px;
+				font-size: 10px;
+				font-weight: 800;
+				letter-spacing: var(--tracking-caps);
+				text-transform: uppercase;
+			}
+
+			.program-card__cta span {
+				color: var(--orange);
 			}
 
 			.about {
+				background: var(--bg-surface);
 				border-top: 1px solid var(--rule);
-				background:
-					linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0)),
-					var(--bg-band);
 			}
 
 			.about .shell {
@@ -522,7 +591,7 @@
 				grid-template-columns: 180px minmax(0, 1fr) 240px;
 				gap: 32px;
 				align-items: start;
-				padding: 44px 0 52px;
+				padding: 34px 0 42px;
 			}
 
 			.about__label {
@@ -537,12 +606,11 @@
 
 			.about__copy {
 				margin: 0;
-				max-width: 780px;
-				font-family: var(--f-display);
-				font-size: 25px;
-				line-height: 1.35;
-				letter-spacing: -0.02em;
-				color: var(--ink);
+				max-width: 760px;
+				font-size: 21px;
+				line-height: 1.5;
+				letter-spacing: -0.015em;
+				color: var(--ink-soft);
 			}
 
 			.about__copy strong {
@@ -605,7 +673,7 @@
 		<div class="frame">
 			<div class="utility">
 				<div class="shell">
-					<div>120 W North Ave · Baltimore, MD</div>
+					<div>120 W North Ave - Baltimore, MD</div>
 					<div class="utility__right">
 						<a href="https://www.instagram.com/motorhousebaltimore">Instagram</a>
 						<a href="https://www.facebook.com/motorhousebaltimore/">Facebook</a>
@@ -639,10 +707,10 @@
 
 			<section class="hero">
 				<div class="shell">
-					<div class="hero__grid">
+					<div class="hero__stage">
 						<div class="hero__copy">
 							<div class="hero__topline">
-								<strong class="pulse">Featured tonight</strong>
+								<strong>Featured tonight</strong>
 								<span>Monday night programming at Motor House</span>
 							</div>
 
@@ -668,7 +736,7 @@
 								</div>
 								<div class="hero__meta-item">
 									<div class="hero__meta-label">Location</div>
-									<div class="hero__meta-value">Motor House · 120 W North Ave</div>
+									<div class="hero__meta-value">Motor House - 120 W North Ave</div>
 								</div>
 							</div>
 
@@ -690,77 +758,106 @@
 								</a>
 							</div>
 
-							<div class="hero__foot">Live music · comedy · workshops · exhibitions</div>
 						</div>
 
-						<aside class="schedule">
-							<div class="schedule__head">
-								<div class="schedule__eyebrow">This week at Motor House</div>
-								<h2 class="schedule__title">Coming Up Next</h2>
-								<div class="schedule__range">Apr 21 - Apr 22</div>
+						<div class="hero__visual">
+							<div class="marquee">
+								<div class="marquee__surface">
+									<img
+										class="marquee__art"
+										src="https://static.wixstatic.com/media/d43b94_b36d6a99ed314857abe962c0249e8063~mv2.jpg/v1/fill/w_1200,h_1500,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/d43b94_b36d6a99ed314857abe962c0249e8063~mv2.jpg"
+										alt="DAT FEEL GOOD Baltimore Jazz Jam Session"
+									/>
+									<div class="marquee__label">Showroom Stage</div>
+									<div class="marquee__note">Every Monday - free entry with a 2-item minimum.</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="program-rail">
+						<div class="program-rail__inner">
+							<div class="program-rail__intro">
+								<div class="program-rail__intro-main">
+									<div class="program-rail__eyebrow">This week at Motor House</div>
+									<h2 class="program-rail__title">Coming Up Next</h2>
+									<div class="program-rail__range">Apr 21 - Apr 22</div>
+									<p class="program-rail__copy">
+										Three more nights already on the calendar across comedy, karaoke,
+										and drop-in making.
+									</p>
+								</div>
+								<div class="program-rail__intro-foot">
+									<div class="program-rail__location">Showroom Bar + Galleries</div>
+									<a
+										class="program-rail__link"
+										href="https://www.motorhousebaltimore.com/events-1"
+									>
+										Open Calendar <span>-></span>
+									</a>
+								</div>
 							</div>
 
-							<div class="schedule__list">
-								<article class="schedule-item">
-									<div
-										class="schedule-item__thumb"
-										style="background-image: url('https://static.wixstatic.com/media/3b2c12_9c7dd9f1ae474785ba732d1cd75dcf46~mv2.png/v1/fill/w_980,h_1268,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/3b2c12_9c7dd9f1ae474785ba732d1cd75dcf46~mv2.png');"
-									></div>
-									<div>
-										<div class="schedule-item__meta">Tue, Apr 21 · 7:00 PM</div>
-										<div class="schedule-item__title">Karaoke</div>
-										<div class="schedule-item__venue">Showroom Bar · Motor House</div>
-										<a
-											class="schedule-item__cta"
-											href="https://www.motorhousebaltimore.com/events/karaoke-2026-04-21-19-00-1"
-										>
-											RSVP <span>→</span>
-										</a>
-									</div>
-								</article>
+							<article class="program-card">
+								<div class="program-card__image">
+									<img
+										src="https://static.wixstatic.com/media/3b2c12_9c7dd9f1ae474785ba732d1cd75dcf46~mv2.png/v1/fill/w_980,h_1268,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/3b2c12_9c7dd9f1ae474785ba732d1cd75dcf46~mv2.png"
+										alt="Karaoke"
+									/>
+								</div>
+								<div class="program-card__body">
+									<div class="program-card__meta">Tue, Apr 21 - 7:00 PM</div>
+									<div class="program-card__title">Karaoke</div>
+									<div class="program-card__venue">Showroom Bar - Motor House</div>
+									<a
+										class="program-card__cta"
+										href="https://www.motorhousebaltimore.com/events/karaoke-2026-04-21-19-00-1"
+									>
+										RSVP <span>-></span>
+									</a>
+								</div>
+							</article>
 
-								<article class="schedule-item">
-									<div
-										class="schedule-item__thumb"
-										style="background-image: url('https://static.wixstatic.com/media/3b2c12_e4dc4dd979d7416aa7e405b9d75da83a~mv2.png/v1/fill/w_980,h_1268,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/3b2c12_e4dc4dd979d7416aa7e405b9d75da83a~mv2.png');"
-									></div>
-									<div>
-										<div class="schedule-item__meta">Wed, Apr 22 · 6:30 PM</div>
-										<div class="schedule-item__title">Sketch Sip &amp; Savor</div>
-										<div class="schedule-item__venue">Motor House</div>
-										<a
-											class="schedule-item__cta"
-											href="https://www.motorhousebaltimore.com/events/sketch-sip-savor-2026-04-22-18-30"
-										>
-											Get Tickets <span>→</span>
-										</a>
-									</div>
-								</article>
+							<article class="program-card">
+								<div class="program-card__image">
+									<img
+										src="https://static.wixstatic.com/media/3b2c12_e4dc4dd979d7416aa7e405b9d75da83a~mv2.png/v1/fill/w_980,h_1268,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/3b2c12_e4dc4dd979d7416aa7e405b9d75da83a~mv2.png"
+										alt="Sketch Sip and Savor"
+									/>
+								</div>
+								<div class="program-card__body">
+									<div class="program-card__meta">Wed, Apr 22 - 6:30 PM</div>
+									<div class="program-card__title">Sketch Sip &amp; Savor</div>
+									<div class="program-card__venue">Motor House</div>
+									<a
+										class="program-card__cta"
+										href="https://www.motorhousebaltimore.com/events/sketch-sip-savor-2026-04-22-18-30"
+									>
+										Get Tickets <span>-></span>
+									</a>
+								</div>
+							</article>
 
-								<article class="schedule-item">
-									<div
-										class="schedule-item__thumb"
-										style="background-image: url('https://static.wixstatic.com/media/3b2c12_6832ab5d2b3b4bd6a1baceafd723957f~mv2.png/v1/fill/w_980,h_1268,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/3b2c12_6832ab5d2b3b4bd6a1baceafd723957f~mv2.png');"
-									></div>
-									<div>
-										<div class="schedule-item__meta">Wed, Apr 22 · 7:00 PM</div>
-										<div class="schedule-item__title">Art of Comedy at Motor House</div>
-										<div class="schedule-item__venue">Motor House</div>
-										<a
-											class="schedule-item__cta"
-											href="https://www.motorhousebaltimore.com/events/art-of-comedy-at-motor-house-2026-04-22-19-00"
-										>
-											RSVP <span>→</span>
-										</a>
-									</div>
-								</article>
-							</div>
-
-							<div class="schedule__footer">
-								<strong>More this week:</strong> live music, workshops, and comedy
-								continue through the Showroom and galleries.
-							</div>
-						</aside>
+							<article class="program-card">
+								<div class="program-card__image">
+									<img
+										src="https://static.wixstatic.com/media/3b2c12_6832ab5d2b3b4bd6a1baceafd723957f~mv2.png/v1/fill/w_980,h_1268,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/3b2c12_6832ab5d2b3b4bd6a1baceafd723957f~mv2.png"
+										alt="Art of Comedy"
+									/>
+								</div>
+								<div class="program-card__body">
+									<div class="program-card__meta">Wed, Apr 22 - 7:00 PM</div>
+									<div class="program-card__title">Art of Comedy</div>
+									<div class="program-card__venue">Motor House</div>
+									<a
+										class="program-card__cta"
+										href="https://www.motorhousebaltimore.com/events/art-of-comedy-at-motor-house-2026-04-22-19-00"
+									>
+										RSVP <span>-></span>
+									</a>
+								</div>
+							</article>
+						</div>
 					</div>
 				</div>
 			</section>
@@ -774,9 +871,9 @@
 						stage <strong>live music, comedy, exhibitions, workshops, and more.</strong>
 					</p>
 					<div class="about__meta">
-						<span>Station North Arts District · Est. 2013</span>
+						<span>Station North Arts District - Est. 2013</span>
 						<a href="https://www.motorhousebaltimore.com/about">
-							Read the full story <span>→</span>
+							Read the full story <span>-></span>
 						</a>
 					</div>
 				</div>
