@@ -9,7 +9,6 @@ featImage: ./parkway-feature.jpg
 metaImage: "https://duo-studio.co/assets/journal/thoughts-on-the-baltimore-arts-website-experience/parkway-feature.jpg"
 imageCaption: "The Parkway Theater in Baltimore"
 permalink: /thoughts-on-the-baltimore-arts-website-experience/
-draft: true
 ---
 <div class="entry__content--sidebar">
 <h2 class="title-3 entry__content--sidebar-excerpt">
