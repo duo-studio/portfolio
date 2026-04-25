@@ -8,17 +8,19 @@ layout: layouts/base.njk
 
 <div class="barba-container loading" data-barba="container" data-barba-namespace="journal">
     <main>
-        <section id="post" class="entry">
+        <section id="post" class="entry{% if not featImage and not imageCaption %} entry--no-thumbnail{% endif %}{% if hideShare %} entry--hide-share{% endif %}">
             <div class="section__wrapper">
-                <div class="entry__thumbnail">
-                    {% if featImage %}
-                        {% set img = featImage %}
-                        {% image img, "featured-image" %}
-                    {% endif %}
-                    {% if imageCaption %}
-                        <p class="subtitle">{{ imageCaption }}</p>
-                    {% endif %}
-                </div>
+                {% if featImage or imageCaption %}
+                    <div class="entry__thumbnail">
+                        {% if featImage %}
+                            {% set img = featImage %}
+                            {% image img, "featured-image" %}
+                        {% endif %}
+                        {% if imageCaption %}
+                            <p class="subtitle">{{ imageCaption }}</p>
+                        {% endif %}
+                    </div>
+                {% endif %}
                 {% if archiveHref and archiveLabel %}
                     <a href="{{ archiveHref }}" class="entry__back cursor__hover --highlight" aria-label="{{ archiveLabel }}">
                         <svg class="entry__back-icon" viewBox="0 0 34 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
@@ -46,28 +48,30 @@ layout: layouts/base.njk
                 </ul>
                 <div class="entry__content">
                     {{ content | safe }}
-                    <div class="entry__content--share">
-                        <p class="subtitle">Share:</p>
-                        <div class="entry__content--share-links">
-                            <a
-                                href="https://www.facebook.com/sharer/sharer.php?u={{ metadata.url+page.url }}"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="btn__small --tag cursor__hover --highlight">Facebook</a>
-                            <a
-                                href="https://www.linkedin.com/sharing/share-offsite/?url={{ metadata.url+page.url }}"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="btn__small --tag cursor__hover --highlight">LinkedIn</a>
-                            <a
-                                href="mailto:?subject={{ headline | urlencode }}&body=Check out this article from Duo Studio: {{ metadata.url+page.url }}"
-                                class="btn__small --tag cursor__hover --highlight">Email</a>
-                            <a
-                                href="#"
-                                class="btn__small --tag cursor__hover --highlight"
-                                onclick="navigator.clipboard.writeText('{{ metadata.url+page.url }}').then(function(){var el=event.target;el.textContent='Copied!';setTimeout(function(){el.textContent='Copy Link'},2000)});return false;">Copy Link</a>
+                    {% if not hideShare %}
+                        <div class="entry__content--share">
+                            <p class="subtitle">Share:</p>
+                            <div class="entry__content--share-links">
+                                <a
+                                    href="https://www.facebook.com/sharer/sharer.php?u={{ metadata.url+page.url }}"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="btn__small --tag cursor__hover --highlight">Facebook</a>
+                                <a
+                                    href="https://www.linkedin.com/sharing/share-offsite/?url={{ metadata.url+page.url }}"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="btn__small --tag cursor__hover --highlight">LinkedIn</a>
+                                <a
+                                    href="mailto:?subject={{ headline | urlencode }}&body=Check out this article from Duo Studio: {{ metadata.url+page.url }}"
+                                    class="btn__small --tag cursor__hover --highlight">Email</a>
+                                <a
+                                    href="#"
+                                    class="btn__small --tag cursor__hover --highlight"
+                                    onclick="navigator.clipboard.writeText('{{ metadata.url+page.url }}').then(function(){var el=event.target;el.textContent='Copied!';setTimeout(function(){el.textContent='Copy Link'},2000)});return false;">Copy Link</a>
+                            </div>
                         </div>
-                    </div>
+                    {% endif %}
                 </div>
                 {%- if category == "Guide" %}
                     <div class="entry__related">

@@ -61,7 +61,7 @@ eleventyComputed:
         <meta name="twitter:title" content="{{ title or metadata.title }}"/>
         <meta name="twitter:description" content="{{ description or metadata.description }}"/>
         <meta name="twitter:image" content="{{ metaImage or metadata.image }}"/>
-        <meta name="robots" content="index, follow"/>
+        <meta name="robots" content="{{ robots or 'index, follow' }}"/>
         <link rel="canonical" href="https://duo-studio.co{{ page.url }}"/>
         <link rel="icon" type="image/x-icon" href="/assets/favicon.ico"/>
         <link rel="shortcut icon" type="image/jpg" href="/assets/Duo_Favicon.jpg" sizes="any"/>

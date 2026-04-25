@@ -27,3 +27,12 @@ $gutter: calc(min(6vw, 115px));
 $mobile-spacer: 4rem;
 $mobile-gutter: 1.5rem;
 $headline-spacing: 1em;
+
+@mixin title-3 {
+	font-family: $font-suisse-r;
+	font-size: $font-size-h3;
+	font-weight: 500;
+	letter-spacing: -0.02em;
+	line-height: 1.2;
+	text-transform: none;
+}

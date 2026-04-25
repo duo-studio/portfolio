@@ -138,6 +138,26 @@
 	}
 
 	.entry {
+		&--hide-share {
+			.entry__content {
+				padding-bottom: $spacer;
+
+				@media screen and (max-width: $mobile-breakpoint-s) {
+					padding-bottom: $mobile-spacer;
+				}
+			}
+		}
+
+		&--no-thumbnail {
+			.entry__headline {
+				padding-top: calc(max(52px, 3.125vw) + #{$spacer});
+
+				@media screen and (max-width: $mobile-breakpoint-s) {
+					padding-top: #{$mobile-spacer * 2};
+				}
+			}
+		}
+
 		&__back {
 			display: inline-flex;
 			align-items: center;
@@ -186,12 +206,12 @@
 			}
 		}
 		&__headline {
-			padding: 0 $gutter calc(#{$gutter} * 0.72);
+			padding: calc(#{$gutter} * 0.45) $gutter calc(#{$gutter} * 0.72);
 			max-width: 70%;
 			text-wrap: balance;
 
 			@media screen and (max-width: $mobile-breakpoint-s) {
-				padding: 0 $mobile-gutter calc(#{$mobile-spacer} * 0.72);
+				padding: calc(#{$mobile-spacer} * 0.5) $mobile-gutter calc(#{$mobile-spacer} * 0.72);
 				max-width: 80%;
 			}
 		}
@@ -245,7 +265,7 @@
 			ul,
 			ol {
 				font-size: $font-size-p;
-				padding-left: 2em;
+				padding-left: 1em;
 				padding-bottom: 0;
 				margin-bottom: 1.6em;
 
@@ -403,7 +423,7 @@
 
 				h2,
 				h3 {
-					margin: 1em 0 0.4em;
+					margin: 1.35em 0 0.4em;
 					&:first-child {
 						margin-top: 0;
 					}
@@ -527,7 +547,7 @@
 							cursor: pointer;
 							list-style: none;
 							font-family: $font-suisse-r;
-							font-size: $font-size-p;
+							font-size: 18px;
 							font-weight: 600;
 							line-height: 1.36;
 							letter-spacing: -0.02em;
