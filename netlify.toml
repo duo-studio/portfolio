@@ -34,3 +34,8 @@
   from = "/creative-agency-dc/"
   to = "/"
   force = true
+
+[[headers]]
+  for = "/private-perspectives/govcon-growth-presence/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive"
