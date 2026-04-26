@@ -9,7 +9,7 @@ date: 2026-04-25
 category: Private Perspective
 featImage: "./featured-govcon-presence.webp"
 metaImage: false
-imageCaption: false
+imageCaption: "Photo: Andy Feliciotti on Unsplash."
 permalink: /private-perspectives/govcon-growth-presence/
 eleventyExcludeFromCollections: true
 ignore: true
@@ -74,6 +74,11 @@ A normal B2B site can often focus on a clean value proposition, a conversion fun
 
 The strongest GovCon websites are specific without being careless. They make the firm easier to understand, easier to trust, and easier to introduce internally.
 
+<figure class="entry__visual">
+{% image "./govcon-supreme-court.webp", "The United States Supreme Court building in Washington, DC" %}
+<figcaption class="subtitle">Photo: <a href="https://unsplash.com/photos/0CnNuEtg0x0" target="_blank" rel="noopener noreferrer">Dave Vaill</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a>.</figcaption>
+</figure>
+
 That last point is important. A BD lead may already know your company. A champion inside an agency may already believe in your work. But they still need materials they can forward, reference, and defend. Your website should make that easier.
 
 <h2 id="what-changes-after-growth" class="title-3">What changes after a major award or growth phase</h2>
@@ -123,6 +128,11 @@ At minimum, the site should make these answers obvious:
 - Who leads the company?
 - What do you believe about the future of the work?
 
+<figure class="entry__visual">
+{% image "./govcon-data-center.webp", "Server racks in a data center" %}
+<figcaption class="subtitle">Photo: <a href="https://unsplash.com/photos/2JJ3wBHu4_0" target="_blank" rel="noopener noreferrer">Kevin Ache</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a>.</figcaption>
+</figure>
+
 Most GovCon sites answer some of these questions, scattered across PDFs and old pages. The better move is to turn the site into a coherent BD asset: structured, specific, and easy to reference.
 
 <h2 id="capabilities-and-proof" class="title-3">Capability statements, contract vehicles, past performance, and agency proof</h2>
@@ -160,6 +170,11 @@ Candidates are not only reading job descriptions. They are reading the whole com
 This matters even more for cleared talent, senior operators, technical specialists, and candidates coming from larger primes. Those people have options. A generic careers page with stock language about culture is not enough.
 
 A stronger recruiting layer should show:
+
+<figure class="entry__visual">
+{% image "./govcon-working-session.webp", "Two people working with laptops in a meeting setting" %}
+<figcaption class="subtitle">Photo: <a href="https://unsplash.com/photos/HocFQHhGjDE" target="_blank" rel="noopener noreferrer">Christina @ wocintechchat.com</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a>.</figcaption>
+</figure>
 
 - The kind of missions and problems people get to work on.
 - What the company values in delivery, not just in a culture statement.
@@ -233,7 +248,7 @@ If those pieces are unclear, a redesign will simply make confusion look better. 
 
 <h2 id="where-this-comes-from" class="title-3">Where this perspective comes from</h2>
 
-This perspective comes from Duo's work on brand and website systems for government-adjacent and contractor firms including PME, Infinity Technology, and TI Verbatim. Across those projects, the same pattern shows up: credibility, capability structure, recruiting, leadership visibility, and procurement context all have to work together online.
+This perspective comes from our partnership with government-adjacent and contractor firms including PME Indy, Infinity Technology, and TI Verbatim. Across those projects, the same pattern shows up: credibility, capability structure, recruiting, leadership visibility, and procurement context all have to work together online.
 
 <div class="faq">
 
