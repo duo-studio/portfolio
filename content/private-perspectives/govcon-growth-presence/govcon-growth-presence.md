@@ -26,9 +26,9 @@ hideShare: true
 ### Table of Contents:
 
 - [Your market presence should keep up with your contract momentum](#contract-momentum)
-- [Why govcon websites are different](#why-govcon-websites-are-different)
+- [Why government contracting websites are different](#why-government-contracting-websites-are-different)
 - [What changes after a major award or growth phase](#what-changes-after-growth)
-- [The website as a BD asset](#bd-asset)
+- [The website as a business development asset](#business-development-asset)
 - [Capability statements, vehicles, and proof](#capabilities-and-proof)
 - [Recruiting and employer brand](#recruiting)
 - [Executive POV and thought leadership](#executive-pov)
@@ -52,17 +52,17 @@ A growing government contractor can outpace its website quickly. One major award
 
 But the website often still reflects the company from three years ago: thin service pages, vague language, old headshots, a few logos without context, and a homepage that says "trusted partner" without proving much of anything.
 
-That gap matters. In GovCon, the website is rarely the thing that wins the contract by itself. It is the thing people check before the conversation, during the conversation, and after the referral. Agency stakeholders, teaming partners, recruits, primes, and investors all use it to answer the same quiet question: is this firm as credible as the opportunity in front of it?
+That gap matters. In government contracting, the website is rarely the thing that wins the contract by itself. It is the thing people check before the conversation, during the conversation, and after the referral. Agency stakeholders, teaming partners, recruits, primes, and investors all use it to answer the same quiet question: is this firm as credible as the opportunity in front of it?
 
 If the answer feels smaller than the company has become, the website is doing damage quietly.
 
 This perspective is for the 50 to 300 person government contractor that has real momentum and a site that has not caught up yet. Not a startup trying to look established. An established firm that needs its digital presence to match the substance already inside the business.
 
-<h2 id="why-govcon-websites-are-different" class="title-3">Why govcon websites are different from normal B2B websites</h2>
+<h2 id="why-government-contracting-websites-are-different" class="title-3">Why government contracting websites are different from normal B2B websites</h2>
 
 Government contractor websites are not standard lead-generation machines. They operate in a relationship-heavy, procurement-aware, credibility-sensitive environment where the buying path is rarely linear.
 
-A normal B2B site can often focus on a clean value proposition, a conversion funnel, and a strong demo or contact path. A GovCon site has to do more layered work:
+A normal B2B site can often focus on a clean value proposition, a conversion funnel, and a strong demo or contact path. A government contracting site has to do more layered work:
 
 - Explain capabilities without overclaiming.
 - Show past performance without exposing sensitive details.
@@ -72,14 +72,14 @@ A normal B2B site can often focus on a clean value proposition, a conversion fun
 - Give executives a credible platform for point-of-view content.
 - Signal maturity to procurement, primes, and senior decision-makers.
 
-The strongest GovCon websites are specific without being careless. They make the firm easier to understand, easier to trust, and easier to introduce internally.
+The strongest government contractor websites are specific without being careless. They make the firm easier to understand, easier to trust, and easier to introduce internally.
 
 <figure class="entry__visual">
 {% image "./govcon-dc-building.webp", "A government building facade in Washington, DC" %}
 <figcaption class="subtitle">Photo: <a href="https://unsplash.com/photos/O3QSZB9q-lk" target="_blank" rel="noopener noreferrer">Sebastian Schuster</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a>.</figcaption>
 </figure>
 
-That last point is important. A BD lead may already know your company. A champion inside an agency may already believe in your work. But they still need materials they can forward, reference, and defend. Your website should make that easier.
+That last point is important. A business development lead may already know your company. A champion inside an agency may already believe in your work. But they still need materials they can forward, reference, and defend. Your website should make that easier.
 
 <h2 id="what-changes-after-growth" class="title-3">What changes after a major award or growth phase</h2>
 
@@ -103,11 +103,11 @@ This is where many firms get stuck. They add a news post about the award, maybe 
 
 The company has changed. The story has to change with it.
 
-<h2 id="bd-asset" class="title-3">The website as a BD asset, not a brochure</h2>
+<h2 id="business-development-asset" class="title-3">The website as a business development asset, not a brochure</h2>
 
-A GovCon website should support business development before a formal pursuit begins. It should help the right people understand what the firm does, where it fits, and why it belongs in the conversation.
+A government contracting website should support business development before a formal pursuit begins. It should help the right people understand what the firm does, where it fits, and why it belongs in the conversation.
 
-That does not mean turning the site into a loud sales page. GovCon buyers can smell that instantly. It means making the website useful in the moments that actually happen:
+That does not mean turning the site into a loud sales page. Experienced buyers can smell that instantly. It means making the website useful in the moments that actually happen:
 
 - A prime is deciding whether to bring you into a pursuit.
 - A contracting officer is checking your capabilities.
@@ -133,7 +133,7 @@ At minimum, the site should make these answers obvious:
 <figcaption class="subtitle">Photo: <a href="https://unsplash.com/photos/w-4-m8bvXAo" target="_blank" rel="noopener noreferrer">Declan Sun</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a>.</figcaption>
 </figure>
 
-Most GovCon sites answer some of these questions, scattered across PDFs and old pages. The better move is to turn the site into a coherent BD asset: structured, specific, and easy to reference.
+Most government contractor sites answer some of these questions, scattered across PDFs and old pages. The better move is to turn the site into a coherent business development asset: structured, specific, and easy to reference.
 
 <h2 id="capabilities-and-proof" class="title-3">Capability statements, contract vehicles, past performance, and agency proof</h2>
 
@@ -182,7 +182,7 @@ The website does not need to pretend work is something it is not. In fact, a sha
 
 <h2 id="executive-pov" class="title-3">Thought leadership and executive POV</h2>
 
-GovCon firms often have real expertise trapped inside leadership conversations, proposal language, and internal briefings. The website rarely reflects it.
+Government contractors often have real expertise trapped inside leadership conversations, proposal language, and internal briefings. The website rarely reflects it.
 
 That is a missed opportunity. For a growth-stage contractor, executive point of view can be one of the clearest ways to signal category understanding. Especially around AI, cybersecurity, modernization, data infrastructure, mission support, workforce transformation, and emerging federal priorities.
 
@@ -217,13 +217,13 @@ Your site may be holding the firm back if:
 - There is no clear path for partners, agencies, candidates, or media to take the next step.
 - The visual identity feels smaller or less mature than the firms you now compete against.
 
-The most expensive version of this problem is not embarrassment. It is drag. BD has to explain around the website. Recruiters have to compensate for it. Executives hesitate to share it. Partners get less clarity than they should.
+The most expensive version of this problem is not embarrassment. It is drag. Business development teams have to explain around the website. Recruiters have to compensate for it. Executives hesitate to share it. Partners get less clarity than they should.
 
 When that happens, the site is no longer neutral. It is slowing the firm down.
 
 <h2 id="before-redesign" class="title-3">What to fix before a full redesign</h2>
 
-Not every GovCon firm needs to jump straight into a full redesign. Sometimes the smartest move is to stabilize the strategic foundation first, then redesign from a stronger position.
+Not every government contractor needs to jump straight into a full redesign. Sometimes the smartest move is to stabilize the strategic foundation first, then redesign from a stronger position.
 
 Before redesigning, fix the things that will shape the redesign:
 
@@ -235,7 +235,7 @@ Before redesigning, fix the things that will shape the redesign:
 
 **Proof inventory.** Gather past performance, agency experience, vehicles, certifications, partner relationships, awards, leadership credentials, recruiting differentiators, and any public-safe outcomes.
 
-**Content governance.** Decide who owns updates. GovCon sites go stale when every change requires a scramble. Awards, vehicles, leadership, and recruiting content need a maintenance path.
+**Content governance.** Decide who owns updates. Government contractor sites go stale when every change requires a scramble. Awards, vehicles, leadership, and recruiting content need a maintenance path.
 
 **Technical hygiene.** Fix broken links, slow pages, missing metadata, weak mobile behavior, inaccessible content, and forms that are not routed correctly. These are not glamorous issues, but they affect trust.
 
@@ -257,9 +257,9 @@ A strong government contractor website should include clear positioning, capabil
 </details>
 
 <details class="faq__item">
-<summary>How is a GovCon website different from a normal B2B website?</summary>
+<summary>How is a government contracting website different from a normal B2B website?</summary>
 
-A normal B2B website usually optimizes for lead generation and conversion. A GovCon website has to support a more complex credibility environment. It needs to help with business development, teaming, procurement trust, recruiting, executive visibility, and capability communication, often without publishing sensitive project details.
+A normal B2B website usually optimizes for lead generation and conversion. A government contracting website has to support a more complex credibility environment. It needs to help with business development, teaming, procurement trust, recruiting, executive visibility, and capability communication, often without publishing sensitive project details.
 
 </details>
 
@@ -278,7 +278,7 @@ Often, yes, but it requires judgment. Some work cannot be discussed publicly, an
 </details>
 
 <details class="faq__item">
-<summary>When should a growing GovCon firm redesign its website?</summary>
+<summary>When should a growing government contractor redesign its website?</summary>
 
 A redesign is worth considering when the website no longer reflects the company's current scale, capabilities, leadership, or contract momentum. Common triggers include a major award, a new growth strategy, a leadership change, expansion into new agencies or capabilities, recruiting pressure, or a brand that now feels smaller than the company has become.
 
@@ -290,7 +290,7 @@ A redesign is worth considering when the website no longer reflects the company'
 
 For a fast-growing government contractor, the website is not just a marketing surface. It is a credibility system.
 
-It helps people understand the company before they talk to BD. It supports internal referrals. It gives candidates a reason to take the firm seriously. It gives executives a platform for ideas. It gives procurement and partners enough proof to keep moving.
+It helps people understand the company before they talk to a business development lead. It supports internal referrals. It gives candidates a reason to take the firm seriously. It gives executives a platform for ideas. It gives procurement and partners enough proof to keep moving.
 
 The firms that handle this well do not make the site louder. They make it sharper. Clearer positioning. Better proof. Stronger capability architecture. More visible leadership. A careers story that feels like it belongs to the same company as the contract momentum.
 
