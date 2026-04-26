@@ -9,7 +9,7 @@ date: 2026-04-25
 category: Private Perspective
 featImage: "./featured-govcon-presence.webp"
 metaImage: false
-imageCaption: "Photo: Andy Feliciotti on Unsplash."
+imageCaption: "Photo: Zoshua Colah on Unsplash."
 permalink: /private-perspectives/govcon-growth-presence/
 eleventyExcludeFromCollections: true
 ignore: true
@@ -75,8 +75,8 @@ A normal B2B site can often focus on a clean value proposition, a conversion fun
 The strongest GovCon websites are specific without being careless. They make the firm easier to understand, easier to trust, and easier to introduce internally.
 
 <figure class="entry__visual">
-{% image "./govcon-supreme-court.webp", "The United States Supreme Court building in Washington, DC" %}
-<figcaption class="subtitle">Photo: <a href="https://unsplash.com/photos/0CnNuEtg0x0" target="_blank" rel="noopener noreferrer">Dave Vaill</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a>.</figcaption>
+{% image "./govcon-architectural-system.webp", "Abstract modern architectural forms and structural lines" %}
+<figcaption class="subtitle">Photo: <a href="https://unsplash.com/photos/AsfGNRzhgRA" target="_blank" rel="noopener noreferrer">Soroush Karimi</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a>.</figcaption>
 </figure>
 
 That last point is important. A BD lead may already know your company. A champion inside an agency may already believe in your work. But they still need materials they can forward, reference, and defend. Your website should make that easier.
@@ -129,8 +129,8 @@ At minimum, the site should make these answers obvious:
 - What do you believe about the future of the work?
 
 <figure class="entry__visual">
-{% image "./govcon-data-center.webp", "Server racks in a data center" %}
-<figcaption class="subtitle">Photo: <a href="https://unsplash.com/photos/2JJ3wBHu4_0" target="_blank" rel="noopener noreferrer">Kevin Ache</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a>.</figcaption>
+{% image "./govcon-architectural-grid.webp", "Geometric architectural grid and building facade details" %}
+<figcaption class="subtitle">Photo: <a href="https://unsplash.com/photos/0DN43tk367E" target="_blank" rel="noopener noreferrer">Sebastian Schuster</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a>.</figcaption>
 </figure>
 
 Most GovCon sites answer some of these questions, scattered across PDFs and old pages. The better move is to turn the site into a coherent BD asset: structured, specific, and easy to reference.
@@ -172,8 +172,8 @@ This matters even more for cleared talent, senior operators, technical specialis
 A stronger recruiting layer should show:
 
 <figure class="entry__visual">
-{% image "./govcon-working-session.webp", "Two people working with laptops in a meeting setting" %}
-<figcaption class="subtitle">Photo: <a href="https://unsplash.com/photos/HocFQHhGjDE" target="_blank" rel="noopener noreferrer">Christina @ wocintechchat.com</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a>.</figcaption>
+{% image "./govcon-architectural-lines.webp", "Minimal architectural lines and repeating modern facade details" %}
+<figcaption class="subtitle">Photo: <a href="https://unsplash.com/photos/7imAsr-cUa8" target="_blank" rel="noopener noreferrer">Sebastian Schuster</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a>.</figcaption>
 </figure>
 
 - The kind of missions and problems people get to work on.

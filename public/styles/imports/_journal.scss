@@ -588,10 +588,10 @@
 				}
 
 				.entry__visual {
-					margin-top: 4rem;
+					margin: 4rem 0;
 
 					@media screen and (max-width: $mobile-breakpoint-s) {
-						margin-top: 2.5rem;
+						margin: 2.5rem 0;
 					}
 
 					&--narrow {
