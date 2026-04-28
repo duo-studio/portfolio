@@ -35,6 +35,106 @@
   to = "/"
   force = true
 
+[[redirects]]
+  from = "/contact-us"
+  to = "/contact/"
+  status = 301
+
+[[redirects]]
+  from = "/contact-us/"
+  to = "/contact/"
+  status = 301
+
+[[redirects]]
+  from = "/get-started"
+  to = "/contact/"
+  status = 301
+
+[[redirects]]
+  from = "/get-started/"
+  to = "/contact/"
+  status = 301
+
+[[redirects]]
+  from = "/schedule-a-call"
+  to = "/contact/"
+  status = 301
+
+[[redirects]]
+  from = "/schedule-a-call/"
+  to = "/contact/"
+  status = 301
+
+[[redirects]]
+  from = "/book-a-call"
+  to = "/contact/"
+  status = 301
+
+[[redirects]]
+  from = "/book-a-call/"
+  to = "/contact/"
+  status = 301
+
+[[redirects]]
+  from = "/lets-talk"
+  to = "/contact/"
+  status = 301
+
+[[redirects]]
+  from = "/lets-talk/"
+  to = "/contact/"
+  status = 301
+
+[[redirects]]
+  from = "/consultation"
+  to = "/contact/"
+  status = 301
+
+[[redirects]]
+  from = "/consultation/"
+  to = "/contact/"
+  status = 301
+
+[[redirects]]
+  from = "/appointment"
+  to = "/contact/"
+  status = 301
+
+[[redirects]]
+  from = "/appointment/"
+  to = "/contact/"
+  status = 301
+
+[[redirects]]
+  from = "/meeting"
+  to = "/contact/"
+  status = 301
+
+[[redirects]]
+  from = "/meeting/"
+  to = "/contact/"
+  status = 301
+
+[[redirects]]
+  from = "/demo"
+  to = "/contact/"
+  status = 301
+
+[[redirects]]
+  from = "/demo/"
+  to = "/contact/"
+  status = 301
+
+[[redirects]]
+  from = "/book-demo"
+  to = "/contact/"
+  status = 301
+
+[[redirects]]
+  from = "/book-demo/"
+  to = "/contact/"
+  status = 301
+
 [[headers]]
   for = "/private-perspectives/govcon-growth-presence/*"
   [headers.values]

@@ -2,6 +2,7 @@ let lenis;
 let lenisTickerCallback;
 var activeSplitInstances = [];
 var splitResizeHandler = null;
+var analyticsLandingPageKey = "duo_landing_page";
 
 function pushDataLayerEvent(eventName, params) {
 	if (typeof window.duoPushEvent === "function") {
@@ -24,6 +25,78 @@ function normalizeAnalyticsText(value) {
 	return (value || "").replace(/\s+/g, " ").trim();
 }
 
+function truncateAnalyticsText(value, maxLength = 120) {
+	var normalized = normalizeAnalyticsText(value);
+	if (!normalized) {
+		return "";
+	}
+
+	return normalized.slice(0, maxLength);
+}
+
+function getAnalyticsStorage() {
+	try {
+		return window.sessionStorage;
+	} catch (_error) {
+		return null;
+	}
+}
+
+function getAnalyticsPagePath() {
+	return window.location.pathname || "/";
+}
+
+function getAnalyticsSourcePage() {
+	var namespace = document
+		.querySelector('[data-barba="container"]')
+		?.getAttribute("data-barba-namespace");
+
+	if (namespace) {
+		return namespace;
+	}
+
+	var path = getAnalyticsPagePath();
+	if (path === "/") {
+		return "home";
+	}
+
+	return path.replace(/^\/|\/$/g, "").replace(/\//g, "_") || "unknown";
+}
+
+function initializeAnalyticsSessionContext() {
+	var storage = getAnalyticsStorage();
+	if (!storage || storage.getItem(analyticsLandingPageKey)) {
+		return;
+	}
+
+	storage.setItem(analyticsLandingPageKey, getAnalyticsPagePath());
+}
+
+function getAnalyticsLandingPage() {
+	var storage = getAnalyticsStorage();
+	return storage?.getItem(analyticsLandingPageKey) || "";
+}
+
+function getAnalyticsReferrer() {
+	if (!document.referrer) {
+		return "";
+	}
+
+	try {
+		var referrerUrl = new URL(document.referrer);
+		return truncateAnalyticsText(referrerUrl.origin + referrerUrl.pathname);
+	} catch (_error) {
+		return truncateAnalyticsText(document.referrer.split("?")[0].split("#")[0]);
+	}
+}
+
+function getBaseAnalyticsContext() {
+	return {
+		source_page: getAnalyticsSourcePage(),
+		page_path: getAnalyticsPagePath(),
+	};
+}
+
 function getAnalyticsHref(element) {
 	if (!element || typeof element.getAttribute !== "function") {
 		return "";
@@ -32,7 +105,7 @@ function getAnalyticsHref(element) {
 	return normalizeAnalyticsText(element.getAttribute("href") || "");
 }
 
-function getCtaLocation(element) {
+function getLinkLocation(element) {
 	var explicitLocation = element?.getAttribute("data-cta-location");
 	if (explicitLocation) {
 		return explicitLocation;
@@ -66,20 +139,50 @@ function getCtaLocation(element) {
 	return "unknown";
 }
 
-function getCtaPayload(element) {
-	return {
-		link_text: normalizeAnalyticsText(element?.textContent),
-		href: getAnalyticsHref(element),
-		page_path: window.location.pathname,
-		cta_location: getCtaLocation(element),
-	};
+function getAnalyticsDestination(element) {
+	var href = getAnalyticsHref(element);
+	if (!href) {
+		return normalizeAnalyticsText(element?.getAttribute("data-analytics-destination"));
+	}
+
+	if (/^(mailto:|tel:)/i.test(href)) {
+		return href.split("?")[0];
+	}
+
+	try {
+		var url = new URL(href, window.location.origin);
+		if (url.origin === window.location.origin) {
+			return url.pathname;
+		}
+
+		return url.origin + url.pathname;
+	} catch (_error) {
+		return href.split("?")[0].split("#")[0];
+	}
+}
+
+function getCanonicalCtaPayload(element) {
+	return Object.assign({}, getBaseAnalyticsContext(), {
+		link_text: truncateAnalyticsText(element?.textContent),
+		link_location: getLinkLocation(element),
+		destination: getAnalyticsDestination(element),
+	});
+}
+
+function getLegacyCtaPayload(payload) {
+	return Object.assign({}, payload, {
+		href: payload.destination,
+		cta_location: payload.link_location,
+	});
 }
 
 function isContactIntentCta(payload) {
+	var destination = payload.destination || "";
+
 	return (
-		payload.href.indexOf("/contact/") === 0 ||
-		payload.href.indexOf("mailto:") === 0 ||
-		payload.href.indexOf("tel:") === 0 ||
+		/^\/contact\/?$/i.test(destination) ||
+		destination.indexOf("mailto:") === 0 ||
+		destination.indexOf("tel:") === 0 ||
 		/contact|talk|call|email|get in touch|strategy call|start a project/i.test(
 			payload.link_text,
 		)
@@ -108,14 +211,23 @@ function bindGlobalAnalyticsEvents() {
 			return;
 		}
 
-		var payload = getCtaPayload(element);
+		var payload = getCanonicalCtaPayload(element);
 
 		if (isContactIntentCta(payload)) {
-			pushDataLayerEvent("cta_contact_click", payload);
+			pushDataLayerEvent("contact_cta_click", payload);
+			pushDataLayerEvent("cta_contact_click", getLegacyCtaPayload(payload));
+		}
+
+		if (payload.destination.indexOf("mailto:") === 0) {
+			pushDataLayerEvent("email_click", payload);
+		}
+
+		if (payload.destination.indexOf("tel:") === 0) {
+			pushDataLayerEvent("phone_click", payload);
 		}
 
 		if (isStartProjectCta(payload)) {
-			pushDataLayerEvent("cta_start_project_click", payload);
+			pushDataLayerEvent("cta_start_project_click", getLegacyCtaPayload(payload));
 		}
 
 		if (
@@ -128,6 +240,20 @@ function bindGlobalAnalyticsEvents() {
 			);
 		}
 	});
+}
+
+function getFormAnalyticsName(form) {
+	return form?.getAttribute("name") || form?.getAttribute("id") || "unknown";
+}
+
+function getContactFormAnalyticsPayload(form, extraParams) {
+	return Object.assign(
+		{
+			form_name: getFormAnalyticsName(form),
+		},
+		getBaseAnalyticsContext(),
+		extraParams || {},
+	);
 }
 
 function bindMeaningfulStart(form, eventName) {
@@ -156,10 +282,19 @@ function bindMeaningfulStart(form, eventName) {
 		}
 
 		form.setAttribute(stateAttr, "true");
-		pushDataLayerEvent(eventName, {
-			form_name: form.getAttribute("name") || form.getAttribute("id") || "unknown",
-			page_path: window.location.pathname,
-		});
+		var startPayload = getContactFormAnalyticsPayload(form);
+		var landingPage = getAnalyticsLandingPage();
+		var referrer = getAnalyticsReferrer();
+
+		if (landingPage) {
+			startPayload.landing_page = landingPage;
+		}
+
+		if (referrer) {
+			startPayload.referrer = referrer;
+		}
+
+		pushDataLayerEvent(eventName, startPayload);
 		form.removeEventListener("input", handleInput, true);
 		form.removeEventListener("change", handleChange, true);
 	}
@@ -177,6 +312,7 @@ function bindMeaningfulStart(form, eventName) {
 }
 
 document.addEventListener("DOMContentLoaded", function (event) {
+	initializeAnalyticsSessionContext();
 	bindGlobalAnalyticsEvents();
 	gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -1500,6 +1636,18 @@ function initContactFormSubmission() {
 		}
 	}
 
+	function pushContactFormError(errorType, errorMessage) {
+		pushDataLayerEvent(
+			"contact_form_submit_error",
+			getContactFormAnalyticsPayload(form, {
+				error_type: errorType || "unknown_error",
+				error_message: truncateAnalyticsText(
+					errorMessage || "Something went wrong.",
+				),
+			}),
+		);
+	}
+
 	renderTurnstileWidget().catch((error) => {
 		console.error("Turnstile failed to render", error);
 		setStatus(error.message || "Verification could not load. Please refresh and try again.", "error");
@@ -1517,22 +1665,17 @@ function initContactFormSubmission() {
 			await renderTurnstileWidget();
 		} catch (error) {
 			console.error("Turnstile failed to render", error);
-			pushDataLayerEvent("contact_form_submit_error", {
-				form_name: form.getAttribute("name") || "contact",
-				page_path: window.location.pathname,
-				error_message: normalizeAnalyticsText(error?.message || "Verification could not load."),
-			});
+			pushContactFormError(
+				"verification_load_failed",
+				error?.message || "Verification could not load.",
+			);
 			setStatus(error.message || "Verification could not load. Please refresh and try again.", "error");
 			return;
 		}
 
 		const turnstileToken = getTurnstileToken() || await waitForTurnstileToken();
 		if (!turnstileToken) {
-			pushDataLayerEvent("contact_form_submit_error", {
-				form_name: form.getAttribute("name") || "contact",
-				page_path: window.location.pathname,
-				error_message: "Missing verification token",
-			});
+			pushContactFormError("verification_missing_token", "Missing verification token");
 			setStatus("Please complete the verification check and try again.", "error");
 			return;
 		}
@@ -1540,6 +1683,10 @@ function initContactFormSubmission() {
 		button?.setAttribute("disabled", "disabled");
 		button?.setAttribute("aria-busy", "true");
 		button?.classList.add("loading");
+		pushDataLayerEvent(
+			"contact_form_submit_attempt",
+			getContactFormAnalyticsPayload(form),
+		);
 
 		try {
 			const response = await fetch(form.action, {
@@ -1551,28 +1698,39 @@ function initContactFormSubmission() {
 				body: new URLSearchParams(new FormData(form)).toString(),
 			});
 
-			const payload = await response.json();
-			if (!response.ok || !payload.ok) {
-				throw new Error(payload.error || "Something went wrong.");
+			let payload = null;
+			try {
+				payload = await response.json();
+			} catch (_error) {
+				payload = null;
+			}
+
+			if (!response.ok || !payload?.ok) {
+				throw new Error(payload?.error || "Something went wrong.");
 			}
 
 			button?.classList.remove("loading");
 			button?.classList.add("success");
 			setStatus("Message sent. We'll be in touch soon.", "success");
+			pushDataLayerEvent(
+				"contact_form_submit_success",
+				getContactFormAnalyticsPayload(form),
+			);
 			pushDataLayerEvent("formSubmission", {
-				form_name: form.getAttribute("name") || "contact",
-				page_path: window.location.pathname,
+				form_name: getFormAnalyticsName(form),
+				source_page: getAnalyticsSourcePage(),
+				page_path: getAnalyticsPagePath(),
 			});
 			form.reset();
 			referrer?.classList.remove("selected");
 			resetTurnstileWidget();
 		} catch (error) {
 			console.error("Contact form submit failed", error);
-			pushDataLayerEvent("contact_form_submit_error", {
-				form_name: form.getAttribute("name") || "contact",
-				page_path: window.location.pathname,
-				error_message: normalizeAnalyticsText(error?.message || "Something went wrong."),
-			});
+			var errorMessage = error?.message || "Something went wrong.";
+			pushContactFormError(
+				errorMessage === "Failed to fetch" ? "network_error" : "submit_failed",
+				errorMessage,
+			);
 			setStatus(
 				error?.message || "Something went wrong sending your message. Please email hello@duo-studio.co instead.",
 				"error",
