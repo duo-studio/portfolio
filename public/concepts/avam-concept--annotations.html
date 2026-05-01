@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>American Visionary Art Museum - Concept Annotations</title>
+		<meta name="viewport" content="width=1440" />
+		<style>
+			@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Libre+Baskerville:ital,wght@0,400;1,400&family=Nunito+Sans:wght@700;800;900&display=swap");
+
+			:root {
+				--aqua: #7bdbe8;
+				--yellow: #fff36d;
+				--red: #f3192f;
+				--pink: #ff66a3;
+				--green: #55b947;
+				--ink: #08091d;
+				--paper: #fffdf2;
+				--white: #ffffff;
+				--sans: "Nunito Sans", Arial, sans-serif;
+				--display: "Archivo Black", Impact, sans-serif;
+				--serif: "Libre Baskerville", Georgia, serif;
+			}
+
+			*,
+			*::before,
+			*::after {
+				box-sizing: border-box;
+			}
+
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				display: flex;
+				justify-content: center;
+				background: #10142f;
+				color: var(--ink);
+				font-family: var(--sans);
+			}
+
+			a {
+				color: inherit;
+			}
+
+			img {
+				display: block;
+				width: 100%;
+			}
+
+			.frame {
+				width: 1440px;
+				min-height: 980px;
+				padding: 36px 40px 44px;
+				background:
+					radial-gradient(circle at 94% 10%, rgba(255, 102, 163, 0.28) 0 88px, transparent 89px),
+					linear-gradient(180deg, var(--aqua) 0 190px, var(--paper) 190px 100%);
+			}
+
+			.header {
+				display: grid;
+				grid-template-columns: 210px 1fr;
+				gap: 46px;
+				align-items: start;
+				padding-bottom: 34px;
+			}
+
+			.logo img {
+				width: 168px;
+			}
+
+			.kicker {
+				margin: 0 0 12px;
+				color: var(--red);
+				font-family: var(--display);
+				font-size: 14px;
+				letter-spacing: 0.16em;
+				text-transform: uppercase;
+			}
+
+			h1,
+			h2,
+			h3,
+			p {
+				margin-top: 0;
+			}
+
+			h1 {
+				max-width: 980px;
+				margin-bottom: 18px;
+				font-family: var(--display);
+				font-size: 74px;
+				line-height: 0.9;
+				letter-spacing: -0.06em;
+				text-transform: uppercase;
+			}
+
+			.intro {
+				max-width: 900px;
+				margin-bottom: 0;
+				font-size: 21px;
+				line-height: 1.45;
+			}
+
+			.layout {
+				display: grid;
+				grid-template-columns: 0.95fr 1.05fr;
+				gap: 36px;
+				padding-top: 32px;
+				border-top: 4px dashed var(--red);
+			}
+
+			.preview {
+				padding: 22px;
+				border: 5px solid var(--ink);
+				border-radius: 28px;
+				background: var(--white);
+				box-shadow: 10px 10px 0 var(--ink);
+			}
+
+			.preview img {
+				height: 292px;
+				object-fit: cover;
+				border: 4px solid var(--ink);
+				border-radius: 22px;
+				margin-bottom: 20px;
+			}
+
+			.preview h2 {
+				margin-bottom: 12px;
+				font-family: var(--display);
+				font-size: 43px;
+				line-height: 0.92;
+				letter-spacing: -0.05em;
+				text-transform: uppercase;
+			}
+
+			.preview p {
+				margin-bottom: 18px;
+				font-size: 17px;
+				line-height: 1.45;
+			}
+
+			.mini-grid {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				gap: 10px;
+			}
+
+			.mini {
+				min-height: 104px;
+				padding: 15px;
+				border: 4px solid var(--ink);
+				border-radius: 20px;
+				background: var(--yellow);
+			}
+
+			.mini:nth-child(2) {
+				background: var(--aqua);
+			}
+
+			.mini:nth-child(3) {
+				background: #ffd5e6;
+			}
+
+			.mini:nth-child(4) {
+				background: var(--green);
+				color: var(--white);
+			}
+
+			.mini strong {
+				display: block;
+				margin-bottom: 8px;
+				font-family: var(--display);
+				font-size: 24px;
+				line-height: 0.95;
+				letter-spacing: -0.04em;
+				text-transform: uppercase;
+			}
+
+			.mini span {
+				display: block;
+				font-size: 14px;
+				line-height: 1.35;
+				font-weight: 900;
+			}
+
+			.callouts {
+				display: grid;
+				gap: 16px;
+			}
+
+			.callout {
+				display: grid;
+				grid-template-columns: 74px 1fr;
+				gap: 20px;
+				padding: 20px 0 22px;
+				border-bottom: 3px dashed var(--red);
+			}
+
+			.number {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 58px;
+				height: 58px;
+				border: 4px solid var(--ink);
+				border-radius: 50%;
+				background: var(--red);
+				color: var(--white);
+				font-family: var(--display);
+				font-size: 26px;
+				box-shadow: 5px 5px 0 var(--ink);
+			}
+
+			.callout h3 {
+				margin-bottom: 8px;
+				font-family: var(--display);
+				font-size: 32px;
+				line-height: 0.98;
+				letter-spacing: -0.04em;
+				text-transform: uppercase;
+			}
+
+			.callout p {
+				margin-bottom: 0;
+				font-size: 17px;
+				line-height: 1.45;
+			}
+
+			.footer-note {
+				margin-top: 26px;
+				padding: 24px 28px;
+				border: 5px solid var(--ink);
+				border-radius: 26px;
+				background: var(--yellow);
+			}
+
+			.footer-note h2 {
+				margin-bottom: 8px;
+				font-family: var(--display);
+				font-size: 34px;
+				line-height: 0.98;
+				letter-spacing: -0.04em;
+				text-transform: uppercase;
+			}
+
+			.footer-note p {
+				margin-bottom: 0;
+				font-size: 17px;
+				line-height: 1.45;
+			}
+		</style>
+	</head>
+	<body>
+		<main class="frame">
+			<header class="header">
+				<a class="logo" href="https://www.avam.org/">
+					<img src="https://static.wixstatic.com/media/50ff9e_451cc3e6dfba4904adf4258e1781466a~mv2.png/v1/fill/w_318,h_128,al_c,q_85,enc_avif,quality_auto/AVAM%20Text%20Logo%20CMYK-01.png" alt="American Visionary Art Museum" />
+				</a>
+				<div>
+					<p class="kicker">Duo Studio concept notes</p>
+					<h1>AVAM can be louder and clearer at the same time.</h1>
+					<p class="intro">This concept keeps the museum's joy, eccentricity, aqua header, red/yellow CTAs, big art, and quote-driven voice, then gives the first screen more practical direction: buy tickets, see what is on, find events, or plan a visit.</p>
+				</div>
+			</header>
+
+			<section class="layout">
+				<div class="preview">
+					<img src="https://static.wixstatic.com/media/078c15_a160fbcfb8434c3385e44c6795e97bb1~mv2.jpg/v1/fill/w_760,h_520,al_c,q_85,enc_avif,quality_auto/078c15_a160fbcfb8434c3385e44c6795e97bb1~mv2.jpg" alt="Artwork from Fantastic Realities at AVAM" />
+					<h2>Come see what imagination can do.</h2>
+					<p>The redesigned first view still feels like AVAM: strange, colorful, playful, and handmade. The difference is that the homepage now gives visitors a useful path before asking them to wander.</p>
+					<div class="mini-grid">
+						<div class="mini">
+							<strong>Tickets</strong>
+							<span>Primary action stays loud and obvious.</span>
+						</div>
+						<div class="mini">
+							<strong>On View</strong>
+							<span>The current mega-exhibition anchors the hero.</span>
+						</div>
+						<div class="mini">
+							<strong>Events</strong>
+							<span>Kinetic Sculpture Race and near-term events move higher.</span>
+						</div>
+						<div class="mini">
+							<strong>Visit</strong>
+							<span>Hours, admission, and address are visible immediately.</span>
+						</div>
+					</div>
+				</div>
+
+				<div>
+					<div class="callouts">
+						<article class="callout">
+							<div class="number">1</div>
+							<div>
+								<h3>Brand weirdness stays intact.</h3>
+								<p>The concept does not sanitize AVAM. It keeps the candy-colored palette, all-caps nav, playful buttons, italic quotes, real artwork, and a little intentional tilt so the page still feels handmade and alive.</p>
+							</div>
+						</article>
+						<article class="callout">
+							<div class="number">2</div>
+							<div>
+								<h3>The first screen works harder.</h3>
+								<p>The current homepage leads with a beautiful full-width image, but practical choices sit lower. This version keeps a big art moment while adding tickets, hours, admission, location, and audience paths above the fold.</p>
+							</div>
+						</article>
+						<article class="callout">
+							<div class="number">3</div>
+							<div>
+								<h3>Programming becomes visible immediately.</h3>
+								<p>Fantastic Realities anchors the hero, while Kinetic Sculpture Race and the next events sit nearby. Visitors can understand what is on now and what is coming without starting from the Events page.</p>
+							</div>
+						</article>
+						<article class="callout">
+							<div class="number">4</div>
+							<div>
+								<h3>The joy has a job.</h3>
+								<p>The decorative energy is also functional: colorful cards separate visit planning, exhibitions, events, and rentals, giving the visitor clear doors into AVAM's wonderfully crowded universe.</p>
+							</div>
+						</article>
+					</div>
+					<div class="footer-note">
+						<h2>Above the fold: art, action, and wayfinding.</h2>
+						<p>The concept treats AVAM's homepage like a cabinet of curiosities with labels on the drawers. It invites discovery, but does not make visitors guess where to begin.</p>
+					</div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

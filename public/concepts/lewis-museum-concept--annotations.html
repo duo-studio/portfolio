@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>The Lewis Museum - Concept Annotations</title>
+		<meta name="viewport" content="width=1440" />
+		<style>
+			@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800;900&display=swap");
+
+			:root {
+				--black: #221f20;
+				--ink: #1a1a1a;
+				--cream: #f1ece1;
+				--paper: #fbf8f0;
+				--gold: #faa819;
+				--red: #e41e27;
+				--line: rgba(34, 31, 32, 0.18);
+				--white: #ffffff;
+				--muted: #5f5854;
+				--sans: "Roboto", Arial, sans-serif;
+			}
+
+			*,
+			*::before,
+			*::after {
+				box-sizing: border-box;
+			}
+
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				display: flex;
+				justify-content: center;
+				background: var(--black);
+				color: var(--ink);
+				font-family: var(--sans);
+			}
+
+			a {
+				color: inherit;
+			}
+
+			img {
+				display: block;
+				width: 100%;
+			}
+
+			.frame {
+				width: 1440px;
+				min-height: 960px;
+				padding: 42px 52px 50px;
+				background:
+					linear-gradient(90deg, rgba(34, 31, 32, 0.055) 1px, transparent 1px) 0 0 / 88px 88px,
+					linear-gradient(180deg, rgba(34, 31, 32, 0.04) 1px, transparent 1px) 0 0 / 88px 88px,
+					var(--cream);
+			}
+
+			.header {
+				display: grid;
+				grid-template-columns: 300px 1fr;
+				gap: 48px;
+				align-items: start;
+				padding-bottom: 34px;
+				border-bottom: 3px solid var(--black);
+			}
+
+			.logo img {
+				width: 250px;
+			}
+
+			.kicker {
+				margin: 0 0 12px;
+				color: var(--red);
+				font-size: 13px;
+				font-weight: 900;
+				letter-spacing: 0.13em;
+				text-transform: uppercase;
+			}
+
+			h1,
+			h2,
+			h3,
+			p {
+				margin-top: 0;
+			}
+
+			h1 {
+				max-width: 990px;
+				margin-bottom: 16px;
+				font-size: 70px;
+				font-weight: 900;
+				line-height: 0.98;
+				letter-spacing: -0.055em;
+			}
+
+			.intro {
+				max-width: 850px;
+				margin-bottom: 0;
+				color: #383330;
+				font-size: 21px;
+				line-height: 1.45;
+			}
+
+			.layout {
+				display: grid;
+				grid-template-columns: 0.94fr 1.06fr;
+				gap: 38px;
+				padding-top: 36px;
+			}
+
+			.preview {
+				background: var(--white);
+				box-shadow: 14px 14px 0 rgba(34, 31, 32, 0.12);
+			}
+
+			.preview img {
+				aspect-ratio: 16 / 10;
+				height: auto;
+				object-fit: cover;
+			}
+
+			.preview-copy {
+				padding: 28px 30px;
+				border-left: 8px solid var(--red);
+			}
+
+			.preview-copy small {
+				display: block;
+				margin-bottom: 8px;
+				color: var(--red);
+				font-size: 11px;
+				font-weight: 900;
+				letter-spacing: 0.12em;
+				text-transform: uppercase;
+			}
+
+			.preview-copy h2 {
+				margin-bottom: 12px;
+				font-size: 43px;
+				font-weight: 900;
+				line-height: 1;
+				letter-spacing: -0.045em;
+			}
+
+			.preview-copy p {
+				margin-bottom: 0;
+				color: #433d39;
+				font-size: 17px;
+				line-height: 1.48;
+			}
+
+			.callouts {
+				display: grid;
+				gap: 16px;
+			}
+
+			.callout {
+				display: grid;
+				grid-template-columns: 72px 1fr;
+				gap: 20px;
+				padding: 22px 0 24px;
+				border-bottom: 1px solid var(--line);
+			}
+
+			.number {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 56px;
+				height: 56px;
+				background: var(--black);
+				color: var(--gold);
+				font-size: 24px;
+				font-weight: 900;
+			}
+
+			.callout h3 {
+				margin-bottom: 8px;
+				font-size: 30px;
+				font-weight: 900;
+				line-height: 1.05;
+				letter-spacing: -0.04em;
+			}
+
+			.callout p {
+				margin-bottom: 0;
+				color: #403a36;
+				font-size: 16px;
+				line-height: 1.48;
+			}
+
+			.footer-note {
+				margin-top: 30px;
+				padding: 28px 32px;
+				background: var(--black);
+				color: var(--white);
+			}
+
+			.footer-note h2 {
+				margin-bottom: 8px;
+				font-size: 35px;
+				font-weight: 900;
+				line-height: 1;
+				letter-spacing: -0.04em;
+			}
+
+			.footer-note p {
+				margin-bottom: 0;
+				max-width: 900px;
+				color: rgba(255, 255, 255, 0.78);
+				font-size: 17px;
+				line-height: 1.48;
+			}
+		</style>
+	</head>
+	<body>
+		<main class="frame">
+			<header class="header">
+				<a class="logo" href="https://www.lewismuseum.org/">
+					<img src="https://www.lewismuseum.org/wp-content/uploads/2026/02/PRIMARY-HORZ-CLR-1-1.png" alt="The Lewis" />
+				</a>
+				<div>
+					<p class="kicker">Duo Studio concept notes</p>
+					<h1>A legacy institution needs clarity before decoration.</h1>
+					<p class="intro">This homepage concept respects the museum's seriousness while making the first screen more useful: what is on view, how to visit, how to learn, and how to support the institution.</p>
+				</div>
+			</header>
+
+			<section class="layout">
+				<article class="preview">
+					<img src="https://www.lewismuseum.org/wp-content/uploads/2026/01/RFL-TITAN-GRAND-OPENING-16-small.jpg" alt="Visitors at TITAN: The Legacy of Reginald F. Lewis" />
+					<div class="preview-copy">
+						<small>Hero strategy</small>
+						<h2>Lead with legacy, then give people a next step.</h2>
+						<p>The design keeps the museum's black, gold, red, and cream world intact. The visual system is quiet, confident, and institutional, with strong typography and measured structure instead of spectacle.</p>
+					</div>
+				</article>
+
+				<div class="callouts" aria-label="Design decisions">
+					<article class="callout">
+						<div class="number">1</div>
+						<div>
+							<h3>The homepage opens like a front desk.</h3>
+							<p>Visitors immediately see what The Lewis is, where it is, when it is open, how much admission costs, and which next action makes sense.</p>
+						</div>
+					</article>
+					<article class="callout">
+						<div class="number">2</div>
+						<div>
+							<h3>TITAN becomes the emotional anchor.</h3>
+							<p>The current exhibition gives the first view specificity and honors Reginald F. Lewis without making the homepage feel like a generic institutional brochure.</p>
+						</div>
+					</article>
+					<article class="callout">
+						<div class="number">3</div>
+						<div>
+							<h3>The audience paths stay useful, not oversized.</h3>
+							<p>Visit, exhibitions, field trips, and support are presented as clear choices with enough context to reduce hesitation, but not so much that the page becomes a wall of cards.</p>
+						</div>
+					</article>
+					<article class="callout">
+						<div class="number">4</div>
+						<div>
+							<h3>Education and rentals move into view.</h3>
+							<p>Field trips and event rentals are meaningful revenue and mission paths, so the concept makes them visible without letting them compete with the core museum visit.</p>
+						</div>
+					</article>
+					<article class="callout">
+						<div class="number">5</div>
+						<div>
+							<h3>Mobile preserves the same order.</h3>
+							<p>The mobile page does not simply shrink the desktop composition. It keeps logo, hours, location, the thesis, the current exhibition, and the primary paths in a readable stack.</p>
+						</div>
+					</article>
+				</div>
+			</section>
+
+			<section class="footer-note">
+				<h2>The tone is legacy-forward, not nostalgic.</h2>
+				<p>The concept treats The Lewis as a living institution: rooted in history, active in education, and central to Baltimore's civic and cultural life.</p>
+			</section>
+		</main>
+	</body>
+</html>

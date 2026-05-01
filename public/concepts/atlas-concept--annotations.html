@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Atlas Performing Arts Center - Concept Annotations</title>
+		<meta name="viewport" content="width=1440" />
+		<style>
+			@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap");
+
+			:root {
+				--blue: #2d3489;
+				--blue-dark: #003e5b;
+				--blue-soft: #eef1fb;
+				--cyan: #21f8f8;
+				--cream: #f7f4e8;
+				--coral: #d9401c;
+				--gray: #74767b;
+				--ink: #414042;
+				--white: #ffffff;
+				--line: #d0d2d3;
+				--sans: "benton-sans", "Montserrat", Helvetica, sans-serif;
+			}
+
+			*,
+			*::before,
+			*::after {
+				box-sizing: border-box;
+			}
+
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				display: flex;
+				justify-content: center;
+				background: var(--blue-dark);
+				color: var(--ink);
+				font-family: var(--sans);
+			}
+
+			a {
+				color: inherit;
+			}
+
+			img {
+				display: block;
+				width: 100%;
+			}
+
+			.frame {
+				width: 1440px;
+				min-height: 960px;
+				padding: 42px 52px 50px;
+				background:
+					radial-gradient(circle at 90% 12%, rgba(217, 64, 28, 0.1) 0 120px, transparent 121px),
+					linear-gradient(90deg, rgba(45, 52, 137, 0.08) 1px, transparent 1px) 0 0 / 96px 96px,
+					linear-gradient(180deg, rgba(45, 52, 137, 0.06) 1px, transparent 1px) 0 0 / 96px 96px,
+					linear-gradient(135deg, var(--white) 0 38%, var(--blue-soft) 38% 100%);
+			}
+
+			.header {
+				display: grid;
+				grid-template-columns: 260px 1fr;
+				gap: 48px;
+				align-items: start;
+				padding-bottom: 34px;
+				border-bottom: 3px solid var(--coral);
+			}
+
+			.logo img {
+				width: 220px;
+			}
+
+			.kicker {
+				margin: 0 0 12px;
+				color: var(--coral);
+				font-size: 13px;
+				font-weight: 900;
+				letter-spacing: 0.14em;
+				text-transform: uppercase;
+			}
+
+			h1,
+			h2,
+			h3,
+			p {
+				margin-top: 0;
+			}
+
+			h1 {
+				max-width: 1020px;
+				margin-bottom: 16px;
+				color: var(--blue-dark);
+				font-size: 72px;
+				font-weight: 900;
+				line-height: 0.96;
+				letter-spacing: -0.06em;
+			}
+
+			.intro {
+				max-width: 900px;
+				margin-bottom: 0;
+				color: var(--ink);
+				font-size: 21px;
+				line-height: 1.45;
+			}
+
+			.layout {
+				display: grid;
+				grid-template-columns: 0.9fr 1.1fr;
+				gap: 38px;
+				padding-top: 36px;
+			}
+
+			.preview {
+				background: rgba(255, 255, 255, 0.88);
+				border: 1px solid rgba(0, 62, 91, 0.5);
+				box-shadow: 14px 14px 0 rgba(217, 64, 28, 0.14);
+			}
+
+			.preview img {
+				aspect-ratio: 196 / 60;
+				height: auto;
+				object-fit: contain;
+				background: var(--blue-dark);
+				border-bottom: 5px solid var(--coral);
+			}
+
+			.preview-copy {
+				padding: 28px 30px;
+				border-left: 8px solid var(--coral);
+			}
+
+			.preview-copy small {
+				display: block;
+				margin-bottom: 8px;
+				color: var(--blue);
+				font-size: 11px;
+				font-weight: 900;
+				letter-spacing: 0.12em;
+				text-transform: uppercase;
+			}
+
+			.preview-copy h2 {
+				margin-bottom: 12px;
+				color: var(--blue-dark);
+				font-size: 43px;
+				font-weight: 900;
+				line-height: 1;
+				letter-spacing: -0.045em;
+			}
+
+			.preview-copy p {
+				margin-bottom: 0;
+				color: var(--ink);
+				font-size: 17px;
+				line-height: 1.48;
+			}
+
+			.callouts {
+				display: grid;
+				gap: 16px;
+			}
+
+			.callout {
+				display: grid;
+				grid-template-columns: 72px 1fr;
+				gap: 20px;
+				padding: 22px 0 24px;
+				border-bottom: 1px solid var(--line);
+			}
+
+			.number {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 56px;
+				height: 56px;
+				background: var(--blue);
+				color: var(--white);
+				font-size: 24px;
+				font-weight: 900;
+			}
+
+			.callout h3 {
+				margin-bottom: 8px;
+				color: var(--blue-dark);
+				font-size: 30px;
+				font-weight: 900;
+				line-height: 1.05;
+				letter-spacing: -0.04em;
+			}
+
+			.callout p {
+				margin-bottom: 0;
+				color: var(--ink);
+				font-size: 16px;
+				line-height: 1.48;
+			}
+
+			.footer-note {
+				margin-top: 30px;
+				padding: 28px 32px;
+				background: var(--blue-dark);
+				color: var(--white);
+			}
+
+			.footer-note h2 {
+				margin-bottom: 8px;
+				font-size: 35px;
+				font-weight: 900;
+				line-height: 1;
+				letter-spacing: -0.04em;
+			}
+
+			.footer-note p {
+				margin-bottom: 0;
+				max-width: 920px;
+				color: rgba(255, 255, 255, 0.78);
+				font-size: 17px;
+				line-height: 1.48;
+			}
+		</style>
+	</head>
+	<body>
+		<main class="frame">
+			<header class="header">
+				<a class="logo" href="https://www.atlasarts.org/">
+					<img src="https://www.atlasarts.org/app/uploads/2025/08/Atlas-logo-dark-blue.png" alt="Atlas Performing Arts Center" />
+				</a>
+				<div>
+					<p class="kicker">Duo Studio concept notes</p>
+					<h1>A type-led marquee for a complex performing arts center.</h1>
+					<p class="intro">The new direction moves away from a card-heavy dashboard and toward an editorial first view: the headline leads, the event art supports, and the schedule gives visitors something immediate to act on.</p>
+				</div>
+			</header>
+
+			<section class="layout">
+				<article class="preview">
+					<img src="https://www.atlasarts.org/app/uploads/2025/07/Event-Webpage-Header-Image-1960-x-600-px-1.png" alt="Young John Lewis production artwork" />
+					<div class="preview-copy">
+						<small>Concept angle</small>
+						<h2>Start with what's on at Atlas.</h2>
+						<p>The concept treats Atlas like a live venue with many doors in: the schedule is visible immediately, but the page still explains the building's range.</p>
+					</div>
+				</article>
+
+				<div class="callouts" aria-label="Design decisions">
+					<article class="callout">
+						<div class="number">1</div>
+						<div>
+							<h3>The hero is type-led, not image-led.</h3>
+							<p>The largest statement tells visitors what the page is for: start with programming. The image supports the message instead of carrying the whole hero.</p>
+						</div>
+					</article>
+					<article class="callout">
+						<div class="number">2</div>
+						<div>
+							<h3>The event art keeps its full ratio.</h3>
+							<p>Young John Lewis is used as a wide marquee banner, preserving the original artwork and avoiding the awkward crop problem from earlier passes.</p>
+						</div>
+					</article>
+					<article class="callout">
+						<div class="number">3</div>
+						<div>
+							<h3>The first view keeps the schedule visible and visual.</h3>
+							<p>The right-side "What's on next" module uses larger image-led rows, with dates folded into the content area so each event reads as one clear choice.</p>
+						</div>
+					</article>
+					<article class="callout">
+						<div class="number">4</div>
+						<div>
+							<h3>Real imagery adds depth without overpromising.</h3>
+							<p>The concept uses Atlas-owned event thumbnails and a venue image instead of a new icon or illustration system. That gives the page texture while staying believable for the existing site.</p>
+						</div>
+					</article>
+					<article class="callout">
+						<div class="number">5</div>
+						<div>
+							<h3>Mobile keeps the order practical.</h3>
+							<p>The mobile concept stacks logo, headline, CTAs, ratio-safe event marquee, visit facts, image-led schedule rows, and audience paths so the complexity unfolds in sequence.</p>
+						</div>
+					</article>
+				</div>
+			</section>
+
+			<section class="footer-note">
+				<h2>The design stays Atlas-specific.</h2>
+				<p>The concept uses Atlas's typography direction, deep teal-blue, Atlas blue, cyan link accents, the site's red-orange urgency color, real event and venue imagery, and language that fits a working performing arts center.</p>
+			</section>
+		</main>
+	</body>
+</html>

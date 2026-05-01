@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Baltimore Museum of Industry - Homepage Concept - Desktop 1440</title>
+		<meta name="viewport" content="width=1440" />
+		<style>
+			@import url("https://fonts.googleapis.com/css2?family=Bitter:wght@700&family=Open+Sans:wght@400;600;700;800&family=Raleway:wght@700;800;900&display=swap");
+
+			:root {
+				--blue: #1b3e70;
+				--blue-dark: #14315c;
+				--orange: #f15e37;
+				--orange-dark: #dc4d2b;
+				--ink: #1b1f27;
+				--muted: #5b6371;
+				--line: #d8dee7;
+				--dash: rgba(27, 62, 112, 0.65);
+				--paper: #f7f6f1;
+				--soft-blue: #edf3f8;
+				--white: #ffffff;
+				--gold: #bdbb2f;
+				--sans: "Open Sans", Arial, sans-serif;
+				--display: "Raleway", "Open Sans", Arial, sans-serif;
+				--serif: "Bitter", Georgia, serif;
+			}
+
+			*,
+			*::before,
+			*::after {
+				box-sizing: border-box;
+			}
+
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				display: flex;
+				justify-content: center;
+				background: #f1f3f4;
+				color: var(--ink);
+				font-family: var(--sans);
+			}
+
+			a {
+				color: inherit;
+				text-decoration: none;
+			}
+
+			img {
+				display: block;
+				width: 100%;
+			}
+
+			.frame {
+				width: 1440px;
+				min-height: 980px;
+				overflow: hidden;
+				background: var(--white);
+			}
+
+			.site-header {
+				background: var(--white);
+				border-bottom: 1px dashed var(--dash);
+			}
+
+			.utility {
+				display: grid;
+				grid-template-columns: 260px 1fr auto;
+				align-items: center;
+				gap: 30px;
+				padding: 24px 38px 20px;
+			}
+
+			.logo img {
+				width: 236px;
+				height: auto;
+			}
+
+			.quick-info {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 12px;
+				align-items: center;
+				font-size: 13px;
+				line-height: 1;
+			}
+
+			.quick-info span {
+				display: inline-flex;
+				align-items: center;
+				min-height: 34px;
+				padding: 0 13px;
+				border: 1px solid var(--line);
+				border-radius: 999px;
+				color: var(--ink);
+				font-weight: 800;
+			}
+
+			.header-actions {
+				display: flex;
+				align-items: center;
+				gap: 14px;
+			}
+
+			.pill {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				min-width: 116px;
+				min-height: 48px;
+				padding: 0 20px;
+				border-radius: 5px;
+				background: var(--orange);
+				color: var(--white);
+				font-weight: 800;
+				font-size: 16px;
+			}
+
+			.search {
+				display: inline-flex;
+				align-items: center;
+				gap: 12px;
+				width: 158px;
+				min-height: 48px;
+				padding: 0 18px;
+				border: 1px solid var(--line);
+				border-radius: 5px;
+				color: var(--ink);
+				font-size: 16px;
+			}
+
+			.search::before {
+				content: "";
+				width: 15px;
+				height: 15px;
+				border: 3px solid var(--blue);
+				border-radius: 50%;
+				box-shadow: 8px 8px 0 -5px var(--blue);
+			}
+
+			.nav {
+				display: flex;
+				justify-content: center;
+				gap: 42px;
+				padding: 19px 38px 21px;
+				font-size: 17px;
+				font-weight: 700;
+				color: #252b32;
+			}
+
+			.nav a:first-child {
+				color: var(--orange);
+			}
+
+			.hero {
+				position: relative;
+				display: grid;
+				grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+				gap: 48px;
+				padding: 38px 40px 28px;
+			}
+
+			.hero::after {
+				content: "";
+				position: absolute;
+				left: 40px;
+				right: 40px;
+				bottom: 0;
+				border-bottom: 1px dashed var(--dash);
+			}
+
+			.hero-copy {
+				padding: 10px 0 0;
+			}
+
+			.eyebrow {
+				margin: 0 0 14px;
+				color: var(--orange);
+				font-size: 15px;
+				font-weight: 800;
+				letter-spacing: 0.04em;
+				text-transform: uppercase;
+			}
+
+			h1,
+			h2,
+			h3,
+			p {
+				margin-top: 0;
+			}
+
+			h1 {
+				max-width: 650px;
+				margin-bottom: 20px;
+				color: var(--blue);
+				font-family: var(--display);
+				font-size: 64px;
+				font-weight: 900;
+				line-height: 0.96;
+				letter-spacing: -0.045em;
+			}
+
+			.lede {
+				max-width: 560px;
+				margin-bottom: 24px;
+				font-size: 19px;
+				line-height: 1.48;
+				color: #242a31;
+			}
+
+			.cta-row {
+				display: flex;
+				align-items: center;
+				gap: 16px;
+				margin-bottom: 26px;
+			}
+
+			.button {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				min-height: 56px;
+				padding: 0 24px;
+				border-radius: 5px;
+				border: 2px solid var(--orange);
+				background: var(--orange);
+				color: var(--white);
+				font-size: 17px;
+				font-weight: 800;
+			}
+
+			.button::after,
+			.pill::after {
+				content: ">";
+				margin-left: 12px;
+				font-weight: 800;
+			}
+
+			.button--secondary {
+				background: var(--white);
+				color: var(--blue);
+				border-color: var(--line);
+			}
+
+			.choice-bar {
+				display: flex;
+				flex-wrap: wrap;
+				align-items: center;
+				gap: 10px;
+				max-width: 610px;
+				padding-top: 2px;
+			}
+
+			.choice-bar span,
+			.choice-bar a {
+				display: inline-flex;
+				align-items: center;
+				min-height: 40px;
+				padding: 0 15px;
+				border-radius: 999px;
+				border: 1px solid var(--line);
+				font-size: 13px;
+				font-weight: 800;
+			}
+
+			.choice-bar span {
+				border-color: transparent;
+				padding-left: 0;
+				color: var(--muted);
+				font-weight: 700;
+			}
+
+			.choice-bar a {
+				color: var(--blue);
+				background: var(--white);
+			}
+
+			.hero-media {
+				position: relative;
+				min-height: 468px;
+				border-radius: 10px;
+				overflow: hidden;
+				background: var(--soft-blue);
+			}
+
+			.hero-media img {
+				height: 100%;
+				object-fit: cover;
+			}
+
+			.media-card {
+				position: absolute;
+				left: 28px;
+				right: 28px;
+				bottom: 28px;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 20px;
+				padding: 18px 22px;
+				border-radius: 8px;
+				background: rgba(255, 255, 255, 0.92);
+				backdrop-filter: blur(8px);
+			}
+
+			.media-card h2 {
+				margin-bottom: 8px;
+				color: var(--blue);
+				font-family: var(--display);
+				font-size: 30px;
+				font-weight: 900;
+				line-height: 1;
+				letter-spacing: -0.035em;
+			}
+
+			.media-card p {
+				margin-bottom: 0;
+				color: var(--ink);
+				font-size: 15px;
+				line-height: 1.42;
+			}
+
+			.badge {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				min-width: 104px;
+				min-height: 48px;
+				padding: 0 16px;
+				border-radius: 50%;
+				background: var(--blue);
+				color: var(--white);
+				font-family: var(--display);
+				font-size: 18px;
+				font-weight: 900;
+				line-height: 1;
+				text-align: center;
+			}
+
+			.visit-strip {
+				display: grid;
+				grid-template-columns: 1fr 0.86fr 0.86fr 1fr;
+				gap: 0;
+				margin: 28px 40px 0;
+				border: 1px solid var(--line);
+				border-radius: 10px;
+				overflow: hidden;
+				background: var(--blue);
+				color: var(--white);
+			}
+
+			.fact {
+				min-height: 108px;
+				padding: 20px 24px;
+				border-right: 1px solid rgba(255, 255, 255, 0.22);
+			}
+
+			.fact:last-child {
+				border-right: 0;
+			}
+
+			.fact small {
+				display: block;
+				margin-bottom: 9px;
+				color: rgba(255, 255, 255, 0.74);
+				font-size: 12px;
+				font-weight: 800;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+			}
+
+			.fact strong {
+				display: block;
+				margin-bottom: 0;
+				font-family: var(--display);
+				font-size: 25px;
+				line-height: 1.03;
+				letter-spacing: -0.03em;
+			}
+
+			.program-band {
+				display: grid;
+				grid-template-columns: 0.8fr 1.2fr;
+				gap: 36px;
+				padding: 42px 40px 46px;
+				background: var(--white);
+			}
+
+			.section-heading {
+				max-width: 480px;
+			}
+
+			.section-heading h2 {
+				margin-bottom: 14px;
+				color: var(--blue);
+				font-family: var(--display);
+				font-size: 43px;
+				font-weight: 900;
+				line-height: 1;
+				letter-spacing: -0.045em;
+			}
+
+			.section-heading p {
+				font-size: 16px;
+				line-height: 1.46;
+				color: #333941;
+			}
+
+			.proof-grid {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 16px;
+			}
+
+			.proof {
+				position: relative;
+				min-height: 150px;
+				padding: 20px 20px 18px;
+				border-top: 3px solid var(--orange);
+				background: var(--paper);
+			}
+
+			.proof:nth-child(2) {
+				border-top-color: var(--blue);
+			}
+
+			.proof:nth-child(3) {
+				border-top-color: var(--gold);
+			}
+
+			.proof strong {
+				display: block;
+				margin-bottom: 9px;
+				color: var(--blue);
+				font-family: var(--display);
+				font-size: 31px;
+				font-weight: 900;
+				line-height: 1;
+				letter-spacing: -0.035em;
+			}
+
+			.proof span {
+				display: block;
+				font-size: 15px;
+				line-height: 1.5;
+				color: #313840;
+			}
+
+			.next-band {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 24px;
+				padding: 0 40px 48px;
+			}
+
+			.next-card {
+				display: grid;
+				grid-template-columns: 190px 1fr;
+				gap: 20px;
+				align-items: center;
+				padding: 18px;
+				border-top: 1px dashed var(--dash);
+			}
+
+			.next-card img {
+				height: 128px;
+				object-fit: cover;
+				border-radius: 8px;
+			}
+
+			.next-card h3 {
+				margin-bottom: 7px;
+				color: var(--orange);
+				font-family: var(--display);
+				font-size: 28px;
+				font-weight: 900;
+				line-height: 1;
+				letter-spacing: -0.035em;
+			}
+
+			.next-card p {
+				margin-bottom: 0;
+				font-size: 14px;
+				line-height: 1.42;
+				color: #343a42;
+			}
+		</style>
+	</head>
+	<body>
+		<main class="frame">
+			<header class="site-header">
+				<div class="utility">
+					<a class="logo" href="https://www.thebmi.org/">
+						<img src="https://www.thebmi.org/wp-content/uploads/2022/11/BMI_Full-Logo2-1.png" alt="Baltimore Museum of Industry" />
+					</a>
+					<div class="quick-info" aria-label="Visit information">
+						<span>1415 Key Highway</span>
+						<span>Tues-Sun 9am-4pm</span>
+						<span>Free onsite parking</span>
+					</div>
+					<div class="header-actions">
+						<a class="pill" href="https://48278.blackbaudhosting.com/48278/Donate">Donate</a>
+						<a class="pill" href="https://48278.blackbaudhosting.com/48278/page.aspx?pid=196&amp;tab=2&amp;txobjid=6bbda35c-c497-4f63-84ae-8f905b5f77de">Tickets</a>
+						<div class="search" aria-label="Search">Search...</div>
+					</div>
+				</div>
+				<nav class="nav" aria-label="Primary">
+					<a href="https://www.thebmi.org/visit/">Visit</a>
+					<a href="https://www.thebmi.org/programs-and-happenings/">Explore</a>
+					<a href="https://www.thebmi.org/about/">About</a>
+					<a href="https://www.thebmi.org/support-the-bmi/membership/">Join &amp; Support</a>
+					<a href="https://www.thebmi.org/host-an-event/">Host An Event</a>
+				</nav>
+			</header>
+
+			<section class="hero" aria-label="Baltimore Museum of Industry homepage hero">
+				<div class="hero-copy">
+					<p class="eyebrow">Baltimore Museum of Industry</p>
+					<h1>Work matters. See how Baltimore was built.</h1>
+					<p class="lede">Explore the people, places, and inventions that shaped Baltimore's working waterfront, from an 1860s oyster cannery to hands-on exhibitions for all ages.</p>
+					<div class="cta-row">
+						<a class="button" href="https://48278.blackbaudhosting.com/48278/page.aspx?pid=196&amp;tab=2&amp;txobjid=6bbda35c-c497-4f63-84ae-8f905b5f77de">Purchase or Reserve Tickets</a>
+						<a class="button button--secondary" href="https://www.thebmi.org/visit/">Plan Your Visit</a>
+					</div>
+					<div class="choice-bar" aria-label="Audience paths">
+						<span>I am here to</span>
+						<a href="https://www.thebmi.org/visit/">Visit</a>
+						<a href="https://www.thebmi.org/education/field-trips/">Bring a class</a>
+						<a href="https://www.thebmi.org/host-an-event/">Host an event</a>
+						<a href="https://www.thebmi.org/support-the-bmi/membership/">Support BMI</a>
+					</div>
+				</div>
+				<div class="hero-media">
+					<img src="https://www.thebmi.org/wp-content/uploads/2025/05/BMI-2435-1-scaled.jpg" alt="Visitors inside the Baltimore Museum of Industry galleries" />
+					<div class="media-card">
+						<div>
+							<h2>Work Matters</h2>
+							<p>Hands-on exhibitions, live demonstrations, and harbor views inside a former oyster cannery.</p>
+						</div>
+						<div class="badge">Open<br />9-4</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="visit-strip" aria-label="Practical visit facts">
+				<div class="fact">
+					<small>Hours</small>
+					<strong>Tuesday-Sunday, 9am-4pm</strong>
+				</div>
+				<div class="fact">
+					<small>Admission</small>
+					<strong>Adult $15 / Youth $8</strong>
+				</div>
+				<div class="fact">
+					<small>Parking</small>
+					<strong>Free onsite parking</strong>
+				</div>
+				<div class="fact">
+					<small>Address</small>
+					<strong>1415 Key Highway</strong>
+				</div>
+			</section>
+
+			<section class="program-band" aria-label="Education and institutional proof">
+				<div class="section-heading">
+					<p class="eyebrow">For students, groups, and gatherings</p>
+					<h2>Plan a visit that fits your day.</h2>
+					<p>Whether you're bringing a class, reserving tickets, or finding a waterfront venue, the BMI gives every visitor a clear place to start.</p>
+				</div>
+				<div class="proof-grid">
+					<div class="proof">
+						<strong>99.2%</strong>
+						<span>of surveyed teachers said they would return with their class after a BMI field trip, giving school groups confidence before they book.</span>
+					</div>
+					<div class="proof">
+						<strong>4.97 / 5</strong>
+						<span>teacher rating for museum staff expertise during the 2023-2024 school year, reflecting BMI's hands-on approach to learning.</span>
+					</div>
+					<div class="proof">
+						<strong>1860s</strong>
+						<span>former oyster cannery on a five-acre waterfront campus with indoor and outdoor spaces for visits, programs, and private events.</span>
+					</div>
+				</div>
+			</section>
+
+			<section class="next-band" aria-label="Secondary audience paths">
+				<article class="next-card">
+					<img src="https://www.thebmi.org/wp-content/uploads/2024/03/cannery-eric-stockin-2018.jpg" alt="Students in a BMI education program" />
+					<div>
+						<h3>Bring students into the story.</h3>
+						<p>School programs connect labor, invention, and Baltimore history through field trips, classroom visits, and engineering challenges.</p>
+					</div>
+				</article>
+				<article class="next-card">
+					<img src="https://www.thebmi.org/wp-content/uploads/2025/02/Point-by-Photography-by-Brea.jpg" alt="Waterfront event setup at the Baltimore Museum of Industry" />
+					<div>
+						<h3>Gather on the waterfront.</h3>
+						<p>Host guests in a former oyster cannery with skyline views, indoor and outdoor spaces, and free onsite parking.</p>
+					</div>
+				</article>
+			</section>
+		</main>
+	</body>
+</html>

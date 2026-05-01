@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Baltimore Museum of Industry - Concept Annotations</title>
+		<meta name="viewport" content="width=1440" />
+		<style>
+			@import url("https://fonts.googleapis.com/css2?family=Bitter:wght@700&family=Open+Sans:wght@400;600;700;800&family=Raleway:wght@700;800;900&display=swap");
+
+			:root {
+				--blue: #1b3e70;
+				--orange: #f15e37;
+				--ink: #1b1f27;
+				--muted: #606875;
+				--line: #d8dee7;
+				--dash: rgba(27, 62, 112, 0.65);
+				--paper: #f7f6f1;
+				--white: #ffffff;
+				--sans: "Open Sans", Arial, sans-serif;
+				--display: "Raleway", "Open Sans", Arial, sans-serif;
+			}
+
+			*,
+			*::before,
+			*::after {
+				box-sizing: border-box;
+			}
+
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				display: flex;
+				justify-content: center;
+				background: #f1f3f4;
+				color: var(--ink);
+				font-family: var(--sans);
+			}
+
+			a {
+				color: inherit;
+			}
+
+			img {
+				display: block;
+				width: 100%;
+			}
+
+			.frame {
+				width: 1440px;
+				min-height: 900px;
+				padding: 38px 40px 44px;
+				background: var(--white);
+			}
+
+			.header {
+				display: grid;
+				grid-template-columns: 270px 1fr;
+				gap: 48px;
+				align-items: start;
+				padding-bottom: 32px;
+				border-bottom: 1px dashed var(--dash);
+			}
+
+			.logo img {
+				width: 246px;
+			}
+
+			.kicker {
+				margin: 0 0 14px;
+				color: var(--orange);
+				font-size: 13px;
+				font-weight: 900;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+			}
+
+			h1,
+			h2,
+			h3,
+			p {
+				margin-top: 0;
+			}
+
+			h1 {
+				max-width: 950px;
+				margin-bottom: 18px;
+				color: var(--blue);
+				font-family: var(--display);
+				font-size: 64px;
+				font-weight: 900;
+				line-height: 0.98;
+				letter-spacing: -0.045em;
+			}
+
+			.intro {
+				max-width: 920px;
+				margin-bottom: 0;
+				font-size: 21px;
+				line-height: 1.5;
+				color: #303741;
+			}
+
+			.layout {
+				display: grid;
+				grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+				gap: 38px;
+				padding-top: 34px;
+			}
+
+			.preview {
+				padding: 24px;
+				border: 1px solid var(--line);
+				border-radius: 10px;
+				background: var(--paper);
+			}
+
+			.preview img {
+				height: 292px;
+				object-fit: cover;
+				border-radius: 8px;
+				margin-bottom: 22px;
+			}
+
+			.preview h2 {
+				margin-bottom: 12px;
+				color: var(--blue);
+				font-family: var(--display);
+				font-size: 42px;
+				font-weight: 900;
+				line-height: 1;
+				letter-spacing: -0.04em;
+			}
+
+			.preview p {
+				margin-bottom: 18px;
+				font-size: 17px;
+				line-height: 1.5;
+				color: #303741;
+			}
+
+			.mini-grid {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				gap: 10px;
+			}
+
+			.mini {
+				min-height: 92px;
+				padding: 14px;
+				border: 1px solid var(--line);
+				border-top: 4px solid var(--orange);
+				background: var(--white);
+			}
+
+			.mini strong {
+				display: block;
+				margin-bottom: 8px;
+				color: var(--blue);
+				font-family: var(--display);
+				font-size: 22px;
+				font-weight: 900;
+				line-height: 1;
+				letter-spacing: -0.035em;
+			}
+
+			.mini span {
+				display: block;
+				font-size: 13px;
+				line-height: 1.38;
+				color: var(--muted);
+			}
+
+			.callouts {
+				display: grid;
+				gap: 16px;
+			}
+
+			.callout {
+				display: grid;
+				grid-template-columns: 76px 1fr;
+				gap: 20px;
+				padding: 22px 24px;
+				border-bottom: 1px dashed var(--dash);
+				background: var(--white);
+			}
+
+			.number {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 58px;
+				height: 58px;
+				border-radius: 50%;
+				background: var(--orange);
+				color: var(--white);
+				font-family: var(--display);
+				font-size: 26px;
+				font-weight: 900;
+			}
+
+			.callout h3 {
+				margin-bottom: 8px;
+				color: var(--blue);
+				font-family: var(--display);
+				font-size: 31px;
+				font-weight: 900;
+				line-height: 1.05;
+				letter-spacing: -0.035em;
+			}
+
+			.callout p {
+				margin-bottom: 0;
+				font-size: 16px;
+				line-height: 1.48;
+				color: #333941;
+			}
+
+			.footer-note {
+				margin-top: 30px;
+				padding: 26px 28px;
+				border-radius: 8px;
+				background: var(--blue);
+				color: var(--white);
+			}
+
+			.footer-note h2 {
+				margin-bottom: 8px;
+				font-family: var(--display);
+				font-size: 35px;
+				font-weight: 900;
+				line-height: 1;
+				letter-spacing: -0.04em;
+			}
+
+			.footer-note p {
+				margin-bottom: 0;
+				max-width: 900px;
+				font-size: 17px;
+				line-height: 1.5;
+				color: rgba(255, 255, 255, 0.86);
+			}
+		</style>
+	</head>
+	<body>
+		<main class="frame">
+			<header class="header">
+				<a class="logo" href="https://www.thebmi.org/">
+					<img src="https://www.thebmi.org/wp-content/uploads/2022/11/BMI_Full-Logo2-1.png" alt="Baltimore Museum of Industry" />
+				</a>
+				<div>
+					<p class="kicker">Duo Studio concept notes</p>
+					<h1>BMI does not need a louder homepage. It needs a calmer decision path.</h1>
+					<p class="intro">This pass keeps the BMI-native visual direction, then reduces how much the page asks visitors to process at once. The homepage becomes a sequence: orient, choose a path, confirm practical details, then learn more.</p>
+				</div>
+			</header>
+
+			<section class="layout">
+				<div class="preview">
+					<img src="https://www.thebmi.org/wp-content/uploads/2025/05/BMI-2435-1-scaled.jpg" alt="Visitors inside the Baltimore Museum of Industry galleries" />
+					<h2>Work matters. See how Baltimore was built.</h2>
+					<p>The concept now presents BMI like a live public homepage: a museum visit, a school trip, a waterfront event, and a civic story all have a clear starting point.</p>
+					<div class="mini-grid">
+						<div class="mini">
+							<strong>Visit</strong>
+							<span>Hours, tickets, parking, and the address are easy to confirm.</span>
+						</div>
+						<div class="mini">
+							<strong>Education</strong>
+							<span>Teachers can quickly find field trips and classroom programs.</span>
+						</div>
+						<div class="mini">
+							<strong>Host an Event</strong>
+							<span>The waterfront venue path is visible without crowding the hero.</span>
+						</div>
+						<div class="mini">
+							<strong>Support BMI</strong>
+							<span>Membership and giving connect back to Baltimore civic memory.</span>
+						</div>
+					</div>
+				</div>
+
+				<div>
+					<div class="callouts">
+						<article class="callout">
+							<div class="number">1</div>
+							<div>
+								<h3>Closer to BMI's existing brand feel.</h3>
+								<p>The current BMI site is light, direct, and institutional: blue headings, orange CTAs, white space, rounded photography, and dashed blue rules. The redesign now extends that language instead of importing a more expressive Le Mondo-style system.</p>
+							</div>
+						</article>
+						<article class="callout">
+							<div class="number">2</div>
+							<div>
+								<h3>Each zone has one job.</h3>
+								<p>The hero invites a museum visit. The choice bar routes audiences. The facts strip confirms logistics. Proof points come later, so visitors are not asked to read every audience case at once.</p>
+							</div>
+						</article>
+						<article class="callout">
+							<div class="number">3</div>
+							<div>
+								<h3>Audience paths become choices, not content blocks.</h3>
+								<p>Visit, Education, Host an Event, and Support are still visible near the top, but they are now compact links. The fuller explanation waits until someone selects a path or scrolls with intent.</p>
+							</div>
+						</article>
+						<article class="callout">
+							<div class="number">4</div>
+							<div>
+								<h3>Proof is summarized before it expands.</h3>
+								<p>Teacher ratings, waterfront rentals, and historic building context are reduced to the strongest proof points. The page still sells BMI's breadth, but in a calmer rhythm.</p>
+							</div>
+						</article>
+					</div>
+					<div class="footer-note">
+						<h2>The strategic shift stays the same.</h2>
+						<p>The page is quieter, but the thesis remains: a working museum needs a working website. The UX pass makes that idea easier to digest by revealing information in layers.</p>
+					</div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

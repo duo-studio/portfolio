@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>American Visionary Art Museum - Homepage Concept - Mobile 375</title>
+		<meta name="viewport" content="width=375" />
+		<style>
+			@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Libre+Baskerville:ital,wght@0,400;1,400&family=Nunito+Sans:wght@700;800;900&display=swap");
+
+			:root {
+				--aqua: #7bdbe8;
+				--yellow: #fff36d;
+				--red: #f3192f;
+				--pink: #ff66a3;
+				--green: #55b947;
+				--ink: #08091d;
+				--paper: #fffdf2;
+				--white: #ffffff;
+				--sans: "Nunito Sans", Arial, sans-serif;
+				--display: "Archivo Black", Impact, sans-serif;
+				--serif: "Libre Baskerville", Georgia, serif;
+			}
+
+			*,
+			*::before,
+			*::after {
+				box-sizing: border-box;
+			}
+
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				display: flex;
+				justify-content: center;
+				background: #10142f;
+				color: var(--ink);
+				font-family: var(--sans);
+			}
+
+			a {
+				color: inherit;
+				text-decoration: none;
+			}
+
+			img {
+				display: block;
+				width: 100%;
+			}
+
+			.frame {
+				width: 375px;
+				min-height: 1360px;
+				overflow: hidden;
+				border: 6px solid var(--ink);
+				border-radius: 30px;
+				background:
+					radial-gradient(circle at 88% 13%, rgba(255, 102, 163, 0.26) 0 62px, transparent 63px),
+					linear-gradient(180deg, var(--aqua) 0 118px, var(--paper) 118px 100%);
+				box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.42);
+			}
+
+			.header {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 14px;
+				padding: 18px 18px 14px;
+			}
+
+			.logo img {
+				width: 148px;
+			}
+
+			.menu {
+				width: 50px;
+				height: 50px;
+				border: 4px solid var(--ink);
+				border-radius: 50%;
+				background: var(--red);
+				position: relative;
+				box-shadow: 4px 4px 0 var(--ink);
+			}
+
+			.menu::before,
+			.menu::after,
+			.menu span {
+				content: "";
+				position: absolute;
+				left: 13px;
+				right: 13px;
+				height: 3px;
+				background: var(--white);
+			}
+
+			.menu::before {
+				top: 14px;
+			}
+
+			.menu span {
+				top: 22px;
+			}
+
+			.menu::after {
+				top: 30px;
+			}
+
+			.alert {
+				padding: 10px 18px;
+				background: var(--yellow);
+				font-family: var(--display);
+				font-size: 11px;
+				line-height: 1.45;
+				letter-spacing: 0.12em;
+				text-transform: uppercase;
+			}
+
+			.alert strong {
+				color: var(--red);
+			}
+
+			.hero {
+				padding: 18px;
+			}
+
+			.hero-art {
+				position: relative;
+				height: 218px;
+				margin-bottom: 18px;
+				border: 5px solid var(--ink);
+				border-radius: 22px;
+				overflow: hidden;
+				background: var(--ink);
+				box-shadow: 7px 7px 0 rgba(8, 9, 29, 0.2);
+				transform: rotate(-1deg);
+			}
+
+			.hero-art img {
+				height: 100%;
+				object-fit: cover;
+			}
+
+			.art-label {
+				position: absolute;
+				left: 14px;
+				right: 14px;
+				bottom: 14px;
+				padding: 12px 14px;
+				border: 4px solid var(--ink);
+				border-radius: 18px;
+				background: var(--paper);
+				transform: rotate(1deg);
+			}
+
+			.art-label span {
+				display: block;
+				margin-bottom: 5px;
+				color: var(--red);
+				font-family: var(--display);
+				font-size: 10px;
+				letter-spacing: 0.14em;
+				text-transform: uppercase;
+			}
+
+			.art-label strong {
+				display: block;
+				font-family: var(--display);
+				font-size: 25px;
+				line-height: 0.95;
+				letter-spacing: -0.04em;
+			}
+
+			.kicker {
+				margin: 0 0 9px;
+				color: var(--red);
+				font-family: var(--display);
+				font-size: 12px;
+				letter-spacing: 0.15em;
+				text-transform: uppercase;
+			}
+
+			h1,
+			h2,
+			h3,
+			p {
+				margin-top: 0;
+			}
+
+			h1 {
+				margin-bottom: 13px;
+				font-family: var(--display);
+				font-size: 45px;
+				line-height: 0.9;
+				letter-spacing: -0.055em;
+				text-transform: uppercase;
+			}
+
+			.lede {
+				margin-bottom: 16px;
+				font-size: 15px;
+				line-height: 1.42;
+			}
+
+			.cta-row {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 9px;
+				margin-bottom: 14px;
+			}
+
+			.cta {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				min-height: 48px;
+				padding: 0 12px;
+				border: 4px solid var(--ink);
+				border-radius: 999px;
+				background: var(--red);
+				color: var(--white);
+				font-family: var(--display);
+				font-size: 11px;
+				letter-spacing: 0.1em;
+				text-transform: uppercase;
+				text-align: center;
+				box-shadow: 4px 4px 0 var(--ink);
+			}
+
+			.cta--yellow {
+				background: var(--yellow);
+				color: var(--ink);
+			}
+
+			.facts {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 8px;
+			}
+
+			.fact {
+				padding: 12px;
+				border: 4px solid var(--ink);
+				border-radius: 17px;
+				background: var(--white);
+			}
+
+			.fact:first-child {
+				grid-column: span 2;
+			}
+
+			.fact small {
+				display: block;
+				margin-bottom: 5px;
+				color: var(--red);
+				font-family: var(--display);
+				font-size: 10px;
+				letter-spacing: 0.13em;
+				text-transform: uppercase;
+			}
+
+			.fact strong {
+				display: block;
+				font-size: 15px;
+				line-height: 1.18;
+			}
+
+			.paths {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 10px;
+				padding: 0 18px 22px;
+			}
+
+			.path {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				min-height: 92px;
+				padding: 14px;
+				border: 4px solid var(--ink);
+				border-radius: 20px;
+				background: var(--white);
+				box-shadow: 5px 5px 0 var(--ink);
+			}
+
+			.path:nth-child(2) {
+				background: var(--yellow);
+			}
+
+			.path:nth-child(3) {
+				background: var(--aqua);
+			}
+
+			.path:nth-child(4) {
+				background: #ffd5e6;
+			}
+
+			.path small {
+				display: block;
+				margin-bottom: 7px;
+				color: var(--red);
+				font-family: var(--display);
+				font-size: 10px;
+				letter-spacing: 0.1em;
+				text-transform: uppercase;
+			}
+
+			.path strong {
+				display: block;
+				font-family: var(--display);
+				font-size: 20px;
+				line-height: 0.98;
+				letter-spacing: -0.04em;
+				text-transform: uppercase;
+			}
+
+			.next {
+				padding: 22px 18px 26px;
+				background: var(--green);
+				color: var(--white);
+			}
+
+			.next h2 {
+				margin-bottom: 10px;
+				font-family: var(--display);
+				font-size: 35px;
+				line-height: 0.9;
+				letter-spacing: -0.05em;
+				text-transform: uppercase;
+			}
+
+			.next p {
+				margin-bottom: 15px;
+				font-family: var(--serif);
+				font-style: italic;
+				font-size: 18px;
+				line-height: 1.35;
+			}
+
+			.event-list {
+				display: grid;
+				gap: 10px;
+			}
+
+			.event {
+				display: grid;
+				grid-template-columns: 58px 1fr;
+				gap: 12px;
+				align-items: center;
+				padding: 10px;
+				border: 3px solid var(--ink);
+				border-radius: 18px;
+				background: var(--paper);
+				color: var(--ink);
+			}
+
+			.event img {
+				width: 58px;
+				height: 58px;
+				object-fit: cover;
+				border-radius: 50%;
+				border: 3px solid var(--ink);
+			}
+
+			.event strong {
+				display: block;
+				font-family: var(--display);
+				font-size: 14px;
+				line-height: 1;
+				text-transform: uppercase;
+			}
+
+			.event span {
+				display: block;
+				margin-top: 4px;
+				font-size: 12px;
+				font-weight: 900;
+			}
+		</style>
+	</head>
+	<body>
+		<main class="frame">
+			<header class="header">
+				<a class="logo" href="https://www.avam.org/">
+					<img src="https://static.wixstatic.com/media/50ff9e_451cc3e6dfba4904adf4258e1781466a~mv2.png/v1/fill/w_318,h_128,al_c,q_85,enc_avif,quality_auto/AVAM%20Text%20Logo%20CMYK-01.png" alt="American Visionary Art Museum" />
+				</a>
+				<button class="menu" type="button" aria-label="Open menu"><span></span></button>
+			</header>
+
+			<div class="alert"><strong>May 2:</strong> Kinetic road closures. <strong>May 3:</strong> open 11am-5pm.</div>
+
+			<section class="hero" aria-label="American Visionary Art Museum homepage hero">
+				<div class="hero-art">
+					<img src="https://static.wixstatic.com/media/078c15_a160fbcfb8434c3385e44c6795e97bb1~mv2.jpg/v1/fill/w_700,h_450,al_c,q_85,enc_avif,quality_auto/078c15_a160fbcfb8434c3385e44c6795e97bb1~mv2.jpg" alt="Artwork from Fantastic Realities at AVAM" />
+					<div class="art-label">
+						<span>New mega-exhibition</span>
+						<strong>Fantastic Realities</strong>
+					</div>
+				</div>
+				<p class="kicker">Visit AVAM</p>
+				<h1>Come see what imagination can do.</h1>
+				<p class="lede">Self-taught art, wild invention, big feeling, and color from floor to ceiling near Baltimore's Inner Harbor.</p>
+				<div class="cta-row">
+					<a class="cta" href="https://www.avam.org/tickets">Buy Tickets</a>
+					<a class="cta cta--yellow" href="https://www.avam.org/exhibits">What's On</a>
+				</div>
+				<div class="facts">
+					<div class="fact">
+						<small>Hours</small>
+						<strong>Wednesday-Sunday, 10am-5pm</strong>
+					</div>
+					<div class="fact">
+						<small>Admission</small>
+						<strong>Adult $20<br />Student $11</strong>
+					</div>
+					<div class="fact">
+						<small>Address</small>
+						<strong>800 Key Hwy<br />Inner Harbor</strong>
+					</div>
+				</div>
+			</section>
+
+			<nav class="paths" aria-label="Primary audience paths">
+				<a class="path" href="https://www.avam.org/visit">
+					<small>I want to</small>
+					<strong>Plan a visit</strong>
+				</a>
+				<a class="path" href="https://www.avam.org/exhibits">
+					<small>I want to</small>
+					<strong>See the art</strong>
+				</a>
+				<a class="path" href="https://www.avam.org/events-calendar">
+					<small>I want to</small>
+					<strong>Find events</strong>
+				</a>
+				<a class="path" href="https://www.avam.org/rent">
+					<small>I want to</small>
+					<strong>Host a bash</strong>
+				</a>
+			</nav>
+
+			<section class="next" aria-label="Upcoming events">
+				<h2>Next at AVAM</h2>
+				<p>"Adults are obligated to have fun, so kids will want to grow older."</p>
+				<div class="event-list">
+					<a class="event" href="https://www.avam.org/kinetic-sculpture-race">
+						<img src="https://static.wixstatic.com/media/078c15_7a6bc4a0e37341f0b94d67f0844e291e~mv2.jpg/v1/fill/w_116,h_116,al_c,q_85,enc_avif,quality_auto/078c15_7a6bc4a0e37341f0b94d67f0844e291e~mv2.jpg" alt="FiFi the Pink Poodle kinetic sculpture" />
+						<div>
+							<strong>Kinetic Sculpture Race</strong>
+							<span>May 2, 2026</span>
+						</div>
+					</a>
+					<a class="event" href="https://www.avam.org/events-calendar">
+						<img src="https://static.wixstatic.com/media/a1f55b_c0f76afb46e04cc3b8866ac46df45574~mv2.jpg/v1/fill/w_116,h_116,al_c,q_85,enc_avif,quality_auto/a1f55b_c0f76afb46e04cc3b8866ac46df45574~mv2.jpg" alt="Outdoor sculpture tour at AVAM" />
+						<div>
+							<strong>Outdoor Sculpture Tour</strong>
+							<span>May 9, 3pm</span>
+						</div>
+					</a>
+					<a class="event" href="https://www.avam.org/events-calendar">
+						<img src="https://static.wixstatic.com/media/aa418a_6dbc0057e1a8412099f76741672f5823~mv2.jpg/v1/fill/w_116,h_116,al_c,q_85,enc_avif,quality_auto/aa418a_6dbc0057e1a8412099f76741672f5823~mv2.jpg" alt="Tribute Portrait Workshop at AVAM" />
+						<div>
+							<strong>Tribute Portrait Workshop</strong>
+							<span>May 16, 2:30pm</span>
+						</div>
+					</a>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>
