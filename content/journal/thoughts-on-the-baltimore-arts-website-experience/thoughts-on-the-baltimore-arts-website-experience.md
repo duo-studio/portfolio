@@ -107,7 +107,7 @@ Our concept replaces the mission line with 2 pieces of current programming: the 
 
 ## The pattern
 
-Across the set, one thing stood out. Homepages that open on programming give a stranger a reason to stay inside the first view. Homepages that open on identity, the mission, the story, the brand, ask the stranger to take that identity on trust before meeting the work.
+Across the set, one thing stood out. Homepages that open on programming give a first-time visitor a stronger reason to stay inside the first view. Homepages that open on identity, the mission, the story, the brand, ask that visitor to take the identity on trust before meeting the work.
 
 Neither is wrong. They're different editorial decisions about what earns the first 50 milliseconds. For a calendar-driven organization, where the answer a visitor came for is what's on this week, opening on programming puts that answer closest to the question.
 
