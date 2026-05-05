@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-const CONTACT_FLOW_VERSION = "2026-05-05-linear-route-v2";
+const CONTACT_FLOW_VERSION = "2026-05-05-linear-route-v3";
 const LINEAR_TEAM_ID = "8cd9163c-3887-4d93-a357-fcae4422b162";
 const LINEAR_PROJECT_ID = "4ffc0326-b8ed-4d9f-9e85-569d9583a5fe";
 const LINEAR_STATE_ID = "da9b8fd6-4f74-4913-985b-ce1c617e2ef2";
@@ -534,30 +534,47 @@ async function linearRequest(query, variables, apiKey) {
 
 function buildLinearLeadDescription(lead) {
 	return [
-		"Website lead submitted via the duo-studio.co contact form.",
+		"## Contact",
 		"",
-		`Name: ${lead.name}`,
-		`Email: ${lead.email}`,
-		`Company: ${lead.company}`,
-		`Website: ${lead.website || "Not provided"}`,
-		`Phone: ${lead.phone || "Not provided"}`,
-		`Page: ${lead.page}`,
-		`Referrer: ${lead.referrer || "Unknown"}`,
-		`Source: ${lead.source}`,
-		`Source Detail: ${lead.sourceDetail}`,
-		`Inquiry Type: ${lead.inquiryType}`,
-		`Priority: ${lead.priority}`,
-		`Fit Score: ${lead.fitScore}/10`,
-		`Scam Score: ${lead.scamScore}/10`,
-		`Project Summary: ${lead.projectSummary}`,
-		`Next Step: ${lead.nextStep}`,
-		`Why Fit: ${lead.whyFit}`,
-		`AI Notes: ${lead.aiNotes}`,
+		`- **Name:** ${lead.name}`,
+		`- **Email:** ${lead.email}`,
+		`- **Company:** ${lead.company}`,
+		`- **Website:** ${lead.website || "Not provided"}`,
+		`- **Phone:** ${lead.phone || "Not provided"}`,
 		"",
-		"Full Message:",
+		"## Message",
+		"",
 		lead.message,
 		"",
-		`Scam Audit: ${lead.scamAudit}`,
+		"## Source",
+		"",
+		`- **Page:** ${lead.page}`,
+		`- **Referrer:** ${lead.referrer || "Unknown"}`,
+		`- **Source:** ${lead.source}`,
+		`- **Source detail:** ${lead.sourceDetail}`,
+		"",
+		"## Triage",
+		"",
+		`- **Inquiry type:** ${lead.inquiryType}`,
+		`- **Priority:** ${lead.priority}`,
+		`- **Fit score:** ${lead.fitScore}/10`,
+		`- **Scam score:** ${lead.scamScore}/10`,
+		"",
+		"## Recommended next step",
+		"",
+		lead.nextStep,
+		"",
+		"## Why this may fit",
+		"",
+		lead.whyFit,
+		"",
+		"## Internal notes",
+		"",
+		lead.aiNotes,
+		"",
+		"## Scam audit",
+		"",
+		lead.scamAudit,
 	].join("\n");
 }
 
