@@ -1503,6 +1503,7 @@ function initContactFormSubmission() {
 	const button = form.querySelector('button[type="submit"]');
 	const referrer = form.querySelector("#referrer");
 	const turnstileElement = form.querySelector("[data-turnstile-container]");
+	const turnstileRequired = form.dataset.turnstileRequired === "true";
 	const status = form.querySelector("[data-contact-form-status]");
 	let turnstileWidgetId = null;
 
@@ -1604,7 +1605,7 @@ function initContactFormSubmission() {
 	}
 
 	async function renderTurnstileWidget() {
-		if (!turnstileElement || turnstileWidgetId !== null) {
+		if (!turnstileElement || !turnstileElement.dataset.sitekey || turnstileWidgetId !== null) {
 			return turnstileWidgetId;
 		}
 
@@ -1658,7 +1659,9 @@ function initContactFormSubmission() {
 
 	renderTurnstileWidget().catch((error) => {
 		console.error("Turnstile failed to render", error);
-		setStatus(error.message || "Verification could not load. Please refresh and try again.", "error");
+		if (turnstileRequired) {
+			setStatus(error.message || "Verification could not load. Please refresh and try again.", "error");
+		}
 	});
 
 	form.addEventListener("submit", async (event) => {
@@ -1677,12 +1680,14 @@ function initContactFormSubmission() {
 				"verification_load_failed",
 				error?.message || "Verification could not load.",
 			);
-			setStatus(error.message || "Verification could not load. Please refresh and try again.", "error");
-			return;
+			if (turnstileRequired) {
+				setStatus(error.message || "Verification could not load. Please refresh and try again.", "error");
+				return;
+			}
 		}
 
-		const turnstileToken = getTurnstileToken() || await waitForTurnstileToken();
-		if (!turnstileToken) {
+		const turnstileToken = getTurnstileToken() || (turnstileElement ? await waitForTurnstileToken() : "");
+		if (!turnstileToken && turnstileRequired) {
 			pushContactFormError("verification_missing_token", "Missing verification token");
 			setStatus("Please complete the verification check and try again.", "error");
 			return;

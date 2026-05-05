@@ -1,8 +1,6 @@
 const fs = require("fs");
 const path = require("path");
 
-const PRODUCTION_TURNSTILE_SITE_KEY = "0x4AAAAAAC8DZtzuh8lgMSoU";
-
 function getLocalEnvValue(name) {
 	const envPath = path.join(__dirname, "..", ".env");
 
@@ -12,6 +10,10 @@ function getLocalEnvValue(name) {
 
 	const match = fs.readFileSync(envPath, "utf8").match(new RegExp(`^${name}=(.*)$`, "m"));
 	return match ? match[1].trim() : "";
+}
+
+function getBooleanEnvValue(name) {
+	return /^(1|true|yes)$/i.test(process.env[name] || getLocalEnvValue(name));
 }
 
 module.exports = {
@@ -27,6 +29,6 @@ module.exports = {
 	image: "https://duo-studio.co/assets/DuoStudio_Meta--v2.jpg",
 	turnstileSiteKey:
 		process.env.TURNSTILE_SITE_KEY ||
-		getLocalEnvValue("TURNSTILE_SITE_KEY") ||
-		PRODUCTION_TURNSTILE_SITE_KEY,
+		getLocalEnvValue("TURNSTILE_SITE_KEY"),
+	turnstileRequired: getBooleanEnvValue("TURNSTILE_REQUIRED"),
 };

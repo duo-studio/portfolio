@@ -40,6 +40,10 @@ function getMissingEnvNames(envMap) {
 	return Object.keys(envMap).filter((name) => !envMap[name]);
 }
 
+function isTurnstileRequired() {
+	return /^(1|true|yes)$/i.test(getEnv("TURNSTILE_REQUIRED"));
+}
+
 function json(statusCode, body) {
 	return {
 		statusCode,
@@ -813,6 +817,7 @@ exports.handler = async (event) => {
 	const mondayToken = getEnv("MONDAY_API_TOKEN");
 	const resendApiKey = getEnv("RESEND_API_KEY", "/Users/leo/.config/resend/api_key");
 	const turnstileSecretKey = getEnv("TURNSTILE_SECRET_KEY");
+	const turnstileRequired = isTurnstileRequired();
 	const fromEmail = "hello@duo-studio.co";
 	const fromName = getEnv("FROM_NAME") || "The Duo Team";
 	const fallbackReplyToEmail = "hello@duo-studio.co";
@@ -820,7 +825,7 @@ exports.handler = async (event) => {
 	const missingEnvNames = getMissingEnvNames({
 		MONDAY_API_TOKEN: mondayToken,
 		RESEND_API_KEY: resendApiKey,
-		TURNSTILE_SECRET_KEY: turnstileSecretKey,
+		...(turnstileRequired ? { TURNSTILE_SECRET_KEY: turnstileSecretKey } : {}),
 	});
 
 	if (missingEnvNames.length) {
@@ -839,18 +844,32 @@ exports.handler = async (event) => {
 			: redirect("/contact/");
 	}
 
-	try {
-		const turnstileResult = await verifyTurnstile(turnstileToken, ipAddress, turnstileSecretKey);
-		if (!turnstileResult.success) {
-			return isFetchRequest
-				? json(400, { ok: false, error: "Please verify that you are human." })
-				: redirect("/contact/");
+	if (turnstileToken || turnstileRequired) {
+		try {
+			const turnstileResult = await verifyTurnstile(turnstileToken, ipAddress, turnstileSecretKey);
+			if (!turnstileResult.success) {
+				console.warn("Turnstile verification did not pass.", {
+					errorCodes: turnstileResult["error-codes"] || [],
+					required: turnstileRequired,
+				});
+				if (turnstileRequired) {
+					return isFetchRequest
+						? json(400, { ok: false, error: "Please verify that you are human." })
+						: redirect("/contact/");
+				}
+			}
+		} catch (error) {
+			console.error("Turnstile verification failed", error);
+			if (!turnstileRequired) {
+				console.warn("Continuing contact submission because Turnstile is not required.");
+			} else {
+				return isFetchRequest
+					? json(500, { ok: false, error: "Form verification is not configured correctly yet." })
+					: redirect("/contact/");
+			}
 		}
-	} catch (error) {
-		console.error("Turnstile verification failed", error);
-		return isFetchRequest
-			? json(500, { ok: false, error: "Form verification is not configured correctly yet." })
-			: redirect("/contact/");
+	} else {
+		console.warn("Turnstile token absent; continuing because Turnstile is not required.");
 	}
 
 	const { source, detail: sourceDetail } = normalizeSource(referrer, message);

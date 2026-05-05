@@ -108,6 +108,7 @@ description: Contact Duo Studio for brand identity, web design, and graphic desi
                             name="contact"
                             action="/.netlify/functions/contact-lead"
                             netlify-honeypot="bot-field"
+                            data-turnstile-required="{{ metadata.turnstileRequired }}"
                             data-contact-form>
                             <div class="wrapper">
                                 <h2>Dear Duo Studio,</h2>
@@ -133,7 +134,9 @@ description: Contact Duo Studio for brand identity, web design, and graphic desi
                                 <option value="Other">Other</option>
                             </select>
                             <div class="contact-form__verification">
+                                {% if metadata.turnstileSiteKey %}
                                 <div data-turnstile-container data-sitekey="{{ metadata.turnstileSiteKey }}" data-theme="light" data-appearance="interaction-only"></div>
+                                {% endif %}
                                 <p class="contact-form__status" data-contact-form-status hidden aria-live="polite"></p>
                             </div>
                             <input name="bot-field" type="hidden"/>
