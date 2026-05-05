@@ -1,29 +1,14 @@
 const fs = require("fs");
 
-const CONTACT_FLOW_VERSION = "2026-05-05-route-fallback-v2";
-const MONDAY_BOARD_ID = 18408203777;
-const MONDAY_COLUMNS = {
-	contactName: "text_mm2a46q7",
-	email: "email_mm2a625q",
-	ipAddress: "text_mm2a9v0y",
-	website: "text_mm2asr5w",
-	phone: "phone_mm2av6jq",
-	stage: "color_mm2a8a63",
-	priority: "color_mm2aswcx",
-	fitScore: "numeric_mm2abwb4",
-	sourceRaw: "text_mm2abgqr",
-	source: "color_mm2aceev",
-	sourceDetail: "text_mm2aa3zq",
-	inquiryType: "color_mm2as15a",
-	projectSummary: "long_text_mm2a9wc6",
-	nextStep: "long_text_mm2annhv",
-	followUpDate: "date_mm2ac5dt",
-	lastContacted: "date_mm2a782p",
-	whyFit: "long_text_mm2an8yg",
-	aiNotes: "long_text_mm2anva6",
-	scamScore: "numeric_mm2afyk2",
-	scamAudit: "long_text_mm2aeexv",
-};
+const CONTACT_FLOW_VERSION = "2026-05-05-linear-route-v1";
+const LINEAR_TEAM_ID = "8cd9163c-3887-4d93-a357-fcae4422b162";
+const LINEAR_PROJECT_ID = "4ffc0326-b8ed-4d9f-9e85-569d9583a5fe";
+const LINEAR_STATE_ID = "da9b8fd6-4f74-4913-985b-ce1c617e2ef2";
+const LINEAR_LABEL_IDS = [
+	"a1669389-bdc9-4cb8-a3c0-a24cab70e1ff",
+	"27465a14-3c49-47ce-98ae-c48bc2d1401c",
+	"0e768e48-4410-4919-8f29-15a286f54a9e",
+];
 
 function getEnv(name, fallbackPath) {
 	if (process.env[name]) {
@@ -525,19 +510,18 @@ function buildScamAudit({ name, email, company, message, referrer, ipAddress }) 
 	};
 }
 
-async function mondayRequest(query, variables, token) {
-	const response = await fetch("https://api.monday.com/v2", {
+async function linearRequest(query, variables, apiKey) {
+	const response = await fetch("https://api.linear.app/graphql", {
 		method: "POST",
 		headers: {
-			Authorization: token,
+			Authorization: apiKey,
 			"Content-Type": "application/json",
-			"API-Version": "2024-10",
 		},
 		body: JSON.stringify({ query, variables }),
 	});
 
 	if (!response.ok) {
-		throw new Error(`Monday API request failed with ${response.status}`);
+		throw new Error(`Linear API request failed with ${response.status}`);
 	}
 
 	const payload = await response.json();
@@ -548,77 +532,67 @@ async function mondayRequest(query, variables, token) {
 	return payload.data;
 }
 
-async function createMondayLead(lead, token) {
-	const createUpdateBody = [
-		`New submission in Duo Studio's website on page ${lead.page}`,
+function buildLinearLeadDescription(lead) {
+	return [
+		"Website lead submitted via the duo-studio.co contact form.",
 		"",
 		`Name: ${lead.name}`,
 		`Email: ${lead.email}`,
 		`Company: ${lead.company}`,
+		`Website: ${lead.website || "Not provided"}`,
+		`Phone: ${lead.phone || "Not provided"}`,
+		`Page: ${lead.page}`,
 		`Referrer: ${lead.referrer || "Unknown"}`,
+		`Source: ${lead.source}`,
+		`Source Detail: ${lead.sourceDetail}`,
+		`Inquiry Type: ${lead.inquiryType}`,
+		`Priority: ${lead.priority}`,
+		`Fit Score: ${lead.fitScore}/10`,
+		`Scam Score: ${lead.scamScore}/10`,
+		`Project Summary: ${lead.projectSummary}`,
+		`Next Step: ${lead.nextStep}`,
+		`Why Fit: ${lead.whyFit}`,
+		`AI Notes: ${lead.aiNotes}`,
 		"",
-		"Message:",
+		"Full Message:",
 		lead.message,
+		"",
+		`Scam Audit: ${lead.scamAudit}`,
 	].join("\n");
+}
 
-	const columnValues = {
-		[MONDAY_COLUMNS.contactName]: lead.name,
-		[MONDAY_COLUMNS.email]: {
-			email: lead.email,
-			text: lead.email,
-		},
-		[MONDAY_COLUMNS.ipAddress]: lead.ipAddress || "Unknown",
-		[MONDAY_COLUMNS.stage]: { label: "New" },
-		[MONDAY_COLUMNS.priority]: { label: lead.priority },
-		[MONDAY_COLUMNS.fitScore]: lead.fitScore,
-		[MONDAY_COLUMNS.sourceRaw]: lead.referrer || "",
-		[MONDAY_COLUMNS.source]: { label: lead.source },
-		[MONDAY_COLUMNS.sourceDetail]: lead.sourceDetail,
-		[MONDAY_COLUMNS.inquiryType]: { label: lead.inquiryType },
-		[MONDAY_COLUMNS.projectSummary]: lead.projectSummary,
-		[MONDAY_COLUMNS.nextStep]: lead.nextStep,
-		[MONDAY_COLUMNS.followUpDate]: { date: lead.followUpDate },
-		[MONDAY_COLUMNS.lastContacted]: { date: lead.lastContacted },
-		[MONDAY_COLUMNS.whyFit]: lead.whyFit,
-		[MONDAY_COLUMNS.aiNotes]: lead.aiNotes,
-		[MONDAY_COLUMNS.scamScore]: lead.scamScore,
-		[MONDAY_COLUMNS.scamAudit]: lead.scamAudit,
-	};
-
-	if (lead.website) {
-		columnValues[MONDAY_COLUMNS.website] = lead.website;
-	}
-	if (lead.phone) {
-		columnValues[MONDAY_COLUMNS.phone] = lead.phone;
-	}
-
+async function createLinearLead(lead, apiKey) {
 	const mutation = `
-		mutation CreateLead($boardId: ID!, $itemName: String!, $columnValues: JSON!) {
-			create_item(board_id: $boardId, item_name: $itemName, column_values: $columnValues, create_labels_if_missing: true) {
-				id
-				name
+		mutation CreateLeadIssue($input: IssueCreateInput!) {
+			issueCreate(input: $input) {
+				success
+				issue {
+					id
+					identifier
+					title
+					url
+				}
 			}
 		}
 	`;
 
-	const data = await mondayRequest(mutation, {
-		boardId: String(MONDAY_BOARD_ID),
-		itemName: lead.company || lead.name,
-		columnValues: JSON.stringify(columnValues),
-	}, token);
+	const data = await linearRequest(mutation, {
+		input: {
+			title: `Website lead — ${lead.company || lead.name}`,
+			description: buildLinearLeadDescription(lead),
+			teamId: LINEAR_TEAM_ID,
+			projectId: LINEAR_PROJECT_ID,
+			stateId: LINEAR_STATE_ID,
+			labelIds: LINEAR_LABEL_IDS,
+			dueDate: lead.followUpDate,
+		},
+	}, apiKey);
 
-	await mondayRequest(`
-		mutation CreateLeadUpdate($itemId: ID!, $body: String!) {
-			create_update(item_id: $itemId, body: $body) {
-				id
-			}
-		}
-	`, {
-		itemId: String(data.create_item.id),
-		body: createUpdateBody,
-	}, token);
+	if (!data.issueCreate?.success || !data.issueCreate.issue) {
+		throw new Error("Linear issueCreate did not return an issue.");
+	}
 
-	return data.create_item;
+	return data.issueCreate.issue;
 }
 
 async function verifyTurnstile(token, ipAddress, secretKey) {
@@ -654,7 +628,7 @@ async function verifyTurnstile(token, ipAddress, secretKey) {
 	return response.json();
 }
 
-async function sendResendEmail(lead, item, resendApiKey, fromEmail, fromName, fallbackReplyToEmail) {
+async function sendResendEmail(lead, resendApiKey, fromEmail, fromName, fallbackReplyToEmail) {
 	const replyTo = lead.email || fallbackReplyToEmail;
 	const from = fromName ? `${fromName} <${fromEmail}>` : fromEmail;
 	const companySuffix = lead.company ? ` at ${lead.company}` : "";
@@ -702,12 +676,12 @@ async function sendResendEmail(lead, item, resendApiKey, fromEmail, fromName, fa
 	}
 }
 
-async function maybeSendSlackNotification(lead, item, webhookUrl) {
+async function maybeSendSlackNotification(lead, issue, webhookUrl) {
 	if (!webhookUrl) {
 		return;
 	}
 
-	const mondayItemUrl = getMondayItemUrl(item.id);
+	const crmLink = issue?.url ? `<${issue.url}|Linear Issue>` : "Email-only route";
 	const lines = [
 		`New submission in Duo Studio's website on page ${lead.page}`,
 		"> *Name*",
@@ -745,7 +719,7 @@ async function maybeSendSlackNotification(lead, item, webhookUrl) {
 		"> *Next Step:*",
 		`> ${lead.nextStep}`,
 		">",
-		`> <${mondayItemUrl}|Monday Item>`,
+		`> ${crmLink}`,
 	];
 
 	const response = await fetch(webhookUrl, {
@@ -762,11 +736,6 @@ async function maybeSendSlackNotification(lead, item, webhookUrl) {
 		const errorText = await response.text();
 		throw new Error(`Slack webhook failed with ${response.status}: ${errorText}`);
 	}
-}
-
-function getMondayItemUrl(itemId) {
-	const baseUrl = process.env.MONDAY_ITEM_URL_BASE || `https://duostudio-co.monday.com/boards/${MONDAY_BOARD_ID}/views/249619657/pulses`;
-	return `${baseUrl}/${itemId}`;
 }
 
 function formatMessageHtml(value) {
@@ -819,7 +788,7 @@ exports.handler = async (event) => {
 			: redirect("/contact/");
 	}
 
-	const mondayToken = getEnv("MONDAY_API_TOKEN");
+	const linearApiKey = getEnv("LINEAR_API_KEY");
 	const resendApiKey = getEnv("RESEND_API_KEY", "/Users/leo/.config/resend/api_key");
 	const turnstileSecretKey = getEnv("TURNSTILE_SECRET_KEY");
 	const turnstileRequired = isTurnstileRequired();
@@ -828,8 +797,6 @@ exports.handler = async (event) => {
 	const fallbackReplyToEmail = "hello@duo-studio.co";
 	const slackWebhookUrl = getEnv("SLACK_WEBHOOK_URL");
 	const missingEnvNames = getMissingEnvNames({
-		MONDAY_API_TOKEN: mondayToken,
-		RESEND_API_KEY: resendApiKey,
 		...(turnstileRequired ? { TURNSTILE_SECRET_KEY: turnstileSecretKey } : {}),
 	});
 
@@ -844,9 +811,16 @@ exports.handler = async (event) => {
 					missingEnvNames.length === 1 &&
 					missingEnvNames[0] === "TURNSTILE_SECRET_KEY"
 						? "Form verification is not configured correctly yet."
-						: "Lead routing is not configured yet.",
+						: "Form verification is not configured correctly yet.",
 			})
 			: redirect("/contact/");
+	}
+
+	if (!resendApiKey) {
+		console.warn("RESEND_API_KEY is missing; contact flow will attempt Linear-only routing.");
+	}
+	if (!linearApiKey) {
+		console.warn("LINEAR_API_KEY is missing; contact flow will attempt email-only routing.");
 	}
 
 	if (turnstileToken || turnstileRequired) {
@@ -922,52 +896,61 @@ exports.handler = async (event) => {
 	}
 
 	const routingErrors = [];
-	let item = null;
+	let issue = null;
 	let emailSent = false;
 
-	try {
-		await sendResendEmail(lead, item, resendApiKey, fromEmail, fromName, fallbackReplyToEmail);
-		emailSent = true;
-	} catch (error) {
-		routingErrors.push("resend");
-		console.error("Contact lead email failed", {
-			message: error instanceof Error ? error.message : String(error),
-			leadEmail: lead.email,
-			page: lead.page,
-		});
-	}
-
-	try {
-		item = await createMondayLead(lead, mondayToken);
-	} catch (error) {
-		routingErrors.push("monday");
-		console.error("Contact lead Monday routing failed", {
-			message: error instanceof Error ? error.message : String(error),
-			leadEmail: lead.email,
-			page: lead.page,
-		});
-	}
-
-	if (item) {
+	if (resendApiKey) {
 		try {
-			await maybeSendSlackNotification(lead, item, slackWebhookUrl);
+			await sendResendEmail(lead, resendApiKey, fromEmail, fromName, fallbackReplyToEmail);
+			emailSent = true;
+		} catch (error) {
+			routingErrors.push("email");
+			console.error("Contact lead email failed", {
+				message: error instanceof Error ? error.message : String(error),
+				leadEmail: lead.email,
+				page: lead.page,
+			});
+		}
+	} else {
+		routingErrors.push("email");
+	}
+
+	if (linearApiKey) {
+		try {
+			issue = await createLinearLead(lead, linearApiKey);
+		} catch (error) {
+			routingErrors.push("linear");
+			console.error("Contact lead Linear routing failed", {
+				message: error instanceof Error ? error.message : String(error),
+				leadEmail: lead.email,
+				page: lead.page,
+			});
+		}
+	} else {
+		routingErrors.push("linear");
+	}
+
+	if (emailSent || issue) {
+		try {
+			await maybeSendSlackNotification(lead, issue, slackWebhookUrl);
 		} catch (error) {
 			console.error("Slack notification failed", {
 				message: error instanceof Error ? error.message : String(error),
 				leadEmail: lead.email,
-				mondayItemId: item.id,
+				linearIssueId: issue?.id || null,
 			});
 		}
 	}
 
-	if (emailSent || item) {
+	if (emailSent || issue) {
 		return isFetchRequest
 			? json(200, {
 				ok: true,
-				itemId: item?.id || null,
+				issueId: issue?.identifier || null,
+				url: issue?.url || null,
 				routed: {
 					email: emailSent,
-					monday: Boolean(item),
+					linear: Boolean(issue),
 				},
 			})
 			: redirect("/contact/thank-you/");
