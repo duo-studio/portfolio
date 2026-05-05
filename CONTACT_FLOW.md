@@ -32,8 +32,8 @@ This repo now routes the main `/contact/` form through a Netlify Function instea
    - no logo or card chrome
    - subject includes company when present
    - body contains the message, then a lightweight sender line and optional website
-8. Optionally sends a Slack webhook notification if configured
-   - legacy-style field formatting for readability in `#project-management`
+8. Optionally sends a Slack webhook notification only if `CONTACT_LEAD_SLACK_WEBHOOK_URL` is configured
+   - legacy-style field formatting for readability in a dedicated leads-only channel
    - plus AI triage details below the original submission
    - links to the Linear issue when a CRM issue was created
 
@@ -48,9 +48,9 @@ Set these in Netlify site environment variables:
 Optional:
 
 - `FROM_NAME`
-- `SLACK_WEBHOOK_URL`
+- `CONTACT_LEAD_SLACK_WEBHOOK_URL`
 
-Note: Slack incoming webhooks are usually channel-bound. If notifications are landing in the wrong channel, generate a new webhook specifically for `#project-management` and replace the existing `SLACK_WEBHOOK_URL` in Netlify.
+Note: Slack incoming webhooks are usually channel-bound. If notifications are landing in the wrong channel, set `CONTACT_LEAD_SLACK_WEBHOOK_URL` to a dedicated leads-only webhook. Do not reuse the general `SLACK_WEBHOOK_URL`; website leads should not post to `#project-management` by default.
 
 ## Recommended values right now
 

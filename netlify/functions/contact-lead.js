@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-const CONTACT_FLOW_VERSION = "2026-05-05-linear-route-v1";
+const CONTACT_FLOW_VERSION = "2026-05-05-linear-route-v2";
 const LINEAR_TEAM_ID = "8cd9163c-3887-4d93-a357-fcae4422b162";
 const LINEAR_PROJECT_ID = "4ffc0326-b8ed-4d9f-9e85-569d9583a5fe";
 const LINEAR_STATE_ID = "da9b8fd6-4f74-4913-985b-ce1c617e2ef2";
@@ -795,7 +795,7 @@ exports.handler = async (event) => {
 	const fromEmail = "hello@duo-studio.co";
 	const fromName = getEnv("FROM_NAME") || "The Duo Team";
 	const fallbackReplyToEmail = "hello@duo-studio.co";
-	const slackWebhookUrl = getEnv("SLACK_WEBHOOK_URL");
+	const slackWebhookUrl = getEnv("CONTACT_LEAD_SLACK_WEBHOOK_URL");
 	const missingEnvNames = getMissingEnvNames({
 		...(turnstileRequired ? { TURNSTILE_SECRET_KEY: turnstileSecretKey } : {}),
 	});
