@@ -1,3 +1,19 @@
+const fs = require("fs");
+const path = require("path");
+
+const PRODUCTION_TURNSTILE_SITE_KEY = "0x4AAAAAAC8DZtzuh8lgMSoU";
+
+function getLocalEnvValue(name) {
+	const envPath = path.join(__dirname, "..", ".env");
+
+	if (!fs.existsSync(envPath)) {
+		return "";
+	}
+
+	const match = fs.readFileSync(envPath, "utf8").match(new RegExp(`^${name}=(.*)$`, "m"));
+	return match ? match[1].trim() : "";
+}
+
 module.exports = {
 	title: "Duo Studio — A Digital Design Studio in Baltimore, MD",
 	url:
@@ -9,4 +25,8 @@ module.exports = {
 		"Duo Studio is a Baltimore design studio that creates brand and web systems for businesses that have outgrown their current brand. Custom branding and websites—tailored to where your business is going.",
 
 	image: "https://duo-studio.co/assets/DuoStudio_Meta--v2.jpg",
+	turnstileSiteKey:
+		process.env.TURNSTILE_SITE_KEY ||
+		getLocalEnvValue("TURNSTILE_SITE_KEY") ||
+		PRODUCTION_TURNSTILE_SITE_KEY,
 };

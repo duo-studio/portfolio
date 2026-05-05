@@ -36,6 +36,10 @@ function getEnv(name, fallbackPath) {
 	return "";
 }
 
+function getMissingEnvNames(envMap) {
+	return Object.keys(envMap).filter((name) => !envMap[name]);
+}
+
 function json(statusCode, body) {
 	return {
 		statusCode,
@@ -813,11 +817,25 @@ exports.handler = async (event) => {
 	const fromName = getEnv("FROM_NAME") || "The Duo Team";
 	const fallbackReplyToEmail = "hello@duo-studio.co";
 	const slackWebhookUrl = getEnv("SLACK_WEBHOOK_URL");
+	const missingEnvNames = getMissingEnvNames({
+		MONDAY_API_TOKEN: mondayToken,
+		RESEND_API_KEY: resendApiKey,
+		TURNSTILE_SECRET_KEY: turnstileSecretKey,
+	});
 
-	if (!mondayToken || !resendApiKey) {
-		console.error("Missing required environment variables for contact flow.");
+	if (missingEnvNames.length) {
+		console.error("Missing required environment variables for contact flow.", {
+			missingEnvNames,
+		});
 		return isFetchRequest
-			? json(500, { ok: false, error: "Lead routing is not configured yet." })
+			? json(500, {
+				ok: false,
+				error:
+					missingEnvNames.length === 1 &&
+					missingEnvNames[0] === "TURNSTILE_SECRET_KEY"
+						? "Form verification is not configured correctly yet."
+						: "Lead routing is not configured yet.",
+			})
 			: redirect("/contact/");
 	}
 

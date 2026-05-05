@@ -1616,8 +1616,10 @@ function initContactFormSubmission() {
 			callback: () => {
 				setStatus("");
 			},
-			"error-callback": () => {
-				setStatus("Verification could not load. Please refresh and try again.", "error");
+			"error-callback": (errorCode) => {
+				const message = getTurnstileErrorMessage(errorCode);
+				pushContactFormError("verification_widget_error", `${message} (${errorCode || "unknown"})`);
+				setStatus(message, "error");
 			},
 			"expired-callback": () => {
 				setStatus("Verification expired. Please try again.", "error");
@@ -1634,6 +1636,12 @@ function initContactFormSubmission() {
 		if (window.turnstile && turnstileWidgetId !== null) {
 			window.turnstile.reset(turnstileWidgetId);
 		}
+	}
+
+	function getTurnstileErrorMessage(errorCode) {
+		return String(errorCode) === "110200"
+			? "Verification is not authorized for this domain. Please email hello@duo-studio.co instead."
+			: "Verification could not load. Please refresh and try again.";
 	}
 
 	function pushContactFormError(errorType, errorMessage) {

@@ -133,7 +133,7 @@ description: Contact Duo Studio for brand identity, web design, and graphic desi
                                 <option value="Other">Other</option>
                             </select>
                             <div class="contact-form__verification">
-                                <div data-turnstile-container data-sitekey="0x4AAAAAAC8DZtzuh8lgMSoU" data-theme="light" data-appearance="interaction-only"></div>
+                                <div data-turnstile-container data-sitekey="{{ metadata.turnstileSiteKey }}" data-theme="light" data-appearance="interaction-only"></div>
                                 <p class="contact-form__status" data-contact-form-status hidden aria-live="polite"></p>
                             </div>
                             <input name="bot-field" type="hidden"/>

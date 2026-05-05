@@ -12,3 +12,11 @@ public/styles/membership.css
 public/styles/membership.css.map
 .dev-session.*
 tmp-dev-*.log
+
+.env
+.env.*
+!.env.example
+
+# Local Netlify folder
+.netlify-dev.*
+.netlify/
