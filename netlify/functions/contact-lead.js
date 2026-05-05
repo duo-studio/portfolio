@@ -916,10 +916,34 @@ exports.handler = async (event) => {
 			: redirect("/contact/thank-you/");
 	}
 
-	try {
-		const item = await createMondayLead(lead, mondayToken);
-		await sendResendEmail(lead, item, resendApiKey, fromEmail, fromName, fallbackReplyToEmail);
+	const routingErrors = [];
+	let item = null;
+	let emailSent = false;
 
+	try {
+		await sendResendEmail(lead, item, resendApiKey, fromEmail, fromName, fallbackReplyToEmail);
+		emailSent = true;
+	} catch (error) {
+		routingErrors.push("resend");
+		console.error("Contact lead email failed", {
+			message: error instanceof Error ? error.message : String(error),
+			leadEmail: lead.email,
+			page: lead.page,
+		});
+	}
+
+	try {
+		item = await createMondayLead(lead, mondayToken);
+	} catch (error) {
+		routingErrors.push("monday");
+		console.error("Contact lead Monday routing failed", {
+			message: error instanceof Error ? error.message : String(error),
+			leadEmail: lead.email,
+			page: lead.page,
+		});
+	}
+
+	if (item) {
 		try {
 			await maybeSendSlackNotification(lead, item, slackWebhookUrl);
 		} catch (error) {
@@ -929,28 +953,27 @@ exports.handler = async (event) => {
 				mondayItemId: item.id,
 			});
 		}
-
-		return isFetchRequest
-			? json(200, { ok: true, itemId: item.id })
-			: redirect("/contact/thank-you/");
-	} catch (error) {
-		const stage = error instanceof Error && error.message.startsWith("Resend failed")
-			? "resend"
-			: error instanceof Error && (
-				error.message.startsWith("Monday API request failed")
-				|| error.message.includes("create_item")
-				|| error.message.includes("create_update")
-			)
-				? "monday"
-				: "contact-flow";
-		console.error("Contact lead flow failed", {
-			stage,
-			message: error instanceof Error ? error.message : String(error),
-			leadEmail: lead.email,
-			page: lead.page,
-		});
-		return isFetchRequest
-			? json(500, { ok: false, error: "Something went wrong sending your message. Please email hello@duo-studio.co instead." })
-			: redirect("/contact/");
 	}
+
+	if (emailSent || item) {
+		return isFetchRequest
+			? json(200, {
+				ok: true,
+				itemId: item?.id || null,
+				routed: {
+					email: emailSent,
+					monday: Boolean(item),
+				},
+			})
+			: redirect("/contact/thank-you/");
+	}
+
+	console.error("Contact lead flow failed across all routing channels", {
+		stages: routingErrors,
+		leadEmail: lead.email,
+		page: lead.page,
+	});
+	return isFetchRequest
+		? json(500, { ok: false, error: "Something went wrong sending your message. Please email hello@duo-studio.co instead." })
+		: redirect("/contact/");
 };
