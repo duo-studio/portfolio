@@ -1,5 +1,6 @@
 const fs = require("fs");
 
+const CONTACT_FLOW_VERSION = "2026-05-05-route-fallback-v2";
 const MONDAY_BOARD_ID = 18408203777;
 const MONDAY_COLUMNS = {
 	contactName: "text_mm2a46q7",
@@ -50,8 +51,12 @@ function json(statusCode, body) {
 		headers: {
 			"Content-Type": "application/json; charset=utf-8",
 			"Cache-Control": "no-store",
+			"X-Duo-Contact-Flow": CONTACT_FLOW_VERSION,
 		},
-		body: JSON.stringify(body),
+		body: JSON.stringify({
+			...body,
+			version: CONTACT_FLOW_VERSION,
+		}),
 	};
 }
 
@@ -974,6 +979,10 @@ exports.handler = async (event) => {
 		page: lead.page,
 	});
 	return isFetchRequest
-		? json(500, { ok: false, error: "Something went wrong sending your message. Please email hello@duo-studio.co instead." })
+		? json(500, {
+			ok: false,
+			error: "Something went wrong sending your message. Please email hello@duo-studio.co instead.",
+			failedRoutes: routingErrors,
+		})
 		: redirect("/contact/");
 };
