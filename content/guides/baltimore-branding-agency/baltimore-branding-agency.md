@@ -106,6 +106,8 @@ We're based in Baltimore. For local clients, that means we can meet in person, w
 
 But geography doesn't define the work. Our process runs remote-first by design, and some of our strongest client relationships have been with teams we've never met in person. Discovery workshops happen over video, feedback is asynchronous, and the output is the same either way.
 
+If your evaluation is more web-led than brand-led, our [Baltimore web design agency guide](/guides/baltimore-web-design/) is the better companion piece.
+
 <h2 id="recognition">Recognition</h2>
 
 We've been recognized by [Awwwards](https://www.awwwards.com/){target="_blank"} for web design excellence and listed on [DesignRush](https://www.designrush.com/){target="_blank"} as a top branding and web design agency. We mention this not to lead with accolades — awards don't pay your clients' bills — but because external validation matters when you're evaluating a studio for a serious investment. The work has been recognized by people who look at a lot of work.
