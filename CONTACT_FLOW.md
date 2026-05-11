@@ -43,7 +43,8 @@ Set these in Netlify site environment variables:
 
 - `LINEAR_API_KEY`
 - `RESEND_API_KEY`
-- `TURNSTILE_SECRET_KEY` only if `TURNSTILE_REQUIRED=true`
+- `TURNSTILE_REQUIRED=true`
+- `TURNSTILE_SECRET_KEY`
 
 Optional:
 
@@ -59,8 +60,11 @@ Now that `duo-studio.co` is verified in Resend:
 - `LINEAR_API_KEY=...`
 - `RESEND_API_KEY=...`
 - `FROM_NAME=The Duo Team`
+- `TURNSTILE_REQUIRED=true`
 
 The Turnstile site key is embedded on the public contact form (`0x4AAAAAAC8DZtzuh8lgMSoU`). The secret key must be stored only in Netlify as `TURNSTILE_SECRET_KEY`.
+
+`TURNSTILE_REQUIRED=true` should stay enabled in production. Without it, the function can continue when no Turnstile token is present, which allows direct POST spam to reach the content filter instead of being stopped at verification.
 
 ## Reply-To behavior
 
@@ -89,5 +93,6 @@ Then run the site locally however you normally do, or invoke the function direct
 - The enrichment is heuristic MVP logic, not LLM enrichment yet.
 - Scam scoring is heuristic, with a conservative hard-block layer for high-confidence outreach spam.
 - Current hard-block signals include Turnstile failure, unsubscribe language, shortened links, generic promotional outreach, and product-pitch phrasing like "we noticed your website" or "free forever plan".
-- Turnstile blocks a chunk of low-effort bot traffic before it ever reaches Linear, email, or Slack.
+- The May 2026 spam hardening pass also blocks repeated high-confidence campaigns before email/Linear side effects: AI traffic offers, classifiedsubmitter.com, SEO/link-exchange and list-sales pitches, Instagram follower-growth offers, affiliate/product promos, crypto/blockchain promotions, fake Google/major-brand submissions with mismatched emails, gambling/shortlink spam, and known spam IP clusters when paired with weak or promotional lead signals.
+- Turnstile should be the first layer and the content/IP filter is the second layer. If a new campaign slips through, add the smallest high-confidence phrase/domain/IP signal to `getSpamBlockReason()` rather than raising the global scam score threshold.
 - Slack is optional by design so the core flow is not blocked on Slack setup.
