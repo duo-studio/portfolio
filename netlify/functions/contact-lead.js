@@ -385,10 +385,146 @@ function isContextPoorShortMessage(message) {
 }
 
 function countUrls(value) {
-	return (String(value || "").match(/(?:https?:\/\/|www\.|(?:bit\.ly|tinyurl\.com|t\.co|rb\.gy|ow\.ly|buff\.ly|rebrand\.ly)\/)[^\s)]+/gi) || []).length;
+	return (String(value || "").match(/(?:https?:\/\/|www\.|(?:bit\.ly|tinyurl\.com|t\.co|rb\.gy|ow\.ly|buff\.ly|rebrand\.ly|cutt\.ly|psee\.io)\/)[^\s)]+/gi) || []).length;
 }
 
-function shouldBlockSpamLead({ scamScore, scamAudit, message, inquiryType }) {
+function matchesAny(value, patterns) {
+	const text = String(value || "").toLowerCase();
+	return patterns.some((pattern) => pattern.test(text));
+}
+
+function isKnownSpamIp(ipAddress) {
+	return [
+		/^193\.36\.222\./,
+		/^196\.51\.187\./,
+		/^77\.90\.185\.5$/,
+		/^77\.239\.102\.140$/,
+		/^23\.19\.216\.216$/,
+		/^209\.163\.117\.137$/,
+		/^5\.157\.20\.53$/,
+	].some((pattern) => pattern.test(String(ipAddress || "").trim()));
+}
+
+function getSpamBlockReason({ name, email, company, message, referrer, ipAddress, scamScore, scamAudit, inquiryType }) {
+	const text = `${name || ""} ${email || ""} ${company || ""} ${message || ""} ${referrer || ""}`.toLowerCase();
+	const urlCount = countUrls(message);
+	const emailDomain = (String(email || "").split("@")[1] || "").toLowerCase();
+
+	const knownSpamDestinations = [
+		/classifiedsubmitter\.com/,
+		/marketingaged\.com/,
+		/mailbanger\.com/,
+		/tidbuy\.com/,
+		/blockchain-development-company\.xyz/,
+		/sites\.google\.com\/view\/openclawmastered/,
+		/psee\.io\//,
+		/cutt\.ly\//,
+		/anime-tyanka\.com/,
+		/uspacsun\.com/,
+	];
+
+	if (matchesAny(text, knownSpamDestinations)) {
+		return "Known spam destination or shortlink campaign.";
+	}
+
+	const trafficSpamSignals = [
+		/(ai[-\s]?optimized|ai[-\s]?powered)\s+(service|solution|traffic|system)/,
+		/(targeted|keyword-specific)\s+(traffic|visitors|leads)/,
+		/(boost|increase|grow).{0,40}(website|site).{0,40}(traffic|visitors|visibility)/,
+		/1,?000\s+visitors\s+daily/,
+		/struggling\s+to\s+get\s+targeted\s+leads/,
+		/youtube\.com\/shorts\//,
+	];
+	if (matchesAny(text, trafficSpamSignals) && (urlCount > 0 || text.includes("duo-studio.co"))) {
+		return "AI/traffic-generation promotional spam.";
+	}
+
+	const classifiedSubmitterSignals = [
+		/submit\s+your\s+website\s+across\s+multiple\s+classified\s+sites/,
+		/promote\s+your\s+site\s+across\s+multiple\s+classified\s+sites/,
+		/get\s+more\s+exposure\s+across\s+multiple\s+classified\s+sites/,
+		/free\s+tool.{0,80}classified\s+sites/,
+	];
+	if (matchesAny(text, classifiedSubmitterSignals)) {
+		return "Classified-site submitter spam campaign.";
+	}
+
+	const seoListSpamSignals = [
+		/link\s+exchange/,
+		/backlinks?/,
+		/guest\s+post/,
+		/dr\s?30\+/,
+		/pre[-\s]?vetted\s+leads/,
+		/opt[-\s]?in\s+marketing\s+lists?/,
+		/millions\s+of\s+.*leads/,
+	];
+	if (matchesAny(text, seoListSpamSignals)) {
+		return "SEO/link-exchange or lead-list spam.";
+	}
+
+	const socialFollowerSpamSignals = [
+		/instagram.{0,80}(authority|followers?|growth)/,
+		/niche[-\s]?relevant\s+followers?/,
+		/(customized|customised)\s+ai\s+system.{0,80}(followers?|instagram|interaction)/,
+		/manual\s+interaction.{0,80}(followers?|instagram)/,
+	];
+	if (matchesAny(text, socialFollowerSpamSignals)) {
+		return "Social follower-growth promotional spam.";
+	}
+
+	const affiliateProductSpamSignals = [
+		/o2\s+cool\s+mist/,
+		/pawsafer/,
+		/converting\s+insanely\s+well/,
+		/steady\s+extra\s+income\s+stream/,
+		/high\s+demand\s+\+\s+simple\s+angle/,
+	];
+	if (matchesAny(text, affiliateProductSpamSignals)) {
+		return "Affiliate/product promotion spam.";
+	}
+
+	const cryptoSpamSignals = [
+		/restaking\s+protocol\s+development/,
+		/concentrated\s+liquidity\s+development/,
+		/advanced\s+liquidity\s+solutions/,
+	];
+	if (matchesAny(text, cryptoSpamSignals)) {
+		return "Crypto/blockchain promotion spam.";
+	}
+
+	const gamblingSpamSignals = [
+		/player\s+just\s+won/,
+		/spin\s+today/,
+		/start\s+spinning/,
+		/change\s+your\s+life/,
+	];
+	if (matchesAny(text, gamblingSpamSignals)) {
+		return "Gambling shortlink spam.";
+	}
+
+	const claimsGoogle = /^google$/i.test(String(company || "").trim());
+	const hasProjectDetail = /(website|site|branding|brand|design|development|project|quote|proposal|budget|timeline|launch|help|need|looking|interested|scope|call|seo|rebrand|redesign)/i.test(String(message || ""));
+	if (claimsGoogle && isMajorBrandMismatch(company, emailDomain) && (!hasProjectDetail || isContextPoorShortMessage(message) || urlCount > 0 || hasHighEntropyToken(name, 10))) {
+		return "Fake major-brand identity with mismatched email and weak/nonsense message.";
+	}
+
+	if (isKnownSpamIp(ipAddress) && (scamScore >= 4 || urlCount > 0 || inquiryType === "Unsure")) {
+		return "Known spam IP cluster with weak or promotional lead signals.";
+	}
+
+	if (String(scamAudit || "").toLowerCase().includes("company claims a major brand") && hasHighEntropyToken(name, 10)) {
+		return "Major-brand mismatch combined with machine-generated identity.";
+	}
+
+	return "";
+}
+
+function shouldBlockSpamLead({ scamScore, scamAudit, message, inquiryType, name, email, company, referrer, ipAddress }) {
+	const highConfidenceReason = getSpamBlockReason({ name, email, company, message, referrer, ipAddress, scamScore, scamAudit, inquiryType });
+	if (highConfidenceReason) {
+		return true;
+	}
+
 	const audit = String(scamAudit || "").toLowerCase();
 	const text = String(message || "").toLowerCase();
 	const promoSignals = [
@@ -400,7 +536,7 @@ function shouldBlockSpamLead({ scamScore, scamAudit, message, inquiryType }) {
 		/simple ai content/,
 	];
 	const matchedPromoSignals = promoSignals.filter((pattern) => pattern.test(text)).length;
-	const hasShortlink = /(bit\.ly|tinyurl\.com|t\.co|rb\.gy|ow\.ly|buff\.ly|rebrand\.ly)/.test(text);
+	const hasShortlink = /(bit\.ly|tinyurl\.com|t\.co|rb\.gy|ow\.ly|buff\.ly|rebrand\.ly|cutt\.ly|psee\.io)/.test(text);
 	const urls = countUrls(text);
 	const genericOutreach = inquiryType === "Unsure" && /(noticed your website|thought to reach out|totally optional|future emails from us)/.test(text);
 	const strongAuditSignal = audit.includes("unsolicited promotional outreach") || audit.includes("unsubscribe") || audit.includes("shortened link");
@@ -901,11 +1037,13 @@ exports.handler = async (event) => {
 		lastContacted: isoDate(0),
 	};
 
-	if (shouldBlockSpamLead({ scamScore, scamAudit, message, inquiryType })) {
+	const spamBlockReason = getSpamBlockReason(lead);
+	if (spamBlockReason || shouldBlockSpamLead(lead)) {
 		console.warn("Blocked suspected spam contact lead", {
 			leadEmail: lead.email,
 			scamScore: lead.scamScore,
 			page: lead.page,
+			reason: spamBlockReason || "Scam score / generic outreach heuristic.",
 		});
 		return isFetchRequest
 			? json(200, { ok: true, skipped: true })
