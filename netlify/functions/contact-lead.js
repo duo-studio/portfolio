@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-const CONTACT_FLOW_VERSION = "2026-05-20-attribution-v1";
+const CONTACT_FLOW_VERSION = "2026-05-20-attribution-linear-only-v1";
 const LINEAR_TEAM_ID = "8cd9163c-3887-4d93-a357-fcae4422b162";
 const LINEAR_PROJECT_ID = "4ffc0326-b8ed-4d9f-9e85-569d9583a5fe";
 const LINEAR_STATE_ID = "da9b8fd6-4f74-4913-985b-ce1c617e2ef2";
@@ -907,15 +907,12 @@ async function sendResendEmail(lead, resendApiKey, fromEmail, fromName, fallback
 		`From: ${lead.name}${lead.company ? ` at ${lead.company}` : ""}${lead.email ? ` (${lead.email})` : ""}`,
 		lead.website ? `Website: ${lead.website}` : null,
 		"",
-		formatAttributionText(lead),
-		"",
 	].filter(Boolean).join("\n");
 	const html = `
 		<div style="margin:0;font-family:Helvetica,Arial,sans-serif;color:#0f0d0d;font-size:16px;line-height:1.7;">
 			<div>${formatMessageHtml(lead.message)}</div>
 			<p style="margin:18px 0 0;">From: ${senderLine}</p>
 			${lead.website ? `<p style="margin:6px 0 0;">Website: <a href="${escapeHtml(lead.website)}">${escapeHtml(lead.website)}</a></p>` : ""}
-			${formatAttributionHtml(lead)}
 		</div>
 	`;
 
