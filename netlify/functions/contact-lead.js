@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-const CONTACT_FLOW_VERSION = "2026-05-05-linear-route-v3";
+const CONTACT_FLOW_VERSION = "2026-05-20-attribution-v1";
 const LINEAR_TEAM_ID = "8cd9163c-3887-4d93-a357-fcae4422b162";
 const LINEAR_PROJECT_ID = "4ffc0326-b8ed-4d9f-9e85-569d9583a5fe";
 const LINEAR_STATE_ID = "da9b8fd6-4f74-4913-985b-ce1c617e2ef2";
@@ -183,6 +183,111 @@ function scoreLead(message, inquiryType, source) {
 function summarizeMessage(message) {
 	const singleLine = message.replace(/\s+/g, " ").trim();
 	return singleLine.length > 280 ? `${singleLine.slice(0, 277)}...` : singleLine;
+}
+
+function parseLeadAttribution(body) {
+	const attribution = {
+		firstLandingPage: clean(body.attribution_first_landing_page, 500),
+		firstReferrer: clean(body.attribution_first_referrer, 500),
+		firstVisitAt: clean(body.attribution_first_visit_at, 80),
+		currentPage: clean(body.attribution_current_page, 500),
+		previousPage: clean(body.attribution_previous_page, 500),
+		pathHistory: clean(body.attribution_path_history, 1200),
+		firstTouch: {},
+		latestTouch: {},
+	};
+	const trackedParams = [
+		"utm_source",
+		"utm_medium",
+		"utm_campaign",
+		"utm_content",
+		"utm_term",
+		"gclid",
+		"fbclid",
+	];
+
+	for (const key of trackedParams) {
+		attribution.firstTouch[key] = clean(body[`attribution_first_${key}`], 300);
+		attribution.latestTouch[key] = clean(body[`attribution_latest_${key}`], 300);
+	}
+
+	return attribution;
+}
+
+function compactAttributionParams(params) {
+	return Object.entries(params || {})
+		.filter(([, value]) => value)
+		.map(([key, value]) => `${key}=${value}`)
+		.join("; ");
+}
+
+function getReferrerHost(referrer) {
+	if (!referrer) {
+		return "";
+	}
+
+	try {
+		return new URL(referrer).hostname.replace(/^www\./, "");
+	} catch (_error) {
+		return "";
+	}
+}
+
+function getObservedAttributionSource(lead) {
+	const attribution = lead.attribution || {};
+	const firstTouch = attribution.firstTouch || {};
+	const latestTouch = attribution.latestTouch || {};
+	const touch = { ...firstTouch, ...latestTouch };
+
+	if (touch.gclid) {
+		return "Google Ads click ID captured";
+	}
+	if (touch.fbclid) {
+		return "Meta/Facebook click ID captured";
+	}
+	if (touch.utm_source || touch.utm_medium || touch.utm_campaign) {
+		return [touch.utm_source, touch.utm_medium, touch.utm_campaign]
+			.filter(Boolean)
+			.join(" / ");
+	}
+
+	const referrerHost = getReferrerHost(attribution.firstReferrer);
+	if (referrerHost) {
+		return referrerHost;
+	}
+
+	return "Direct / unavailable";
+}
+
+function getAttributionLines(lead) {
+	const attribution = lead.attribution || {};
+	const firstTouch = compactAttributionParams(attribution.firstTouch);
+	const latestTouch = compactAttributionParams(attribution.latestTouch);
+
+	return [
+		`Observed source: ${getObservedAttributionSource(lead)}`,
+		`Self-reported source: ${lead.referrer || "Unknown"}`,
+		`First landing page: ${attribution.firstLandingPage || "Unknown"}`,
+		`First referrer: ${attribution.firstReferrer || "Direct / unavailable"}`,
+		`First visit at: ${attribution.firstVisitAt || "Unknown"}`,
+		`Current page at submit: ${attribution.currentPage || lead.page || "Unknown"}`,
+		`Previous in-site page: ${attribution.previousPage || "Unavailable"}`,
+		`Path history: ${attribution.pathHistory || "Unavailable"}`,
+		`First-touch params: ${firstTouch || "None captured"}`,
+		`Latest-touch params: ${latestTouch || "None captured"}`,
+	];
+}
+
+function formatAttributionText(lead) {
+	return ["Tracking / attribution", ...getAttributionLines(lead)].join("\n");
+}
+
+function formatAttributionHtml(lead) {
+	const items = getAttributionLines(lead)
+		.map((line) => `<li>${escapeHtml(line)}</li>`)
+		.join("");
+
+	return `<div style="margin:22px 0 0;"><p style="margin:0 0 8px;font-weight:700;">Tracking / attribution</p><ul style="margin:0;padding-left:20px;">${items}</ul></div>`;
 }
 
 function buildNextStep(priority, inquiryType) {
@@ -685,9 +790,13 @@ function buildLinearLeadDescription(lead) {
 		"## Source",
 		"",
 		`- **Page:** ${lead.page}`,
-		`- **Referrer:** ${lead.referrer || "Unknown"}`,
+		`- **Self-reported source:** ${lead.referrer || "Unknown"}`,
 		`- **Source:** ${lead.source}`,
 		`- **Source detail:** ${lead.sourceDetail}`,
+		"",
+		"## Tracking / attribution",
+		"",
+		...getAttributionLines(lead).map((line) => `- **${line.split(":")[0]}:** ${line.split(":").slice(1).join(":").trim()}`),
 		"",
 		"## Triage",
 		"",
@@ -798,12 +907,15 @@ async function sendResendEmail(lead, resendApiKey, fromEmail, fromName, fallback
 		`From: ${lead.name}${lead.company ? ` at ${lead.company}` : ""}${lead.email ? ` (${lead.email})` : ""}`,
 		lead.website ? `Website: ${lead.website}` : null,
 		"",
+		formatAttributionText(lead),
+		"",
 	].filter(Boolean).join("\n");
 	const html = `
 		<div style="margin:0;font-family:Helvetica,Arial,sans-serif;color:#0f0d0d;font-size:16px;line-height:1.7;">
 			<div>${formatMessageHtml(lead.message)}</div>
 			<p style="margin:18px 0 0;">From: ${senderLine}</p>
 			${lead.website ? `<p style="margin:6px 0 0;">Website: <a href="${escapeHtml(lead.website)}">${escapeHtml(lead.website)}</a></p>` : ""}
+			${formatAttributionHtml(lead)}
 		</div>
 	`;
 
@@ -846,8 +958,11 @@ async function maybeSendSlackNotification(lead, issue, webhookUrl) {
 		"> *Company*",
 		`> ${lead.company}`,
 		">",
-		"> *Referrer*",
+		"> *Self-reported source*",
 		`> ${lead.referrer || "Unknown"}`,
+		">",
+		"> *Tracking / attribution*",
+		`> ${getAttributionLines(lead).join("\n> ")}`,
 		">",
 		"> *Message*",
 		`> ${lead.message.replace(/\n/g, "\n> ")}`,
@@ -927,6 +1042,7 @@ exports.handler = async (event) => {
 	const page = clean(body.page, 160) || "/contact/";
 	const turnstileToken = clean(body["cf-turnstile-response"], 4000);
 	const ipAddress = getClientIp(event);
+	const attribution = parseLeadAttribution(body);
 
 	if (!name || !email || !company || !message) {
 		return isFetchRequest
@@ -1022,6 +1138,7 @@ exports.handler = async (event) => {
 		phone,
 		page,
 		ipAddress,
+		attribution,
 		source,
 		sourceDetail,
 		inquiryType,

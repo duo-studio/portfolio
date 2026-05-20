@@ -3,6 +3,16 @@ let lenisTickerCallback;
 var activeSplitInstances = [];
 var splitResizeHandler = null;
 var analyticsLandingPageKey = "duo_landing_page";
+var duoAttributionStorageKey = "duoAttributionV1";
+var duoAttributionParamKeys = [
+	"utm_source",
+	"utm_medium",
+	"utm_campaign",
+	"utm_content",
+	"utm_term",
+	"gclid",
+	"fbclid",
+];
 
 function pushDataLayerEvent(eventName, params) {
 	if (typeof window.duoPushEvent === "function") {
@@ -88,6 +98,150 @@ function getAnalyticsReferrer() {
 	} catch (_error) {
 		return truncateAnalyticsText(document.referrer.split("?")[0].split("#")[0]);
 	}
+}
+
+function getDuoAttributionStorage() {
+	try {
+		return window.localStorage;
+	} catch (_error) {
+		return null;
+	}
+}
+
+function truncateAttributionValue(value, maxLength) {
+	return String(value || "").replace(/\u0000/g, "").trim().slice(0, maxLength || 500);
+}
+
+function getAttributionPageValue() {
+	return truncateAttributionValue(
+		window.location.pathname + window.location.search,
+		500,
+	);
+}
+
+function getAttributionReferrerValue() {
+	if (!document.referrer) {
+		return "";
+	}
+
+	try {
+		var referrerUrl = new URL(document.referrer);
+		return truncateAttributionValue(
+			referrerUrl.origin + referrerUrl.pathname + referrerUrl.search,
+			500,
+		);
+	} catch (_error) {
+		return truncateAttributionValue(document.referrer, 500);
+	}
+}
+
+function readDuoAttribution() {
+	var storage = getDuoAttributionStorage();
+	if (!storage) {
+		return {};
+	}
+
+	try {
+		return JSON.parse(storage.getItem(duoAttributionStorageKey) || "{}") || {};
+	} catch (_error) {
+		return {};
+	}
+}
+
+function writeDuoAttribution(attribution) {
+	var storage = getDuoAttributionStorage();
+	if (!storage) {
+		return;
+	}
+
+	try {
+		storage.setItem(duoAttributionStorageKey, JSON.stringify(attribution));
+	} catch (_error) {}
+}
+
+function updateDuoAttribution() {
+	var attribution = readDuoAttribution();
+	var now = new Date().toISOString();
+	var currentPage = getAttributionPageValue();
+	var referrer = getAttributionReferrerValue();
+	var params = new URLSearchParams(window.location.search || "");
+	var history = Array.isArray(attribution.pathHistory)
+		? attribution.pathHistory.slice()
+		: [];
+
+	if (!Object.prototype.hasOwnProperty.call(attribution, "firstLandingPage")) {
+		attribution.firstLandingPage = currentPage || "/";
+	}
+
+	if (!Object.prototype.hasOwnProperty.call(attribution, "firstReferrer")) {
+		attribution.firstReferrer = referrer;
+	}
+
+	if (!Object.prototype.hasOwnProperty.call(attribution, "firstVisitAt")) {
+		attribution.firstVisitAt = now;
+	}
+
+	if (currentPage && history[history.length - 1] !== currentPage) {
+		history.push(currentPage);
+	}
+
+	attribution.pathHistory = history.slice(-10);
+	attribution.previousPage = attribution.pathHistory.length > 1
+		? attribution.pathHistory[attribution.pathHistory.length - 2]
+		: "";
+	attribution.currentPage = currentPage;
+
+	duoAttributionParamKeys.forEach(function (key) {
+		var value = truncateAttributionValue(params.get(key), 300);
+		if (!value) {
+			return;
+		}
+
+		if (!attribution.firstTouch) {
+			attribution.firstTouch = {};
+		}
+		if (!attribution.latestTouch) {
+			attribution.latestTouch = {};
+		}
+		if (!attribution.firstTouch[key]) {
+			attribution.firstTouch[key] = value;
+		}
+
+		attribution.latestTouch[key] = value;
+	});
+
+	writeDuoAttribution(attribution);
+	return attribution;
+}
+
+function populateDuoAttributionFields(form) {
+	if (!form) {
+		return;
+	}
+
+	var attribution = updateDuoAttribution() || {};
+	var firstTouch = attribution.firstTouch || {};
+	var latestTouch = attribution.latestTouch || {};
+	var values = {
+		attribution_first_landing_page: attribution.firstLandingPage || "",
+		attribution_first_referrer: attribution.firstReferrer || "",
+		attribution_first_visit_at: attribution.firstVisitAt || "",
+		attribution_current_page: attribution.currentPage || getAttributionPageValue(),
+		attribution_previous_page: attribution.previousPage || "",
+		attribution_path_history: (attribution.pathHistory || []).join(" -> "),
+	};
+
+	duoAttributionParamKeys.forEach(function (key) {
+		values["attribution_first_" + key] = firstTouch[key] || "";
+		values["attribution_latest_" + key] = latestTouch[key] || "";
+	});
+
+	Object.keys(values).forEach(function (name) {
+		var field = form.querySelector('[name="' + name + '"]');
+		if (field) {
+			field.value = truncateAttributionValue(values[name], 1000);
+		}
+	});
 }
 
 function getBaseAnalyticsContext() {
@@ -313,6 +467,7 @@ function bindMeaningfulStart(form, eventName) {
 
 document.addEventListener("DOMContentLoaded", function (event) {
 	initializeAnalyticsSessionContext();
+	updateDuoAttribution();
 	bindGlobalAnalyticsEvents();
 	gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -1499,6 +1654,7 @@ function initContactFormSubmission() {
 
 	form.dataset.contactBound = "true";
 	bindMeaningfulStart(form, "contact_form_start");
+	populateDuoAttributionFields(form);
 
 	const button = form.querySelector('button[type="submit"]');
 	const referrer = form.querySelector("#referrer");
@@ -1696,6 +1852,7 @@ function initContactFormSubmission() {
 		button?.setAttribute("disabled", "disabled");
 		button?.setAttribute("aria-busy", "true");
 		button?.classList.add("loading");
+		populateDuoAttributionFields(form);
 		pushDataLayerEvent(
 			"contact_form_submit_attempt",
 			getContactFormAnalyticsPayload(form),
@@ -3192,6 +3349,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 	});
 
 	barba.hooks.afterEnter((data) => {
+		updateDuoAttribution();
 		pushDataLayerEvent("virtualPageview", {
 			pageUrl: data.next.url.path,
 			pageTitle: document.title,
