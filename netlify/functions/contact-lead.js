@@ -26,8 +26,13 @@ function getMissingEnvNames(envMap) {
 	return Object.keys(envMap).filter((name) => !envMap[name]);
 }
 
+function getBooleanEnvValue(name, defaultValue = false) {
+	const value = getEnv(name);
+	return value ? /^(1|true|yes)$/i.test(value) : defaultValue;
+}
+
 function isTurnstileRequired() {
-	return /^(1|true|yes)$/i.test(getEnv("TURNSTILE_REQUIRED"));
+	return getBooleanEnvValue("TURNSTILE_REQUIRED", Boolean(getEnv("TURNSTILE_SECRET_KEY")));
 }
 
 function json(statusCode, body) {

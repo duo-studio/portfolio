@@ -64,7 +64,7 @@ Now that `duo-studio.co` is verified in Resend:
 
 The Turnstile site key is embedded on the public contact form (`0x4AAAAAAC8DZtzuh8lgMSoU`). The secret key must be stored only in Netlify as `TURNSTILE_SECRET_KEY`.
 
-`TURNSTILE_REQUIRED=true` should stay enabled in production. Without it, the function can continue when no Turnstile token is present, which allows direct POST spam to reach the content filter instead of being stopped at verification.
+`TURNSTILE_REQUIRED=true` should stay enabled in production. The production build now falls back to the Duo Turnstile site key and treats Turnstile as required when no explicit setting is provided. The function also treats Turnstile as required by default when `TURNSTILE_SECRET_KEY` exists. Without the secret key, browser visitors still see the verification challenge, but direct POST spam can only be filtered by the content/IP rules.
 
 ## Reply-To behavior
 
