@@ -14,6 +14,277 @@ const schema = require("@quasibit/eleventy-plugin-schema");
 const markdownIt = require("markdown-it");
 const markdownItAttrs = require("markdown-it-attrs");
 
+const SITE_URL = "https://duo-studio.co";
+const ORGANIZATION_ID = `${SITE_URL}/#organization`;
+const WEBSITE_ID = `${SITE_URL}/#website`;
+const DEFAULT_IMAGE = `${SITE_URL}/assets/DuoStudio_Meta--v2.jpg`;
+
+const coreServices = [
+	{
+		id: "brand-identity-strategy",
+		name: "Brand Identity & Strategy",
+		serviceType: "Brand Identity Design",
+		url: `${SITE_URL}/services/branding-identity-system/`,
+		description:
+			"Brand strategy, logo design, visual identity systems, messaging frameworks, positioning, art direction, brand guidelines, and collateral design for businesses that have outgrown their current brand.",
+		keywords: [
+			"brand strategy",
+			"brand identity design",
+			"logo design",
+			"brand guidelines",
+			"messaging",
+		],
+	},
+	{
+		id: "web-design-development",
+		name: "Web Design & Development",
+		serviceType: "Web Design and Development",
+		url: `${SITE_URL}/services/web-design-development/`,
+		description:
+			"Custom web design, UI/UX, front-end development, back-end development, CMS implementation, analytics, SEO optimization, API integrations, and launch support.",
+		keywords: [
+			"web design",
+			"web development",
+			"custom websites",
+			"CMS implementation",
+			"technical SEO",
+		],
+	},
+	{
+		id: "content-graphic-design",
+		name: "Content & Graphic Design",
+		serviceType: "Graphic Design",
+		url: `${SITE_URL}/services/graphic-design/`,
+		description:
+			"Marketing collateral, motion graphics, illustration, print design, packaging, campaign design, and content systems that reinforce a brand across touchpoints.",
+		keywords: [
+			"graphic design",
+			"content strategy",
+			"motion graphics",
+			"marketing collateral",
+			"campaign design",
+		],
+	},
+];
+
+function absoluteUrl(pathOrUrl, fallback = SITE_URL) {
+	if (!pathOrUrl) {
+		return fallback;
+	}
+
+	try {
+		return new URL(pathOrUrl, SITE_URL).href;
+	} catch (_error) {
+		return fallback;
+	}
+}
+
+function cleanText(value, fallback = "") {
+	return String(value || fallback).replace(/\s+/g, " ").trim();
+}
+
+function serviceNode(service) {
+	return {
+		"@type": "Service",
+		"@id": `${SITE_URL}/#service-${service.id}`,
+		name: service.name,
+		serviceType: service.serviceType,
+		url: service.url,
+		description: service.description,
+		keywords: service.keywords,
+		provider: {
+			"@id": ORGANIZATION_ID,
+		},
+		areaServed: [
+			{
+				"@type": "City",
+				name: "Baltimore",
+				containedInPlace: {
+					"@type": "State",
+					name: "Maryland",
+				},
+			},
+			{
+				"@type": "City",
+				name: "Washington",
+				containedInPlace: {
+					"@type": "AdministrativeArea",
+					name: "District of Columbia",
+				},
+			},
+			{
+				"@type": "Country",
+				name: "United States",
+			},
+		],
+	};
+}
+
+function buildStructuredData(pageUrl, title, description, image) {
+	const pageAbsoluteUrl = absoluteUrl(pageUrl || "/");
+	const pageImage = absoluteUrl(image, DEFAULT_IMAGE);
+	const pageTitle = cleanText(title, "Duo Studio");
+	const pageDescription = cleanText(
+		description,
+		"Duo Studio creates brand and web systems for businesses that have outgrown their current brand."
+	);
+	const matchingService = coreServices.find(
+		(service) => absoluteUrl(pageUrl || "/") === service.url
+	);
+
+	const webPage = {
+		"@type": "WebPage",
+		"@id": `${pageAbsoluteUrl}#webpage`,
+		url: pageAbsoluteUrl,
+		name: pageTitle,
+		description: pageDescription,
+		isPartOf: {
+			"@id": WEBSITE_ID,
+		},
+		about: {
+			"@id": ORGANIZATION_ID,
+		},
+		primaryImageOfPage: {
+			"@type": "ImageObject",
+			url: pageImage,
+		},
+		inLanguage: "en-US",
+	};
+
+	if (matchingService) {
+		webPage.mainEntity = {
+			"@id": `${SITE_URL}/#service-${matchingService.id}`,
+		};
+	}
+
+	return JSON.stringify(
+		{
+			"@context": "https://schema.org",
+			"@graph": [
+				{
+					"@type": ["Organization", "ProfessionalService"],
+					"@id": ORGANIZATION_ID,
+					name: "Duo Studio",
+					legalName: "Duo Studio",
+					url: SITE_URL,
+					logo: {
+						"@type": "ImageObject",
+						url: `${SITE_URL}/assets/logo.svg`,
+						width: 52,
+						height: 35,
+					},
+					image: DEFAULT_IMAGE,
+					description:
+						"Duo Studio is a digital design studio based in Baltimore, MD that creates brand and web systems for businesses that have outgrown their current brand.",
+					slogan: "Brand and web systems for businesses that have outgrown their current brand.",
+					email: "hello@duo-studio.co",
+					telephone: "+1-410-449-0366",
+					priceRange: "$$$",
+					foundingDate: "2020",
+					address: {
+						"@type": "PostalAddress",
+						addressLocality: "Baltimore",
+						addressRegion: "MD",
+						addressCountry: "US",
+					},
+					contactPoint: {
+						"@type": "ContactPoint",
+						contactType: "sales",
+						email: "hello@duo-studio.co",
+						telephone: "+1-410-449-0366",
+						url: `${SITE_URL}/contact/`,
+						availableLanguage: ["English"],
+						areaServed: "US",
+					},
+					founder: [
+						{
+							"@type": "Person",
+							"@id": `${SITE_URL}/#sonia-polyzos`,
+							name: "Sonia Polyzos",
+							jobTitle: "Creative Director & Co-Founder",
+							worksFor: {
+								"@id": ORGANIZATION_ID,
+							},
+						},
+						{
+							"@type": "Person",
+							"@id": `${SITE_URL}/#dat-nguyen`,
+							name: "Dat Nguyen",
+							jobTitle: "Developer & Co-Founder",
+							worksFor: {
+								"@id": ORGANIZATION_ID,
+							},
+						},
+					],
+					areaServed: [
+						{
+							"@type": "City",
+							name: "Baltimore",
+							containedInPlace: {
+								"@type": "State",
+								name: "Maryland",
+							},
+						},
+						{
+							"@type": "City",
+							name: "Washington",
+							containedInPlace: {
+								"@type": "AdministrativeArea",
+								name: "District of Columbia",
+							},
+						},
+						{
+							"@type": "Country",
+							name: "United States",
+						},
+					],
+					sameAs: [
+						"https://www.instagram.com/duostudio_co/",
+						"https://www.linkedin.com/company/duostudio/",
+						"https://www.facebook.com/duostudioco/",
+						"https://www.awwwards.com/sites/duo-studio-2",
+					],
+					knowsAbout: [
+						"Brand Identity Design",
+						"Brand Strategy",
+						"Web Design",
+						"Web Development",
+						"UI/UX Design",
+						"Graphic Design",
+						"Logo Design",
+						"Motion Graphics",
+						"Content Strategy",
+						"Technical SEO",
+						"Analytics Implementation",
+					],
+					makesOffer: coreServices.map((service) => ({
+						"@type": "Offer",
+						itemOffered: {
+							"@id": `${SITE_URL}/#service-${service.id}`,
+						},
+					})),
+				},
+				...coreServices.map(serviceNode),
+				{
+					"@type": "WebSite",
+					"@id": WEBSITE_ID,
+					url: SITE_URL,
+					name: "Duo Studio",
+					description:
+						"Brand and web systems for businesses that have outgrown their current brand.",
+					publisher: {
+						"@id": ORGANIZATION_ID,
+					},
+					inLanguage: "en-US",
+				},
+				webPage,
+			],
+		},
+		null,
+		"\t"
+	);
+}
+
 module.exports = function (eleventyConfig) {
 	// Copy only static and generated assets so source files in `public` remain
 	// source-of-truth without being served directly.
@@ -70,6 +341,33 @@ module.exports = function (eleventyConfig) {
 		return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("yyyy-LL-dd");
 	});
 
+	eleventyConfig.addFilter("sitemapEligible", (page) => {
+		const data = page?.data || {};
+		const robots = String(data.robots || "").toLowerCase();
+		const internalPrefixes = ["/concepts/"];
+		const isInternalPreview = internalPrefixes.some((prefix) =>
+			String(page?.url || "").startsWith(prefix)
+		);
+
+		return (
+			Boolean(page?.url) &&
+			data.ignore !== true &&
+			!robots.includes("noindex") &&
+			!isInternalPreview
+		);
+	});
+
+	eleventyConfig.addFilter("sitemapLastmod", (page) => {
+		const value = page?.data?.updated || page?.data?.date || page?.date;
+		const date = value instanceof Date ? value : new Date(value);
+
+		if (Number.isNaN(date.getTime())) {
+			return DateTime.utc().toFormat("yyyy-LL-dd");
+		}
+
+		return DateTime.fromJSDate(date, { zone: "utc" }).toFormat("yyyy-LL-dd");
+	});
+
 	// Get the first `n` elements of a collection.
 	eleventyConfig.addFilter("head", (array, n) => {
 		if (!Array.isArray(array) || array.length === 0) {
@@ -103,6 +401,7 @@ module.exports = function (eleventyConfig) {
 	});
 
 	eleventyConfig.addShortcode("version", () => String(Date.now()));
+	eleventyConfig.addShortcode("structuredData", buildStructuredData);
 
 	const mdOptions = {
 		html: true,

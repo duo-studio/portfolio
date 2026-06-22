@@ -1,6 +1,15 @@
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
 User-agent: *
 Allow: /
 
-Host: https://duo-studio.co/ 
+Host: https://duo-studio.co/
 
 Sitemap: https://duo-studio.co/sitemap.xml
