@@ -128,6 +128,16 @@ footer {
 	.copyright {
 		font-size: 14px;
 
+		.footer__privacy-button {
+			padding: 0;
+			border: 0;
+			background: transparent;
+			color: inherit;
+			font: inherit;
+			text-decoration: underline;
+			cursor: pointer;
+		}
+
 		a {
 			text-decoration: underline;
 		}

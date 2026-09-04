@@ -1708,6 +1708,9 @@ function initContactFormSubmission() {
 		if (window.turnstile?.render) {
 			return Promise.resolve(window.turnstile);
 		}
+		if (window.__duoTurnstileUnavailable) {
+			return Promise.reject(new Error("Verification could not load. Please refresh and try again."));
+		}
 
 		if (window.__duoTurnstilePromise) {
 			return window.__duoTurnstilePromise;
@@ -1725,6 +1728,11 @@ function initContactFormSubmission() {
 		window.__duoTurnstilePromise = new Promise((resolve, reject) => {
 			const existingScript = document.querySelector('script[data-turnstile-script="true"]');
 			if (existingScript) {
+				if (existingScript.dataset.failed === "true") {
+					window.__duoTurnstileUnavailable = true;
+					reject(new Error("Verification could not load. Please refresh and try again."));
+					return;
+				}
 				if (existingScript.dataset.loaded === "true") {
 					finish(resolve, reject);
 					return;
@@ -1735,6 +1743,8 @@ function initContactFormSubmission() {
 					finish(resolve, reject);
 				}, { once: true });
 				existingScript.addEventListener("error", () => {
+					existingScript.dataset.failed = "true";
+					window.__duoTurnstileUnavailable = true;
 					reject(new Error("Verification could not load. Please refresh and try again."));
 				}, { once: true });
 				return;
@@ -1749,6 +1759,8 @@ function initContactFormSubmission() {
 				finish(resolve, reject);
 			}, { once: true });
 			script.addEventListener("error", () => {
+				script.dataset.failed = "true";
+				window.__duoTurnstileUnavailable = true;
 				reject(new Error("Verification could not load. Please refresh and try again."));
 			}, { once: true });
 			document.head.appendChild(script);
@@ -1842,7 +1854,8 @@ function initContactFormSubmission() {
 			}
 		}
 
-		const turnstileToken = getTurnstileToken() || (turnstileElement ? await waitForTurnstileToken() : "");
+		const turnstileToken = getTurnstileToken() ||
+			(turnstileElement && turnstileRequired ? await waitForTurnstileToken() : "");
 		if (!turnstileToken && turnstileRequired) {
 			pushContactFormError("verification_missing_token", "Missing verification token");
 			setStatus("Please complete the verification check and try again.", "error");
@@ -1882,15 +1895,22 @@ function initContactFormSubmission() {
 			button?.classList.remove("loading");
 			button?.classList.add("success");
 			setStatus("Message sent. We'll be in touch soon.", "success");
-			pushDataLayerEvent(
-				"contact_form_submit_success",
-				getContactFormAnalyticsPayload(form),
-			);
-			pushDataLayerEvent("formSubmission", {
-				form_name: getFormAnalyticsName(form),
-				source_page: getAnalyticsSourcePage(),
-				page_path: getAnalyticsPagePath(),
-			});
+			if (payload.skipped === true) {
+				pushDataLayerEvent(
+					"contact_form_submit_filtered",
+					getContactFormAnalyticsPayload(form),
+				);
+			} else {
+				pushDataLayerEvent(
+					"contact_form_submit_success",
+					getContactFormAnalyticsPayload(form),
+				);
+				pushDataLayerEvent("formSubmission", {
+					form_name: getFormAnalyticsName(form),
+					source_page: getAnalyticsSourcePage(),
+					page_path: getAnalyticsPagePath(),
+				});
+			}
 			form.reset();
 			referrer?.classList.remove("selected");
 			resetTurnstileWidget();
@@ -3350,8 +3370,17 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 	barba.hooks.afterEnter((data) => {
 		updateDuoAttribution();
+		var pageLocation;
+		try {
+			pageLocation = new URL(
+				data.next.url.href || data.next.url.path,
+				window.location.origin,
+			).href;
+		} catch (_error) {
+			pageLocation = window.location.href;
+		}
 		pushDataLayerEvent("virtualPageview", {
-			pageUrl: data.next.url.path,
+			pageUrl: pageLocation,
 			pageTitle: document.title,
 		});
 		var vids = document.querySelectorAll("video");

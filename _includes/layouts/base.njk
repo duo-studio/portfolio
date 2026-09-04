@@ -12,7 +12,65 @@ eleventyComputed:
     <head>
         <script>
             (function (w, d, s, l, i) {
+                var consentKey = "duo_analytics_consent_v1";
+                var productionHost = /^(www\.)?duo-studio\.co$/i.test(w.location.hostname);
+                var storedConsent = "";
+
+                try {
+                    storedConsent = w.localStorage.getItem(consentKey) || "";
+                } catch (_error) {}
+
                 w[l] = w[l] || [];
+                w.gtag = w.gtag || function () {
+                    w[l].push(arguments);
+                };
+                w.__duoAnalyticsProductionHost = productionHost;
+                w.__duoAnalyticsConsent = storedConsent;
+
+                function consentState(choice) {
+                    var granted = choice === "granted";
+                    return {
+                        analytics_storage: granted ? "granted" : "denied",
+                        ad_storage: granted ? "granted" : "denied",
+                        ad_user_data: granted ? "granted" : "denied",
+                        ad_personalization: granted ? "granted" : "denied",
+                    };
+                }
+
+                w.gtag("consent", "default", Object.assign(
+                    { wait_for_update: 500 },
+                    consentState(storedConsent),
+                ));
+                w.gtag("set", "ads_data_redaction", true);
+                w.gtag("set", "url_passthrough", false);
+
+                w.duoSetAnalyticsConsent = function (choice) {
+                    var normalizedChoice = choice === "granted" ? "granted" : "denied";
+                    w.__duoAnalyticsConsent = normalizedChoice;
+
+                    try {
+                        w.localStorage.setItem(consentKey, normalizedChoice);
+                    } catch (_error) {}
+
+                    w.gtag("consent", "update", consentState(normalizedChoice));
+
+                    var banner = d.querySelector("[data-analytics-consent]");
+                    if (banner) {
+                        banner.hidden = true;
+                    }
+                };
+
+                w.duoShowAnalyticsConsent = function () {
+                    var banner = d.querySelector("[data-analytics-consent]");
+                    if (banner && productionHost) {
+                        banner.hidden = false;
+                    }
+                };
+
+                if (!productionHost) {
+                    return;
+                }
+
                 w[l].push({"gtm.start": new Date().getTime(), event: "gtm.js"});
                 var f = d.getElementsByTagName(s)[0],
                     j = d.createElement(s),
@@ -91,18 +149,39 @@ eleventyComputed:
         <script type="application/ld+json">{% structuredData page.url, pageTitle, pageDescription, pageImage %}</script>
     </head>
     <body data-barba="wrapper">
-        <noscript>
-            <iframe
-                src="https://www.googletagmanager.com/ns.html?id=GTM-WZC2NB5"
-                height="0"
-                width="0"
-                style="display: none; visibility: hidden"></iframe>
-        </noscript>
         <div class="cursor">
             <span></span>
         </div>
         {% include "layouts/header.njk" %}
         {{ content | safe }}
         <div class="page-transition"></div>
+        <aside class="duo-consent" data-analytics-consent hidden aria-label="Analytics preferences">
+            <p>
+                We use analytics to understand how the site performs.
+                <a href="/privacy-policy/">Privacy policy</a>
+            </p>
+            <div class="duo-consent__actions">
+                <button type="button" data-analytics-consent-choice="denied">Reject</button>
+                <button type="button" data-analytics-consent-choice="granted">Allow analytics</button>
+            </div>
+        </aside>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                var banner = document.querySelector("[data-analytics-consent]");
+                if (!banner || !window.__duoAnalyticsProductionHost) {
+                    return;
+                }
+
+                banner.querySelectorAll("[data-analytics-consent-choice]").forEach(function (button) {
+                    button.addEventListener("click", function () {
+                        window.duoSetAnalyticsConsent(button.dataset.analyticsConsentChoice);
+                    });
+                });
+
+                if (!window.__duoAnalyticsConsent) {
+                    banner.hidden = false;
+                }
+            });
+        </script>
     </body>
 </html>

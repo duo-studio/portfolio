@@ -43,7 +43,6 @@ Set these in Netlify site environment variables:
 
 - `LINEAR_API_KEY`
 - `RESEND_API_KEY`
-- `TURNSTILE_REQUIRED=true`
 - `TURNSTILE_SECRET_KEY`
 
 Optional:
@@ -60,11 +59,11 @@ Now that `duo-studio.co` is verified in Resend:
 - `LINEAR_API_KEY=...`
 - `RESEND_API_KEY=...`
 - `FROM_NAME=The Duo Team`
-- `TURNSTILE_REQUIRED=true`
+- `TURNSTILE_REQUIRED=false`
 
 The Turnstile site key is embedded on the public contact form (`0x4AAAAAAC8DZtzuh8lgMSoU`). The secret key must be stored only in Netlify as `TURNSTILE_SECRET_KEY`.
 
-`TURNSTILE_REQUIRED=true` should stay enabled in production. The production build now falls back to the Duo Turnstile site key and treats Turnstile as required when no explicit setting is provided. The function also treats Turnstile as required by default when `TURNSTILE_SECRET_KEY` exists. Without the secret key, browser visitors still see the verification challenge, but direct POST spam can only be filtered by the content/IP rules.
+`TURNSTILE_REQUIRED=false` keeps verification available without allowing a widget, network, browser-extension, or token failure to block a legitimate inquiry. When a token is available, the function still verifies it. The honeypot and high-confidence content/IP rules continue to block obvious spam before email or Linear side effects. Set `TURNSTILE_REQUIRED=true` only for a temporary incident response after confirming the widget works reliably across browsers.
 
 ## Reply-To behavior
 
@@ -92,7 +91,7 @@ Then run the site locally however you normally do, or invoke the function direct
 - The footer subscribe form and RFP template form still use their existing behavior.
 - The enrichment is heuristic MVP logic, not LLM enrichment yet.
 - Scam scoring is heuristic, with a conservative hard-block layer for high-confidence outreach spam.
-- Current hard-block signals include Turnstile failure, unsubscribe language, shortened links, generic promotional outreach, and product-pitch phrasing like "we noticed your website" or "free forever plan".
+- Current hard-block signals include honeypot hits, unsubscribe language, shortened links, generic promotional outreach, and product-pitch phrasing like "we noticed your website" or "free forever plan".
 - The May 2026 spam hardening pass also blocks repeated high-confidence campaigns before email/Linear side effects: AI traffic offers, classifiedsubmitter.com, SEO/link-exchange and list-sales pitches, Instagram follower-growth offers, affiliate/product promos, crypto/blockchain promotions, fake Google/major-brand submissions with mismatched emails, gambling/shortlink spam, and known spam IP clusters when paired with weak or promotional lead signals.
-- Turnstile should be the first layer and the content/IP filter is the second layer. If a new campaign slips through, add the smallest high-confidence phrase/domain/IP signal to `getSpamBlockReason()` rather than raising the global scam score threshold.
+- Turnstile is an additional risk signal when available; the honeypot and content/IP filter remain the reliable fallback. If a new campaign slips through, add the smallest high-confidence phrase/domain/IP signal to `getSpamBlockReason()` rather than raising the global scam score threshold.
 - Slack is optional by design so the core flow is not blocked on Slack setup.
