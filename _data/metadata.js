@@ -37,8 +37,5 @@ module.exports = {
 	turnstileSiteKey:
 		getEnvValue("TURNSTILE_SITE_KEY") ||
 		PRODUCTION_TURNSTILE_SITE_KEY,
-	turnstileRequired: getBooleanEnvValue(
-		"TURNSTILE_REQUIRED",
-		process.env.ELEVENTY_ENV === "production",
-	),
+	turnstileRequired: getBooleanEnvValue("TURNSTILE_REQUIRED", false),
 };

@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-const CONTACT_FLOW_VERSION = "2026-05-20-attribution-linear-only-v1";
+const CONTACT_FLOW_VERSION = "2026-09-04-optional-turnstile-v2";
 const LINEAR_TEAM_ID = "8cd9163c-3887-4d93-a357-fcae4422b162";
 const LINEAR_PROJECT_ID = "4ffc0326-b8ed-4d9f-9e85-569d9583a5fe";
 const LINEAR_STATE_ID = "da9b8fd6-4f74-4913-985b-ce1c617e2ef2";
@@ -32,7 +32,7 @@ function getBooleanEnvValue(name, defaultValue = false) {
 }
 
 function isTurnstileRequired() {
-	return getBooleanEnvValue("TURNSTILE_REQUIRED", Boolean(getEnv("TURNSTILE_SECRET_KEY")));
+	return getBooleanEnvValue("TURNSTILE_REQUIRED", false);
 }
 
 function json(statusCode, body) {
