@@ -5,6 +5,7 @@ cardHeadline: "A Baltimore branding studio for businesses in transition"
 description: Duo Studio is a Baltimore branding agency and web design studio helping established businesses build bold brands and custom websites. Strategy-first, nationwide.
 author: Duo Studio
 date: 2026-03-25
+updated: 2026-09-04
 category: Guide
 thumbImage: "guides/baltimore-branding-agency/archive.webp"
 featImage: "./featured-sync.webp"
@@ -22,6 +23,7 @@ ignore: false
 <div class="entry__content--sidebar-toc">
 
 ### Table of Contents:
+- [Quick Answer](#quick-answer)
 - [Who We Are](#who-we-are)
 - [What We Do](#what-we-do)
 - [Who We Work With](#who-we-work-with)
@@ -35,6 +37,21 @@ ignore: false
 </div>
 
 <div class="entry__content--main">
+
+<aside class="guide-answer">
+
+<p class="guide-answer__label">Quick answer</p>
+
+<h2 id="quick-answer">When should a Baltimore business hire a branding agency?</h2>
+
+Hire a branding agency when the business has outgrown how it looks, sounds, or explains its value — and the problem is broader than a new logo. The right partner should connect positioning, messaging, visual identity, and the website so the business presents one clear story everywhere.
+
+- Look for strategy and identity work, not just logo samples.
+- Ask whether the senior people you meet will stay involved.
+- Review complete systems across websites, campaigns, and sales materials.
+- Choose a studio whose normal scope and investment match your stage.
+
+</aside>
 
 If you're searching for a Baltimore branding agency, you're probably comparing a handful of studios and trying to figure out which one actually does the work. We're Duo Studio. Here's who we are.
 
@@ -86,7 +103,7 @@ Here's a look at a few recent projects.
 
 <h3 id="genimex">Genimex — Manufacturing</h3>
 
-Genimex manufactures products for some of the most recognized consumer brands in the world — but their site read like a mid-tier supplier. The redesign had to signal enterprise credibility to buyers who operate at a global scale. That meant stripping away anything that looked improvised: tighter typography, cleaner information architecture, case studies that showed the complexity of their manufacturing capability rather than listing it. The visual system had to work in both English and Mandarin contexts without losing its authority.
+Genimex manufactures products for some of the most recognized consumer brands in the world — but their site read like a mid-tier supplier. The redesign had to signal enterprise credibility to buyers who operate at a global scale. That meant stripping away anything that looked improvised: tighter typography, cleaner information architecture, case studies that showed the complexity of their manufacturing capability rather than listing it. The visual system had to work in both English and Mandarin contexts without losing its authority. [See the Genimex case study](/work/genimexgroup/).
 
 <h3 id="finturity">Finturity — Fintech</h3>
 
@@ -94,7 +111,7 @@ Finturity is a female-led fintech company entering a market where most competito
 
 <h3 id="amparo">Amparo — Nonprofit</h3>
 
-Amparo's homepage had been leading with organizational history and program descriptions — the kind of content that satisfies grant writers and loses everyone else. We restructured the homepage to lead with program participants: real faces, short stories, immediate stakes. The program data came second, reframed as evidence of what those stories meant. The structural change was simple. The effect on how quickly visitors understood the organization's work was not.
+Amparo's homepage had been leading with organizational history and program descriptions — the kind of content that satisfies grant writers and loses everyone else. We restructured the homepage to lead with program participants: real faces, short stories, immediate stakes. The program data came second, reframed as evidence of what those stories meant. The structural change was simple. The effect on how quickly visitors understood the organization's work was not. [See the Amparo case study](/work/amparo/).
 
 <h3 id="africa-dream-safaris">Africa Dream Safaris — Travel</h3>
 
@@ -149,7 +166,15 @@ If you've read this far, you probably have a sense of whether Duo Studio is what
 
 We work with a limited number of clients at a time — enough that the work stays good, not so many that it gets managed from a distance.
 
-If you're ready to talk through what a project might look like, reach out. We'll ask good questions, give you a straight answer on fit and budget, and take it from there.
+<aside class="guide-cta">
+
+<h2>Has your business outgrown its brand?</h2>
+
+Tell us what has changed and where the current identity is holding you back. We'll give you a straight answer about fit, likely scope, and whether you need a refresh or a deeper rebrand.
+
+<a class="btn__small --tag cursor__hover --highlight guide-cta__link" href="/contact/">Discuss your branding project</a>
+
+</aside>
 
 </div>
 

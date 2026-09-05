@@ -5,6 +5,7 @@ cardHeadline: "How established Baltimore businesses should evaluate a web design
 description: "A practical guide for established businesses and organizations comparing Baltimore web design agencies — what to look for, what a good process includes, and where Duo Studio fits."
 author: Duo Studio
 date: 2026-03-18
+updated: 2026-09-04
 category: Guide
 thumbImage: "guides/baltimore-web-design/archive.webp"
 featImage: "./featured-sync.webp"
@@ -23,6 +24,7 @@ ignore: false
 
 ### Table of Contents:
 
+- [Quick Answer](#quick-answer)
 - [Baltimore's Design & Tech Scene](#baltimores-design-tech-scene)
 - [What to Look for in a Local Agency](#what-to-look-for-in-a-local-agency)
 - [Where Duo Studio Fits](#where-duo-studio-fits)
@@ -39,6 +41,21 @@ ignore: false
 </div>
 
 <div class="entry__content--main">
+
+<aside class="guide-answer">
+
+<p class="guide-answer__label">Quick answer</p>
+
+<h2 id="quick-answer">What should an established Baltimore business look for in a web design agency?</h2>
+
+Choose a team that can connect business strategy, content, UX, visual design, and development — then show how those decisions support a clearer sales or inquiry path. For a custom marketing website, a realistic engagement is usually measured in months rather than weeks, with scope and content complexity driving the final investment.
+
+- Review live websites, not only portfolio screenshots.
+- Ask who will actually do the strategy, design, development, and QA.
+- Expect a clear process, defined milestones, and a CMS your team can manage.
+- Make sure the agency's normal project size matches yours.
+
+</aside>
 
 <h2 id="baltimores-design-tech-scene">Baltimore's Design & Tech Scene</h2>
 
@@ -223,7 +240,17 @@ Hiring a web design agency is a significant decision — not just financially, b
 
 The key is doing the evaluation work upfront. Look at actual sites, not just screenshots. Ask about process, not just deliverables. Make sure the agency's typical client profile matches where you are. And be realistic about budget — the range in this market is wide, and what you pay has a real bearing on what you get.
 
-Duo Studio is a Baltimore-based design and development studio co-founded by Dat Nguyen and Sonia Polyzos. We work with established businesses and organizations on branding, web design, and web development — building on WordPress and Next.js depending on what fits the project. If you're evaluating agencies and want to talk through your project, [contact us](/contact/) and we'll give you a straight answer on fit.
+Duo Studio is a Baltimore-based design and development studio co-founded by Dat Nguyen and Sonia Polyzos. We work with established businesses and organizations on branding, web design, and web development — building on WordPress and Next.js depending on what fits the project.
+
+<aside class="guide-cta">
+
+<h2>Planning a website redesign?</h2>
+
+Tell us what is changing in your business and where the current site is falling short. We'll give you a straight answer about fit, likely scope, and the right next step.
+
+<a class="btn__small --tag cursor__hover --highlight guide-cta__link" href="/contact/">Discuss your website project</a>
+
+</aside>
 
 </div>
 

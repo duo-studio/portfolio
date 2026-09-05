@@ -5,6 +5,7 @@ cardHeadline: "What shapes the cost of a website redesign"
 description: "A transparent breakdown of website redesign costs — from template builds to fully custom sites. What drives pricing and where the money goes."
 author: Dat Nguyen
 date: 2025-12-10
+updated: 2026-09-04
 category: Guide
 thumbImage: "guides/website-redesign-cost/archive.webp"
 featImage: "./featured-sync.webp"
@@ -23,6 +24,7 @@ ignore: false
 
 ### Table of Contents:
 
+- [Quick Answer](#quick-answer)
 - [What Drives Redesign Cost](#what-drives-cost)
 - [Tiers of Help: Who You Hire](#tiers-of-help)
 - [Breaking Down the Components](#component-breakdown)
@@ -36,6 +38,21 @@ ignore: false
 </div>
 
 <div class="entry__content--main">
+
+<aside class="guide-answer">
+
+<p class="guide-answer__label">Quick answer</p>
+
+<h2 id="quick-answer">How much should an established business budget for a website redesign?</h2>
+
+A professional redesign can range from about $8,000 for a focused small-business site to $50,000 or more for a custom build with deeper strategy, content, integrations, and migration needs. Most boutique-studio projects for established businesses land between $15,000 and $40,000. Duo's web-focused projects typically fall between $20,000 and $30,000.
+
+- Strategy and unresolved business decisions add time before design begins.
+- Custom design, content work, integrations, and migration are the biggest cost drivers.
+- A realistic boutique-studio timeline is usually 10–16 weeks.
+- Compare scope, team, and process — not just the final number.
+
+</aside>
 
 <h2 id="what-drives-cost">What Actually Drives Website Redesign Cost</h2>
 
@@ -72,6 +89,8 @@ This is where most established businesses land — and where you get the best va
 At Duo Studio, our website projects typically run $20,000–$30,000. That range covers a fully custom design, development on a modern stack, content migration, and a launch-ready site. Higher complexity — deeper integrations, larger page counts, custom CMS architecture — can push that up. Simpler scopes can come in lower.
 
 What you're paying for in this tier isn't just execution. It's the thinking. A boutique studio has done this enough times to know where projects break, what questions to ask upfront, and how to deliver something that holds up six months after launch — not just on launch day.
+
+That work often starts before visual design. For [Genimex Group](/work/genimexgroup/), we reorganized services, case studies, and inquiry paths around how the business actually operates. For [Africa Dream Safaris](/work/africadreamsafaris/), the redesign included information architecture, trust-building content, and a clearer booking journey across a large resource library.
 
 Good fit for: growing businesses, companies that have outgrown their current site, anyone who wants a site that does real work.
 
@@ -211,7 +230,15 @@ A website redesign is one of the more significant investments a business makes �
 
 A $5,000 project and a $30,000 project aren't the same thing with a different price tag. They're genuinely different scopes: different levels of research, customization, technical rigor, and support. Understanding what each tier actually delivers helps you make a smarter decision about where to invest.
 
-If you're evaluating a redesign and want to know what a project like yours would actually cost — not a range, but a real number based on your goals and scope — that's a conversation worth having before you send out RFPs.
+<aside class="guide-cta">
+
+<h2>Need a realistic number for your redesign?</h2>
+
+Share what your current site includes, what needs to change, and any platform or launch constraints. We'll help you understand the likely scope before you invest in a full proposal process.
+
+<a class="btn__small --tag cursor__hover --highlight guide-cta__link" href="/contact/">Discuss your website scope</a>
+
+</aside>
 
 </div>
 

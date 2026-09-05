@@ -5,6 +5,7 @@ cardHeadline: "What to look for in a web design agency"
 description: "A practical guide to evaluating web design agencies — what to look for in portfolios, process, and proposals before signing anything."
 author: Sonia Polyzos
 date: 2026-02-14
+updated: 2026-09-04
 category: Guide
 thumbImage: "guides/choose-web-design-agency/archive.webp"
 featImage: "./featured-sync.webp"
@@ -23,6 +24,7 @@ ignore: false
 
 ### Table of Contents:
 
+- [Quick Answer](#quick-answer)
 - [Agency vs. Freelancer vs. In-House](#agency-vs-freelancer)
 - [What to Look for in a Portfolio](#portfolio-evaluation)
 - [How to Evaluate Their Process](#evaluate-process)
@@ -39,6 +41,21 @@ ignore: false
 </div>
 
 <div class="entry__content--main">
+
+<aside class="guide-answer">
+
+<p class="guide-answer__label">Quick answer</p>
+
+<h2 id="quick-answer">How do you choose the right web design agency?</h2>
+
+Choose the agency that understands the business problem, shows relevant live work, explains a repeatable process, and gives you direct access to the people doing the work. The best proposal is the clearest match between your goals, the team's capabilities, the scope, and the way you will work together — not automatically the cheapest or most visually impressive option.
+
+- Compare three credible teams so you have useful contrast.
+- Ask who owns strategy, content, design, development, QA, and launch.
+- Read case studies for decisions and outcomes, then test the live sites.
+- Require a specific scope, timeline, revision process, and post-launch plan.
+
+</aside>
 
 <h2 id="agency-vs-freelancer">Agency vs. Freelancer vs. In-House: Which Is Actually Right for You?</h2>
 
@@ -78,6 +95,8 @@ Here's how to look past the surface:
 **Look for work in your category or sector.** Agencies don't need to have done exactly what you're asking for — but relevant experience matters. If you're a [small business looking for a web redesign](/guides/small-business-website-design/), you want to see that they understand your constraints: budget discipline, clear calls to action, sites that don't require a dedicated team to maintain.
 
 **Ask about results.** Not every agency tracks post-launch metrics (they should, but they don't always have access). But if you ask — "did this redesign move any measurable numbers for the client?" — the answer, and how they answer it, tells you a lot.
+
+The same standard should apply to an agency's own case studies. Our [Genimex Group work](/work/genimexgroup/) shows the information architecture, CMS, and inquiry-path decisions behind a global manufacturing site. Our [Africa Dream Safaris work](/work/africadreamsafaris/) shows how content structure and trust-building shape a high-consideration booking journey.
 
 <h2 id="evaluate-process">How to Evaluate Their Process</h2>
 
@@ -232,7 +251,15 @@ The good news is that doing your homework isn't complicated. Look at real work, 
 
 If something feels off during the evaluation — vague answers, a rushed proposal, pressure to sign before you're ready — that's useful information. The project itself will be more complex than the sales process. How an agency handles the easy stuff tells you a lot about how they'll handle the hard stuff.
 
-Take your time. Ask the questions. And choose the team that earns it.
+<aside class="guide-cta">
+
+<h2>Comparing agencies for a redesign?</h2>
+
+Tell us what you're trying to change and what you need from a partner. We'll give you a direct answer about fit, likely scope, and whether Duo belongs on your shortlist.
+
+<a class="btn__small --tag cursor__hover --highlight guide-cta__link" href="/contact/">Talk through your project</a>
+
+</aside>
 
 </div>
 
