@@ -79,28 +79,39 @@ const guides = {
     },
     "choose-web-design-agency": {
         topic: "Choosing a partner",
-        intro: "The right partner should understand your business, explain their decisions, and build a website your team can use. Here's what to look for beyond the portfolio.",
-        contents: [{ id: "quick-answer", label: "Start here" }, { id: "what-to-look-for", label: "What to look for" }, { id: "our-work", label: "Project proof" }, { id: "first-call", label: "First call" }],
-        answer: { title: "Look for a fit you can explain.", body: "Choose a web design partner whose experience, process, and project scope match what you need. Review live work, ask what the team actually delivered, and compare responsibilities as carefully as price. A strong visual direction matters, but so do content, usability, editing, and launch support." },
+        intro: "A portfolio shows you what a studio made. Ask why they made it that way. The answer tells you far more about what you might make together.",
+        contents: [{ id: "quick-answer", label: "Start here" }, { id: "what-to-look-for", label: "Taste and judgment" }, { id: "our-work", label: "A closer look" }, { id: "first-call", label: "First conversation" }],
+        answer: { title: "Choose a point of view you can work with.", body: "Choose a web design agency whose work draws you in and whose reasoning earns your trust. Ask the team to walk through a live project: what they noticed, what they changed, and how those choices serve the people using it. Then check the practical fit—scope, budget, content, technology, and the working relationship. You're choosing both an eye and a way of working." },
         sections: [
-            { type: "rows", id: "what-to-look-for", label: "01 / Your shortlist", title: "Five things worth looking closely at.",
+            { type: "rows", id: "what-to-look-for", label: "01 / Your shortlist", title: "Start with what catches your eye.",
+                intro: "Think of a theatre poster that makes you look twice. The lettering, the image, the space between them: you get a sense of the production before you've read the details. Websites can do that too. The first few moments tell you whether a place feels intimate, a business feels precise, or an organization has a sense of humor. It's worth noticing your own reaction before opening the comparison spreadsheet.",
                 items: [
-                    { title: "Relevant problems, not just familiar industries", body: "A team may understand your challenge without having worked in your exact sector. Look for evidence of explaining complex services, organizing large content libraries, or supporting a considered purchase—whichever matters to your project." },
-                    { title: "The live experience", body: "Use a few portfolio sites on your phone. Can you understand the offer, find useful information, and take the next step? Ask which parts of the work belong to the agency and what has changed since launch." },
-                    { title: "Content and design working together", body: "Find out who owns the sitemap, page structure, messaging, copy, and assets. Strong design can't resolve a missing story if neither side has taken responsibility for writing it." },
-                    { title: "A CMS your team can manage", body: "Ask to see how editors add a project, rearrange a page, or update a service. Reusable modules should give your team useful flexibility while preserving the design—not just a long list of settings." },
-                    { title: "A clear working relationship", body: "Know who leads the project, who designs and develops it, and how feedback moves between teams. Ask about milestones, review rounds, testing, handoff, and support after launch." }
+                    { title: "Give the attraction a name.", body: "Pick two or three projects you keep returning to. What holds your attention? Maybe the photography leaves room for the place to speak. Maybe the type has an awkwardness that feels exactly right. Maybe a complicated service suddenly makes sense. You don't need design vocabulary to have a useful opinion. Bring the detail, not just the word 'modern'." },
+                    { title: "Look for a curious eye.", body: "A studio's references, writing, and side projects can show you what it pays attention to beyond a brief. Look for more than shared favorites. Can the team explain what interests them about a book cover, a title sequence, or an ordinary sign? That curiosity matters when your project needs an idea that won't come from looking only at your competitors." },
+                    { title: "Ask what belongs to the client.", body: "You can admire a studio's taste without wanting your site to look like its own. Look across the work: what changes from one organization to the next? What feels specific to each one? We think a studio's point of view is most useful when it helps reveal a client's character. Ask how the team would learn yours before proposing a direction." }
                 ] },
-            { type: "proof", id: "our-work", title: "Ask to see the thinking as well as the finish.", projects: [projects.africa, projects.genimex] },
-            { type: "checklist", id: "first-call", label: "02 / First conversation", title: "Questions that get past the pitch.",
-                items: ["Which project best demonstrates how you'd approach our challenge, and why?", "What would you need to learn before recommending a scope or platform?", "Who is responsible for content, approvals, and day-to-day communication?", "What does the CMS handoff look like for our team?", "What isn't included in the estimate, and how are changes handled?", "What will we own and have access to at launch?"],
-                note: "Ask each shortlisted team the same core questions. It makes differences in approach easier to understand." },
-            { type: "rows", id: "where-duo-fits", label: "03 / Where Duo fits", title: "Brand thinking. Design and development together.",
-                intro: "Duo is a Baltimore-based design studio working with businesses and organizations on brand identity and custom marketing websites. Our work connects how a business explains itself with how people experience it online.",
+            { type: "proof", id: "our-work", title: "A floating chair can tell you quite a lot.", projects: [{
+                ...projects.lumina,
+                image: "/assets/work/lumina/lumina__sec-5--2@954.webp", width: 954, height: 636,
+                alt: "Lumina's custom icon set, including floating chairs for seating policies and boxed brains for scholarships",
+                scope: "Lumina Studio Theatre · Custom icons alongside a digital identity and website",
+                body: "For Lumina Studio Theatre, we paired a rosy palette and playful serifs with a custom icon set: floating chairs for seating policies, boxed brains for scholarships. Even the practical information gets to carry some of the theatre's imagination. That's the kind of detail worth discussing with a potential partner. Why this image? Why here? Does the character carry through when someone needs to book, donate, or find a policy? A case study becomes much more useful when you can connect an expressive choice to its job."
+            }] },
+            { type: "rows", id: "try-the-website", label: "02 / The experience", title: "Now put the website to work.",
+                intro: "The screenshot is an introduction. Open the site on your phone and give yourself something to do: find a performance, understand a service, send an inquiry. Notice where the design helps you along and where you have to stop and work it out.",
                 items: [
-                    { title: "When we can help", body: "Your business has evolved, but the brand or website hasn't caught up. You need a clearer story, distinctive design, and a site built around your content and the people using it." },
-                    { title: "What to clarify early", body: "If the main need is a complex software product, an ongoing advertising program, or outsourced ownership of your entire marketing function, say so at the outset. Those are different needs from a brand and marketing-website engagement." }
-                ], link: { href: "/services/web-design-development/", label: "Explore our website services" } }
+                    { title: "Follow the detail past the homepage.", body: "Read a longer page. Open the menu. Try the keyboard. Does the type still feel considered when there is more to say? Is motion comfortable, and is the next step easy to find? These are useful first impressions, not a substitute for accessibility testing. Ask the studio what it tested, which parts it delivered, and what the client has changed since launch." },
+                    { title: "Ask for a look behind the page.", body: "Your team will spend time in the CMS after the opening-day excitement has passed. Ask to see an ordinary edit: adding a project, changing an image, or building a page from modules. A custom website can use reusable parts. The interesting question is whether those parts give you useful freedom while keeping the site's character intact." }
+                ] },
+            { type: "checklist", id: "first-call", label: "03 / First conversation", title: "Questions that get past the pitch.",
+                intro: "Bring a site you like, a specific reason you like it, and something about your own business that's difficult to explain. See where the conversation goes. You want to hear how the team thinks, but also whether it listens.",
+                items: ["Walk us through a decision in this project. What made this direction right for that client?", "What would you need to understand about us before recommending an approach?", "Who would we work with, and how do you handle disagreement about a direction?", "Who is responsible for writing, photography, content entry, and approvals?", "Can you show us how our team would update the site?", "What does the fee include, what will we own, and what happens after launch?"],
+                note: "Compare the written proposals as well as the conversations. Content, revision rounds, testing, handoff, and optional support should be explicit. Two appealing presentations can describe very different amounts of work." },
+            { type: "rows", id: "where-duo-fits", label: "04 / Making the choice", title: "Leave room to be surprised.",
+                intro: "The right studio may show you something you wouldn't have asked for. That's part of the value. The recommendation should still make sense once you've talked it through: the audience it serves, the story it tells, the constraints it respects.",
+                items: [
+                    { title: "Choose a conversation you want to continue.", body: "By the end of the selection process, you should have a feel for more than the likely deliverables. You should know what this team notices, how it explains a choice, and how it responds when you see things differently. Keep the practical checks. Make room for that judgment too." }
+                ] }
         ],
         faqs: [
             { question: "Should we only consider agencies in our industry?", answer: "Industry knowledge can help, but it is not the only sign of fit. Ask for work with similar audiences, content needs, buying journeys, or technical requirements. The team should be able to explain how that experience applies to your business." },
@@ -108,7 +119,7 @@ const guides = {
             { question: "How should we compare proposals?", answer: "Compare deliverables, responsibilities, revision rounds, platform requirements, ownership, and post-launch support. Then compare price and timing against that shared scope. A lower total may cover a different amount of work." },
             { question: "Do we need a new brand before a new website?", answer: "Not always. A strong existing identity can guide the redesign. If the positioning, message, or visual identity no longer fits the business, discuss that early so the website is built on an agreed direction." }
         ],
-        cta: { title: "See whether we're the right fit.", body: "Share your current site, what you want to change, and any budget or timing constraints. We'll start with the problem you're trying to solve.", label: "Start a conversation" },
+        cta: { title: "What caught your eye?", body: "If something in Duo's work stayed with you, we'd like to hear what it was—and what you're thinking about next.", label: "Start a conversation" },
         related: [links.cost, links.brand]
     },
     "baltimore-web-design": {
