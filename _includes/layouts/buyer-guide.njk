@@ -1,39 +1,30 @@
 ---
-eleventyComputed:
-    title: "{{ headline }}"
-layout: layouts/base.njk
+layout: layouts/post.njk
 ---
+{# Shared content modules inside the existing guide layout, not a separate design. #}
 {% from "partials/guides/modules.njk" import answer, rows, proof, checklist, faq, related, inquiry %}
 {% set guide = buyerGuides[guideKey] %}
-<div class="barba-container loading" data-barba="container" data-barba-namespace="journal">
-    <main class="buyer-guide">
-        <article>
-            <section class="buyer-guide__hero" aria-labelledby="guide-title">
-                <div class="buyer-guide__eyebrow">
-                    <a href="/guides/" class="buyer-guide__back">← All guides</a>
-                    <span>{{ guide.topic }}</span>
-                </div>
-                <h1 class="headline__load" id="guide-title">{{ displayHeadline or headline }}</h1>
-                <div class="buyer-guide__intro">
-                    <p class="buyer-guide__credit">By {{ author }}<br>Updated <time datetime="{{ updated | htmlDateString }}">{{ updated | readableDate }}</time></p>
-                    <p class="buyer-guide__dek">{{ guide.intro }}</p>
-                </div>
-                <div class="buyer-guide__contents" role="navigation" aria-label="In this guide">
-                    <span>In this guide</span>
-                    {% for item in guide.contents %}<a href="#{{ item.id }}">{{ item.label }} <span aria-hidden="true">↘</span></a>{% endfor %}
-                </div>
-            </section>
-            {{ answer(guide.answer) }}
-            {% for section in guide.sections %}
-                {% if section.type == "rows" %}{{ rows(section) }}
-                {% elif section.type == "proof" %}{{ proof(section) }}
-                {% elif section.type == "checklist" %}{{ checklist(section) }}{% endif %}
-            {% endfor %}
-            {{ faq(guide.faqs) }}
-            {{ inquiry(guide.cta) }}
-            {{ related(guide.related) }}
-            <script type="application/ld+json">{{ guide.faqSchema | safe }}</script>
-        </article>
-        {% include "layouts/footer.njk" %}
-    </main>
+<div class="entry__content--sidebar">
+    <h2 class="title-3 entry__content--sidebar-excerpt">{{ guide.intro }}</h2>
+    <div class="entry__content--sidebar-toc">
+        <h3>Table of Contents:</h3>
+        <ul>
+            <li><a href="#quick-answer">Quick answer</a></li>
+            {% for section in guide.sections %}<li><a href="#{{ section.id }}">{{ section.title }}</a></li>{% endfor %}
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#lets-talk">Let's talk</a></li>
+        </ul>
+    </div>
 </div>
+<div class="entry__content--main">
+    {{ answer(guide.answer) }}
+    {% for section in guide.sections %}
+        {% if section.type == "rows" %}{{ rows(section) }}
+        {% elif section.type == "proof" %}{{ proof(section) }}
+        {% elif section.type == "checklist" %}{{ checklist(section) }}{% endif %}
+    {% endfor %}
+    {{ faq(guide.faqs) }}
+    {{ inquiry(guide.cta) }}
+    {{ related(guide.related) }}
+</div>
+<script type="application/ld+json">{{ guide.faqSchema | safe }}</script>

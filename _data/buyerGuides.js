@@ -2,28 +2,28 @@
 // Project claims are grounded in the linked, published Duo case studies.
 const projects = {
     mgny: {
-        name: "MGNY", href: "/work/mgny/",
+        name: "MGNY", href: "/work/mgny/", width: 1024, height: 693,
         image: "/assets/work/mgny/mgny__banner@1024.webp",
         alt: "Duo's MGNY identity with an illustrated New York skyline",
         scope: "Brand strategy · Digital identity · Website · Illustration",
         body: "For this New York real-estate consulting company, brand strategy, custom illustration, and website design work together to explain a complex service offering."
     },
     genimex: {
-        name: "Genimex Group", href: "/work/genimexgroup/",
+        name: "Genimex Group", href: "/work/genimexgroup/", width: 1024, height: 774,
         image: "/assets/work/genimexgroup/genimexgroup__sec-4--1--guide.webp",
         alt: "Genimex manufacturing services website displayed on a laptop",
         scope: "Site architecture · Digital identity · Website",
         body: "We organized manufacturing services, clients, and case studies into one connected website. A modular Sanity CMS lets the team compose pages and update content and SEO details."
     },
     africa: {
-        name: "Africa Dream Safaris", href: "/work/africadreamsafaris/",
+        name: "Africa Dream Safaris", href: "/work/africadreamsafaris/", width: 1024, height: 639,
         image: "/assets/work/africadreamsafaris/africadreamsafaris__sec-5--1--guide.webp",
         alt: "Africa Dream Safaris website showing traveler reviews and safari photography",
         scope: "Site architecture · Digital storytelling · WordPress",
         body: "Regions, lodges, wildlife, and planning advice needed a clear structure. We designed reusable modules and a centralized WordPress content library alongside the inquiry experience."
     },
     lumina: {
-        name: "Lumina Studio Theatre", href: "/work/lumina/",
+        name: "Lumina Studio Theatre", href: "/work/lumina/", width: 1024, height: 693,
         image: "/assets/work/lumina/lumina__banner@1024.webp",
         alt: "Lumina Studio Theatre website and visual identity by Duo",
         scope: "Digital identity · Website · Custom icons",
