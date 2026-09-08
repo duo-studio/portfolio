@@ -407,9 +407,9 @@
 					}
 				}
 			}
-				&--main {
-					padding: 0 $gutter;
-					width: 70%;
+			&--main {
+				padding: 0 $gutter;
+				width: 70%;
 				@media screen and (max-width: $mobile-breakpoint) {
 					width: 100%;
 					padding: 0;
@@ -613,61 +613,15 @@
 					}
 				}
 
-					h3.entry__section-heading {
+				h3.entry__section-heading {
 					font-family: $font-suisse-r;
 					font-size: $font-size-h3;
 					font-weight: 500;
 					letter-spacing: -0.02em;
 					line-height: 1.2;
-						padding-bottom: 0.15em;
-					}
-
-					.guide-answer,
-					.guide-cta {
-						border: 1px solid rgba($color-black, 0.14);
-						padding: clamp(1.5rem, 3vw, 3rem);
-						margin: 0 0 4rem;
-						background: $color-grey;
-
-						h2 {
-							margin-top: 0;
-							text-transform: none;
-							font-family: $font-suisse-r;
-							font-size: clamp(24px, 2.25vw, 42px);
-							font-weight: 500;
-							line-height: 1.12;
-							letter-spacing: -0.03em;
-						}
-
-						@media screen and (max-width: $mobile-breakpoint-s) {
-							margin-bottom: 2.5rem;
-						}
-					}
-
-					.guide-answer {
-						&__label {
-							margin-bottom: 0.75rem;
-							text-transform: uppercase;
-							letter-spacing: 0.04em;
-						}
-
-						ul {
-							margin-bottom: 0;
-						}
-					}
-
-					.guide-cta {
-						margin-top: 4rem;
-
-						&__link {
-							display: inline-flex;
-							align-items: center;
-							justify-content: center;
-							margin-top: 0.4rem;
-							text-decoration: none;
-						}
-					}
+					padding-bottom: 0.15em;
 				}
+			}
 
 			&--share {
 				width: calc(70% - #{calc(#{$gutter} * 2)});
