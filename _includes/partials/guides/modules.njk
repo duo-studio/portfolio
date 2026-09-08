@@ -1,0 +1,55 @@
+{# Use the established journal/guide elements and styles for every content block. #}
+{% macro answer(data) %}
+<h2 id="quick-answer">{{ data.title }}</h2>
+<p>{{ data.body }}</p>
+{% endmacro %}
+
+{% macro rows(data) %}
+<h2 id="{{ data.id }}">{{ data.title }}</h2>
+{% if data.intro %}<p>{{ data.intro }}</p>{% endif %}
+{% for item in data.items %}
+<h3>{{ item.title }}</h3>
+<p>{{ item.body }}</p>
+{% if item.note %}<p>{{ item.note }}</p>{% endif %}
+{% endfor %}
+{% if data.link %}<p><a href="{{ data.link.href }}">{{ data.link.label }}</a></p>{% endif %}
+{% endmacro %}
+
+{% macro proof(data) %}
+<h2 id="{{ data.id }}">{{ data.title }}</h2>
+{% for project in data.projects %}
+<h3>{{ project.name }}</h3>
+<figure class="entry__visual">
+    <a href="{{ project.href }}"><img src="{{ project.image }}" alt="{{ project.alt }}" width="{{ project.width }}" height="{{ project.height }}" loading="lazy" decoding="async"></a>
+    <figcaption>{{ project.scope }}</figcaption>
+</figure>
+<p>{{ project.body }} <a href="{{ project.href }}">See the {{ project.name }} project.</a></p>
+{% endfor %}
+{% endmacro %}
+
+{% macro checklist(data) %}
+<h2 id="{{ data.id }}">{{ data.title }}</h2>
+{% if data.intro %}<p>{{ data.intro }}</p>{% endif %}
+<ul>{% for item in data.items %}<li>{{ item }}</li>{% endfor %}</ul>
+{% if data.note %}<p>{{ data.note }}</p>{% endif %}
+{% endmacro %}
+
+{% macro faq(items) %}
+<h2 id="faq">Frequently asked questions</h2>
+<div class="faq">
+    {% for item in items %}
+    <details class="faq__item"><summary>{{ item.question }}</summary><p>{{ item.answer }}</p></details>
+    {% endfor %}
+</div>
+{% endmacro %}
+
+{% macro inquiry(data) %}
+<h2 id="lets-talk">{{ data.title }}</h2>
+<p>{{ data.body }}</p>
+<p><a href="/contact/">{{ data.label }}</a></p>
+{% endmacro %}
+
+{% macro related(items) %}
+<h3>Further reading</h3>
+<ul>{% for item in items %}<li><a href="{{ item.href }}">{{ item.label }}</a></li>{% endfor %}</ul>
+{% endmacro %}
