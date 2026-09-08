@@ -79,47 +79,45 @@ const guides = {
     },
     "choose-web-design-agency": {
         topic: "Choosing a partner",
-        intro: "A portfolio shows you what a studio made. Ask why they made it that way. The answer tells you far more about what you might make together.",
-        contents: [{ id: "quick-answer", label: "Start here" }, { id: "what-to-look-for", label: "Taste and judgment" }, { id: "our-work", label: "A closer look" }, { id: "first-call", label: "First conversation" }],
-        answer: { title: "Choose a point of view you can work with.", body: "Choose a web design agency whose work draws you in and whose reasoning earns your trust. Ask the team to walk through a live project: what they noticed, what they changed, and how those choices serve the people using it. Then check the practical fit—scope, budget, content, technology, and the working relationship. You're choosing both an eye and a way of working." },
+        intro: "Liking the work is a good start. A few honest conversations will tell you whether the team is right for your project.",
+        contents: [{ id: "quick-answer", label: "Start here" }, { id: "what-to-look-for", label: "The work" }, { id: "our-work", label: "An example" }, { id: "first-call", label: "First conversation" }],
+        answer: { title: "Like the work? Ask how it got made.", body: "Start with agencies whose work you like. Then ask the people behind it to walk you through a project. What did the client need? Why did they take that approach? Find out who you'd work with, what the project would cost, and what's included. You should leave with a clear idea of how they'd help you." },
         sections: [
-            { type: "rows", id: "what-to-look-for", label: "01 / Your shortlist", title: "Start with what catches your eye.",
-                intro: "Think of a theatre poster that makes you look twice. The lettering, the image, the space between them: you get a sense of the production before you've read the details. Websites can do that too. The first few moments tell you whether a place feels intimate, a business feels precise, or an organization has a sense of humor. It's worth noticing your own reaction before opening the comparison spreadsheet.",
+            { type: "rows", id: "what-to-look-for", label: "01 / Your shortlist", title: "Look past the agency's own website.",
+                intro: "Look at what they've made for other people. A theatre, a manufacturer, and a hotel have different things to say. Does the work reflect that? An agency can have a style you love, but your website still needs to feel like your business.",
                 items: [
-                    { title: "Give the attraction a name.", body: "Pick two or three projects you keep returning to. What holds your attention? Maybe the photography leaves room for the place to speak. Maybe the type has an awkwardness that feels exactly right. Maybe a complicated service suddenly makes sense. You don't need design vocabulary to have a useful opinion. Bring the detail, not just the word 'modern'." },
-                    { title: "Look for a curious eye.", body: "A studio's references, writing, and side projects can show you what it pays attention to beyond a brief. Look for more than shared favorites. Can the team explain what interests them about a book cover, a title sequence, or an ordinary sign? That curiosity matters when your project needs an idea that won't come from looking only at your competitors." },
-                    { title: "Ask what belongs to the client.", body: "You can admire a studio's taste without wanting your site to look like its own. Look across the work: what changes from one organization to the next? What feels specific to each one? We think a studio's point of view is most useful when it helps reveal a client's character. Ask how the team would learn yours before proposing a direction." }
+                    { title: "You don't need to speak designer.", body: "If you like the photos, say so. If the writing makes a complicated business easy to understand, mention that. Being specific is more useful than asking for something 'modern'. The team should be able to explain its choices without making you feel like you need a design degree." },
+                    { title: "Look at what interests them, too.", body: "A studio's articles, side projects, and shared references can tell you something about the people. Do they have ideas you find interesting? It doesn't all have to be about websites. You want a team that brings something to the conversation, not just a list of services." }
                 ] },
-            { type: "proof", id: "our-work", title: "A floating chair can tell you quite a lot.", projects: [{
+            { type: "proof", id: "our-work", title: "Ask about a specific project.", projects: [{
                 ...projects.lumina,
                 image: "/assets/work/lumina/lumina__sec-5--2@954.webp", width: 954, height: 636,
                 alt: "Lumina's custom icon set, including floating chairs for seating policies and boxed brains for scholarships",
-                scope: "Lumina Studio Theatre · Custom icons alongside a digital identity and website",
-                body: "For Lumina Studio Theatre, we paired a rosy palette and playful serifs with a custom icon set: floating chairs for seating policies, boxed brains for scholarships. Even the practical information gets to carry some of the theatre's imagination. That's the kind of detail worth discussing with a potential partner. Why this image? Why here? Does the character carry through when someone needs to book, donate, or find a policy? A case study becomes much more useful when you can connect an expressive choice to its job."
+                scope: "Custom icons for Lumina Studio Theatre",
+                body: "For Lumina Studio Theatre, we drew floating chairs for seating policies and boxed brains for scholarships. They're part of a website with plenty of pink and playful lettering. The subject matter is practical; the drawings have a sense of humor. That's one example of how we adapted the design to the organization. Ask an agency to show you a detail like this and explain why it made sense for that client."
             }] },
-            { type: "rows", id: "try-the-website", label: "02 / The experience", title: "Now put the website to work.",
-                intro: "The screenshot is an introduction. Open the site on your phone and give yourself something to do: find a performance, understand a service, send an inquiry. Notice where the design helps you along and where you have to stop and work it out.",
+            { type: "rows", id: "try-the-website", label: "02 / The experience", title: "Try a few of their websites.",
+                intro: "Open them on your phone. Read about the business, find a product, or look for an event. Is it easy? Do you want to keep looking? A website should be enjoyable to use as well as good to look at. Ask what the agency made and what the client has changed since.",
                 items: [
-                    { title: "Follow the detail past the homepage.", body: "Read a longer page. Open the menu. Try the keyboard. Does the type still feel considered when there is more to say? Is motion comfortable, and is the next step easy to find? These are useful first impressions, not a substitute for accessibility testing. Ask the studio what it tested, which parts it delivered, and what the client has changed since launch." },
-                    { title: "Ask for a look behind the page.", body: "Your team will spend time in the CMS after the opening-day excitement has passed. Ask to see an ordinary edit: adding a project, changing an image, or building a page from modules. A custom website can use reusable parts. The interesting question is whether those parts give you useful freedom while keeping the site's character intact." }
+                    { title: "Check that your team can use it, too.", body: "Ask them to show you how you'd change a photo or add a new page. You don't need a tour of every setting. You need to know whether the everyday updates will be manageable." }
                 ] },
-            { type: "checklist", id: "first-call", label: "03 / First conversation", title: "Questions that get past the pitch.",
-                intro: "Bring a site you like, a specific reason you like it, and something about your own business that's difficult to explain. See where the conversation goes. You want to hear how the team thinks, but also whether it listens.",
-                items: ["Walk us through a decision in this project. What made this direction right for that client?", "What would you need to understand about us before recommending an approach?", "Who would we work with, and how do you handle disagreement about a direction?", "Who is responsible for writing, photography, content entry, and approvals?", "Can you show us how our team would update the site?", "What does the fee include, what will we own, and what happens after launch?"],
-                note: "Compare the written proposals as well as the conversations. Content, revision rounds, testing, handoff, and optional support should be explicit. Two appealing presentations can describe very different amounts of work." },
-            { type: "rows", id: "where-duo-fits", label: "04 / Making the choice", title: "Leave room to be surprised.",
-                intro: "The right studio may show you something you wouldn't have asked for. That's part of the value. The recommendation should still make sense once you've talked it through: the audience it serves, the story it tells, the constraints it respects.",
+            { type: "checklist", id: "first-call", label: "03 / First conversation", title: "Get the basics clear.",
+                intro: "Tell the team what needs to change and what you're unsure about. You don't need to arrive with all the answers. These questions are a useful start:",
+                items: ["Who would we work with day to day?", "What would you need from us, including writing and photos?", "What's included in the price, and what would cost extra?", "What will we own, and what help is available after launch?"],
+                note: "Get those answers in the proposal. Check whether support after launch is included or offered separately before comparing prices." },
+            { type: "rows", id: "where-duo-fits", label: "04 / Making the choice", title: "Choose people you can be honest with.",
+                intro: "At some point, you'll need to say 'I don't like it' or 'I don't understand'. You should feel comfortable doing that. Notice whether the team listens, asks useful questions, and explains its recommendations.",
                 items: [
-                    { title: "Choose a conversation you want to continue.", body: "By the end of the selection process, you should have a feel for more than the likely deliverables. You should know what this team notices, how it explains a choice, and how it responds when you see things differently. Keep the practical checks. Make room for that judgment too." }
+                    { title: "You don't have to agree on everything.", body: "A good partner can challenge an idea without dismissing you. We think that matters as much as getting along on the first call. You're going to make a lot of decisions together." }
                 ] }
         ],
         faqs: [
-            { question: "Should we only consider agencies in our industry?", answer: "Industry knowledge can help, but it is not the only sign of fit. Ask for work with similar audiences, content needs, buying journeys, or technical requirements. The team should be able to explain how that experience applies to your business." },
-            { question: "Should we hire locally?", answer: "Choose locally if in-person collaboration is important to your team, and confirm which meetings will actually happen in person. A remote team can also work well when communication, decision-making, and availability are clear." },
-            { question: "How should we compare proposals?", answer: "Compare deliverables, responsibilities, revision rounds, platform requirements, ownership, and post-launch support. Then compare price and timing against that shared scope. A lower total may cover a different amount of work." },
-            { question: "Do we need a new brand before a new website?", answer: "Not always. A strong existing identity can guide the redesign. If the positioning, message, or visual identity no longer fits the business, discuss that early so the website is built on an agreed direction." }
+            { question: "Should we only consider agencies in our industry?", answer: "No. Relevant experience helps, but a team can bring useful ideas from other kinds of work. Ask how they'd learn about your business and customers." },
+            { question: "Should we hire locally?", answer: "If meeting in person matters to you, include that in your search. Working remotely can also be a good fit. Agree on how you'll stay in touch and when the team will be available." },
+            { question: "How should we compare proposals?", answer: "Check that they cover the same work, including writing, design, development, changes, and any help after launch. A lower price may leave more for your team to do." },
+            { question: "Do we need a new brand before a new website?", answer: "Not necessarily. If your name, message, and visual style still fit the business, keep what works. If they need to change, discuss that before starting the website." }
         ],
-        cta: { title: "What caught your eye?", body: "If something in Duo's work stayed with you, we'd like to hear what it was—and what you're thinking about next.", label: "Start a conversation" },
+        cta: { title: "Have a project in mind?", body: "Tell us about it. We'd be happy to talk through what you need and whether Duo is a good fit.", label: "Start a conversation" },
         related: [links.cost, links.brand]
     },
     "baltimore-web-design": {
